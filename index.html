@@ -232,6 +232,111 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 body.gated{overflow:hidden}
 body.gated main, body.gated .music{visibility:hidden}
 
+
+/* ---------- Coffee lab ---------- */
+.lab{width:100%;display:flex;flex-direction:column;align-items:center;gap:18px}
+.mug-wrap{position:relative;width:min(56vw,210px);aspect-ratio:1;max-width:100%}
+.mug-wrap svg{width:100%;height:100%;overflow:visible}
+#mugFill{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);transition:transform .9s cubic-bezier(.3,1.2,.5,1), fill .9s ease}
+.steam path{stroke:var(--muted);stroke-width:3;fill:none;stroke-linecap:round;opacity:0}
+.steaming .steam path{animation:steam 2.4s ease-in-out infinite}
+.steaming .steam path:nth-child(2){animation-delay:.6s}.steaming .steam path:nth-child(3){animation-delay:1.2s}
+@keyframes steam{0%{opacity:0;transform:translateY(8px)}40%{opacity:.6}100%{opacity:0;transform:translateY(-24px)}}
+.shake{animation:shake .5s ease}
+@keyframes shake{20%{transform:translateX(-8px) rotate(-4deg)}40%{transform:translateX(7px) rotate(3deg)}60%{transform:translateX(-5px)}80%{transform:translateX(3px)}}
+.lab-log{font-family:var(--font-fell);font-style:italic;color:var(--blush);min-height:3.2em;margin:0;max-width:34ch;text-shadow:0 2px 14px rgba(12,4,18,.95)}
+.tally{display:flex;gap:8px 18px;justify-content:center;flex-wrap:wrap;font-family:var(--font-display);letter-spacing:.14em;font-size:.74rem;color:var(--gold);text-transform:uppercase;font-variant-numeric:tabular-nums}
+.tally b{color:var(--blush);font-weight:400;font-family:var(--font-body);font-size:1.1rem;letter-spacing:0}
+.row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.cta{border:1px solid var(--gold);background:linear-gradient(180deg,rgba(236,201,127,.24),rgba(236,201,127,.08));color:var(--gold);border-radius:999px;padding:11px 24px;font-family:var(--font-fell);font-size:1.15rem;transition:transform .15s, background .2s}
+.cta:hover{background:linear-gradient(180deg,rgba(236,201,127,.36),rgba(236,201,127,.12))}
+.cta:active{transform:scale(.96)}
+.cta.ghost{border-color:rgba(243,166,196,.5);color:var(--blush);background:rgba(243,166,196,.06)}
+.latte{display:flex;flex-direction:column;align-items:center;gap:14px;animation:unfold .7s cubic-bezier(.2,.9,.3,1.2)}
+.glass-wrap{position:relative;width:128px;height:230px;padding-top:30px}
+.straw{position:absolute;left:62%;top:0;width:9px;height:200px;border-radius:4px;transform:rotate(9deg);transform-origin:bottom;background:repeating-linear-gradient(180deg,#f3a6c4 0 10px,#fff 10px 20px);z-index:0}
+.glass{position:relative;z-index:1;width:100%;height:200px;border:3px solid rgba(255,255,255,.55);border-top:2px solid rgba(255,255,255,.35);border-radius:6px 6px 24px 24px;overflow:hidden;background:rgba(255,255,255,.07);box-shadow:inset 0 0 18px rgba(255,255,255,.18), 0 20px 40px -12px rgba(0,0,0,.7)}
+.glass::after{content:"";position:absolute;inset:0;background:radial-gradient(circle,rgba(255,255,255,.45) 1px,transparent 1.6px) 0 0/13px 17px, linear-gradient(90deg,rgba(255,255,255,.22),transparent 30%,transparent 75%,rgba(255,255,255,.12));pointer-events:none}
+.milk{position:absolute;left:0;right:0;bottom:0;height:0;background:linear-gradient(180deg,#efe0cc,#fffaf3);transition:height 1.3s ease}
+.espresso{position:absolute;left:0;right:0;bottom:0;height:0;background:linear-gradient(180deg,#4a2414,#7d4a2c 55%,rgba(190,140,100,0));transition:height 1.6s ease 1.1s, bottom 1.3s ease}
+.ice{position:absolute;width:30px;height:28px;border-radius:7px;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.6);animation:bobice 3s ease-in-out infinite}
+@keyframes bobice{50%{transform:translateY(-5px) rotate(8deg)}}
+.cup-tag{font-family:var(--font-display);letter-spacing:.2em;font-size:.72rem;color:var(--gold);text-transform:uppercase}
+
+/* ---------- Thesis ---------- */
+.analysis{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%}
+.spss{font-family:ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:.86rem;color:var(--muted);text-align:left;width:min(440px,100%);min-height:0;margin:0;display:flex;flex-direction:column;gap:4px}
+.spss span::before{content:"> ";color:var(--gold)}
+.loadbar{width:min(440px,100%);height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+.loadbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--rose),var(--gold));transition:width .6s ease}
+.paper{width:100%;max-width:600px;background:linear-gradient(175deg,#fbf6ec,#efe4cf);color:#2b1d26;border-radius:3px;padding:26px clamp(16px,4vw,30px);text-align:left;box-shadow:0 34px 70px -24px rgba(0,0,0,.85);animation:unfold .8s cubic-bezier(.2,.9,.3,1.15)}
+.paper .run{display:flex;justify-content:space-between;gap:10px;font-family:var(--font-display);font-size:.66rem;letter-spacing:.14em;color:#7a6070;border-bottom:1px solid #d6c4a8;padding-bottom:6px}
+.paper h3{font-family:var(--font-fell);font-weight:400;font-size:1.65rem;margin:16px 0 2px;line-height:1.15}
+.paper h4{font-family:var(--font-fell);font-weight:400;font-style:italic;font-size:1.15rem;margin:16px 0 4px}
+.paper p{margin:0 0 8px;font-size:1.05rem;line-height:1.5}
+.paper .cap{font-style:italic;font-size:1rem;margin:14px 0 6px}
+.tbl{overflow-x:auto}
+table.apa{width:100%;border-collapse:collapse;font-size:1rem;font-variant-numeric:tabular-nums;min-width:330px}
+table.apa th{font-weight:600;text-align:left;border-top:1.5px solid #2b1d26;border-bottom:1px solid #2b1d26;padding:6px 6px}
+table.apa td{padding:5px 6px;vertical-align:top}
+table.apa tr:last-child td{border-bottom:1.5px solid #2b1d26}
+table.apa .n{text-align:right;white-space:nowrap}
+.bars{display:grid;gap:9px;margin-top:6px}
+.bar{display:grid;grid-template-columns:minmax(0,7.8em) minmax(0,1fr) 2.8em;gap:10px;align-items:center;font-size:1rem}
+.bar .track{height:12px;background:#e6d8bf;border-radius:2px;overflow:hidden}
+.bar .fill{height:100%;width:0;background:linear-gradient(90deg,#b8325f,#e86d98);transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.bar .v{text-align:right;font-variant-numeric:tabular-nums}
+.verdict{border:1px dashed #b89a74;padding:10px 12px;margin-top:14px;font-size:1.05rem;background:rgba(255,255,255,.4)}
+.footnote{font-size:.92rem;color:#6d5562;margin-top:14px;border-top:1px solid #d6c4a8;padding-top:8px}
+
+/* ---------- Exam ---------- */
+.exam{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
+.gauge{position:relative;width:min(78vw,300px);max-width:100%}
+.gauge svg{width:100%;height:auto;display:block;overflow:visible}
+.stamp{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) rotate(-14deg) scale(2.6);opacity:0;border:3px solid #ff6f9b;color:#ff6f9b;font-family:var(--font-display);letter-spacing:.22em;padding:4px 14px 2px;font-size:1.5rem;border-radius:6px;background:rgba(23,13,34,.6);transition:transform .35s cubic-bezier(.3,1.6,.5,1),opacity .15s;pointer-events:none}
+.stamp.on{opacity:1;transform:translate(-50%,-50%) rotate(-14deg) scale(1)}
+.score{font-family:var(--font-fell);font-size:clamp(2.8rem,11vw,3.8rem);color:var(--blush);font-variant-numeric:tabular-nums;line-height:1;margin:0}
+.exam-note{font-family:var(--font-fell);font-style:italic;color:var(--gold);margin:0;min-height:1.5em;max-width:34ch}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%;max-width:520px}
+.fact{border:1px solid rgba(236,201,127,.3);border-radius:10px;padding:10px 6px;background:rgba(23,13,34,.55);display:flex;flex-direction:column;gap:2px}
+.fact .k{font-family:var(--font-display);font-size:.62rem;letter-spacing:.14em;color:var(--gold);text-transform:uppercase}
+.fact .v{font-size:1.2rem;color:var(--text);font-variant-numeric:tabular-nums}
+.decree{max-width:440px;width:100%;background:linear-gradient(175deg,var(--parchment),var(--parchment-2));color:var(--ink);padding:18px 20px;border-radius:4px;text-align:center;box-shadow:0 24px 50px -20px rgba(0,0,0,.7)}
+.decree .label{font-family:var(--font-display);font-size:.7rem;letter-spacing:.22em;color:var(--ink-soft)}
+.decree p{margin:6px 0 0;font-size:1.08rem}
+
+/* ---------- Reels ---------- */
+.reels-area{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%}
+.phone{position:relative;width:min(72vw,280px);aspect-ratio:9/17;max-width:100%;border-radius:36px;padding:9px;background:#0b060f;box-shadow:0 0 0 2px #4a3557,0 0 0 6px #1a1020,0 34px 70px -20px rgba(0,0,0,.85)}
+.phone::before{content:"";position:absolute;top:16px;left:50%;width:70px;height:18px;border-radius:10px;background:#0b060f;transform:translateX(-50%);z-index:5}
+.screen{position:relative;width:100%;height:100%;border-radius:28px;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
+.reel{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:44px 12px 16px;text-align:left;transition:transform .55s cubic-bezier(.2,.8,.2,1);color:#fff}
+.reel .top{display:flex;justify-content:space-between;font-family:var(--font-body);font-weight:600;font-size:.95rem;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+.reel .meme{font-family:var(--font-body);font-weight:600;font-size:1.32rem;line-height:1.2;text-align:center;padding:0 8px;text-wrap:balance;text-shadow:0 2px 10px rgba(0,0,0,.45)}
+.reel .bottom{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:end}
+.reel .who{font-size:.92rem;line-height:1.3;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.reel .who b{font-weight:600}
+.reel .reply{display:block;margin-top:6px;background:rgba(0,0,0,.32);border-radius:12px;padding:6px 9px;font-size:.88rem;backdrop-filter:blur(4px)}
+.reel .side{display:flex;flex-direction:column;gap:10px;align-items:center;font-size:.78rem;font-variant-numeric:tabular-nums}
+.reel .side svg{width:24px;height:24px;filter:drop-shadow(0 1px 3px rgba(0,0,0,.4))}
+.reel .liked svg{color:#ff4f86;fill:#ff4f86}
+.burst{position:absolute;left:50%;top:50%;width:96px;height:96px;margin:-48px 0 0 -48px;color:#ff4f86;pointer-events:none;z-index:6;animation:burst .9s ease-out forwards}
+@keyframes burst{0%{transform:scale(.2);opacity:0}25%{transform:scale(1.2);opacity:1}60%{transform:scale(1)}100%{transform:scale(1.4) translateY(-40px);opacity:0}}
+.reel-nav{display:flex;gap:12px;align-items:center;justify-content:center}
+.reel-count{font-family:var(--font-display);letter-spacing:.16em;font-size:.74rem;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* ---------- Sprinkles + scroll candle + wand ---------- */
+.cake{cursor:copy}
+.sprinkle{position:absolute;width:3px;height:9px;border-radius:2px;pointer-events:none;animation:drop .35s cubic-bezier(.3,1.6,.5,1)}
+@keyframes drop{from{transform:translateY(-30px) rotate(0)}}
+.pcandle{position:fixed;z-index:6;right:calc(5px + env(safe-area-inset-right, 0px));top:24vh;height:44vh;width:7px;display:flex;align-items:flex-end;pointer-events:none}
+.pwax{position:relative;width:100%;height:100%;border-radius:3px 3px 2px 2px;background:linear-gradient(90deg,#d8c5ad,#fff8ee,#cdb89e);transition:height .2s linear}
+.pflame{position:absolute;top:-15px;left:50%;width:9px;height:15px;transform:translateX(-50%);border-radius:50% 50% 50% 50%/62% 62% 38% 38%;background:radial-gradient(ellipse at 50% 72%,#fff 0 20%,#ffe28a 40%,#ff9f43 75%,rgba(255,120,60,0) 100%);box-shadow:0 0 12px 4px rgba(255,200,110,.5);animation:flick .18s ease-in-out infinite alternate}
+body.gated .pcandle{visibility:hidden}
+@media (pointer:fine){
+  body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 34 34'%3E%3Cline x1='5' y1='5' x2='29' y2='29' stroke='%236b4530' stroke-width='3' stroke-linecap='round'/%3E%3Cline x1='20' y1='20' x2='29' y2='29' stroke='%233a2418' stroke-width='4.5' stroke-linecap='round'/%3E%3Ccircle cx='5' cy='5' r='3' fill='%23fff1b8'/%3E%3C/svg%3E") 5 5, auto}
+}
+
 @media (min-width:640px){
   .spells{grid-template-columns:repeat(4,minmax(0,1fr))}
   .wishes{gap:18px}
@@ -281,9 +386,9 @@ body.gated main, body.gated .music{visibility:hidden}
         <h1>Happy Birthday,<br><span class="name" id="nameFloat">Saleha</span></h1>
         <p>Dear Saleha,</p>
         <p>We are delighted to inform you that you have been accepted into one more year of being completely wonderful. No entrance exam required. Your record was spotless.</p>
-        <p>Tonight the candles float a little higher and the stars shine a little brighter, all for you. Scroll down: there are spells to cast, a potion to brew, a cake to blow out, and wishes hiding in the sky.</p>
+        <p>Tonight the candles float a little higher and the stars shine a little brighter, all for you. Scroll down and keep going: there are spells to cast, coffee to (attempt to) brew, a thesis to defend, an exam result to celebrate, reels to scroll, a cake to decorate and blow out, and wishes hiding in the sky.</p>
         <div class="sign">With all my magic,<br>Qasim</div>
-        <p class="ps">P.S. Tap anywhere for sparkles. Owls are not responsible for glitter left behind.</p>
+        <p class="ps">P.S. The next cold Spanish latte at Eggspectation is on me.<br>P.P.S. Tap anywhere for sparkles. Owls are not responsible for glitter left behind.</p>
       </article>
     </div>
     <p class="tap-hint" id="tapHint">Tap the wax seal to open your letter</p>
@@ -318,11 +423,43 @@ body.gated main, body.gated .music{visibility:hidden}
     <p class="spell-out" id="spellOut" aria-live="polite">&nbsp;</p>
   </section>
 
+
+  <p class="drift"><span><small>Sniff the air</small>Something smells like espresso. And slightly burnt milk.</span></p>
+
+  <!-- Coffee lab -->
+  <section class="chapter" id="coffee" aria-labelledby="coffeeTitle">
+    <div class="eyebrow">Chapter Two · Coffee Charms</div>
+    <h2 id="coffeeTitle">Home brewing, <em>attempt</em> #48</h2>
+    <p class="lede">The bravest witch in the castle tries to make coffee at home. Follow the steps in order.</p>
+    <div class="lab">
+      <div class="mug-wrap" id="mugWrap" aria-hidden="true">
+        <svg viewBox="0 0 200 200">
+          <g class="steam"><path d="M75 40 q-10 -14 0 -26 q10 -12 0 -24"/><path d="M100 40 q-10 -14 0 -26 q10 -12 0 -24"/><path d="M125 40 q-10 -14 0 -26 q10 -12 0 -24"/></g>
+          <path d="M156 78 q36 0 36 34 q0 34 -40 38" fill="none" stroke="#f6e6ee" stroke-width="12" stroke-linecap="round"/>
+          <path d="M40 50 h120 v104 q0 26 -26 26 h-68 q-26 0 -26 -26 z" fill="#fff0f6"/>
+          <clipPath id="mugClip"><path d="M48 58 h104 v94 q0 20 -20 20 h-64 q-20 0 -20 -20 z"/></clipPath>
+          <rect x="48" y="58" width="104" height="114" fill="#2a1a24" clip-path="url(#mugClip)"/>
+          <rect id="mugFill" x="48" y="58" width="104" height="114" fill="#5a3320" clip-path="url(#mugClip)"/>
+          <path d="M40 50 h120" stroke="#f3a6c4" stroke-width="6" stroke-linecap="round"/>
+          <path d="M84 110 c0 -8 12 -8 16 -1 c4 -7 16 -7 16 1 c0 10 -16 18 -16 18 s-16 -8 -16 -18z" fill="#f3a6c4" opacity=".9"/>
+        </svg>
+      </div>
+      <div class="ingredients" id="steps"></div>
+      <p class="lab-log" id="labLog" aria-live="polite">Step one: grind the beans. What could possibly go wrong?</p>
+      <div class="tally"><span>Home attempts <b id="tHome">47</b></span><span>Successful <b>0</b></span><span>Eggspectation success rate <b>100%</b></span></div>
+      <div class="row" id="labActions" hidden>
+        <button class="cta" id="apparate">Apparate to Eggspectation</button>
+        <button class="cta ghost" id="retry">Try again at home</button>
+      </div>
+      <div id="latteOut"></div>
+    </div>
+  </section>
+
   <p class="drift"><span><small>Onward</small>Past the castle towers, a cauldron is bubbling</span></p>
 
   <!-- Chapter 3: potion -->
   <section class="chapter" id="potions" aria-labelledby="potionTitle">
-    <div class="eyebrow">Chapter Two · Potions Class</div>
+    <div class="eyebrow">Chapter Three · Potions Class</div>
     <h2 id="potionTitle">Brew a <em>birthday</em> potion</h2>
     <p class="lede">Drop any three ingredients into the cauldron and see what you've made.</p>
     <div class="potion-area">
@@ -351,13 +488,106 @@ body.gated main, body.gated .music{visibility:hidden}
     </div>
   </section>
 
+
+  <p class="drift"><span><small>Quietly now</small>Into the Restricted Section, where theses go to get finished</span></p>
+
+  <!-- Thesis -->
+  <section class="chapter" id="thesis" aria-labelledby="thesisTitle">
+    <div class="eyebrow">Chapter Four · The Restricted Section</div>
+    <h2 id="thesisTitle">Chapter 4: <em>Results</em></h2>
+    <p class="lede">The data has been collected. The analysis is ready. Press the button and watch the results write themselves. (They didn't. Qasim wrote them.)</p>
+    <div class="analysis">
+      <button class="cta" id="runAnalysis">Run the analysis</button>
+      <div class="loadbar" id="loadbar" hidden><i id="loadfill"></i></div>
+      <div class="spss" id="spss" aria-live="polite"></div>
+    </div>
+    <article class="paper" id="paper" hidden>
+      <div class="run"><span>SALEHA: A LONGITUDINAL STUDY</span><span>p. 47</span></div>
+      <h3>Chapter 4: Results</h3>
+      <p>This chapter presents the findings of a year-long observational study of one (1) exceptional participant. All data were collected with consent, over coffee.</p>
+      <p class="cap"><b>Table 4.1</b><br>Descriptive Statistics for the Participant (N = 1)</p>
+      <div class="tbl">
+        <table class="apa">
+          <thead><tr><th>Variable</th><th class="n">Value</th></tr></thead>
+          <tbody>
+            <tr><td>Cold Spanish lattes at Eggspectation</td><td class="n">too many to count</td></tr>
+            <tr><td>Successful home-brewed coffees</td><td class="n">0</td></tr>
+            <tr><td>Home coffee attempts</td><td class="n">48</td></tr>
+            <tr><td>Reels sent to Qasim</td><td class="n">9,999+</td></tr>
+            <tr><td>Things baked, all delicious</td><td class="n">many</td></tr>
+            <tr><td>CSS screening score</td><td class="n">33% (passed)</td></tr>
+            <tr><td>Kindness (out of 10)</td><td class="n">10.0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="cap"><b>Figure 4.1</b><br>Sources of Happiness, Percent of Total Joy</p>
+      <div class="bars" id="bars"></div>
+      <h4>Hypothesis testing</h4>
+      <p><i>H<sub>1</sub>: Saleha makes every room better just by being in it.</i></p>
+      <div class="verdict">Result: <b>Strongly supported</b>, <i>p</i> &lt; .0001. Effect size: enormous. No further research is needed.</div>
+      <p class="footnote">Note. This results section was written by Qasim. Payment will be accepted in cold Spanish lattes, to be redeemed at Eggspectation.</p>
+    </article>
+  </section>
+
+  <p class="drift"><span><small>An official owl</small>The Ministry has sent your results</span></p>
+
+  <!-- CSS exam -->
+  <section class="chapter" id="exam" aria-labelledby="examTitle">
+    <div class="eyebrow">Chapter Five · Ministry Examinations</div>
+    <h2 id="examTitle">CSS screening test, <em>results</em></h2>
+    <p class="lede">The examiners have counted every mark. Twice. Hold your breath.</p>
+    <div class="exam">
+      <div class="gauge" aria-hidden="true">
+        <svg viewBox="0 0 240 140">
+          <path d="M20 120 A100 100 0 0 1 220 120" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="16" stroke-linecap="round"/>
+          <path id="gArc" d="M20 120 A100 100 0 0 1 220 120" fill="none" stroke="url(#gGrad)" stroke-width="16" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100"/>
+          <defs><linearGradient id="gGrad" x1="0" x2="1"><stop offset="0" stop-color="#f3a6c4"/><stop offset="1" stop-color="#ecc97f"/></linearGradient></defs>
+          <line x1="69.5" y1="34.2" x2="61.5" y2="20.4" stroke="#ecc97f" stroke-width="3"/>
+          <text x="58" y="13" fill="#ecc97f" font-size="10" font-family="IM Fell English SC, Georgia, serif" text-anchor="middle">PASS 33</text>
+          <g id="needle" style="transform-origin:120px 120px;transform:rotate(-90deg)"><line x1="120" y1="120" x2="120" y2="36" stroke="#ffdbe8" stroke-width="3" stroke-linecap="round"/></g>
+          <circle cx="120" cy="120" r="7" fill="#ffdbe8"/>
+        </svg>
+        <div class="stamp" id="stamp">PASSED</div>
+      </div>
+      <p class="score" id="score">33.0%</p>
+      <p class="exam-note" id="examNote" aria-live="polite">Not a single mark wasted.</p>
+      <div class="facts">
+        <div class="fact"><span class="k">Your score</span><span class="v">33%</span></div>
+        <div class="fact"><span class="k">Pass mark</span><span class="v">33%</span></div>
+        <div class="fact"><span class="k">Marks wasted</span><span class="v">0</span></div>
+      </div>
+      <div class="decree">
+        <div class="label">OFFICIAL DECREE</div>
+        <p>Efficiency this precise cannot be taught. Next stop: the written exam, then <b>Officer Saleha</b>. The whole castle is rooting for you.</p>
+      </div>
+      <button class="cta ghost" id="recheck">Check the result again</button>
+    </div>
+  </section>
+
+  <p class="drift"><span><small>Incoming</small>Hundreds of owls just arrived. They're all carrying reels.</span></p>
+
+  <!-- Reels -->
+  <section class="chapter" id="reels" aria-labelledby="reelsTitle">
+    <div class="eyebrow">Chapter Six · The Reel Owlery</div>
+    <h2 id="reelsTitle">Reels we <em>definitely</em> sent each other</h2>
+    <p class="lede">Swipe up for the next one. Double-tap to like, like you always do.</p>
+    <div class="reels-area">
+      <div class="phone"><div class="screen" id="screen"></div></div>
+      <div class="reel-nav">
+        <button class="cta ghost" id="reelPrev" aria-label="Previous reel">↑ Back</button>
+        <span class="reel-count" id="reelCount">1 / 8</span>
+        <button class="cta" id="reelNext" aria-label="Next reel">Next ↓</button>
+      </div>
+    </div>
+  </section>
+
   <p class="drift"><span><small>Mind the gifts</small>Something sweet is floating this way</span></p>
 
   <!-- Chapter 4: cake -->
   <section class="chapter" id="cake" aria-labelledby="cakeTitle">
-    <div class="eyebrow">Chapter Three · The Great Feast</div>
+    <div class="eyebrow">Chapter Seven · The Great Feast</div>
     <h2 id="cakeTitle">Close your eyes, make a wish, <em>blow</em></h2>
-    <p class="lede">Tap each flame to blow it out.</p>
+    <p class="lede">Baked by the best baker in the castle. Tap the cake to add sprinkles, then tap each flame to blow it out.</p>
     <div class="cake-stage" id="cakeStage">
       <div class="candles" id="candles"></div>
       <div class="cake">
@@ -374,12 +604,12 @@ body.gated main, body.gated .music{visibility:hidden}
 
   <!-- Chapter 5: wishes -->
   <section class="chapter" id="stars" aria-labelledby="wishTitle">
-    <div class="eyebrow">Chapter Four · Astronomy Tower</div>
-    <h2 id="wishTitle">Eight stars, eight <em>wishes</em></h2>
+    <div class="eyebrow">Chapter Eight · Astronomy Tower</div>
+    <h2 id="wishTitle">Twelve stars, twelve <em>wishes</em></h2>
     <p class="lede">Each star is holding a birthday wish for you. Tap to read one.</p>
     <div class="wishes" id="wishes"></div>
     <p class="wish-text" id="wishText" aria-live="polite">The sky is waiting…</p>
-    <div class="count" id="wishCount">0 of 8 wishes read</div>
+    <div class="count" id="wishCount">0 of 12 wishes read</div>
   </section>
 
   <p class="drift"><span><small>Almost there</small>Look up. The moon came out for you</span></p>
@@ -390,6 +620,8 @@ body.gated main, body.gated .music{visibility:hidden}
     <a class="scroll-cue" href="#top">Read your letter again <span>↑</span></a>
   </section>
 </main>
+
+<div class="pcandle" aria-hidden="true"><div class="pwax" id="pwax"><span class="pflame"></span></div></div>
 
 <button class="music" id="music" aria-pressed="false">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
@@ -528,6 +760,40 @@ body.gated main, body.gated .music{visibility:hidden}
   for (let i=0;i<(mobile?14:22);i++){
     const e = new THREE.Mesh(envGeo, envMat); e.position.copy(around(R(), 3.5, 15));
     e.rotation.set(R()*.6, R()*6, R()*.6); e.userData = {sx:(R()-.5)*.5, sy:(R()-.5)*1.4, ph:R()*6}; scene.add(e); gifts.push(e);
+  }
+
+  // coffee cups, cupcakes, books (theses) and paper planes (reels)
+  const cupMat = new THREE.MeshStandardMaterial({color:0xfff4f8, emissive:0x3a2a30, roughness:.4});
+  const coffeeMat = new THREE.MeshStandardMaterial({color:0x6b3e26, emissive:0x2a1208, roughness:.3});
+  const wrapMat = new THREE.MeshStandardMaterial({color:0xe27aa3, emissive:0x3a1020, roughness:.6});
+  const frostMat = new THREE.MeshStandardMaterial({color:0xfff0f6, emissive:0x4a3040, roughness:.5});
+  const cherryMat = new THREE.MeshStandardMaterial({color:0xd0204a, emissive:0x400010, roughness:.2});
+  const pageMat = new THREE.MeshStandardMaterial({color:0xf7ecd6, emissive:0x302010});
+  const coverCols = [0x7a2347, 0x2f3f6b, 0x3d5a3a, 0x8a6a2a];
+  const planeGeo = new THREE.BufferGeometry();
+  planeGeo.setAttribute('position', new THREE.Float32BufferAttribute([0,0,-1, -.7,0,.6, 0,.05,.3,  0,0,-1, .7,0,.6, 0,.05,.3,  0,0,-1, 0,-.3,.5, 0,.05,.3], 3));
+  planeGeo.computeVertexNormals();
+  const planeMat = new THREE.MeshStandardMaterial({color:0xffffff, emissive:0x40303a, side:THREE.DoubleSide});
+  const cupGeo = new THREE.CylinderGeometry(.55,.42,1,20), topGeo = new THREE.CircleGeometry(.5,20), handleGeo = new THREE.TorusGeometry(.25,.07,8,16);
+  const wrapGeo = new THREE.CylinderGeometry(.5,.36,.6,16), frostGeo = new THREE.SphereGeometry(.55,16,12,0,Math.PI*2,0,Math.PI/2), cherryGeo = new THREE.SphereGeometry(.13,10,8);
+  const bookGeo = new THREE.BoxGeometry(1.1,.28,1.5), pagesGeo = new THREE.BoxGeometry(1.0,.22,1.42);
+  function addFloater(o){ o.position.copy(around(R(), 4, 17)); o.rotation.set(R()*6, R()*6, R()*6); o.scale.multiplyScalar(.8 + R()*.7); o.userData = {sx:(R()-.5)*.6, sy:(R()-.5)*.9, ph:R()*6}; scene.add(o); gifts.push(o); }
+  for (let i=0;i<(mobile?10:16);i++){
+    let g = new THREE.Group();
+    g.add(new THREE.Mesh(cupGeo, cupMat));
+    const top = new THREE.Mesh(topGeo, coffeeMat); top.rotation.x = -Math.PI/2; top.position.y = .42; g.add(top);
+    const handle = new THREE.Mesh(handleGeo, cupMat); handle.position.x = .58; g.add(handle);
+    addFloater(g);
+    g = new THREE.Group();
+    g.add(new THREE.Mesh(wrapGeo, wrapMat));
+    const fr = new THREE.Mesh(frostGeo, frostMat); fr.position.y = .3; g.add(fr);
+    const ch = new THREE.Mesh(cherryGeo, cherryMat); ch.position.y = .9; g.add(ch);
+    addFloater(g);
+    g = new THREE.Group();
+    g.add(new THREE.Mesh(bookGeo, new THREE.MeshStandardMaterial({color:coverCols[i%4], emissive:0x1a0a10, roughness:.7})));
+    const pg = new THREE.Mesh(pagesGeo, pageMat); pg.position.x = .06; g.add(pg);
+    addFloater(g);
+    addFloater(new THREE.Mesh(planeGeo, planeMat));
   }
 
   // moon
@@ -835,7 +1101,10 @@ body.gated main, body.gated .music{visibility:hidden}
     ['Potion of Perfect Hair Days','Valid for 365 days. Humidity has been formally banned.'],
     ['Moonlit Wish Tonic','Whatever you wish for while drinking it is already on its way.'],
     ['Essence of Best Friendship','Strongest when shared. Comes with a lifetime supply of inside jokes.'],
-    ['Brew of Infinite Snacks','Your cravings will be answered before you have them.']
+    ['Brew of Infinite Snacks','Your cravings will be answered before you have them.'],
+    ['Draught of Successful Home Coffee','Extremely rare. Has never been brewed successfully. Not even once.'],
+    ['Elixir of 34%','One extra mark, just so next time feels a little less dramatic.'],
+    ['Essence of Eggspectation','Tastes exactly like a cold Spanish latte. Because it is one.']
   ];
   const brew = document.getElementById('brew'), bubbles = document.getElementById('bubbles');
   const recipe = document.getElementById('recipe'), result = document.getElementById('potionResult');
@@ -916,12 +1185,16 @@ body.gated main, body.gated .music{visibility:hidden}
   /* ================= Wish stars ================= */
   const WISHES = [
     'May every day this year feel like the first page of a brand-new book.',
-    'May your coffee be warm, your playlists perfect, and your hair cooperative.',
+    'May every cold Spanish latte at Eggspectation taste exactly like the first one.',
+    'May your home-brewed coffee finally work this year. We believe in miracles.',
+    'May you clear CSS with a lot more than 33%. (Though 33% clearly works for you.)',
+    'May everything you bake rise perfectly, and may I always get the first slice.',
+    'May your reels never run out, and may I always be the first person you send them to.',
+    'May your thesis be printed, bound, praised, and never opened again.',
     'May you find magic in small things: fairy lights, rainy evenings, a good laugh.',
-    'May every door you knock on open, no password required.',
     'May you always be the main character, because you are.',
     'May your year be as pink, sparkly and lovely as you are.',
-    'May every friend you have stay as loyal as a good owl.',
+    'May every door you knock on open, no password required.',
     'May you never stop believing in magic. You are proof that it is real.'
   ];
   const wishBox = document.getElementById('wishes'), wishText = document.getElementById('wishText'), wishCount = document.getElementById('wishCount');
@@ -933,11 +1206,213 @@ body.gated main, body.gated .music{visibility:hidden}
     b.addEventListener('click', () => {
       seen.add(i); b.classList.add('seen');
       wishText.textContent = w;
-      wishCount.textContent = seen.size === WISHES.length ? 'All 8 wishes are yours now ✦' : `${seen.size} of 8 wishes read`;
+      wishCount.textContent = seen.size === WISHES.length ? `All ${WISHES.length} wishes are yours now ✦` : `${seen.size} of ${WISHES.length} wishes read`;
       const r = b.getBoundingClientRect(); spawn(r.left + r.width/2, r.top + r.height/2, 30, 'spark');
       if (seen.size === WISHES.length) confetti(160);
     });
     wishBox.appendChild(b);
+  });
+
+  /* ================= Coffee lab ================= */
+  const STEPS = [
+    ['Grind the beans', 'Beans ground. Mostly. A few are now stuck to the ceiling.', '#d9c3a5', .18],
+    ['Add hot water', 'Water added. Possibly too much. Possibly the whole kettle.', '#b49a7a', .55],
+    ['Brew it', 'Brewing… the kitchen now smells like pure ambition.', '#4d2a18', .75],
+    ['Add milk', 'Milk added. It looks worried.', '#9c7656', .9],
+    ['Taste it', null, null, .9]
+  ];
+  const FAILS = [
+    'Verdict: it tastes like regret with a hint of tap water.',
+    'Verdict: somehow it is burnt AND cold at the same time.',
+    'Verdict: the milk curdled out of spite.',
+    'Verdict: the coffee machine has filed a formal complaint.',
+    'Verdict: it is technically coffee. Legally, it is soup.',
+    'Verdict: even the house-elves refused to drink it.'
+  ];
+  const stepsBox = document.getElementById('steps'), labLog = document.getElementById('labLog'), mugFill = document.getElementById('mugFill'),
+        mugWrap = document.getElementById('mugWrap'), tHome = document.getElementById('tHome'), labActions = document.getElementById('labActions'), latteOut = document.getElementById('latteOut');
+  let homeAttempts = 47, stepAt = 0, failAt = 0;
+  function buildSteps(){
+    stepsBox.innerHTML = ''; stepAt = 0;
+    mugFill.style.transform = 'scaleY(0)'; mugFill.setAttribute('fill', '#5a3320');
+    mugWrap.classList.remove('steaming'); labActions.hidden = true;
+    STEPS.forEach(([label], k) => {
+      const b = document.createElement('button'); b.className = 'ing'; b.textContent = `${k+1}. ${label}`; b.disabled = k !== 0;
+      b.addEventListener('click', () => doStep(k, b)); stepsBox.appendChild(b);
+    });
+  }
+  function doStep(k, b){
+    if (k !== stepAt) return;
+    const [, msg, col, lvl] = STEPS[k];
+    b.disabled = true; stepAt++;
+    const next = stepsBox.children[stepAt]; if (next) next.disabled = false;
+    const r = mugWrap.getBoundingClientRect(); spawn(r.left + r.width/2, r.top + r.height*.4, 14, 'spark');
+    if (msg){
+      labLog.textContent = msg; mugFill.setAttribute('fill', col); mugFill.style.transform = `scaleY(${lvl})`;
+      if (k === 2) mugWrap.classList.add('steaming');
+      return;
+    }
+    homeAttempts++; tHome.textContent = homeAttempts;
+    mugFill.setAttribute('fill', '#6f6d4a'); mugWrap.classList.remove('steaming');
+    mugWrap.classList.remove('shake'); void mugWrap.offsetWidth; mugWrap.classList.add('shake');
+    labLog.textContent = FAILS[failAt++ % FAILS.length];
+    labActions.hidden = false;
+  }
+  document.getElementById('retry').addEventListener('click', () => { buildSteps(); labLog.textContent = `Attempt #${homeAttempts + 1}. This time will be different. (It will not.)`; latteOut.innerHTML = ''; });
+  document.getElementById('apparate').addEventListener('click', () => {
+    latteOut.innerHTML = `<div class="latte">
+      <div class="cup-tag">Eggspectation · Cold Spanish Latte</div>
+      <div class="glass-wrap"><div class="straw"></div><div class="glass"><div class="milk" id="milk"></div><div class="espresso" id="esp"></div>
+        <div class="ice" style="left:14px;top:22px"></div><div class="ice" style="left:58px;top:12px;animation-delay:-1s"></div><div class="ice" style="left:36px;top:46px;animation-delay:-2s"></div></div></div>
+      <p class="lab-log">One cold Spanish latte, perfect every single time. Some magic you just can't brew at home, and that's okay.</p></div>`;
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      document.getElementById('milk').style.height = '58%';
+      const e = document.getElementById('esp'); e.style.bottom = '48%'; e.style.height = '40%';
+    }));
+    labLog.textContent = 'Crack! You apparated straight to your usual table.';
+    const r = latteOut.getBoundingClientRect(); spawn(innerWidth/2, Math.min(innerHeight*.6, r.top + 100), 50, 'spark');
+    setTimeout(() => latteOut.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'}), 150);
+  });
+  buildSteps();
+
+  /* ================= Thesis ================= */
+  const runBtn = document.getElementById('runAnalysis'), spss = document.getElementById('spss'), paper = document.getElementById('paper'),
+        loadbar = document.getElementById('loadbar'), loadfill = document.getElementById('loadfill'), barsBox = document.getElementById('bars');
+  const LOG = [
+    'Loading saleha_thesis_FINAL_final_v7_REAL.sav',
+    'Cleaning data: 0 outliers removed (she is the outlier)',
+    'Running regression: happiness ~ coffee + baking + reels',
+    'Checking assumptions: every assumption is that she is great',
+    'Writing results section… Qasim has entered the chat'
+  ];
+  const JOY = [['Cold Spanish latte', 97], ['Reels', 94], ['Harry Potter', 92], ['Baking', 88], ['Pink things', 85], ['Writing the thesis', 6]];
+  barsBox.innerHTML = JOY.map(([k,v]) => `<div class="bar"><span>${k}</span><div class="track"><div class="fill" data-v="${v}"></div></div><span class="v">${v}%</span></div>`).join('');
+  let ran = false;
+  runBtn.addEventListener('click', () => {
+    if (ran) return; ran = true; runBtn.disabled = true; runBtn.textContent = 'Analysing…';
+    loadbar.hidden = false; spss.innerHTML = '';
+    LOG.forEach((line, k) => setTimeout(() => {
+      const sp = document.createElement('span'); sp.textContent = line; spss.appendChild(sp);
+      loadfill.style.width = ((k+1)/LOG.length*100) + '%';
+    }, 150 + k*700));
+    setTimeout(() => {
+      paper.hidden = false; runBtn.textContent = 'Analysis complete'; confetti(80);
+      paper.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
+      setTimeout(() => barsBox.querySelectorAll('.fill').forEach(f => f.style.width = f.dataset.v + '%'), 500);
+    }, 150 + LOG.length*700 + 300);
+  });
+
+  /* ================= CSS exam ================= */
+  const gArc = document.getElementById('gArc'), needle = document.getElementById('needle'), scoreEl = document.getElementById('score'),
+        stamp = document.getElementById('stamp'), examNote = document.getElementById('examNote');
+  function setGauge(v){ gArc.setAttribute('stroke-dasharray', `${v} 100`); needle.style.transform = `rotate(${-90 + v*1.8}deg)`; scoreEl.textContent = v.toFixed(1) + '%'; }
+  setGauge(33); stamp.classList.add('on');
+  let examBusy = false;
+  function runExam(){
+    if (examBusy) return; examBusy = true;
+    stamp.classList.remove('on'); examNote.textContent = 'Counting the marks…';
+    if (reduce){ setGauge(33); stamp.classList.add('on'); examNote.textContent = 'Not a single mark wasted.'; examBusy = false; return; }
+    const t0 = performance.now(), D = 1700;
+    (function step(now){
+      const k = Math.min(1, (now - t0)/D), e = 1 - Math.pow(1-k, 3);
+      setGauge(32.9 * e);
+      if (k < 1) return requestAnimationFrame(step);
+      examNote.textContent = '32.9%… oh no…';
+      setTimeout(() => {
+        setGauge(33); stamp.classList.add('on'); examNote.textContent = 'PASSED. Exactly 33%. Not a single mark wasted.';
+        const r = stamp.getBoundingClientRect(); spawn(r.left + r.width/2, r.top + r.height/2, 50, 'spark'); confetti(140);
+        examBusy = false;
+      }, 1300);
+    })(t0);
+  }
+  document.getElementById('recheck').addEventListener('click', runExam);
+  if ('IntersectionObserver' in window){
+    const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)){ io.disconnect(); runExam(); } }, {threshold:.6});
+    io.observe(document.querySelector('.gauge'));
+  }
+
+  /* ================= Reels ================= */
+  const REELS = [
+    ['POV: you open Instagram for "one minute" and Qasim receives 23 reels', "Qasim: I haven't even finished the last 40", 'linear-gradient(160deg,#ff8fb8,#7b3fa0)'],
+    ['Me making coffee at home for the 48th time like this time will be different', 'Narrator: it was not different', 'linear-gradient(160deg,#8a5634,#2b1610)'],
+    ['A cold Spanish latte from Eggspectation fixing every problem in my life', 'Qasim: same table as last time?', 'linear-gradient(160deg,#d9b48a,#6b3e26)'],
+    ['CSS aspirants seeing exactly 33% on the screening result', 'Passed is passed. No further questions.', 'linear-gradient(160deg,#3c4a8f,#b04f86)'],
+    ["Me presenting my thesis results like I didn't have help", "Qasim: I'll take my royalties in lattes", 'linear-gradient(160deg,#2f6b6a,#1c2540)'],
+    ['Bakers: "just follow the recipe." Me: measures everything with my heart', 'It was still delicious though', 'linear-gradient(160deg,#ffb37a,#d94f7a)'],
+    ['When you both send each other the exact same reel at the same time', 'Same brain cell. Same algorithm.', 'linear-gradient(160deg,#7a5cff,#ff7ac8)'],
+    ['Birthday girl loading… 100% ✨', 'Happy birthday, Saleha. Send me a reel about it.', 'linear-gradient(160deg,#ecc97f,#e46a9b)']
+  ];
+  const screen = document.getElementById('screen'), reelCount = document.getElementById('reelCount');
+  const HEART = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.6 1.3 5.3 3.2 1.7-1.9 3.1-3.2 5.3-3.2 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>';
+  const CHAT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>';
+  const SEND = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M22 3L10 14M22 3l-7 18-5-7-7-4z"/></svg>';
+  let cur = 0;
+  const likes = REELS.map(() => 1000 + Math.floor(Math.random()*9000));
+  REELS.forEach(([meme, reply, bg], k) => {
+    const d = document.createElement('div'); d.className = 'reel'; d.style.background = bg;
+    d.innerHTML = `<div class="top"><span>Reels</span><span>${k+1}/${REELS.length}</span></div>
+      <div class="meme">${meme}</div>
+      <div class="bottom"><div class="who"><b>@saleha</b> sent you a reel · ${[2,5,1,9,3,7,4,0][k] || 'just'}${k===7?' now':'m ago'}<span class="reply">${reply}</span></div>
+      <div class="side"><span class="lk">${HEART}<span class="n">${likes[k].toLocaleString()}</span></span><span>${CHAT}${[312,89,145,560,77,203,64,999][k]}</span><span>${SEND}</span></div></div>`;
+    screen.appendChild(d);
+  });
+  const reelEls = [...screen.children];
+  function showReel(n){
+    cur = Math.max(0, Math.min(REELS.length-1, n));
+    reelEls.forEach((el,k) => el.style.transform = `translateY(${(k-cur)*100}%)`);
+    reelCount.textContent = `${cur+1} / ${REELS.length}`;
+    if (cur === REELS.length-1){ const r = screen.getBoundingClientRect(); spawn(r.left + r.width/2, r.top + r.height/2, 30, 'spark'); }
+  }
+  function likeReel(x, y){
+    const el = reelEls[cur], lk = el.querySelector('.lk');
+    if (!lk.classList.contains('liked')){ lk.classList.add('liked'); likes[cur]++; lk.querySelector('.n').textContent = likes[cur].toLocaleString(); }
+    const b = document.createElement('div'); b.className = 'burst'; b.innerHTML = HEART.replace('fill="none"', 'fill="currentColor"');
+    screen.appendChild(b); setTimeout(() => b.remove(), 950);
+    spawn(x, y, 16, 'spark');
+  }
+  document.getElementById('reelNext').addEventListener('click', () => showReel(cur + 1));
+  document.getElementById('reelPrev').addEventListener('click', () => showReel(cur - 1));
+  let sy = null, lastTap = 0;
+  screen.addEventListener('pointerdown', e => { sy = e.clientY; });
+  screen.addEventListener('pointerup', e => {
+    if (sy === null) return; const dy = e.clientY - sy; sy = null;
+    if (dy < -35) return showReel(cur + 1);
+    if (dy > 35) return showReel(cur - 1);
+    const now = performance.now();
+    if (now - lastTap < 320){ likeReel(e.clientX, e.clientY); lastTap = 0; } else lastTap = now;
+  });
+  screen.addEventListener('wheel', e => { if (Math.abs(e.deltaY) > 20){ e.preventDefault(); showReel(cur + (e.deltaY > 0 ? 1 : -1)); } }, {passive:false});
+  showReel(0);
+
+  /* ================= Sprinkles on the cake ================= */
+  const cakeEl = document.querySelector('.cake');
+  const SPR = ['#ff6f9b','#ecc97f','#9be7ff','#c9a7ff','#ffffff','#7be0a8'];
+  cakeEl.addEventListener('click', e => {
+    const r = cakeEl.getBoundingClientRect();
+    for (let k=0;k<7;k++){
+      if (cakeEl.querySelectorAll('.sprinkle').length > 140) break;
+      const sp = document.createElement('span'); sp.className = 'sprinkle';
+      sp.style.left = (e.clientX - r.left + (Math.random()-.5)*34) + 'px';
+      sp.style.top = (e.clientY - r.top + (Math.random()-.5)*20) + 'px';
+      sp.style.background = SPR[(Math.random()*SPR.length)|0];
+      sp.style.rotate = (Math.random()*180) + 'deg';
+      cakeEl.appendChild(sp);
+    }
+  });
+
+  /* ================= Scroll candle + secret spells ================= */
+  const pwax = document.getElementById('pwax');
+  function burn(){ const max = document.documentElement.scrollHeight - innerHeight; const k = max > 0 ? scrollY/max : 0; pwax.style.height = (100 - k*88) + '%'; }
+  addEventListener('scroll', burn, {passive:true}); burn();
+  let typed = '';
+  addEventListener('keydown', e => {
+    if (e.key.length !== 1) return;
+    typed = (typed + e.key.toLowerCase()).slice(-12);
+    const cast = n => document.querySelector(`.spell[data-spell="${n}"]`).click();
+    if (typed.endsWith('lumos')) cast('lumos');
+    else if (typed.endsWith('accio')) cast('accio');
+    else if (typed.endsWith('leviosa')) cast('leviosa');
+    else if (typed.endsWith('coffee')) document.getElementById('coffee').scrollIntoView({behavior:'smooth'});
   });
 
   /* ================= Opening question ================= */
