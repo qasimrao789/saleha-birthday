@@ -135,6 +135,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 
 /* ---------- Spellbook ---------- */
 .spells{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;width:100%}
+.spells .spell:last-child{grid-column:1/-1}
 .spell{position:relative;background:linear-gradient(180deg,rgba(255,219,232,.08),rgba(255,219,232,.02));border:1px solid rgba(236,201,127,.35);border-radius:14px;padding:18px 14px 16px;text-align:center;display:flex;flex-direction:column;gap:4px;align-items:center;transition:transform .2s ease, border-color .2s, background .2s}
 .spell:hover{transform:translateY(-3px);border-color:var(--gold);background:linear-gradient(180deg,rgba(255,219,232,.14),rgba(255,219,232,.04))}
 .spell:active{transform:scale(.97)}
@@ -381,7 +382,9 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
 .cel-close{position:absolute;z-index:3;left:50%;bottom:calc(18px + env(safe-area-inset-bottom, 0px));transform:translateX(-50%)}
 
 @media (min-width:640px){
-  .spells{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .spells{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .spells .spell:last-child{grid-column:auto}
+  .spell .incant{font-size:1.25rem}
   .wishes{gap:18px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -445,7 +448,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
   <section class="chapter" id="spellbook" aria-labelledby="spellTitle">
     <div class="eyebrow">Chapter One · The Spellbook</div>
     <h2 id="spellTitle">Pick up your wand and <em>cast</em></h2>
-    <p class="lede">Four charms, prepared especially for the birthday girl. Try them all.</p>
+    <p class="lede">Five charms, prepared especially for the birthday girl. Try them all.</p>
     <div class="spells">
       <button class="spell" data-spell="lumos">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
@@ -462,6 +465,10 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
       <button class="spell" data-spell="rosa">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6z"/><path d="M19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>
         <span class="incant">Rosa Glitteria</span><span class="does">A shower of petals</span>
+      </button>
+      <button class="spell" data-spell="madrid">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4M12 14v4M8.5 21h7M10 18h4"/></svg>
+        <span class="incant">Hala Madrid</span><span class="does">Paint the sky white and gold</span>
       </button>
     </div>
     <p class="spell-out" id="spellOut" aria-live="polite">&nbsp;</p>
@@ -559,6 +566,8 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
             <tr><td>Home coffee attempts</td><td class="n">48</td></tr>
             <tr><td>Reels sent to the GOAT Qasim</td><td class="n">9,999+</td></tr>
             <tr><td>Things baked, all delicious</td><td class="n">many</td></tr>
+            <tr><td>Football matches watched for the football</td><td class="n">0</td></tr>
+            <tr><td>Real Madrid wins celebrated anyway</td><td class="n">all of them</td></tr>
             <tr><td>CSS screening score</td><td class="n">33% (passed)</td></tr>
             <tr><td>Kindness (out of 10)</td><td class="n">10.0</td></tr>
           </tbody>
@@ -619,7 +628,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
       <div class="phone"><div class="screen" id="screen"></div></div>
       <div class="reel-nav">
         <button class="cta ghost" id="reelPrev" aria-label="Previous reel">↑ Back</button>
-        <span class="reel-count" id="reelCount">1 / 8</span>
+        <span class="reel-count" id="reelCount">1 / 9</span>
         <button class="cta" id="reelNext" aria-label="Next reel">Next ↓</button>
       </div>
     </div>
@@ -684,6 +693,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
         <li>Sending reels at industrial scale</li>
         <li>Passing exams with surgical precision</li>
         <li>Surviving a thesis</li>
+        <li>Madridista (football optional)</li>
         <li>Being a top-tier friend</li>
       </ul>
       <div class="cert-foot">
@@ -978,7 +988,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     ctx.globalAlpha = 1;
   }
   const PALETTE = ['#f3a6c4','#ffdbe8','#ecc97f','#ffffff','#e6d4ff','#ff8fbf'];
-  function spawn(x, y, n, kind){
+  function spawn(x, y, n, kind, pal){
     for (let i=0;i<n;i++){
       const ang = Math.random()*Math.PI*2, sp = kind==='spark' ? Math.random()*2.2+.3 : Math.random()*5+2;
       parts.push({
@@ -987,7 +997,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
         vy: kind==='petal' ? Math.random()*1+.5 : Math.sin(ang)*sp - (kind==='confetti' ? 4 : .4),
         life: 0, max: kind==='spark' ? 50+Math.random()*30 : 160+Math.random()*90,
         size: kind==='spark' ? Math.random()*2.4+1 : Math.random()*6+5,
-        color: PALETTE[(Math.random()*PALETTE.length)|0],
+        color: (pal || PALETTE)[(Math.random()*(pal || PALETTE).length)|0],
         rot: Math.random()*6, vr:(Math.random()-.5)*.2, ph:Math.random()*6
       });
     }
@@ -1170,7 +1180,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     const r = b.getBoundingClientRect(), cx = r.left + r.width/2, cy = r.top + r.height/2;
     spawn(cx, cy, 40, 'spark');
     spellsCast.add(b.dataset.spell);
-    if (spellsCast.size === 4) complete(1); else refreshPill();
+    if (spellsCast.size === 5) complete(1); else refreshPill();
     switch (b.dataset.spell){
       case 'lumos':
         glow.style.setProperty('--gx', cx+'px'); glow.style.setProperty('--gy', cy+'px');
@@ -1191,6 +1201,13 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
         fc.style.setProperty('--tx', (cx - 28) + 'px'); fc.style.setProperty('--ty', (cy - 110) + 'px');
         document.body.appendChild(fc); setTimeout(() => fc.remove(), 2700);
         say('One birthday cake, summoned. It will be waiting for you in Chapter Seven.');
+        break; }
+      case 'madrid': {
+        const WG = ['#ffffff','#f4f1ea','#ecc97f','#ffe9a8','#d4af37','#7b5cc4'];
+        glow.style.setProperty('--gx', cx+'px'); glow.style.setProperty('--gy', cy+'px'); glow.style.opacity = .7;
+        setTimeout(() => glow.style.opacity = 0, 700);
+        for (let k=0;k<6;k++) setTimeout(() => spawn(innerWidth*(.1 + Math.random()*.8), innerHeight*(.3 + Math.random()*.25), 40, 'confetti', WG), k*140);
+        say('¡Hala Madrid! The sky is officially white and gold. No football was watched.');
         break; }
       case 'rosa':
         petals(110); confetti(80);
@@ -1301,7 +1318,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     'May you find magic in small things: fairy lights, rainy evenings, a good laugh.',
     'May you always be the main character, because you are.',
     'May your year be as pink, sparkly and lovely as you are.',
-    'May every door you knock on open, no password required.',
+    'May Real Madrid win everything this year, so you can celebrate without watching a single match.',
     'May you never stop believing in magic. You are proof that it is real.'
   ];
   const wishBox = document.getElementById('wishes'), wishText = document.getElementById('wishText'), wishCount = document.getElementById('wishCount');
@@ -1394,7 +1411,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     'Checking assumptions: every assumption is that she is great',
     'Writing results section… the GOAT Qasim has entered the chat'
   ];
-  const JOY = [['Cold Spanish latte', 97], ['Reels', 94], ['Harry Potter', 92], ['Baking', 88], ['Pink things', 85], ['Writing the thesis', 6]];
+  const JOY = [['Cold Spanish latte', 97], ['Reels', 94], ['Harry Potter', 92], ['Baking', 88], ['Real Madrid', 90], ['Pink things', 85], ['Writing the thesis', 6]];
   barsBox.innerHTML = JOY.map(([k,v]) => `<div class="bar"><span>${k}</span><div class="track"><div class="fill" data-v="${v}"></div></div><span class="v">${v}%</span></div>`).join('');
   let ran = false;
   runBtn.addEventListener('click', () => {
@@ -1449,6 +1466,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     ["Me presenting my thesis results like I didn't have help", "The GOAT Qasim: I'll take my royalties in lattes", 'linear-gradient(160deg,#2f6b6a,#1c2540)'],
     ['Bakers: "just follow the recipe." Me: measures everything with vibes', 'It was still delicious though', 'linear-gradient(160deg,#ffb37a,#d94f7a)'],
     ['When you both send each other the exact same reel at the same time', 'Same brain cell. Same algorithm.', 'linear-gradient(160deg,#7a5cff,#ff7ac8)'],
+    ["Me: I don't even watch football. Also me, every time Real Madrid wins:", '¡Hala Madrid! (Still did not watch the match.)', 'linear-gradient(160deg,#2c2160,#c9a24b)'],
     ['Birthday girl loading… 100% ✨', 'Happy birthday, Saleha. Send me a reel about it.', 'linear-gradient(160deg,#ecc97f,#e46a9b)']
   ];
   const screen = document.getElementById('screen'), reelCount = document.getElementById('reelCount');
@@ -1461,8 +1479,8 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     const d = document.createElement('div'); d.className = 'reel'; d.style.background = bg;
     d.innerHTML = `<div class="top"><span>Reels</span><span>${k+1}/${REELS.length}</span></div>
       <div class="meme">${meme}</div>
-      <div class="bottom"><div class="who"><b>@saleha</b> sent you a reel · ${[2,5,1,9,3,7,4,0][k] || 'just'}${k===7?' now':'m ago'}<span class="reply">${reply}</span></div>
-      <div class="side"><span class="lk">${STARI}<span class="n">${likes[k].toLocaleString()}</span></span><span>${CHAT}${[312,89,145,560,77,203,64,999][k]}</span><span>${SEND}</span></div></div>`;
+      <div class="bottom"><div class="who"><b>@saleha</b> sent you a reel · ${[2,5,1,9,3,7,4,6,0][k] || 'just'}${k===REELS.length-1?' now':'m ago'}<span class="reply">${reply}</span></div>
+      <div class="side"><span class="lk">${STARI}<span class="n">${likes[k].toLocaleString()}</span></span><span>${CHAT}${[312,89,145,560,77,203,64,421,999][k]}</span><span>${SEND}</span></div></div>`;
     screen.appendChild(d);
   });
   const reelEls = [...screen.children];
@@ -1542,12 +1560,12 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
   function needText(){
     switch (unlocked){
       case 0: return 'Break the wax seal to begin';
-      case 1: return `Cast all four spells to continue (${spellsCast.size}/4)`;
+      case 1: return `Cast all five spells to continue (${spellsCast.size}/5)`;
       case 2: return 'Get a coffee that actually works to continue';
       case 3: return 'Brew a potion to continue';
       case 4: return 'Run the thesis analysis to continue';
       case 5: return "Waiting for the Ministry's verdict…";
-      case 6: return `Watch every reel to continue (${maxReel + 1}/8)`;
+      case 6: return `Watch every reel to continue (${maxReel + 1}/${REELS.length})`;
       case 7: return 'Blow out every candle to continue';
       case 8: return `Read every wish to finish (${seen.size}/12)`;
       default: return '';
@@ -1620,10 +1638,10 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
   }
   addEventListener('resize', () => { if (celOn) celSize(); });
   const pick = a => a[(Math.random()*a.length)|0];
-  function launch(x, ty, type){
+  function launch(x, ty, type, col){
     x = x == null ? CW*(.12 + Math.random()*.76) : x;
     ty = ty == null ? CH*(.1 + Math.random()*.35) : Math.max(40, ty);
-    rockets.push({x, y:CH + 8, vx:(Math.random()-.5)*1.4, vy:-Math.sqrt(2*.075*(CH + 8 - ty)), col:pick(FWC), type: type || pick(['sphere','ring','star','willow','crackle','double','sphere'])});
+    rockets.push({x, y:CH + 8, vx:(Math.random()-.5)*1.4, vy:-Math.sqrt(2*.075*(CH + 8 - ty)), col: col || pick(FWC), type: type || pick(['sphere','ring','star','willow','crackle','double','sphere'])});
   }
   function burst(x, y, type, col){
     const col2 = pick(FWC), willow = type === 'willow';
@@ -1733,6 +1751,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     T(4600, () => { lanternsOn = true; for (let i=0;i<(CW < 600 ? 24 : 40);i++) lanterns.push(newLantern(true)); });
     T(5600, () => { clearInterval(autoTimer); formName(); });
     T(7400, () => { launch(CW*.15, CH*.15, 'willow'); launch(CW*.85, CH*.15, 'willow'); });
+    T(9000, () => { [.2,.5,.8].forEach((fx, k) => T(k*160, () => launch(CW*fx, CH*.18, 'ring', k === 1 ? '#ecc97f' : '#ffffff'))); });
     T(10600, () => { scatterName(); autoFire(380); });
     T(11400, () => { for (let i=0;i<10;i++) T(i*90, () => launch(null, null, i%2 ? 'star' : 'crackle')); });
     T(12800, () => {
