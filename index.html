@@ -8,6 +8,14 @@
 <body>
 <title>Saleha's Birthday Owl Post</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<!--
+  HOW TO CHANGE ANY TEXT ON THIS SITE (no coding needed):
+  1. On GitHub, open index.html and click the pencil icon (Edit).
+  2. Press Ctrl+F and search for a few words of the sentence you want to change.
+  3. Change only the words between the > and < marks (or between the quotes ' ').
+  4. Click "Commit changes". The live site updates in about a minute.
+  MUSIC: upload an audio file named music.mp3 next to index.html and the music button plays it.
+-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
@@ -47,7 +55,7 @@ body{
   min-height:100%;
 }
 #world{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
-#sky{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+#sky{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:25}
 #glow{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0;
   background:radial-gradient(circle at var(--gx,50%) var(--gy,40%), rgba(255,240,200,.85), rgba(255,220,170,.25) 30%, transparent 65%);
   transition:opacity .5s ease}
@@ -208,6 +216,22 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 .music.on svg{animation:spin 3s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+.gate{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:24px;
+  background:radial-gradient(120% 80% at 50% 20%, var(--plum), var(--night) 75%);transition:opacity .9s ease, transform .9s ease}
+.gate.gone{opacity:0;transform:scale(1.15);pointer-events:none}
+.gate-card{max-width:560px;display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center}
+.gate-q{font-family:var(--font-fell);font-weight:400;font-size:clamp(1.7rem,6.4vw,2.6rem);line-height:1.25;margin:0;color:var(--blush);text-wrap:balance}
+.gate-q span{font-family:var(--font-script);color:var(--gold);font-size:1.6em;line-height:.8;text-shadow:0 0 24px rgba(236,201,127,.6)}
+.gate-sub{margin:0;color:var(--muted);font-style:italic;min-height:1.6em;font-size:1.15rem}
+.gate-btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;min-height:64px;align-items:center}
+.gate-btns button{border-radius:999px;padding:12px 32px;font-family:var(--font-fell);font-size:1.3rem;border:1px solid var(--gold);touch-action:none}
+.g-agree{background:linear-gradient(180deg,#f7b6cf,#e27aa3);color:#3a0f22;box-shadow:0 0 30px rgba(243,166,196,.45);transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.g-disagree{background:var(--night-2);color:var(--muted)}
+.g-disagree.flee{position:fixed;z-index:22;margin:0;transition:left .3s cubic-bezier(.3,1.4,.5,1), top .3s cubic-bezier(.3,1.4,.5,1)}
+body.gated{overflow:hidden}
+body.gated main, body.gated .music{visibility:hidden}
+
 @media (min-width:640px){
   .spells{grid-template-columns:repeat(4,minmax(0,1fr))}
   .wishes{gap:18px}
@@ -221,6 +245,20 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 <canvas id="world" aria-hidden="true"></canvas>
 <canvas id="sky" aria-hidden="true"></canvas>
 <div id="glow" aria-hidden="true"></div>
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateQ">
+  <div class="gate-card">
+    <div class="eyebrow">Before you enter · One question</div>
+    <h1 class="gate-q" id="gateQ">Qasim is the most amazing, inspiring, kind, hilarious, legendary, one-of-a-kind <span>GOAT</span></h1>
+    <p class="gate-sub" id="gateSub">Choose wisely. The castle is listening.</p>
+    <div class="gate-btns">
+      <button class="g-agree" id="agree">Agree</button>
+      <button class="g-disagree" id="disagree">Disagree</button>
+    </div>
+  </div>
+</div>
+<script>document.body.classList.add('gated');</script>
+<audio id="track" src="music.mp3" loop preload="none"></audio>
 
 <main>
   <!-- Chapter 1: the letter -->
@@ -244,7 +282,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
         <p>Dear Saleha,</p>
         <p>We are delighted to inform you that you have been accepted into one more year of being completely wonderful. No entrance exam required. Your record was spotless.</p>
         <p>Tonight the candles float a little higher and the stars shine a little brighter, all for you. Scroll down: there are spells to cast, a potion to brew, a cake to blow out, and wishes hiding in the sky.</p>
-        <div class="sign">With all my magic,<br>your friend</div>
+        <div class="sign">With all my magic,<br>Qasim</div>
         <p class="ps">P.S. Tap anywhere for sparkles. Owls are not responsible for glitter left behind.</p>
       </article>
     </div>
@@ -355,7 +393,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 
 <button class="music" id="music" aria-pressed="false">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
-  <span id="musicLabel">Play music box</span>
+  <span id="musicLabel">Play music</span>
 </button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -725,11 +763,16 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
     timer = setTimeout(() => { if (playing) playSong(); }, (t - t0 + 1.2)*1000);
   }
   const musicBtn = document.getElementById('music'), musicLabel = document.getElementById('musicLabel');
+  const track = document.getElementById('track');
+  let useTrack = true;
+  const startWaltz = () => { try { playSong(); } catch(e){} };
   function setMusic(on){
     playing = on; musicBtn.classList.toggle('on', on); musicBtn.setAttribute('aria-pressed', on);
-    musicLabel.textContent = on ? 'Pause music box' : 'Play music box';
-    if (on) { try { playSong(); } catch(e){} }
-    else { clearTimeout(timer); if (actx) actx.suspend(); }
+    musicLabel.textContent = on ? 'Pause music' : 'Play music';
+    if (on){
+      if (useTrack){ track.volume = .85; const pr = track.play(); if (pr) pr.catch(() => { useTrack = false; if (playing) startWaltz(); }); }
+      else startWaltz();
+    } else { track.pause(); clearTimeout(timer); if (actx) actx.suspend(); }
   }
   musicBtn.addEventListener('click', () => {
     if (!playing && actx && actx.state === 'suspended') actx.resume();
@@ -895,6 +938,43 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
       if (seen.size === WISHES.length) confetti(160);
     });
     wishBox.appendChild(b);
+  });
+
+  /* ================= Opening question ================= */
+  const gate = document.getElementById('gate'), agree = document.getElementById('agree'), dis = document.getElementById('disagree'), gateSub = document.getElementById('gateSub');
+  const TAUNTS = ['Nice try.', 'Nope.', 'That button is not available today.', 'Expelliarmus!', 'Try the pink one.', 'Still no.', 'You will never catch it.', 'The castle disagrees with your disagreement.', 'Okay, now you are just being stubborn.'];
+  let tries = 0, lastFlee = 0;
+  function flee(e){
+    if (e && e.cancelable) e.preventDefault();
+    const now = performance.now(); if (now - lastFlee < 120) return; lastFlee = now;
+    const r = dis.getBoundingClientRect(), w = r.width, h = r.height, pad = 16;
+    if (!dis.classList.contains('flee')){ const ph = document.createElement('span'); ph.style.cssText = `display:inline-block;width:${w}px;height:${h}px`; ph.setAttribute('aria-hidden','true'); dis.after(ph); dis.style.left = r.left + 'px'; dis.style.top = r.top + 'px'; dis.classList.add('flee'); void dis.offsetWidth; }
+    let x, y, k = 0;
+    do { x = pad + Math.random()*(innerWidth - w - 2*pad); y = pad + Math.random()*(innerHeight - h - 2*pad); k++; }
+    while (k < 30 && Math.hypot(x - r.left, y - r.top) < Math.min(innerWidth, innerHeight)*0.35);
+    dis.style.left = x + 'px'; dis.style.top = y + 'px';
+    tries++;
+    gateSub.textContent = TAUNTS[(tries - 1) % TAUNTS.length];
+    agree.style.transform = `scale(${Math.min(1.7, 1 + tries*0.07)})`;
+    spawn(r.left + w/2, r.top + h/2, 12, 'spark');
+  }
+  ['pointerenter','pointerdown','click'].forEach(ev => dis.addEventListener(ev, flee));
+  dis.addEventListener('touchstart', flee, {passive:false});
+  dis.addEventListener('keydown', e => { e.preventDefault(); flee(); agree.focus(); });
+  gate.addEventListener('pointermove', e => {
+    if (e.pointerType !== 'mouse') return;
+    const r = dis.getBoundingClientRect();
+    if (Math.hypot(e.clientX - (r.left + r.width/2), e.clientY - (r.top + r.height/2)) < Math.max(r.width, 90)) flee();
+  });
+  agree.addEventListener('click', () => {
+    const r = agree.getBoundingClientRect();
+    gateSub.textContent = 'Correct answer. Welcome in.';
+    spawn(r.left + r.width/2, r.top + r.height/2, 70, 'spark');
+    confetti(120);
+    dis.remove();
+    setTimeout(() => { gate.classList.add('gone'); document.body.classList.remove('gated'); scrollTo(0,0); }, 700);
+    setTimeout(() => gate.remove(), 1700);
+    if (!playing) setMusic(true);
   });
 
   /* ================= Sections fly in from the distance ================= */
