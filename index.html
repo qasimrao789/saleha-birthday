@@ -385,6 +385,13 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
 .cel-tip{position:absolute;left:0;right:0;bottom:calc(76px + env(safe-area-inset-bottom, 0px));margin:0;text-align:center;font-family:var(--font-fell);font-style:italic;color:var(--muted);opacity:0;transition:opacity 1s;pointer-events:none}
 .cel-close{position:absolute;z-index:3;left:50%;bottom:calc(18px + env(safe-area-inset-bottom, 0px));transform:translateX(-50%)}
 
+.spells.levitating .spell{animation:hover-float 1.6s ease-in-out infinite;animation-delay:calc(var(--d,0) * .15s)}
+.spells .spell:nth-child(2){--d:1}.spells .spell:nth-child(3){--d:2}.spells .spell:nth-child(4){--d:3}.spells .spell:nth-child(5){--d:4}
+@keyframes hover-float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-16px) rotate(-1.5deg)}}
+.levi-name{position:fixed;z-index:26;transform:translate(-50%,-50%);pointer-events:none;white-space:nowrap;font-family:var(--font-script);font-size:clamp(3.4rem,15vw,5.5rem);color:var(--gold);text-shadow:0 0 24px rgba(236,201,127,.75),0 2px 6px rgba(8,3,12,.9)}
+.levi-name span{display:inline-block;opacity:0;animation:levi-rise 5.4s cubic-bezier(.3,.7,.3,1) forwards;animation-delay:calc(var(--i) * .1s)}
+@keyframes levi-rise{0%{opacity:0;transform:translateY(60px) scale(.6)}12%{opacity:1;transform:translateY(0) scale(1)}30%{transform:translateY(-22px) rotate(-6deg)}48%{transform:translateY(-6px) rotate(5deg)}66%{transform:translateY(-30px) rotate(-3deg);opacity:1}100%{opacity:0;transform:translateY(-220px) rotate(8deg)}}
+
 @media (min-width:640px){
   .spells{grid-template-columns:repeat(5,minmax(0,1fr))}
   .spells .spell:last-child{grid-column:auto}
@@ -1197,11 +1204,17 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
         say('The sky got brighter. Still not as bright as the GOAT Qasim, but it tried.');
         break;
       case 'leviosa':
-        hero.classList.add('leviosa');
-        if (!hero.classList.contains('opened')) document.getElementById('seal').click();
-        document.getElementById('top').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
-        setTimeout(() => hero.classList.remove('leviosa'), 9000);
-        say("It's leviOsa, not levioSA. Your name is floating in the letter. Higher than your CSS score, at least.");
+        {
+          const box = document.querySelector('.spells');
+          box.classList.remove('levitating'); void box.offsetWidth; box.classList.add('levitating');
+          setTimeout(() => box.classList.remove('levitating'), 5200);
+          const ln = document.createElement('div'); ln.className = 'levi-name'; ln.setAttribute('aria-hidden', 'true');
+          ln.innerHTML = [...'Saleha'].map((ch, i) => `<span style="--i:${i}">${ch}</span>`).join('');
+          ln.style.left = '50%'; ln.style.top = Math.max(90, cy - 70) + 'px';
+          document.body.appendChild(ln); setTimeout(() => ln.remove(), 5600);
+          for (let k=0;k<6;k++) setTimeout(() => spawn(cx + (Math.random()-.5)*160, cy - 60 - k*30, 10, 'spark'), k*180);
+        }
+        say("It's leviOsa, not levioSA. Your name is floating. Higher than your CSS score, at least.");
         break;
       case 'accio': {
         const fc = document.createElement('div'); fc.className = 'flycake'; fc.innerHTML = '<i></i><b></b><span></span>';
