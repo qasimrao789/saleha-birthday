@@ -319,8 +319,8 @@ table.apa .n{text-align:right;white-space:nowrap}
 .reel .reply{display:block;margin-top:6px;background:rgba(0,0,0,.32);border-radius:12px;padding:6px 9px;font-size:.88rem;backdrop-filter:blur(4px)}
 .reel .side{display:flex;flex-direction:column;gap:10px;align-items:center;font-size:.78rem;font-variant-numeric:tabular-nums}
 .reel .side svg{width:24px;height:24px;filter:drop-shadow(0 1px 3px rgba(0,0,0,.4))}
-.reel .liked svg{color:#ff4f86;fill:#ff4f86}
-.burst{position:absolute;left:50%;top:50%;width:96px;height:96px;margin:-48px 0 0 -48px;color:#ff4f86;pointer-events:none;z-index:6;animation:burst .9s ease-out forwards}
+.reel .liked svg{color:#ffd36e;fill:#ffd36e}
+.burst{position:absolute;left:50%;top:50%;width:96px;height:96px;margin:-48px 0 0 -48px;color:#ffd36e;pointer-events:none;z-index:6;animation:burst .9s ease-out forwards}
 @keyframes burst{0%{transform:scale(.2);opacity:0}25%{transform:scale(1.2);opacity:1}60%{transform:scale(1)}100%{transform:scale(1.4) translateY(-40px);opacity:0}}
 .reel-nav{display:flex;gap:12px;align-items:center;justify-content:center}
 .reel-count{font-family:var(--font-display);letter-spacing:.16em;font-size:.74rem;color:var(--muted);font-variant-numeric:tabular-nums}
@@ -332,7 +332,16 @@ table.apa .n{text-align:right;white-space:nowrap}
 .pcandle{position:fixed;z-index:6;right:calc(5px + env(safe-area-inset-right, 0px));top:24vh;height:44vh;width:7px;display:flex;align-items:flex-end;pointer-events:none}
 .pwax{position:relative;width:100%;height:100%;border-radius:3px 3px 2px 2px;background:linear-gradient(90deg,#d8c5ad,#fff8ee,#cdb89e);transition:height .2s linear}
 .pflame{position:absolute;top:-15px;left:50%;width:9px;height:15px;transform:translateX(-50%);border-radius:50% 50% 50% 50%/62% 62% 38% 38%;background:radial-gradient(ellipse at 50% 72%,#fff 0 20%,#ffe28a 40%,#ff9f43 75%,rgba(255,120,60,0) 100%);box-shadow:0 0 12px 4px rgba(255,200,110,.5);animation:flick .18s ease-in-out infinite alternate}
-body.gated .pcandle{visibility:hidden}
+body.gated .pcandle, body.gated .lockpill{visibility:hidden}
+.lockpill{position:fixed;z-index:7;left:50%;top:calc(12px + env(safe-area-inset-top, 0px));transform:translateX(-50%);display:flex;gap:8px;align-items:center;width:max-content;max-width:calc(100% - 32px);padding:8px 16px;border-radius:999px;background:rgba(23,13,34,.88);border:1px solid rgba(236,201,127,.45);color:var(--gold);font-family:var(--font-fell);font-style:italic;font-size:1rem;line-height:1.25;backdrop-filter:blur(6px);box-shadow:0 8px 24px rgba(0,0,0,.4);transition:border-color .3s, box-shadow .3s, color .3s}
+.lockpill svg{width:16px;height:16px;flex:none}
+.lockpill.open{border-color:var(--gold);color:var(--blush);box-shadow:0 0 26px rgba(236,201,127,.5);animation:pillpop .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pillpop{from{transform:translateX(-50%) scale(.8)}}
+.flycake{position:fixed;left:0;top:0;z-index:24;width:56px;height:56px;pointer-events:none;animation:flycake 2.7s cubic-bezier(.3,.7,.3,1) forwards}
+.flycake i{position:absolute;left:0;bottom:0;width:56px;height:22px;border-radius:6px;background:linear-gradient(#f9e6ef,#e7bfd2)}
+.flycake b{position:absolute;left:11px;bottom:21px;width:34px;height:16px;border-radius:5px 5px 2px 2px;background:linear-gradient(#fbd3e1,#f2a9c4)}
+.flycake span{position:absolute;left:26px;bottom:37px;width:4px;height:12px;border-radius:2px;background:#ffdbe8;box-shadow:0 -9px 0 -1px #ffd36e,0 -10px 10px 2px rgba(255,200,110,.6)}
+@keyframes flycake{0%{transform:translate(-80px,110vh) rotate(-25deg) scale(.6);opacity:0}15%{opacity:1}60%{transform:translate(var(--tx),var(--ty)) rotate(6deg) scale(1.3)}75%{transform:translate(var(--tx),calc(var(--ty) - 10px)) rotate(-4deg) scale(1.3);opacity:1}100%{transform:translate(var(--tx),calc(var(--ty) - 160px)) scale(.4);opacity:0}}
 @media (pointer:fine){
   body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 34 34'%3E%3Cline x1='5' y1='5' x2='29' y2='29' stroke='%236b4530' stroke-width='3' stroke-linecap='round'/%3E%3Cline x1='20' y1='20' x2='29' y2='29' stroke='%233a2418' stroke-width='4.5' stroke-linecap='round'/%3E%3Ccircle cx='5' cy='5' r='3' fill='%23fff1b8'/%3E%3C/svg%3E") 5 5, auto}
 }
@@ -354,7 +363,7 @@ body.gated .pcandle{visibility:hidden}
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateQ">
   <div class="gate-card">
     <div class="eyebrow">Before you enter · One question</div>
-    <h1 class="gate-q" id="gateQ">Qasim is the most amazing, inspiring, kind, hilarious, legendary, one-of-a-kind <span>GOAT</span></h1>
+    <h1 class="gate-q" id="gateQ">The GOAT Qasim is the most amazing, inspiring, kind, hilarious, legendary, one-of-a-kind <span>GOAT</span></h1>
     <p class="gate-sub" id="gateSub">Choose wisely. The castle is listening.</p>
     <div class="gate-btns">
       <button class="g-agree" id="agree">Agree</button>
@@ -363,7 +372,8 @@ body.gated .pcandle{visibility:hidden}
   </div>
 </div>
 <script>document.body.classList.add('gated');</script>
-<audio id="track" src="music.mp3" loop preload="none"></audio>
+<audio id="trackA" src="music.mp3" preload="auto"></audio>
+<audio id="trackB" src="music.mp3" preload="auto"></audio>
 
 <main>
   <!-- Chapter 1: the letter -->
@@ -387,7 +397,7 @@ body.gated .pcandle{visibility:hidden}
         <p>Dear Saleha,</p>
         <p>We are delighted to inform you that you have been accepted into one more year of being completely wonderful. No entrance exam required. Your record was spotless.</p>
         <p>Tonight the candles float a little higher and the stars shine a little brighter, all for you. Scroll down and keep going: there are spells to cast, coffee to (attempt to) brew, a thesis to defend, an exam result to celebrate, reels to scroll, a cake to decorate and blow out, and wishes hiding in the sky.</p>
-        <div class="sign">With all my magic,<br>Qasim</div>
+        <div class="sign">With all my magic,<br>the GOAT Qasim</div>
         <p class="ps">P.S. The next cold Spanish latte at Eggspectation is on me.<br>P.P.S. Tap anywhere for sparkles. Owls are not responsible for glitter left behind.</p>
       </article>
     </div>
@@ -416,7 +426,7 @@ body.gated .pcandle{visibility:hidden}
         <span class="incant">Accio Cake</span><span class="does">Summon dessert</span>
       </button>
       <button class="spell" data-spell="rosa">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-7-6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4-3 7-7 10z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6z"/><path d="M19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>
         <span class="incant">Rosa Glitteria</span><span class="does">A shower of petals</span>
       </button>
     </div>
@@ -441,7 +451,7 @@ body.gated .pcandle{visibility:hidden}
           <rect x="48" y="58" width="104" height="114" fill="#2a1a24" clip-path="url(#mugClip)"/>
           <rect id="mugFill" x="48" y="58" width="104" height="114" fill="#5a3320" clip-path="url(#mugClip)"/>
           <path d="M40 50 h120" stroke="#f3a6c4" stroke-width="6" stroke-linecap="round"/>
-          <path d="M84 110 c0 -8 12 -8 16 -1 c4 -7 16 -7 16 1 c0 10 -16 18 -16 18 s-16 -8 -16 -18z" fill="#f3a6c4" opacity=".9"/>
+          <path d="M100 96 l4.5 10 11 1.2 -8.3 7.4 2.4 10.8 -9.6 -5.6 -9.6 5.6 2.4 -10.8 -8.3 -7.4 11 -1.2z" fill="#f3a6c4" opacity=".9"/>
         </svg>
       </div>
       <div class="ingredients" id="steps"></div>
@@ -495,7 +505,7 @@ body.gated .pcandle{visibility:hidden}
   <section class="chapter" id="thesis" aria-labelledby="thesisTitle">
     <div class="eyebrow">Chapter Four · The Restricted Section</div>
     <h2 id="thesisTitle">Chapter 4: <em>Results</em></h2>
-    <p class="lede">The data has been collected. The analysis is ready. Press the button and watch the results write themselves. (They didn't. Qasim wrote them.)</p>
+    <p class="lede">The data has been collected. The analysis is ready. Press the button and watch the results write themselves. (They didn't. The GOAT Qasim wrote them.)</p>
     <div class="analysis">
       <button class="cta" id="runAnalysis">Run the analysis</button>
       <div class="loadbar" id="loadbar" hidden><i id="loadfill"></i></div>
@@ -513,7 +523,7 @@ body.gated .pcandle{visibility:hidden}
             <tr><td>Cold Spanish lattes at Eggspectation</td><td class="n">too many to count</td></tr>
             <tr><td>Successful home-brewed coffees</td><td class="n">0</td></tr>
             <tr><td>Home coffee attempts</td><td class="n">48</td></tr>
-            <tr><td>Reels sent to Qasim</td><td class="n">9,999+</td></tr>
+            <tr><td>Reels sent to the GOAT Qasim</td><td class="n">9,999+</td></tr>
             <tr><td>Things baked, all delicious</td><td class="n">many</td></tr>
             <tr><td>CSS screening score</td><td class="n">33% (passed)</td></tr>
             <tr><td>Kindness (out of 10)</td><td class="n">10.0</td></tr>
@@ -525,7 +535,7 @@ body.gated .pcandle{visibility:hidden}
       <h4>Hypothesis testing</h4>
       <p><i>H<sub>1</sub>: Saleha makes every room better just by being in it.</i></p>
       <div class="verdict">Result: <b>Strongly supported</b>, <i>p</i> &lt; .0001. Effect size: enormous. No further research is needed.</div>
-      <p class="footnote">Note. This results section was written by Qasim. Payment will be accepted in cold Spanish lattes, to be redeemed at Eggspectation.</p>
+      <p class="footnote">Note. This results section was written by the GOAT Qasim. Payment will be accepted in cold Spanish lattes, to be redeemed at Eggspectation.</p>
     </article>
   </section>
 
@@ -621,6 +631,7 @@ body.gated .pcandle{visibility:hidden}
   </section>
 </main>
 
+<div class="lockpill" id="lockpill" role="status" aria-live="polite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span id="lockText"></span></div>
 <div class="pcandle" aria-hidden="true"><div class="pwax" id="pwax"><span class="pflame"></span></div></div>
 
 <button class="music" id="music" aria-pressed="false">
@@ -737,16 +748,14 @@ body.gated .pcandle{visibility:hidden}
     g.position.copy(around(R(), 4, 16)); g.userData = {sx:(R()-.5)*.6, sy:(R()-.5)*.8, ph:R()*6}; scene.add(g); gifts.push(g);
   }
 
-  // hearts
-  const hs = new THREE.Shape();
-  hs.moveTo(.5,.5); hs.bezierCurveTo(.5,.5,.4,0,0,0); hs.bezierCurveTo(-.6,0,-.6,.7,-.6,.7);
-  hs.bezierCurveTo(-.6,1.1,-.3,1.54,.5,1.9); hs.bezierCurveTo(1.2,1.54,1.6,1.1,1.6,.7);
-  hs.bezierCurveTo(1.6,.7,1.6,0,1,0); hs.bezierCurveTo(.7,0,.5,.5,.5,.5);
-  const heartGeo = new THREE.ExtrudeGeometry(hs, {depth:.35, bevelEnabled:true, bevelSize:.12, bevelThickness:.12, bevelSegments:3, steps:1});
-  heartGeo.center(); heartGeo.rotateZ(Math.PI);
-  const heartMat = new THREE.MeshStandardMaterial({color:0xf27aa8, emissive:0x6a1438, roughness:.35, metalness:.2});
+  // golden stars
+  const st = new THREE.Shape();
+  for (let k=0;k<10;k++){ const a = Math.PI/2 + k*Math.PI/5, r = k%2 ? .42 : 1; const x = Math.cos(a)*r, y = Math.sin(a)*r; k ? st.lineTo(x,y) : st.moveTo(x,y); }
+  const starGeo = new THREE.ExtrudeGeometry(st, {depth:.25, bevelEnabled:true, bevelSize:.08, bevelThickness:.08, bevelSegments:2, steps:1});
+  starGeo.center();
+  const starGold = new THREE.MeshStandardMaterial({color:0xecc97f, emissive:0x6b4a10, roughness:.3, metalness:.5});
   for (let i=0;i<(mobile?14:24);i++){
-    const h = new THREE.Mesh(heartGeo, heartMat); const s = .5 + R()*.8; h.scale.set(s,s,s);
+    const h = new THREE.Mesh(starGeo, starGold); const s = .45 + R()*.6; h.scale.set(s,s,s);
     h.position.copy(around(R(), 4, 18)); h.userData = {sx:0, sy:(R()-.5)*1.2, ph:R()*6}; scene.add(h); gifts.push(h);
   }
 
@@ -824,7 +833,7 @@ body.gated .pcandle{visibility:hidden}
 
   // scroll → position along the path
   let prog = 0, target = 0, mx = 0, my = 0, smx = 0, smy = 0;
-  function readScroll(){ const max = document.documentElement.scrollHeight - innerHeight; target = max > 0 ? Math.min(1, scrollY/max) : 0; }
+  function readScroll(){ const max = window.__fullMax || (document.documentElement.scrollHeight - innerHeight); target = max > 0 ? Math.min(1, scrollY/max) : 0; }
   addEventListener('scroll', readScroll, {passive:true});
   addEventListener('pointermove', e => { mx = e.clientX/innerWidth - .5; my = e.clientY/innerHeight - .5; });
   function resize(){ renderer.setSize(innerWidth, innerHeight, false); camera.aspect = innerWidth/innerHeight; camera.fov = innerWidth < innerHeight ? 72 : 62; camera.updateProjectionMatrix(); readScroll(); }
@@ -1029,16 +1038,43 @@ body.gated .pcandle{visibility:hidden}
     timer = setTimeout(() => { if (playing) playSong(); }, (t - t0 + 1.2)*1000);
   }
   const musicBtn = document.getElementById('music'), musicLabel = document.getElementById('musicLabel');
-  const track = document.getElementById('track');
-  let useTrack = true;
+  /* music.mp3 plays forever: two copies take turns and crossfade near the end of each pass */
+  const tracks = [document.getElementById('trackA'), document.getElementById('trackB')];
+  const VOL = .8, XF = 3.5;
+  let useTrack = true, ti = 0, loopTimer = null;
   const startWaltz = () => { try { playSong(); } catch(e){} };
+  function fadeTo(el, target, ms, done){
+    clearInterval(el._f); const v0 = el.volume, t0 = Date.now();
+    el._f = setInterval(() => { const k = Math.min(1, (Date.now() - t0)/ms); try { el.volume = v0 + (target - v0)*k; } catch(e){} if (k >= 1){ clearInterval(el._f); done && done(); } }, 50);
+  }
+  function watchLoop(){
+    clearInterval(loopTimer);
+    loopTimer = setInterval(() => {
+      const a = tracks[ti];
+      if (!playing || !a.duration || a.paused) return;
+      if (a.duration - a.currentTime < XF){
+        const b = tracks[1 - ti];
+        b.currentTime = 0; b.volume = 0;
+        const pr = b.play(); if (pr) pr.catch(() => {});
+        fadeTo(b, VOL, XF*1000); fadeTo(a, 0, XF*1000, () => a.pause());
+        ti = 1 - ti;
+      }
+    }, 200);
+  }
   function setMusic(on){
     playing = on; musicBtn.classList.toggle('on', on); musicBtn.setAttribute('aria-pressed', on);
     musicLabel.textContent = on ? 'Pause music' : 'Play music';
     if (on){
-      if (useTrack){ track.volume = .85; const pr = track.play(); if (pr) pr.catch(() => { useTrack = false; if (playing) startWaltz(); }); }
-      else startWaltz();
-    } else { track.pause(); clearTimeout(timer); if (actx) actx.suspend(); }
+      if (useTrack){
+        const a = tracks[ti]; a.volume = 0;
+        const pr = a.play();
+        if (pr) pr.then(() => { fadeTo(a, VOL, 1500); watchLoop(); }).catch(() => { useTrack = false; if (playing) startWaltz(); });
+      } else startWaltz();
+    } else {
+      clearInterval(loopTimer);
+      tracks.forEach(t => fadeTo(t, 0, 400, () => t.pause()));
+      clearTimeout(timer); if (actx) actx.suspend();
+    }
   }
   musicBtn.addEventListener('click', () => {
     if (!playing && actx && actx.state === 'suspended') actx.resume();
@@ -1057,6 +1093,7 @@ body.gated .pcandle{visibility:hidden}
     spawn(r.left + r.width/2, r.top + r.height/2, 60, 'spark');
     setTimeout(() => confetti(140), 500);
     if (!playing) setMusic(true);
+    complete(0);
   });
 
   /* ================= Spells ================= */
@@ -1065,6 +1102,8 @@ body.gated .pcandle{visibility:hidden}
   document.querySelectorAll('.spell').forEach(b => b.addEventListener('click', e => {
     const r = b.getBoundingClientRect(), cx = r.left + r.width/2, cy = r.top + r.height/2;
     spawn(cx, cy, 40, 'spark');
+    spellsCast.add(b.dataset.spell);
+    if (spellsCast.size === 4) complete(1); else refreshPill();
     switch (b.dataset.spell){
       case 'lumos':
         glow.style.setProperty('--gx', cx+'px'); glow.style.setProperty('--gy', cy+'px');
@@ -1081,10 +1120,10 @@ body.gated .pcandle{visibility:hidden}
         say("It's leviOsa. Your name is floating up in the letter.");
         break;
       case 'accio': {
-        const stage = document.getElementById('cakeStage');
-        document.getElementById('cake').scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'});
-        stage.classList.remove('jump'); void stage.offsetWidth; stage.classList.add('jump');
-        say('One birthday cake, summoned. Mind the candles.');
+        const fc = document.createElement('div'); fc.className = 'flycake'; fc.innerHTML = '<i></i><b></b><span></span>';
+        fc.style.setProperty('--tx', (cx - 28) + 'px'); fc.style.setProperty('--ty', (cy - 110) + 'px');
+        document.body.appendChild(fc); setTimeout(() => fc.remove(), 2700);
+        say('One birthday cake, summoned. It will be waiting for you in Chapter Seven.');
         break; }
       case 'rosa':
         petals(110); confetti(80);
@@ -1142,6 +1181,7 @@ body.gated .pcandle{visibility:hidden}
         recipe.textContent = 'Potion complete';
         result.innerHTML = `<div class="potion-card"><div class="label">You brewed</div><h3>${name}</h3><p>${desc}</p><p style="font-size:.95rem;color:var(--ink-soft)">Made with ${added.map(a=>a.n.toLowerCase()).join(', ')}.</p><button class="link-btn" id="again">Brew another</button></div>`;
         document.getElementById('again').addEventListener('click', resetPotion);
+        complete(3);
       }, 700);
     }
   }));
@@ -1175,7 +1215,7 @@ body.gated .pcandle{visibility:hidden}
         cakeMsg.textContent = 'Your wish has been sent by owl. Happy Birthday!';
         confetti(220); petals(60);
         if (!playing) setMusic(true);
-        relight.hidden = false;
+        relight.hidden = false; complete(7);
       }, 450);
     }
   }
@@ -1208,7 +1248,7 @@ body.gated .pcandle{visibility:hidden}
       wishText.textContent = w;
       wishCount.textContent = seen.size === WISHES.length ? `All ${WISHES.length} wishes are yours now ✦` : `${seen.size} of ${WISHES.length} wishes read`;
       const r = b.getBoundingClientRect(); spawn(r.left + r.width/2, r.top + r.height/2, 30, 'spark');
-      if (seen.size === WISHES.length) confetti(160);
+      if (seen.size === WISHES.length){ confetti(160); complete(8); } else refreshPill();
     });
     wishBox.appendChild(b);
   });
@@ -1270,6 +1310,7 @@ body.gated .pcandle{visibility:hidden}
       const e = document.getElementById('esp'); e.style.bottom = '48%'; e.style.height = '40%';
     }));
     labLog.textContent = 'Crack! You apparated straight to your usual table.';
+    complete(2);
     const r = latteOut.getBoundingClientRect(); spawn(innerWidth/2, Math.min(innerHeight*.6, r.top + 100), 50, 'spark');
     setTimeout(() => latteOut.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'}), 150);
   });
@@ -1283,7 +1324,7 @@ body.gated .pcandle{visibility:hidden}
     'Cleaning data: 0 outliers removed (she is the outlier)',
     'Running regression: happiness ~ coffee + baking + reels',
     'Checking assumptions: every assumption is that she is great',
-    'Writing results section… Qasim has entered the chat'
+    'Writing results section… the GOAT Qasim has entered the chat'
   ];
   const JOY = [['Cold Spanish latte', 97], ['Reels', 94], ['Harry Potter', 92], ['Baking', 88], ['Pink things', 85], ['Writing the thesis', 6]];
   barsBox.innerHTML = JOY.map(([k,v]) => `<div class="bar"><span>${k}</span><div class="track"><div class="fill" data-v="${v}"></div></div><span class="v">${v}%</span></div>`).join('');
@@ -1296,7 +1337,7 @@ body.gated .pcandle{visibility:hidden}
       loadfill.style.width = ((k+1)/LOG.length*100) + '%';
     }, 150 + k*700));
     setTimeout(() => {
-      paper.hidden = false; runBtn.textContent = 'Analysis complete'; confetti(80);
+      paper.hidden = false; runBtn.textContent = 'Analysis complete'; confetti(80); complete(4);
       paper.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
       setTimeout(() => barsBox.querySelectorAll('.fill').forEach(f => f.style.width = f.dataset.v + '%'), 500);
     }, 150 + LOG.length*700 + 300);
@@ -1311,7 +1352,7 @@ body.gated .pcandle{visibility:hidden}
   function runExam(){
     if (examBusy) return; examBusy = true;
     stamp.classList.remove('on'); examNote.textContent = 'Counting the marks…';
-    if (reduce){ setGauge(33); stamp.classList.add('on'); examNote.textContent = 'Not a single mark wasted.'; examBusy = false; return; }
+    if (reduce){ setGauge(33); stamp.classList.add('on'); examNote.textContent = 'Not a single mark wasted.'; examBusy = false; complete(5); return; }
     const t0 = performance.now(), D = 1700;
     (function step(now){
       const k = Math.min(1, (now - t0)/D), e = 1 - Math.pow(1-k, 3);
@@ -1321,7 +1362,7 @@ body.gated .pcandle{visibility:hidden}
       setTimeout(() => {
         setGauge(33); stamp.classList.add('on'); examNote.textContent = 'PASSED. Exactly 33%. Not a single mark wasted.';
         const r = stamp.getBoundingClientRect(); spawn(r.left + r.width/2, r.top + r.height/2, 50, 'spark'); confetti(140);
-        examBusy = false;
+        examBusy = false; complete(5);
       }, 1300);
     })(t0);
   }
@@ -1333,27 +1374,27 @@ body.gated .pcandle{visibility:hidden}
 
   /* ================= Reels ================= */
   const REELS = [
-    ['POV: you open Instagram for "one minute" and Qasim receives 23 reels', "Qasim: I haven't even finished the last 40", 'linear-gradient(160deg,#ff8fb8,#7b3fa0)'],
+    ['POV: you open Instagram for "one minute" and the GOAT Qasim receives 23 reels', "The GOAT Qasim: I haven't even finished the last 40", 'linear-gradient(160deg,#ff8fb8,#7b3fa0)'],
     ['Me making coffee at home for the 48th time like this time will be different', 'Narrator: it was not different', 'linear-gradient(160deg,#8a5634,#2b1610)'],
-    ['A cold Spanish latte from Eggspectation fixing every problem in my life', 'Qasim: same table as last time?', 'linear-gradient(160deg,#d9b48a,#6b3e26)'],
+    ['A cold Spanish latte from Eggspectation fixing every problem in my life', 'The GOAT Qasim: same table as last time?', 'linear-gradient(160deg,#d9b48a,#6b3e26)'],
     ['CSS aspirants seeing exactly 33% on the screening result', 'Passed is passed. No further questions.', 'linear-gradient(160deg,#3c4a8f,#b04f86)'],
-    ["Me presenting my thesis results like I didn't have help", "Qasim: I'll take my royalties in lattes", 'linear-gradient(160deg,#2f6b6a,#1c2540)'],
-    ['Bakers: "just follow the recipe." Me: measures everything with my heart', 'It was still delicious though', 'linear-gradient(160deg,#ffb37a,#d94f7a)'],
+    ["Me presenting my thesis results like I didn't have help", "The GOAT Qasim: I'll take my royalties in lattes", 'linear-gradient(160deg,#2f6b6a,#1c2540)'],
+    ['Bakers: "just follow the recipe." Me: measures everything with vibes', 'It was still delicious though', 'linear-gradient(160deg,#ffb37a,#d94f7a)'],
     ['When you both send each other the exact same reel at the same time', 'Same brain cell. Same algorithm.', 'linear-gradient(160deg,#7a5cff,#ff7ac8)'],
     ['Birthday girl loading… 100% ✨', 'Happy birthday, Saleha. Send me a reel about it.', 'linear-gradient(160deg,#ecc97f,#e46a9b)']
   ];
   const screen = document.getElementById('screen'), reelCount = document.getElementById('reelCount');
-  const HEART = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.6 1.3 5.3 3.2 1.7-1.9 3.1-3.2 5.3-3.2 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>';
+  const STARI = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>';
   const CHAT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>';
   const SEND = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M22 3L10 14M22 3l-7 18-5-7-7-4z"/></svg>';
-  let cur = 0;
+  let cur = 0, maxReel = 0;
   const likes = REELS.map(() => 1000 + Math.floor(Math.random()*9000));
   REELS.forEach(([meme, reply, bg], k) => {
     const d = document.createElement('div'); d.className = 'reel'; d.style.background = bg;
     d.innerHTML = `<div class="top"><span>Reels</span><span>${k+1}/${REELS.length}</span></div>
       <div class="meme">${meme}</div>
       <div class="bottom"><div class="who"><b>@saleha</b> sent you a reel · ${[2,5,1,9,3,7,4,0][k] || 'just'}${k===7?' now':'m ago'}<span class="reply">${reply}</span></div>
-      <div class="side"><span class="lk">${HEART}<span class="n">${likes[k].toLocaleString()}</span></span><span>${CHAT}${[312,89,145,560,77,203,64,999][k]}</span><span>${SEND}</span></div></div>`;
+      <div class="side"><span class="lk">${STARI}<span class="n">${likes[k].toLocaleString()}</span></span><span>${CHAT}${[312,89,145,560,77,203,64,999][k]}</span><span>${SEND}</span></div></div>`;
     screen.appendChild(d);
   });
   const reelEls = [...screen.children];
@@ -1361,12 +1402,13 @@ body.gated .pcandle{visibility:hidden}
     cur = Math.max(0, Math.min(REELS.length-1, n));
     reelEls.forEach((el,k) => el.style.transform = `translateY(${(k-cur)*100}%)`);
     reelCount.textContent = `${cur+1} / ${REELS.length}`;
-    if (cur === REELS.length-1){ const r = screen.getBoundingClientRect(); spawn(r.left + r.width/2, r.top + r.height/2, 30, 'spark'); }
+    maxReel = Math.max(maxReel, cur); setTimeout(refreshPill);
+    if (cur === REELS.length-1){ complete(6); const r = screen.getBoundingClientRect(); spawn(r.left + r.width/2, r.top + r.height/2, 30, 'spark'); }
   }
   function likeReel(x, y){
     const el = reelEls[cur], lk = el.querySelector('.lk');
     if (!lk.classList.contains('liked')){ lk.classList.add('liked'); likes[cur]++; lk.querySelector('.n').textContent = likes[cur].toLocaleString(); }
-    const b = document.createElement('div'); b.className = 'burst'; b.innerHTML = HEART.replace('fill="none"', 'fill="currentColor"');
+    const b = document.createElement('div'); b.className = 'burst'; b.innerHTML = STARI.replace('fill="none"', 'fill="currentColor"');
     screen.appendChild(b); setTimeout(() => b.remove(), 950);
     spawn(x, y, 16, 'spark');
   }
@@ -1402,7 +1444,7 @@ body.gated .pcandle{visibility:hidden}
 
   /* ================= Scroll candle + secret spells ================= */
   const pwax = document.getElementById('pwax');
-  function burn(){ const max = document.documentElement.scrollHeight - innerHeight; const k = max > 0 ? scrollY/max : 0; pwax.style.height = (100 - k*88) + '%'; }
+  function burn(){ const max = window.__fullMax || (document.documentElement.scrollHeight - innerHeight); const k = max > 0 ? scrollY/max : 0; pwax.style.height = (100 - k*88) + '%'; }
   addEventListener('scroll', burn, {passive:true}); burn();
   let typed = '';
   addEventListener('keydown', e => {
@@ -1412,8 +1454,76 @@ body.gated .pcandle{visibility:hidden}
     if (typed.endsWith('lumos')) cast('lumos');
     else if (typed.endsWith('accio')) cast('accio');
     else if (typed.endsWith('leviosa')) cast('leviosa');
-    else if (typed.endsWith('coffee')) document.getElementById('coffee').scrollIntoView({behavior:'smooth'});
+    else if (typed.endsWith('coffee') && !document.getElementById('coffee').hidden) document.getElementById('coffee').scrollIntoView({behavior:'smooth'});
   });
+
+  /* ================= Chapter locks: finish one to open the next ================= */
+  const spellsCast = new Set();
+  const stageEls = [];
+  {
+    let st = 0;
+    [...document.querySelector('main').children].forEach(el => {
+      if (el.classList.contains('chapter') && el.id !== 'top') st++;
+      el.dataset.stage = el.id === 'top' ? 0 : st;
+      stageEls.push(el);
+    });
+  }
+  const pill = document.getElementById('lockpill'), pillText = document.getElementById('lockText');
+  const LAST = Math.max(...stageEls.map(e => +e.dataset.stage));
+  let unlocked = 0, justOpened = false, openedAt = 0;
+  function needText(){
+    switch (unlocked){
+      case 0: return 'Break the wax seal to begin';
+      case 1: return `Cast all four spells to continue (${spellsCast.size}/4)`;
+      case 2: return 'Get a coffee that actually works to continue';
+      case 3: return 'Brew a potion to continue';
+      case 4: return 'Run the thesis analysis to continue';
+      case 5: return "Waiting for the Ministry's verdict…";
+      case 6: return `Watch every reel to continue (${maxReel + 1}/8)`;
+      case 7: return 'Blow out every candle to continue';
+      case 8: return `Read every wish to finish (${seen.size}/12)`;
+      default: return '';
+    }
+  }
+  function refreshPill(){
+    if (unlocked >= LAST){ pill.hidden = true; return; }
+    pill.hidden = false;
+    if (justOpened){ pill.classList.add('open'); pillText.textContent = 'Next chapter unlocked. Scroll down ↓'; }
+    else { pill.classList.remove('open'); pillText.textContent = needText(); }
+  }
+  function measure(){
+    const hid = stageEls.filter(e => e.hidden);
+    hid.forEach(e => e.hidden = false);
+    window.__fullMax = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+    hid.forEach(e => e.hidden = true);
+  }
+  function applyLocks(){
+    stageEls.forEach(e => e.hidden = +e.dataset.stage > unlocked);
+    measure();
+    if (window.__fx) window.__fx();
+  }
+  function complete(k){
+    if (k !== unlocked || unlocked >= LAST) return;
+    unlocked = k + 1;
+    try { localStorage.setItem('saleha-bd-progress', String(unlocked)); } catch(e){}
+    applyLocks();
+    justOpened = true; openedAt = scrollY;
+    refreshPill();
+    if (unlocked >= LAST) setTimeout(() => { pill.hidden = true; }, 200);
+  }
+  addEventListener('scroll', () => {
+    if (justOpened && scrollY > openedAt + 220){ justOpened = false; refreshPill(); }
+  }, {passive:true});
+  addEventListener('resize', measure);
+  applyLocks(); refreshPill();
+  function restoreProgress(){
+    let saved = 0; try { saved = +localStorage.getItem('saleha-bd-progress') || 0; } catch(e){}
+    if (saved > 0){
+      unlocked = Math.min(saved, LAST);
+      hero.classList.add('opened'); document.getElementById('tapHint').hidden = true; document.getElementById('scrollCue').hidden = false;
+      applyLocks(); refreshPill();
+    }
+  }
 
   /* ================= Opening question ================= */
   const gate = document.getElementById('gate'), agree = document.getElementById('agree'), dis = document.getElementById('disagree'), gateSub = document.getElementById('gateSub');
@@ -1447,6 +1557,7 @@ body.gated .pcandle{visibility:hidden}
     spawn(r.left + r.width/2, r.top + r.height/2, 70, 'spark');
     confetti(120);
     dis.remove();
+    restoreProgress();
     setTimeout(() => { gate.classList.add('gone'); document.body.classList.remove('gated'); scrollTo(0,0); }, 700);
     setTimeout(() => gate.remove(), 1700);
     if (!playing) setMusic(true);
@@ -1470,6 +1581,7 @@ body.gated .pcandle{visibility:hidden}
     }
     const q = () => { if (!queued){ queued = true; requestAnimationFrame(fx); } };
     addEventListener('scroll', q, {passive:true}); addEventListener('resize', q); fx();
+    window.__fx = q;
   }
 })();
 </script>
