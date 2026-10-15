@@ -684,7 +684,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
       <div class="phone"><div class="screen" id="screen"></div></div>
       <div class="reel-nav">
         <button class="cta ghost" id="reelPrev" aria-label="Previous reel">↑ Back</button>
-        <span class="reel-count" id="reelCount">1 / 8</span>
+        <span class="reel-count" id="reelCount">1 / 9</span>
         <button class="cta" id="reelNext" aria-label="Next reel">Next ↓</button>
       </div>
     </div>
@@ -1540,14 +1540,15 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
 
   /* ================= Reels ================= */
   const REELS = [
-    ['POV: you open Instagram for "one minute" and the GOAT Qasim receives 23 reels', "The GOAT Qasim: I haven't even finished the last 40", 'linear-gradient(160deg,#ff8fb8,#7b3fa0)'],
-    ['Me making coffee at home for the 48th time like this time will be different', 'Narrator: it was not different', 'linear-gradient(160deg,#8a5634,#2b1610)'],
-    ['A cold Spanish latte from Eggspectation fixing every problem in my life', 'The GOAT Qasim: same table as last time?', 'linear-gradient(160deg,#d9b48a,#6b3e26)'],
-    ['CSS aspirants seeing exactly 33% on the screening result', 'Passed is passed. No further questions.', 'linear-gradient(160deg,#3c4a8f,#b04f86)'],
-    ["Me presenting my thesis results like I didn't have help", "The GOAT Qasim: I'll take my royalties in lattes", 'linear-gradient(160deg,#2f6b6a,#1c2540)'],
-    ['Bakers: "just follow the recipe." Me: measures everything with vibes', 'The GOAT Qasim: the smoke alarm has left a review.', 'linear-gradient(160deg,#ffb37a,#d94f7a)'],
-    ['When you both send each other the exact same reel at the same time', 'The GOAT Qasim: I sent it first. I always do.', 'linear-gradient(160deg,#7a5cff,#ff7ac8)'],
-    ["Me: I don't even watch football. Also me, every time Real Madrid wins:", '¡Hala Madrid! (Still did not watch the match.)', 'linear-gradient(160deg,#2c2160,#c9a24b)']
+    ['POV: I said I would send you one reel and now you have 23 unread', 'The GOAT Qasim: I opened 2. Both were mid.', 'linear-gradient(160deg,#ff8fb8,#7b3fa0)'],
+    ['Me making coffee at home with full confidence, knowing exactly how this ends', 'The GOAT Qasim: Eggspectation in 20 minutes?', 'linear-gradient(160deg,#8a5634,#2b1610)'],
+    ['When the cold Spanish latte hits and suddenly I can handle my whole life', 'The GOAT Qasim: you could not even handle the results section.', 'linear-gradient(160deg,#b58a62,#4a2a1a)'],
+    ['Me telling everyone "I wrote my thesis" with full eye contact', 'The GOAT Qasim: page 47 says otherwise.', 'linear-gradient(160deg,#2f6b6a,#1c2540)'],
+    ['Me after seeing 33% on the CSS screening: "a pass is a pass"', 'The GOAT Qasim: barely legal, fully official.', 'linear-gradient(160deg,#3c4a8f,#8f3f72)'],
+    ['Me pulling a tray out of the oven and calling it "rustic"', 'The GOAT Qasim: rustic is not a flavour.', 'linear-gradient(160deg,#c46a3a,#5e1f2e)'],
+    ['Me taking 47 photos for one Instagram post', 'The GOAT Qasim: and somehow I am cropped out of all of them.', 'linear-gradient(160deg,#7a5cff,#b8467f)'],
+    ['Me, still checking the window every birthday for my owl post letter', 'The GOAT Qasim: the owl saw your CSS score and turned back.', 'linear-gradient(160deg,#3a2a5c,#a8863f)'],
+    ["Me: I don't even watch football. Also me, every time Real Madrid wins:", 'The GOAT Qasim: name one player. I will wait.', 'linear-gradient(160deg,#2c2160,#c9a24b)']
   ];
   const screen = document.getElementById('screen'), reelCount = document.getElementById('reelCount');
   const STARI = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>';
