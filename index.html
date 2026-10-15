@@ -1671,7 +1671,6 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
   function complete(k){
     if (k !== unlocked || unlocked >= LAST) return;
     unlocked = k + 1;
-    try { localStorage.setItem('saleha-bd-progress', String(unlocked)); } catch(e){}
     applyLocks();
     justOpened = true; openedAt = scrollY;
     refreshPill();
@@ -1948,7 +1947,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     spawn(r.left + r.width/2, r.top + r.height/2, 70, 'spark');
     confetti(120);
     dis.remove();
-    restoreProgress();
+    try { localStorage.removeItem('saleha-bd-progress'); } catch(e){}
     setTimeout(() => { gate.classList.add('gone'); document.body.classList.remove('gated'); scrollTo(0,0); }, 700);
     setTimeout(() => gate.remove(), 1700);
     if (!playing) setMusic(true);
