@@ -446,7 +446,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
         <p>We are pleased to inform you that you have been accepted into one more year of life. No entrance exam was required, which is lucky, because we have all seen your exam scores. Your application was personally approved by the GOAT Qasim, who remains better than you at everything. As usual.</p>
         <p>Tonight the candles float a little higher and the stars shine a little brighter, all for you. (I asked them to. They listen to me.) Keep scrolling: there are spells to cast, coffee to ruin, a thesis that I wrote, an exam you scraped through, reels to scroll, a cake to blow out, and wishes hiding in the sky.</p>
         <div class="sign">Yours in superiority,<br>the GOAT Qasim</div>
-        <p class="ps">P.S. The next cold Spanish latte at Eggspectation is on me. Screenshot this, it may never happen again.<br>P.P.S. Tap anywhere for sparkles. Try not to break anything.</p>
+        <p class="ps">P.S. The next cold Spanish latte at Eggspectation is on me. Screenshot this, it may never happen again.<br>P.P.S. I would have handed you this letter in person, but I would have had to bend down.<br>P.P.P.S. Tap anywhere for sparkles. Try not to break anything.</p>
       </article>
     </div>
     <p class="tap-hint" id="tapHint">Tap the wax seal to open your letter</p>
@@ -576,7 +576,9 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
             <tr><td>Successful home-brewed coffees</td><td class="n">0</td></tr>
             <tr><td>Home coffee attempts</td><td class="n">48</td></tr>
             <tr><td>Reels sent to the GOAT Qasim</td><td class="n">9,999+</td></tr>
-            <tr><td>Things baked, all delicious</td><td class="n">many</td></tr>
+            <tr><td>Things baked</td><td class="n">many</td></tr>
+            <tr><td>Things baked that were edible</td><td class="n">0</td></tr>
+            <tr><td>Height, relative to the GOAT Qasim</td><td class="n">significantly lower</td></tr>
             <tr><td>Football matches watched for the football</td><td class="n">0</td></tr>
             <tr><td>Real Madrid wins celebrated anyway</td><td class="n">all of them</td></tr>
             <tr><td>CSS screening score</td><td class="n">33% (passed)</td></tr>
@@ -642,7 +644,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
       <div class="phone"><div class="screen" id="screen"></div></div>
       <div class="reel-nav">
         <button class="cta ghost" id="reelPrev" aria-label="Previous reel">↑ Back</button>
-        <span class="reel-count" id="reelCount">1 / 8</span>
+        <span class="reel-count" id="reelCount">1 / 9</span>
         <button class="cta" id="reelNext" aria-label="Next reel">Next ↓</button>
       </div>
     </div>
@@ -654,7 +656,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
   <section class="chapter" id="cake" aria-labelledby="cakeTitle">
     <div class="eyebrow">Chapter Seven · The Great Feast</div>
     <h2 id="cakeTitle">Close your eyes, make a wish, <em>blow</em></h2>
-    <p class="lede">Baked by the second-best baker in the castle (guess who is first). Tap the cake to add sprinkles, then tap each flame to blow it out.</p>
+    <p class="lede">Good news: Saleha did not bake this one, so it is safe to eat. Tap the cake to add sprinkles (it is at your height, don’t worry), then tap each flame to blow it out.</p>
     <div class="cake-stage" id="cakeStage">
       <div class="candles" id="candles"></div>
       <div class="cake">
@@ -667,7 +669,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     <button class="link-btn" id="relight" hidden style="color:var(--rose)">Light them again</button>
   </section>
 
-  <p class="drift"><span><small>Higher now</small>Up to the astronomy tower. Higher than you have ever scored.</span></p>
+  <p class="drift"><span><small>Higher now</small>Up to the astronomy tower. Don’t worry, the GOAT Qasim will reach the high shelves for you.</span></p>
 
   <!-- Chapter 5: wishes -->
   <section class="chapter" id="stars" aria-labelledby="wishTitle">
@@ -703,7 +705,8 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
       <p class="cert-p">has officially survived another year, with distinction in</p>
       <ul class="cert-list">
         <li>Cold Spanish latte appreciation</li>
-        <li>Baking things that vanish in minutes</li>
+        <li>Baking things that set off smoke alarms</li>
+        <li>Asking taller people for help</li>
         <li>Sending reels at industrial scale</li>
         <li>Passing exams with surgical precision</li>
         <li>Surviving a thesis</li>
@@ -1214,13 +1217,13 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
           document.body.appendChild(ln); setTimeout(() => ln.remove(), 5600);
           for (let k=0;k<6;k++) setTimeout(() => spawn(cx + (Math.random()-.5)*160, cy - 60 - k*30, 10, 'spark'), k*180);
         }
-        say("It's leviOsa, not levioSA. Your name is floating. Higher than your CSS score, at least.");
+        say("It's leviOsa, not levioSA. Your name is floating. First time anything of yours has reached the GOAT Qasim's eye level.");
         break;
       case 'accio': {
         const fc = document.createElement('div'); fc.className = 'flycake'; fc.innerHTML = '<i></i><b></b><span></span>';
         fc.style.setProperty('--tx', (cx - 28) + 'px'); fc.style.setProperty('--ty', (cy - 110) + 'px');
         document.body.appendChild(fc); setTimeout(() => fc.remove(), 2700);
-        say('One cake, summoned. It is waiting in Chapter Seven. Hands off until then.');
+        say('One cake, summoned. Store-bought, so it is safe to eat. Waiting in Chapter Seven.');
         break; }
       case 'madrid': {
         const WG = ['#ffffff','#f4f1ea','#ecc97f','#ffe9a8','#d4af37','#7b5cc4'];
@@ -1332,12 +1335,12 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     "May every cold Spanish latte at Eggspectation taste like the first one. The GOAT Qasim picks the table.",
     "May your home-brewed coffee finally work this year. I have seen your attempts, so this will take real magic.",
     "May you clear CSS with more than 33% this time. Aim for 34%. Dream big.",
-    "May everything you bake rise perfectly, and may I always get the first and biggest slice.",
+    "May something you bake finally be edible this year. You will still have to taste it first.",
     "May your reels never run out, and may they one day be as funny as mine.",
     "May your thesis be printed, bound, praised and never opened again. Especially the results section. You know why.",
     "May you find magic in small things, like having a friend as brilliant as the GOAT Qasim.",
     "May you always be the main character. I will be the legendary narrator.",
-    "May your year be as pink, sparkly and lovely as you think you are.",
+    "May you grow a few inches this year. You still won’t catch up with the GOAT Qasim, but it is nice to dream.",
     "May Real Madrid win everything this year, so you can celebrate without watching a single match. As always.",
     "May you never stop believing in magic. You need it to keep up with me."
   ];
@@ -1431,7 +1434,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     'Checking assumptions: every assumption is that she is great',
     'Writing results section… the GOAT Qasim has entered the chat'
   ];
-  const JOY = [['Getting roasted by the GOAT Qasim', 99], ['Cold Spanish latte', 97], ['Reels', 94], ['Harry Potter', 92], ['Baking', 88], ['Real Madrid', 90], ['Writing the thesis', 6]];
+  const JOY = [['Getting roasted by the GOAT Qasim', 99], ['Cold Spanish latte', 97], ['Reels', 94], ['Harry Potter', 92], ['Baking (not the results)', 88], ['Real Madrid', 90], ['Writing the thesis', 6]];
   barsBox.innerHTML = JOY.map(([k,v]) => `<div class="bar"><span>${k}</span><div class="track"><div class="fill" data-v="${v}"></div></div><span class="v">${v}%</span></div>`).join('');
   let ran = false;
   runBtn.addEventListener('click', () => {
@@ -1480,11 +1483,12 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
   /* ================= Reels ================= */
   const REELS = [
     ['POV: you open Instagram for "one minute" and the GOAT Qasim receives 23 reels', "The GOAT Qasim: I haven't even finished the last 40", 'linear-gradient(160deg,#ff8fb8,#7b3fa0)'],
+    ['Me asking the GOAT Qasim to reach the top shelf for the 400th time', 'The GOAT Qasim: say please. And look up.', 'linear-gradient(160deg,#5b7bd6,#2b1d5a)'],
     ['Me making coffee at home for the 48th time like this time will be different', 'Narrator: it was not different', 'linear-gradient(160deg,#8a5634,#2b1610)'],
     ['A cold Spanish latte from Eggspectation fixing every problem in my life', 'The GOAT Qasim: same table as last time?', 'linear-gradient(160deg,#d9b48a,#6b3e26)'],
     ['CSS aspirants seeing exactly 33% on the screening result', 'Passed is passed. No further questions.', 'linear-gradient(160deg,#3c4a8f,#b04f86)'],
     ["Me presenting my thesis results like I didn't have help", "The GOAT Qasim: I'll take my royalties in lattes", 'linear-gradient(160deg,#2f6b6a,#1c2540)'],
-    ['Bakers: "just follow the recipe." Me: measures everything with vibes', 'The GOAT Qasim: still delicious. Not as good as mine would be.', 'linear-gradient(160deg,#ffb37a,#d94f7a)'],
+    ['Bakers: "just follow the recipe." Me: measures everything with vibes', 'The GOAT Qasim: the smoke alarm has left a review.', 'linear-gradient(160deg,#ffb37a,#d94f7a)'],
     ['When you both send each other the exact same reel at the same time', 'The GOAT Qasim: I sent it first. I always do.', 'linear-gradient(160deg,#7a5cff,#ff7ac8)'],
     ["Me: I don't even watch football. Also me, every time Real Madrid wins:", '¡Hala Madrid! (Still did not watch the match.)', 'linear-gradient(160deg,#2c2160,#c9a24b)']
   ];
@@ -1793,7 +1797,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
 
   /* ================= Opening question ================= */
   const gate = document.getElementById('gate'), agree = document.getElementById('agree'), dis = document.getElementById('disagree'), gateSub = document.getElementById('gateSub');
-  const TAUNTS = ['Nice try.', 'Wrong. Like your coffee.', 'Nope.', 'That button is not available today.', 'Expelliarmus!', 'Try the pink one.', 'Still no.', 'You will never catch it.', 'The castle disagrees with your disagreement.', 'Okay, now you are just being stubborn.'];
+  const TAUNTS = ['Nice try.', 'Wrong. Like your coffee.', 'You can’t even reach that button.', 'Nope.', 'That button is not available today.', 'Expelliarmus!', 'Try the pink one.', 'Still no.', 'You will never catch it.', 'The castle disagrees with your disagreement.', 'Okay, now you are just being stubborn.'];
   let tries = 0, lastFlee = 0;
   function flee(e){
     if (e && e.cancelable) e.preventDefault();
