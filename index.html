@@ -35,7 +35,7 @@
   --ink-soft:#6d4a5f;
   --wax:#b8325f;
   --text:#f5e8f0;
-  --muted:#c7b1c4;
+  --muted:#e2d2e0;
   --font-script:"Pinyon Script","Snell Roundhand","Brush Script MT",cursive;
   --font-display:"IM Fell English SC","IM Fell English",Georgia,serif;
   --font-fell:"IM Fell English",Georgia,serif;
@@ -65,11 +65,14 @@ main{position:relative;z-index:2;
   padding-block:24px 64px;overflow-x:clip;
   display:flex;flex-direction:column;align-items:center;gap:40px}
 .chapter{position:relative;isolation:isolate;width:100%;max-width:720px;display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center;will-change:transform,opacity;transform-origin:50% 50%}
-.chapter::before{content:"";position:absolute;inset:-60px -40px;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,rgba(18,8,26,.78),rgba(18,8,26,.45) 60%,transparent)}
-.chapter h2,.chapter .lede,.chapter .eyebrow,.spell-out,.cake-msg,.wish-text,.tap-hint{text-shadow:0 2px 14px rgba(12,4,18,.95)}
+.chapter::before{content:"";position:absolute;inset:-34px -14px;z-index:-1;pointer-events:none;border-radius:44px;background:rgba(14,6,20,.72);filter:blur(22px)}
+.hero::before{background:rgba(14,6,20,.45)}
+.chapter h2,.chapter .lede,.chapter .eyebrow,.spell-out,.cake-msg,.wish-text,.tap-hint,.exam-note,.reel-count,.count,.recipe,.tally{text-shadow:0 1px 2px rgba(8,3,12,.95),0 2px 14px rgba(8,3,12,.95)}
+.chapter .lede{color:#efe2ee;font-size:1.22rem}
+.drift > span{display:block;padding:18px 22px;border-radius:22px;background:rgba(14,6,20,.66);box-shadow:0 0 40px 20px rgba(14,6,20,.5)}
 .drift{min-height:62vh;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--font-fell);font-style:italic;font-size:clamp(1.3rem,4.6vw,1.8rem);color:var(--blush);text-shadow:0 2px 16px rgba(12,4,18,.95);max-width:22ch;margin:0;will-change:transform,opacity}
 .drift small{display:block;font-family:var(--font-display);font-style:normal;font-size:.7rem;letter-spacing:.24em;color:var(--gold);margin-bottom:10px;text-transform:uppercase}
-.eyebrow{font-family:var(--font-display);letter-spacing:.22em;text-transform:uppercase;font-size:.78rem;color:var(--gold)}
+.eyebrow{font-family:var(--font-display);letter-spacing:.22em;text-transform:uppercase;font-size:.85rem;color:var(--gold)}
 h2{font-family:var(--font-fell);font-weight:400;font-size:clamp(2rem,6vw,2.8rem);line-height:1.1;margin:0;text-wrap:balance;color:var(--blush)}
 h2 em{font-family:var(--font-script);font-style:normal;color:var(--gold);font-size:1.25em}
 .lede{color:var(--muted);max-width:34ch;margin:0;font-style:italic}
@@ -136,11 +139,11 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 /* ---------- Spellbook ---------- */
 .spells{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;width:100%}
 .spells .spell:last-child{grid-column:1/-1}
-.spell{position:relative;background:linear-gradient(180deg,rgba(255,219,232,.08),rgba(255,219,232,.02));border:1px solid rgba(236,201,127,.35);border-radius:14px;padding:18px 14px 16px;text-align:center;display:flex;flex-direction:column;gap:4px;align-items:center;transition:transform .2s ease, border-color .2s, background .2s}
+.spell{position:relative;background:linear-gradient(180deg,rgba(40,20,52,.92),rgba(26,12,36,.92));border:1px solid rgba(236,201,127,.35);border-radius:14px;padding:18px 14px 16px;text-align:center;display:flex;flex-direction:column;gap:4px;align-items:center;transition:transform .2s ease, border-color .2s, background .2s}
 .spell:hover{transform:translateY(-3px);border-color:var(--gold);background:linear-gradient(180deg,rgba(255,219,232,.14),rgba(255,219,232,.04))}
 .spell:active{transform:scale(.97)}
 .spell .incant{font-family:var(--font-fell);font-style:italic;font-size:1.4rem;color:var(--blush)}
-.spell .does{font-size:.95rem;color:var(--muted)}
+.spell .does{font-size:1rem;color:var(--text)}
 .spell svg{width:30px;height:30px;color:var(--gold)}
 .spell-out{min-height:1.6em;font-family:var(--font-fell);font-style:italic;color:var(--gold);margin:0}
 
@@ -152,7 +155,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 .bubble{animation:rise 2.2s ease-in infinite;opacity:0}
 @keyframes rise{0%{transform:translateY(0);opacity:0}15%{opacity:.9}100%{transform:translateY(-70px);opacity:0}}
 .ingredients{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:560px}
-.ing{border:1px solid rgba(243,166,196,.45);background:rgba(243,166,196,.08);border-radius:999px;padding:8px 16px;font-size:1.02rem;color:var(--blush);transition:background .2s, transform .15s}
+.ing{border:1px solid rgba(243,166,196,.55);background:rgba(40,18,48,.9);border-radius:999px;padding:8px 16px;font-size:1.02rem;color:var(--blush);transition:background .2s, transform .15s}
 .ing:hover{background:rgba(243,166,196,.2)}
 .ing:active{transform:scale(.95)}
 .ing[disabled]{opacity:.35;cursor:default}
@@ -203,7 +206,7 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 .wish.seen svg{color:var(--rose);filter:drop-shadow(0 0 6px rgba(243,166,196,.9))}
 @keyframes twinkle{50%{transform:scale(.88)}}
 .wish-text{min-height:5.2em;max-width:32ch;margin:0;font-family:var(--font-fell);font-style:italic;font-size:1.25rem;color:var(--blush);display:flex;align-items:center;justify-content:center}
-.count{font-family:var(--font-display);letter-spacing:.18em;font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.count{font-family:var(--font-display);letter-spacing:.18em;font-size:.85rem;color:var(--gold);font-variant-numeric:tabular-nums}
 
 /* ---------- Footer ---------- */
 .finale h2{font-family:var(--font-script);color:var(--gold);font-size:clamp(2.6rem,10vw,4rem)}
@@ -246,7 +249,7 @@ body.gated main, body.gated .music{visibility:hidden}
 .shake{animation:shake .5s ease}
 @keyframes shake{20%{transform:translateX(-8px) rotate(-4deg)}40%{transform:translateX(7px) rotate(3deg)}60%{transform:translateX(-5px)}80%{transform:translateX(3px)}}
 .lab-log{font-family:var(--font-fell);font-style:italic;color:var(--blush);min-height:3.2em;margin:0;max-width:34ch;text-shadow:0 2px 14px rgba(12,4,18,.95)}
-.tally{display:flex;gap:8px 18px;justify-content:center;flex-wrap:wrap;font-family:var(--font-display);letter-spacing:.14em;font-size:.74rem;color:var(--gold);text-transform:uppercase;font-variant-numeric:tabular-nums}
+.tally{display:flex;gap:8px 18px;justify-content:center;flex-wrap:wrap;font-family:var(--font-display);letter-spacing:.14em;font-size:.82rem;color:var(--gold);text-transform:uppercase;font-variant-numeric:tabular-nums}
 .tally b{color:var(--blush);font-weight:400;font-family:var(--font-body);font-size:1.1rem;letter-spacing:0}
 .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 .cta{border:1px solid var(--gold);background:linear-gradient(180deg,rgba(236,201,127,.24),rgba(236,201,127,.08));color:var(--gold);border-radius:999px;padding:11px 24px;font-family:var(--font-fell);font-size:1.15rem;transition:transform .15s, background .2s}
@@ -266,7 +269,8 @@ body.gated main, body.gated .music{visibility:hidden}
 
 /* ---------- Thesis ---------- */
 .analysis{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%}
-.spss{font-family:ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:.86rem;color:var(--muted);text-align:left;width:min(440px,100%);min-height:0;margin:0;display:flex;flex-direction:column;gap:4px}
+.spss{font-family:ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:.9rem;color:var(--text);background:rgba(10,4,14,.85);border-radius:10px;padding:0 12px;text-align:left;width:min(440px,100%);min-height:0;margin:0;display:flex;flex-direction:column;gap:4px}
+.spss span:first-child{margin-top:10px}.spss span:last-child{margin-bottom:10px}
 .spss span::before{content:"> ";color:var(--gold)}
 .loadbar{width:min(440px,100%);height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
 .loadbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--rose),var(--gold));transition:width .6s ease}
@@ -299,7 +303,7 @@ table.apa .n{text-align:right;white-space:nowrap}
 .score{font-family:var(--font-fell);font-size:clamp(2.8rem,11vw,3.8rem);color:var(--blush);font-variant-numeric:tabular-nums;line-height:1;margin:0}
 .exam-note{font-family:var(--font-fell);font-style:italic;color:var(--gold);margin:0;min-height:1.5em;max-width:34ch}
 .facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%;max-width:520px}
-.fact{border:1px solid rgba(236,201,127,.3);border-radius:10px;padding:10px 6px;background:rgba(23,13,34,.55);display:flex;flex-direction:column;gap:2px}
+.fact{border:1px solid rgba(236,201,127,.4);border-radius:10px;padding:10px 6px;background:rgba(23,13,34,.9);display:flex;flex-direction:column;gap:2px}
 .fact .k{font-family:var(--font-display);font-size:.62rem;letter-spacing:.14em;color:var(--gold);text-transform:uppercase}
 .fact .v{font-size:1.2rem;color:var(--text);font-variant-numeric:tabular-nums}
 .decree{max-width:440px;width:100%;background:linear-gradient(175deg,var(--parchment),var(--parchment-2));color:var(--ink);padding:18px 20px;border-radius:4px;text-align:center;box-shadow:0 24px 50px -20px rgba(0,0,0,.7)}
@@ -311,7 +315,7 @@ table.apa .n{text-align:right;white-space:nowrap}
 .phone{position:relative;width:min(72vw,280px);aspect-ratio:9/17;max-width:100%;border-radius:36px;padding:9px;background:#0b060f;box-shadow:0 0 0 2px #4a3557,0 0 0 6px #1a1020,0 34px 70px -20px rgba(0,0,0,.85)}
 .phone::before{content:"";position:absolute;top:16px;left:50%;width:70px;height:18px;border-radius:10px;background:#0b060f;transform:translateX(-50%);z-index:5}
 .screen{position:relative;width:100%;height:100%;border-radius:28px;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
-.reel{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:44px 12px 16px;text-align:left;transition:transform .55s cubic-bezier(.2,.8,.2,1);color:#fff}
+.reel{position:absolute;inset:0;box-shadow:inset 0 0 0 999px rgba(0,0,0,.2);display:flex;flex-direction:column;justify-content:space-between;padding:44px 12px 16px;text-align:left;transition:transform .55s cubic-bezier(.2,.8,.2,1);color:#fff}
 .reel .top{display:flex;justify-content:space-between;font-family:var(--font-body);font-weight:600;font-size:.95rem;text-shadow:0 1px 6px rgba(0,0,0,.4)}
 .reel .meme{font-family:var(--font-body);font-weight:600;font-size:1.32rem;line-height:1.2;text-align:center;padding:0 8px;text-wrap:balance;text-shadow:0 2px 10px rgba(0,0,0,.45)}
 .reel .bottom{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:end}
@@ -324,7 +328,7 @@ table.apa .n{text-align:right;white-space:nowrap}
 .burst{position:absolute;left:50%;top:50%;width:96px;height:96px;margin:-48px 0 0 -48px;color:#ffd36e;pointer-events:none;z-index:6;animation:burst .9s ease-out forwards}
 @keyframes burst{0%{transform:scale(.2);opacity:0}25%{transform:scale(1.2);opacity:1}60%{transform:scale(1)}100%{transform:scale(1.4) translateY(-40px);opacity:0}}
 .reel-nav{display:flex;gap:12px;align-items:center;justify-content:center}
-.reel-count{font-family:var(--font-display);letter-spacing:.16em;font-size:.74rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.reel-count{font-family:var(--font-display);letter-spacing:.16em;font-size:.85rem;color:var(--text);font-variant-numeric:tabular-nums}
 
 /* ---------- Sprinkles + scroll candle + wand ---------- */
 .cake{cursor:copy}
@@ -401,7 +405,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
   <div class="gate-card">
     <div class="eyebrow">Before you enter · One question</div>
     <h1 class="gate-q" id="gateQ">The GOAT Qasim is the most amazing, inspiring, kind, hilarious, legendary, one-of-a-kind <span>GOAT</span></h1>
-    <p class="gate-sub" id="gateSub">Choose wisely. The castle is listening.</p>
+    <p class="gate-sub" id="gateSub">Choose wisely. There is one correct answer, just like there is one GOAT.</p>
     <div class="gate-btns">
       <button class="g-agree" id="agree">Agree</button>
       <button class="g-disagree" id="disagree">Disagree</button>
@@ -423,7 +427,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
         <div class="env-flap"></div>
         <div class="env-address">
           To Miss <strong>Saleha</strong>
-          The Brightest Witch I Know<br>Somewhere Under Tonight's Stars
+          The Second Smartest Person I Know<br>(first place is taken, obviously)
         </div>
       </div>
       <button class="seal" id="seal" aria-label="Break the seal and open your letter">S</button>
@@ -432,23 +436,23 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
         <div class="crest">✦ Department of Birthday Magic ✦</div>
         <h1>Happy Birthday,<br><span class="name" id="nameFloat">Saleha</span></h1>
         <p>Dear Saleha,</p>
-        <p>We are delighted to inform you that you have been accepted into one more year of being completely wonderful. No entrance exam required. Your record was spotless.</p>
-        <p>Tonight the candles float a little higher and the stars shine a little brighter, all for you. Scroll down and keep going: there are spells to cast, coffee to (attempt to) brew, a thesis to defend, an exam result to celebrate, reels to scroll, a cake to decorate and blow out, and wishes hiding in the sky.</p>
-        <div class="sign">With all my magic,<br>the GOAT Qasim</div>
-        <p class="ps">P.S. The next cold Spanish latte at Eggspectation is on me.<br>P.P.S. Tap anywhere for sparkles. Owls are not responsible for glitter left behind.</p>
+        <p>We are pleased to inform you that you have been accepted into one more year of life. No entrance exam was required, which is lucky, because we have all seen your exam scores. Your application was personally approved by the GOAT Qasim, who remains better than you at everything. As usual.</p>
+        <p>Tonight the candles float a little higher and the stars shine a little brighter, all for you. (I asked them to. They listen to me.) Keep scrolling: there are spells to cast, coffee to ruin, a thesis that I wrote, an exam you scraped through, reels to scroll, a cake to blow out, and wishes hiding in the sky.</p>
+        <div class="sign">Yours in superiority,<br>the GOAT Qasim</div>
+        <p class="ps">P.S. The next cold Spanish latte at Eggspectation is on me. Screenshot this, it may never happen again.<br>P.P.S. Tap anywhere for sparkles. Try not to break anything.</p>
       </article>
     </div>
     <p class="tap-hint" id="tapHint">Tap the wax seal to open your letter</p>
     <a class="scroll-cue" href="#spellbook" id="scrollCue" hidden>Scroll to fly <span>↓</span></a>
   </section>
 
-  <p class="drift"><span><small>Keep scrolling</small>Follow the floating candles into the night…</span></p>
+  <p class="drift"><span><small>Keep scrolling</small>Follow the floating candles. Try not to get lost. I am not coming back for you.</span></p>
 
   <!-- Chapter 2: spells -->
   <section class="chapter" id="spellbook" aria-labelledby="spellTitle">
     <div class="eyebrow">Chapter One · The Spellbook</div>
     <h2 id="spellTitle">Pick up your wand and <em>cast</em></h2>
-    <p class="lede">Five charms, prepared especially for the birthday girl. Try them all.</p>
+    <p class="lede">Five charms, prepared by the GOAT Qasim. Even you can’t mess these up. Probably.</p>
     <div class="spells">
       <button class="spell" data-spell="lumos">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
@@ -475,13 +479,13 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
   </section>
 
 
-  <p class="drift"><span><small>Sniff the air</small>Something smells like espresso. And slightly burnt milk.</span></p>
+  <p class="drift"><span><small>Sniff the air</small>Something smells like burnt milk. You were in the kitchen again, weren’t you?</span></p>
 
   <!-- Coffee lab -->
   <section class="chapter" id="coffee" aria-labelledby="coffeeTitle">
     <div class="eyebrow">Chapter Two · Coffee Charms</div>
     <h2 id="coffeeTitle">Home brewing, <em>attempt</em> #48</h2>
-    <p class="lede">The bravest witch in the castle tries to make coffee at home. Follow the steps in order.</p>
+    <p class="lede">Saleha attempts coffee at home. Again. The GOAT Qasim has seen how this ends. Follow the steps in order.</p>
     <div class="lab">
       <div class="mug-wrap" id="mugWrap" aria-hidden="true">
         <svg viewBox="0 0 200 200">
@@ -496,7 +500,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
         </svg>
       </div>
       <div class="ingredients" id="steps"></div>
-      <p class="lab-log" id="labLog" aria-live="polite">Step one: grind the beans. What could possibly go wrong?</p>
+      <p class="lab-log" id="labLog" aria-live="polite">Step one: grind the beans. (Spoiler: everything goes wrong.)</p>
       <div class="tally"><span>Home attempts <b id="tHome">47</b></span><span>Successful <b>0</b></span><span>Eggspectation success rate <b>100%</b></span></div>
       <div class="row" id="labActions" hidden>
         <button class="cta" id="apparate">Apparate to Eggspectation</button>
@@ -506,13 +510,13 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     </div>
   </section>
 
-  <p class="drift"><span><small>Onward</small>Past the castle towers, a cauldron is bubbling</span></p>
+  <p class="drift"><span><small>Onward</small>A cauldron is bubbling. Stand back, Saleha. For everyone’s safety.</span></p>
 
   <!-- Chapter 3: potion -->
   <section class="chapter" id="potions" aria-labelledby="potionTitle">
     <div class="eyebrow">Chapter Three · Potions Class</div>
     <h2 id="potionTitle">Brew a <em>birthday</em> potion</h2>
-    <p class="lede">Drop any three ingredients into the cauldron and see what you've made.</p>
+    <p class="lede">Pick any three ingredients. Even you can follow a three-step recipe.</p>
     <div class="potion-area">
       <div class="cauldron" aria-hidden="true">
         <svg viewBox="0 0 200 190">
@@ -540,7 +544,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
   </section>
 
 
-  <p class="drift"><span><small>Quietly now</small>Into the Restricted Section, where theses go to get finished</span></p>
+  <p class="drift"><span><small>Quietly now</small>Into the Restricted Section, where your thesis got finished. By me.</span></p>
 
   <!-- Thesis -->
   <section class="chapter" id="thesis" aria-labelledby="thesisTitle">
@@ -555,7 +559,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     <article class="paper" id="paper" hidden>
       <div class="run"><span>SALEHA: A LONGITUDINAL STUDY</span><span>p. 47</span></div>
       <h3>Chapter 4: Results</h3>
-      <p>This chapter presents the findings of a year-long observational study of one (1) exceptional participant. All data were collected with consent, over coffee.</p>
+      <p>This chapter presents the findings of a year-long study of one (1) participant. The study was designed, analysed and written entirely by the GOAT Qasim, while the participant “proofread”.</p>
       <p class="cap"><b>Table 4.1</b><br>Descriptive Statistics for the Participant (N = 1)</p>
       <div class="tbl">
         <table class="apa">
@@ -569,20 +573,23 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
             <tr><td>Football matches watched for the football</td><td class="n">0</td></tr>
             <tr><td>Real Madrid wins celebrated anyway</td><td class="n">all of them</td></tr>
             <tr><td>CSS screening score</td><td class="n">33% (passed)</td></tr>
-            <tr><td>Kindness (out of 10)</td><td class="n">10.0</td></tr>
+            <tr><td>Kindness (out of 10)</td><td class="n">9.5</td></tr>
+            <tr><td>Kindness of the GOAT Qasim (out of 10)</td><td class="n">10.0</td></tr>
           </tbody>
         </table>
       </div>
       <p class="cap"><b>Figure 4.1</b><br>Sources of Happiness, Percent of Total Joy</p>
       <div class="bars" id="bars"></div>
       <h4>Hypothesis testing</h4>
-      <p><i>H<sub>1</sub>: Saleha makes every room better just by being in it.</i></p>
-      <div class="verdict">Result: <b>Strongly supported</b>, <i>p</i> &lt; .0001. Effect size: enormous. No further research is needed.</div>
+      <p><i>H<sub>1</sub>: Saleha is as smart as the GOAT Qasim.</i></p>
+      <div class="verdict">Result: <b>Rejected</b>, <i>p</i> &lt; .0001. Nobody is.</div>
+      <p style="margin-top:12px"><i>H<sub>2</sub>: Saleha is a great friend.</i></p>
+      <div class="verdict">Result: <b>Supported</b>. Mostly because she has excellent taste in friends.</div>
       <p class="footnote">Note. This results section was written by the GOAT Qasim. Payment will be accepted in cold Spanish lattes, to be redeemed at Eggspectation.</p>
     </article>
   </section>
 
-  <p class="drift"><span><small>An official owl</small>The Ministry has sent your results</span></p>
+  <p class="drift"><span><small>An official owl</small>The Ministry has sent your results. Brace yourself.</span></p>
 
   <!-- CSS exam -->
   <section class="chapter" id="exam" aria-labelledby="examTitle">
@@ -611,7 +618,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
       </div>
       <div class="decree">
         <div class="label">OFFICIAL DECREE</div>
-        <p>Efficiency this precise cannot be taught. Next stop: the written exam, then <b>Officer Saleha</b>. The whole castle is rooting for you.</p>
+        <p>Efficiency this precise cannot be taught. Next stop: the written exam, then <b>Officer Saleha</b>. The GOAT Qasim believes in you, which is more than your score did. Tutoring available at premium rates.</p>
       </div>
       <button class="cta ghost" id="recheck">Check the result again</button>
     </div>
@@ -634,13 +641,13 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     </div>
   </section>
 
-  <p class="drift"><span><small>Mind the gifts</small>Something sweet is floating this way</span></p>
+  <p class="drift"><span><small>Mind the gifts</small>Something sweet is floating this way. No, not you. The cake.</span></p>
 
   <!-- Chapter 4: cake -->
   <section class="chapter" id="cake" aria-labelledby="cakeTitle">
     <div class="eyebrow">Chapter Seven · The Great Feast</div>
     <h2 id="cakeTitle">Close your eyes, make a wish, <em>blow</em></h2>
-    <p class="lede">Baked by the best baker in the castle. Tap the cake to add sprinkles, then tap each flame to blow it out.</p>
+    <p class="lede">Baked by the second-best baker in the castle (guess who is first). Tap the cake to add sprinkles, then tap each flame to blow it out.</p>
     <div class="cake-stage" id="cakeStage">
       <div class="candles" id="candles"></div>
       <div class="cake">
@@ -653,7 +660,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     <button class="link-btn" id="relight" hidden style="color:var(--rose)">Light them again</button>
   </section>
 
-  <p class="drift"><span><small>Higher now</small>Up toward the astronomy tower and the stars</span></p>
+  <p class="drift"><span><small>Higher now</small>Up to the astronomy tower. Higher than you have ever scored.</span></p>
 
   <!-- Chapter 5: wishes -->
   <section class="chapter" id="stars" aria-labelledby="wishTitle">
@@ -665,11 +672,11 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     <div class="count" id="wishCount">0 of 12 wishes read</div>
   </section>
 
-  <p class="drift"><span><small>Almost there</small>Look up. The moon came out for you</span></p>
+  <p class="drift"><span><small>Almost there</small>Look up. The moon came out for you. I asked it to.</span></p>
 
   <section class="chapter finale" aria-label="Closing">
     <div class="eyebrow">Until your next birthday</div>
-    <p>May this year be full of magic, and may you never run out of reasons to smile.</p>
+    <p>May this year be full of magic, and may you keep the best friend anyone could ask for. (It is me. The GOAT Qasim.)</p>
     <button class="cta" id="celAgain">Light up the sky again</button>
     <a class="scroll-cue" href="#top">Read your letter again <span>↑</span></a>
   </section>
@@ -679,14 +686,14 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
   <canvas id="celBack" aria-hidden="true"></canvas>
   <canvas id="celFront" aria-hidden="true"></canvas>
   <div class="cel-count" id="celCount" aria-live="polite"></div>
-  <div class="cel-hb" id="celHB">Happy Birthday<small>the whole sky is celebrating you</small></div>
+  <div class="cel-hb" id="celHB">Happy Birthday<small>the whole sky is celebrating you (the GOAT Qasim arranged it)</small></div>
   <div class="cert" id="cert" hidden>
     <div class="cert-in">
       <div class="cert-k">Department of Birthday Magic</div>
       <div class="cert-t">Certificate of Magnificence</div>
       <p class="cert-p">This certifies that</p>
       <div class="cert-name">Saleha</div>
-      <p class="cert-p">has officially completed another year of being wonderful, with distinction in</p>
+      <p class="cert-p">has officially survived another year, with distinction in</p>
       <ul class="cert-list">
         <li>Cold Spanish latte appreciation</li>
         <li>Baking things that vanish in minutes</li>
@@ -694,7 +701,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
         <li>Passing exams with surgical precision</li>
         <li>Surviving a thesis</li>
         <li>Madridista (football optional)</li>
-        <li>Being a top-tier friend</li>
+        <li>Being friends with the GOAT Qasim (her greatest achievement)</li>
       </ul>
       <div class="cert-foot">
         <div class="sigbox"><span class="cert-sig">the GOAT Qasim</span><span class="cert-line">Signed</span></div>
@@ -1187,31 +1194,31 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
         glow.style.opacity = 1; brightTarget = 1;
         setTimeout(() => glow.style.opacity = 0, 900);
         setTimeout(() => brightTarget = 0, 6000);
-        say('The whole sky just got brighter, like you do to every room.');
+        say('The sky got brighter. Still not as bright as the GOAT Qasim, but it tried.');
         break;
       case 'leviosa':
         hero.classList.add('leviosa');
         if (!hero.classList.contains('opened')) document.getElementById('seal').click();
         document.getElementById('top').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
         setTimeout(() => hero.classList.remove('leviosa'), 9000);
-        say("It's leviOsa. Your name is floating up in the letter.");
+        say("It's leviOsa, not levioSA. Your name is floating in the letter. Higher than your CSS score, at least.");
         break;
       case 'accio': {
         const fc = document.createElement('div'); fc.className = 'flycake'; fc.innerHTML = '<i></i><b></b><span></span>';
         fc.style.setProperty('--tx', (cx - 28) + 'px'); fc.style.setProperty('--ty', (cy - 110) + 'px');
         document.body.appendChild(fc); setTimeout(() => fc.remove(), 2700);
-        say('One birthday cake, summoned. It will be waiting for you in Chapter Seven.');
+        say('One cake, summoned. It is waiting in Chapter Seven. Hands off until then.');
         break; }
       case 'madrid': {
         const WG = ['#ffffff','#f4f1ea','#ecc97f','#ffe9a8','#d4af37','#7b5cc4'];
         glow.style.setProperty('--gx', cx+'px'); glow.style.setProperty('--gy', cy+'px'); glow.style.opacity = .7;
         setTimeout(() => glow.style.opacity = 0, 700);
         for (let k=0;k<6;k++) setTimeout(() => spawn(innerWidth*(.1 + Math.random()*.8), innerHeight*(.3 + Math.random()*.25), 40, 'confetti', WG), k*140);
-        say('¡Hala Madrid! The sky is officially white and gold. No football was watched.');
+        say('¡Hala Madrid! The sky is white and gold. No football was watched. You will pretend you knew the score anyway.');
         break; }
       case 'rosa':
         petals(110); confetti(80);
-        say('A charm of my own invention. Pink, of course.');
+        say('A charm of my own invention, because I am a genius. Pink, because you are predictable.');
         break;
     }
   }));
@@ -1223,7 +1230,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     ['Felicity in a Teacup','Guarantees that today, everything goes exactly your way.'],
     ['Potion of Perfect Hair Days','Valid for 365 days. Humidity has been formally banned.'],
     ['Moonlit Wish Tonic','Whatever you wish for while drinking it is already on its way.'],
-    ['Essence of Best Friendship','Strongest when shared. Comes with a lifetime supply of inside jokes.'],
+    ['Essence of the GOAT Qasim','Grants the drinker 1% of the GOAT Qasim’s genius. Still the strongest potion on this page.'],
     ['Brew of Infinite Snacks','Your cravings will be answered before you have them.'],
     ['Draught of Successful Home Coffee','Extremely rare. Has never been brewed successfully. Not even once.'],
     ['Elixir of 34%','One extra mark, just so next time feels a little less dramatic.'],
@@ -1296,7 +1303,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     cakeMsg.textContent = left ? `${left} to go…` : '';
     if (!left){
       setTimeout(() => {
-        cakeMsg.textContent = 'Your wish has been sent by owl. Happy Birthday!';
+        cakeMsg.textContent = 'Wish sent by owl. If it was about beating the GOAT Qasim at something, the owl refused to deliver it.';
         confetti(220); petals(60);
         if (!playing) setMusic(true);
         relight.hidden = false; complete(7);
@@ -1308,18 +1315,18 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
 
   /* ================= Wish stars ================= */
   const WISHES = [
-    'May every day this year feel like the first page of a brand-new book.',
-    'May every cold Spanish latte at Eggspectation taste exactly like the first one.',
-    'May your home-brewed coffee finally work this year. We believe in miracles.',
-    'May you clear CSS with a lot more than 33%. (Though 33% clearly works for you.)',
-    'May everything you bake rise perfectly, and may I always get the first slice.',
-    'May your reels never run out, and may I always be the first person you send them to.',
-    'May your thesis be printed, bound, praised, and never opened again.',
-    'May you find magic in small things: fairy lights, rainy evenings, a good laugh.',
-    'May you always be the main character, because you are.',
-    'May your year be as pink, sparkly and lovely as you are.',
-    'May Real Madrid win everything this year, so you can celebrate without watching a single match.',
-    'May you never stop believing in magic. You are proof that it is real.'
+    "May every day this year feel like the first page of a brand-new book. Written by me, obviously.",
+    "May every cold Spanish latte at Eggspectation taste like the first one. The GOAT Qasim picks the table.",
+    "May your home-brewed coffee finally work this year. I have seen your attempts, so this will take real magic.",
+    "May you clear CSS with more than 33% this time. Aim for 34%. Dream big.",
+    "May everything you bake rise perfectly, and may I always get the first and biggest slice.",
+    "May your reels never run out, and may they one day be as funny as mine.",
+    "May your thesis be printed, bound, praised and never opened again. Especially the results section. You know why.",
+    "May you find magic in small things, like having a friend as brilliant as the GOAT Qasim.",
+    "May you always be the main character. I will be the legendary narrator.",
+    "May your year be as pink, sparkly and lovely as you think you are.",
+    "May Real Madrid win everything this year, so you can celebrate without watching a single match. As always.",
+    "May you never stop believing in magic. You need it to keep up with me."
   ];
   const wishBox = document.getElementById('wishes'), wishText = document.getElementById('wishText'), wishCount = document.getElementById('wishCount');
   const seen = new Set();
@@ -1389,12 +1396,12 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
       <div class="cup-tag">Eggspectation · Cold Spanish Latte</div>
       <div class="glass-wrap"><div class="straw"></div><div class="glass"><div class="milk" id="milk"></div><div class="espresso" id="esp"></div>
         <div class="ice" style="left:14px;top:22px"></div><div class="ice" style="left:58px;top:12px;animation-delay:-1s"></div><div class="ice" style="left:36px;top:46px;animation-delay:-2s"></div></div></div>
-      <p class="lab-log">One cold Spanish latte, perfect every single time. Some magic you just can't brew at home, and that's okay.</p></div>`;
+      <p class="lab-log">One cold Spanish latte, perfect every time. Made by professionals, which you are not. The GOAT Qasim knew the way, as usual.</p></div>`;
     requestAnimationFrame(() => requestAnimationFrame(() => {
       document.getElementById('milk').style.height = '58%';
       const e = document.getElementById('esp'); e.style.bottom = '48%'; e.style.height = '40%';
     }));
-    labLog.textContent = 'Crack! You apparated straight to your usual table.';
+    labLog.textContent = 'Crack! You apparated to your usual table. The GOAT Qasim was already there, obviously.';
     complete(2);
     const r = latteOut.getBoundingClientRect(); spawn(innerWidth/2, Math.min(innerHeight*.6, r.top + 100), 50, 'spark');
     setTimeout(() => latteOut.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'}), 150);
@@ -1411,7 +1418,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     'Checking assumptions: every assumption is that she is great',
     'Writing results section… the GOAT Qasim has entered the chat'
   ];
-  const JOY = [['Cold Spanish latte', 97], ['Reels', 94], ['Harry Potter', 92], ['Baking', 88], ['Real Madrid', 90], ['Pink things', 85], ['Writing the thesis', 6]];
+  const JOY = [['Getting roasted by the GOAT Qasim', 99], ['Cold Spanish latte', 97], ['Reels', 94], ['Harry Potter', 92], ['Baking', 88], ['Real Madrid', 90], ['Pink things', 85], ['Writing the thesis', 6]];
   barsBox.innerHTML = JOY.map(([k,v]) => `<div class="bar"><span>${k}</span><div class="track"><div class="fill" data-v="${v}"></div></div><span class="v">${v}%</span></div>`).join('');
   let ran = false;
   runBtn.addEventListener('click', () => {
@@ -1445,7 +1452,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
       if (k < 1) return requestAnimationFrame(step);
       examNote.textContent = '32.9%… oh no…';
       setTimeout(() => {
-        setGauge(33); stamp.classList.add('on'); examNote.textContent = 'PASSED. Exactly 33%. Not a single mark wasted.';
+        setGauge(33); stamp.classList.add('on'); examNote.textContent = 'PASSED. Exactly 33%. Not one mark more than necessary. Lazy genius.';
         const r = stamp.getBoundingClientRect(); spawn(r.left + r.width/2, r.top + r.height/2, 50, 'spark'); confetti(140);
         examBusy = false; complete(5);
       }, 1300);
@@ -1464,10 +1471,10 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     ['A cold Spanish latte from Eggspectation fixing every problem in my life', 'The GOAT Qasim: same table as last time?', 'linear-gradient(160deg,#d9b48a,#6b3e26)'],
     ['CSS aspirants seeing exactly 33% on the screening result', 'Passed is passed. No further questions.', 'linear-gradient(160deg,#3c4a8f,#b04f86)'],
     ["Me presenting my thesis results like I didn't have help", "The GOAT Qasim: I'll take my royalties in lattes", 'linear-gradient(160deg,#2f6b6a,#1c2540)'],
-    ['Bakers: "just follow the recipe." Me: measures everything with vibes', 'It was still delicious though', 'linear-gradient(160deg,#ffb37a,#d94f7a)'],
-    ['When you both send each other the exact same reel at the same time', 'Same brain cell. Same algorithm.', 'linear-gradient(160deg,#7a5cff,#ff7ac8)'],
+    ['Bakers: "just follow the recipe." Me: measures everything with vibes', 'The GOAT Qasim: still delicious. Not as good as mine would be.', 'linear-gradient(160deg,#ffb37a,#d94f7a)'],
+    ['When you both send each other the exact same reel at the same time', 'The GOAT Qasim: I sent it first. I always do.', 'linear-gradient(160deg,#7a5cff,#ff7ac8)'],
     ["Me: I don't even watch football. Also me, every time Real Madrid wins:", '¡Hala Madrid! (Still did not watch the match.)', 'linear-gradient(160deg,#2c2160,#c9a24b)'],
-    ['Birthday girl loading… 100% ✨', 'Happy birthday, Saleha. Send me a reel about it.', 'linear-gradient(160deg,#ecc97f,#e46a9b)']
+    ['Birthday girl loading… 100% ✨', 'The GOAT Qasim: happy birthday. My reels are still funnier.', 'linear-gradient(160deg,#ecc97f,#e46a9b)']
   ];
   const screen = document.getElementById('screen'), reelCount = document.getElementById('reelCount');
   const STARI = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>';
@@ -1774,7 +1781,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
 
   /* ================= Opening question ================= */
   const gate = document.getElementById('gate'), agree = document.getElementById('agree'), dis = document.getElementById('disagree'), gateSub = document.getElementById('gateSub');
-  const TAUNTS = ['Nice try.', 'Nope.', 'That button is not available today.', 'Expelliarmus!', 'Try the pink one.', 'Still no.', 'You will never catch it.', 'The castle disagrees with your disagreement.', 'Okay, now you are just being stubborn.'];
+  const TAUNTS = ['Nice try.', 'Wrong. Like your coffee.', 'Nope.', 'That button is not available today.', 'Expelliarmus!', 'Try the pink one.', 'Still no.', 'You will never catch it.', 'The castle disagrees with your disagreement.', 'Okay, now you are just being stubborn.'];
   let tries = 0, lastFlee = 0;
   function flee(e){
     if (e && e.cancelable) e.preventDefault();
@@ -1800,7 +1807,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
   });
   agree.addEventListener('click', () => {
     const r = agree.getBoundingClientRect();
-    gateSub.textContent = 'Correct answer. Welcome in.';
+    gateSub.textContent = 'Correct. The first right answer you have given all year. Welcome in.';
     spawn(r.left + r.width/2, r.top + r.height/2, 70, 'spark');
     confetti(120);
     dis.remove();
@@ -1821,7 +1828,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
         const r = s.getBoundingClientRect();
         const e = Math.min(1, Math.max(0, (r.top - H*0.55) / (H*0.45)));
         const l = Math.min(1, Math.max(0, (H*0.22 - r.bottom) / (H*0.22)));
-        if (e > 0){ s.style.transform = `perspective(900px) translateZ(${-520*e}px) rotateX(${14*e}deg)`; s.style.opacity = 1 - e*0.92; }
+        if (e > 0){ s.style.transform = `perspective(900px) translateZ(${-520*e}px) rotateX(${14*e}deg)`; s.style.opacity = 1 - e*0.75; }
         else if (l > 0){ s.style.transform = `perspective(900px) translateZ(${260*l}px)`; s.style.opacity = 1 - l; }
         else { s.style.transform = ''; s.style.opacity = ''; }
       }
