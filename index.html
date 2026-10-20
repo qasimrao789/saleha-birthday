@@ -429,7 +429,10 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
 @keyframes halfr{to{transform:translate(70px,60px) rotate(60deg);opacity:0}}
 
 /* ---------- Daily Owl home ---------- */
-.today{padding-top:16px}
+.today{padding-top:16px;min-height:calc(100vh - 64px);justify-content:center}
+.replay-box{display:flex;flex-direction:column;align-items:center;gap:10px;max-width:440px;margin-top:6px}
+.replay-box p{margin:0;font-family:var(--font-fell);font-style:italic;color:var(--text);text-shadow:0 1px 2px rgba(8,3,12,.95),0 2px 14px rgba(8,3,12,.95)}
+.replay-skip{font-size:.95rem;color:var(--muted);font-style:italic}
 .owl-card{position:relative;width:100%;max-width:520px;background:linear-gradient(175deg,var(--parchment),var(--parchment-2));color:var(--ink);border-radius:4px;padding:26px 24px 20px;text-align:left;box-shadow:0 30px 60px -24px rgba(0,0,0,.85), inset 0 0 50px rgba(150,100,50,.2);animation:unfold .8s cubic-bezier(.2,.9,.3,1.15)}
 .owl-card::before{content:"";position:absolute;inset:9px;border:1px solid rgba(160,110,70,.45);border-radius:2px;pointer-events:none}
 .owl-label{font-family:var(--font-display);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
@@ -524,9 +527,10 @@ window.SHEET_API = '';
       <div class="streak-meta"><span id="streakBest">Best: 1</span><span id="streakTotal">Visits: 1</span></div>
     </div>
     <p class="streak-note" id="streakNote">The GOAT Qasim can see your streak. Don't you dare break it.</p>
-    <div class="row">
-      <a class="cta" href="#top">Read your letter ↓</a>
-      <button class="cta ghost" id="replayJourney">Replay the whole journey</button>
+    <div class="replay-box">
+      <p>Want to relive the whole birthday celebration? The letter, the spells, the cake, the fireworks, all of it.</p>
+      <button class="cta" id="replayJourney">Replay the birthday celebration</button>
+      <span class="replay-skip">Or don't. The owl is enough for today.</span>
     </div>
   </section>
 
@@ -1971,6 +1975,7 @@ window.SHEET_API = '';
   const gbubble = guide.querySelector('#gbubble');
   let idleT = 0, guideEl = null, guideSparks = 0;
   function guideTarget(){
+    if (!document.getElementById('today').hidden) return null;
     if (document.body.classList.contains('gated') || celOn || unlocked >= LAST) return null;
     switch (unlocked){
       case 0: return [document.getElementById('seal'), sealTaps ? `Keep going. Tap the seal <b>${3 - sealTaps} more</b> time${3 - sealTaps > 1 ? 's' : ''}.` : 'Psst. Tap the <b>wax seal</b> three times to break it.'];
@@ -2164,15 +2169,21 @@ window.SHEET_API = '';
   }
   renderOwl();
   loadStreak();
-  document.getElementById('replayJourney').addEventListener('click', () => { location.hash = 'fresh'; location.reload(); });
   function enterHome(){
     todayEl.hidden = false;
-    unlocked = LAST; sealTaps = 3;
-    hero.classList.add('opened');
-    document.getElementById('tapHint').hidden = true;
-    document.getElementById('scrollCue').hidden = false;
-    applyLocks(); refreshPill(); hideGuide();
+    stageEls.forEach(e => e.hidden = true);
+    pill.hidden = true; hideGuide();
+    measure(); if (window.__fx) window.__fx();
   }
+  document.getElementById('replayJourney').addEventListener('click', () => {
+    window.__mode = 'journey';
+    todayEl.hidden = true;
+    unlocked = 0;
+    applyLocks(); refreshPill();
+    scrollTo(0, 0);
+    spawn(innerWidth/2, innerHeight/2, 50, 'spark');
+    poke();
+  });
 
   /* ================= Opening question ================= */
   const gate = document.getElementById('gate'), agree = document.getElementById('agree'), dis = document.getElementById('disagree'), gateSub = document.getElementById('gateSub');
