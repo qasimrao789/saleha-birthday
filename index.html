@@ -454,6 +454,58 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
 .hw-banner svg{width:22px;height:22px;flex:none}
 body.halloween{--accent-hw:#ff7a1a}
 
+/* ---------- Daily cards & games ---------- */
+.daily{width:100%;max-width:520px;display:flex;flex-direction:column;gap:18px}
+.dwait{margin:0;font-family:var(--font-fell);font-style:italic;color:var(--muted)}
+.dcard{background:rgba(22,11,32,.94);border:1px solid rgba(236,201,127,.38);border-radius:18px;padding:18px 18px 16px;text-align:left;display:flex;flex-direction:column;gap:8px;box-shadow:0 20px 40px -20px rgba(0,0,0,.8)}
+.dcard .dk{font-family:var(--font-display);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.dcard h3{margin:0;font-family:var(--font-fell);font-weight:400;font-size:1.6rem;line-height:1.15;color:var(--blush)}
+.dcard h3 em{font-family:var(--font-script);font-style:normal;color:var(--gold);font-size:1.3em}
+.dbody{display:flex;flex-direction:column;gap:10px}
+.dtext{margin:0;font-size:1.15rem;line-height:1.45;color:var(--text)}
+.dnote{margin:0;font-family:var(--font-fell);font-style:italic;color:var(--muted);font-size:1.02rem}
+.dnote.good{color:#9fe3b0}.dnote.bad{color:#ff9eb6}
+.dok{margin:0;font-family:var(--font-fell);font-style:italic;color:#9fe3b0}
+.dpts{font-family:var(--font-display);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.dpts b{color:var(--gold);font-family:var(--font-body);font-size:1.1rem;letter-spacing:0}
+.dcard .cta{align-self:flex-start}
+.house{display:flex;justify-content:space-between;gap:10px;border-top:1px solid rgba(236,201,127,.2);padding-top:8px;font-size:.98rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.house b{color:var(--gold);font-size:1.15rem;font-weight:400;margin-left:4px}
+.opts{display:grid;grid-template-columns:1fr;gap:8px}
+.opt{text-align:left;border:1px solid rgba(243,166,196,.45);background:rgba(40,18,48,.9);color:var(--text);border-radius:12px;padding:10px 14px;font-size:1.08rem;transition:background .2s, border-color .2s}
+.opt:hover:not(:disabled){background:rgba(70,30,80,.9)}
+.opt:disabled{cursor:default;opacity:.75}
+.opt.right{background:rgba(70,150,95,.35);border-color:#9fe3b0;opacity:1}
+.opt.wrong{background:rgba(180,50,80,.35);border-color:#ff9eb6;opacity:1}
+.lg-bar{display:flex;justify-content:space-between;font-variant-numeric:tabular-nums;color:var(--muted)}
+.lg-bar b{color:var(--gold);font-size:1.2rem;font-weight:400}
+.lg-wrap{position:relative;width:100%;height:320px;border-radius:14px;overflow:hidden;background:radial-gradient(120% 90% at 50% 0%,#3a2047,#170d22);border:1px solid rgba(236,201,127,.25);touch-action:none}
+.lg-wrap canvas{width:100%;height:100%;display:block}
+.lg-wrap canvas.shake{animation:shake .35s}
+.lg-over{position:absolute;inset:0;display:grid;place-items:center;background:rgba(14,6,20,.55);text-align:center;padding:16px}
+.lg-res{display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--text);font-family:var(--font-fell)}
+.lg-res b{font-size:3rem;font-weight:400;color:var(--gold);line-height:1}
+.lg-res .lg-goat{font-style:italic;color:var(--blush)}
+.lg-res .cta{align-self:center}
+.scratch{position:relative;width:100%;min-height:120px;border-radius:14px;overflow:hidden;background:linear-gradient(175deg,var(--parchment),var(--parchment-2));display:grid;place-items:center;touch-action:none}
+.prize{padding:22px 20px;text-align:center;font-family:var(--font-fell);font-size:1.2rem;line-height:1.35;color:var(--ink)}
+.prize.real{color:var(--wax);font-weight:600}
+.foil{position:absolute;inset:0;width:100%;height:100%;cursor:grab}
+.daily textarea{width:100%;min-height:84px;resize:vertical;border-radius:12px;border:1px solid rgba(243,166,196,.45);background:rgba(40,18,48,.9);color:var(--text);padding:10px 12px;font:inherit;font-size:1.05rem}
+.daily textarea:focus{outline:2px solid var(--gold);outline-offset:2px}
+.wgrid{display:grid;grid-template-columns:repeat(5,minmax(0,52px));gap:6px;justify-content:center}
+.wc{aspect-ratio:1;display:grid;place-items:center;border:2px solid rgba(236,201,127,.25);border-radius:8px;font-family:var(--font-fell);font-size:1.5rem;color:var(--text);text-transform:uppercase}
+.wc.typed{border-color:rgba(236,201,127,.7)}
+.wc.hit{background:#c9a24b;border-color:#c9a24b;color:#1a0f05}
+.wc.near{background:#c45a8a;border-color:#c45a8a;color:#fff}
+.wc.miss{background:#3a2d44;border-color:#3a2d44;color:#b9a9bf}
+.kb{display:flex;flex-direction:column;gap:6px;align-items:center;user-select:none}
+.kb.off{opacity:.5;pointer-events:none}
+.kr{display:flex;gap:4px;justify-content:center;width:100%}
+.kk{flex:1 1 0;min-width:0;max-width:40px;height:44px;border:none;border-radius:6px;background:rgba(80,55,95,.9);color:var(--text);font-size:.95rem;font-family:var(--font-body);font-weight:600;padding:0}
+.kk.wide{max-width:64px;flex:1.6 1 0;font-size:.8rem}
+.kk.hit{background:#c9a24b;color:#1a0f05}.kk.near{background:#c45a8a}.kk.miss{background:#2a2032;color:#7d6f86}
+
 @media (min-width:640px){
   .spells{grid-template-columns:repeat(5,minmax(0,1fr))}
   .spells .spell:last-child{grid-column:auto}
@@ -527,6 +579,7 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
       <div class="streak-meta"><span id="streakBest">Best: 1</span><span id="streakTotal">Visits: 1</span></div>
     </div>
     <p class="streak-note" id="streakNote">The GOAT Qasim can see your streak. Don't you dare break it.</p>
+    <div class="daily" id="daily"><p class="dwait">The owl is fetching today's game…</p></div>
     <div class="replay-box">
       <p>Want to relive the whole birthday celebration? The letter, the spells, the cake, the fireworks, all of it.</p>
       <button class="cta" id="replayJourney">Replay the birthday celebration</button>
@@ -1727,6 +1780,7 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
   let typed = '';
   addEventListener('keydown', e => {
     if (e.key.length !== 1) return;
+    if (!document.getElementById('today').hidden || e.target.tagName === 'TEXTAREA') return;
     typed = (typed + e.key.toLowerCase()).slice(-12);
     const cast = n => document.querySelector(`.spell[data-spell="${n}"]`).click();
     if (typed.endsWith('lumos')) cast('lumos');
@@ -2202,13 +2256,15 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
   function loadStreak(){
     const tester = window.__tester;
     if (!tester) renderStreak(localStreak(true), 'her');
-    if (!window.SHEET_API){ if (tester) renderStreak({streak:0, best:0, total:0, missed:0}, 'qasim'); return; }
+    if (!window.SHEET_API){ if (tester) renderStreak({streak:0, best:0, total:0, missed:0}, 'qasim'); setTimeout(() => renderDaily(null)); return; }
+    setTimeout(() => renderDaily(null), 6000);
     const url = `${window.SHEET_API}?action=${tester ? 'stats' : 'visit'}&day=${window.__today}&t=${Date.now()}`;
     fetch(url).then(r => r.json()).then(d => {
-      if (!d || !d.ok) return;
+      if (!d || !d.ok){ renderDaily(null); return; }
       renderStreak(d, tester ? 'qasim' : 'her');
       renderSpecial(d.messages);
-    }).catch(() => {});
+      renderDaily(d);
+    }).catch(() => renderDaily(null));
   }
   renderOwl();
   loadStreak();
@@ -2227,6 +2283,323 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
     spawn(innerWidth/2, innerHeight/2, 50, 'spark');
     poke();
   });
+
+  /* ================= Daily games, quest, scratch card, question ================= */
+  const DAILY = {"trivia": [{"q": "What is the name of Harry's owl?", "a": "Hedwig", "b": "Errol", "c": "Pigwidgeon", "d": "Hermes", "ans": "A", "roast": "Wrong. The owl that delivers your daily roast is embarrassed for you."}, {"q": "Who wrote the results section of Saleha's thesis?", "a": "Saleha", "b": "Her supervisor", "c": "ChatGPT", "d": "The GOAT Qasim", "ans": "D", "roast": "Wrong. Page 47 knows the truth. So do you."}, {"q": "Which house was Harry sorted into?", "a": "Slytherin", "b": "Gryffindor", "c": "Hufflepuff", "d": "Ravenclaw", "ans": "B", "roast": "Wrong. The Sorting Hat would put you in the kitchen. Then evacuate it."}, {"q": "What did Saleha score in the CSS screening test?", "a": "33%", "b": "45%", "c": "60%", "d": "99%", "ans": "A", "roast": "Wrong. You do not even remember your own lucky number."}, {"q": "What position does Harry play in Quidditch?", "a": "Keeper", "b": "Beater", "c": "Seeker", "d": "Chaser", "ans": "C", "roast": "Wrong. You would be the one sitting in the stands taking 47 photos."}, {"q": "Which spell disarms an opponent?", "a": "Lumos", "b": "Expelliarmus", "c": "Alohomora", "d": "Accio", "ans": "B", "roast": "Wrong. I just disarmed your confidence instead."}, {"q": "Which drink fixes Saleha's entire life?", "a": "Green tea", "b": "Home-made coffee", "c": "Cold Spanish latte", "d": "Plain water", "ans": "C", "roast": "Wrong. Home-made coffee has never fixed anything. It has only caused things."}, {"q": "Which platform does the Hogwarts Express leave from?", "a": "Platform 7", "b": "Platform 9¾", "c": "Platform 10½", "d": "Platform 3", "ans": "B", "roast": "Wrong. You would run straight into the wall. Again."}, {"q": "What is the name of Hermione's cat?", "a": "Crookshanks", "b": "Mrs Norris", "c": "Fluffy", "d": "Nagini", "ans": "A", "roast": "Wrong. Even the cat is smarter than this answer."}, {"q": "How many successful coffees has Saleha made at home?", "a": "12", "b": "3", "c": "1", "d": "0", "ans": "D", "roast": "Wrong. Be honest with yourself. It is zero. It has always been zero."}, {"q": "Who is revealed as the Half-Blood Prince?", "a": "Voldemort", "b": "Snape", "c": "Harry", "d": "Dumbledore", "ans": "B", "roast": "Wrong. Turn to page 394. Or just ask me, I know everything."}, {"q": "Which spell unlocks doors?", "a": "Alohomora", "b": "Wingardium Leviosa", "c": "Nox", "d": "Reparo", "ans": "A", "roast": "Wrong. You would still be locked outside."}, {"q": "What is the name of Real Madrid's home stadium?", "a": "Camp Nou", "b": "Old Trafford", "c": "Santiago Bernabéu", "d": "Anfield", "ans": "C", "roast": "Wrong. Hala Madrid, apparently, but not Hala Facts."}, {"q": "What is the name of Dumbledore's phoenix?", "a": "Buckbeak", "b": "Fawkes", "c": "Hedwig", "d": "Norbert", "ans": "B", "roast": "Wrong. Fawkes would burst into flames from the embarrassment. Like your cakes."}, {"q": "What is the name of the wizarding bank?", "a": "Gringotts", "b": "Honeydukes", "c": "Ollivanders", "d": "Borgin and Burkes", "ans": "A", "roast": "Wrong. Good thing you do not have wizard money to lose."}, {"q": "Who is Harry's godfather?", "a": "Remus Lupin", "b": "Sirius Black", "c": "Arthur Weasley", "d": "Hagrid", "ans": "B", "roast": "Wrong. Even the godfather would disown this answer."}, {"q": "Where does Saleha get her cold Spanish latte?", "a": "Starbucks", "b": "Her own kitchen", "c": "Eggspectation", "d": "A vending machine", "ans": "C", "roast": "Wrong. Your own kitchen? Please. Be serious."}, {"q": "What is the name of Hagrid's three-headed dog?", "a": "Fang", "b": "Fluffy", "c": "Norbert", "d": "Padfoot", "ans": "B", "roast": "Wrong. Fluffy is offended. All three heads."}, {"q": "What is the famous drink at the Three Broomsticks?", "a": "Pumpkin juice", "b": "Butterbeer", "c": "Firewhisky", "d": "Gillywater", "ans": "B", "roast": "Wrong. You only know one drink and it is a cold Spanish latte."}, {"q": "What colour is Real Madrid's home kit?", "a": "Red", "b": "Blue", "c": "White", "d": "Green", "ans": "C", "roast": "Wrong. You do not watch football, and now we all know you do not watch the kit either."}, {"q": "Which house is Luna Lovegood in?", "a": "Ravenclaw", "b": "Gryffindor", "c": "Slytherin", "d": "Hufflepuff", "ans": "A", "roast": "Wrong. Ravenclaw is for smart people. That explains it."}, {"q": "What does a Boggart turn into?", "a": "A dragon", "b": "Your worst fear", "c": "A cat", "d": "A teacher", "ans": "B", "roast": "Wrong. Your Boggart is a kitchen with a working oven."}, {"q": "Who is officially the GOAT?", "a": "Saleha", "b": "Real Madrid", "c": "The GOAT Qasim", "d": "Dumbledore", "ans": "C", "roast": "Wrong. You agree to this every single day. Consistency, please."}, {"q": "What position does Ron play in Quidditch?", "a": "Seeker", "b": "Keeper", "c": "Beater", "d": "Chaser", "ans": "B", "roast": "Wrong. Ron would have known that. Ron."}, {"q": "What is Voldemort's real name?", "a": "Tom Riddle", "b": "Gellert Grindelwald", "c": "Draco Malfoy", "d": "Peter Pettigrew", "ans": "A", "roast": "Wrong. You must not be named either, after this answer."}, {"q": "Which house-elf loves socks?", "a": "Kreacher", "b": "Winky", "c": "Dobby", "d": "Hokey", "ans": "C", "roast": "Wrong. Dobby is free. You are not, you still have to study."}, {"q": "What does Felix Felicis do?", "a": "Makes you invisible", "b": "Gives you luck", "c": "Changes your appearance", "d": "Makes you sleep", "ans": "B", "roast": "Wrong. You need a bottle before every exam. Clearly."}, {"q": "What form does Harry's Patronus take?", "a": "An otter", "b": "A stag", "c": "A phoenix", "d": "A dog", "ans": "B", "roast": "Wrong. Your patronus is a cold Spanish latte and we both know it."}, {"q": "What does 'Lumos' do?", "a": "Lights the wand", "b": "Opens locks", "c": "Makes things float", "d": "Summons objects", "ans": "A", "roast": "Wrong. Lumos. Please. You need the light."}, {"q": "What is the name of the Weasleys' home?", "a": "Grimmauld Place", "b": "Shell Cottage", "c": "The Burrow", "d": "Godric's Hollow", "ans": "C", "roast": "Wrong. Even the garden gnomes knew that."}, {"q": "What ball does a Seeker have to catch?", "a": "The Quaffle", "b": "The Bludger", "c": "The Golden Snitch", "d": "The Gobstone", "ans": "C", "roast": "Wrong. Some seeker you would be."}], "words": [{"word": "LATTE", "hint": "Your only reliable relationship. Served cold."}, {"word": "WANDS", "hint": "Things wizards wave. You would wave it at the oven and still burn the cake."}, {"word": "SPELL", "hint": "What a witch casts. Also what you need to check in your essays."}, {"word": "CAKES", "hint": "Things you bake. Things nobody eats."}, {"word": "BURNT", "hint": "How every one of your bakes ends up."}, {"word": "REELS", "hint": "You send me 50 of these a day."}, {"word": "PHOTO", "hint": "You need 47 attempts to take one."}, {"word": "EXAMS", "hint": "The CSS has these. You should prepare for them."}, {"word": "MAGIC", "hint": "What it takes to make you a good coffee."}, {"word": "BROOM", "hint": "A wizard's ride. Also what you need after baking."}, {"word": "CREAM", "hint": "Goes in a latte. Not in your home-made disaster."}, {"word": "SUGAR", "hint": "Sweet. Unlike my daily messages."}, {"word": "MOCHA", "hint": "A coffee you also cannot make at home."}, {"word": "ROAST", "hint": "What I do to you every day. Also, coffee beans."}, {"word": "GOATS", "hint": "The plural would be redundant. There is only one."}, {"word": "ESSAY", "hint": "CSS has a lot of these. Start writing."}, {"word": "MARKS", "hint": "33% of these were enough. Barely."}, {"word": "OVENS", "hint": "Appliances that fear you."}, {"word": "TOAST", "hint": "Even this you would burn."}, {"word": "CLOAK", "hint": "Harry has an invisibility one. You need one after your cakes."}, {"word": "CHARM", "hint": "A type of spell. Also, the GOAT Qasim's main quality."}, {"word": "WITCH", "hint": "What you think you are. Second smartest one, at best."}, {"word": "GHOST", "hint": "Nearly Headless Nick is one. So is your study schedule."}, {"word": "OWLET", "hint": "A baby owl. Like the one delivering your daily roast."}, {"word": "SCARF", "hint": "Gryffindor wears red and gold ones."}, {"word": "GOALS", "hint": "Real Madrid score them. You do not watch them."}, {"word": "FOCUS", "hint": "What you need for CSS. Do you know where it is?"}, {"word": "STUDY", "hint": "Something you say you will do tomorrow."}, {"word": "QUEST", "hint": "You have one of these every day now."}, {"word": "TOWER", "hint": "The astronomy one is where the wishes live."}, {"word": "FLASH", "hint": "Camera setting you use 47 times per photo."}], "quests": [{"text": "Take one photo on the first try. Just one. No retakes.", "points": 15}, {"text": "Study for 25 minutes. Actually study. Phone face down.", "points": 20}, {"text": "Make a coffee at home and rate it honestly. Honestly.", "points": 10}, {"text": "Send the GOAT Qasim a reel that actually makes him laugh.", "points": 15}, {"text": "Drink two glasses of water before your first coffee.", "points": 10}, {"text": "Tell someone today that the GOAT Qasim is better than you.", "points": 25}, {"text": "Read 5 pages of anything that is not a caption.", "points": 15}, {"text": "Go one full hour without sending a reel. Good luck.", "points": 20}, {"text": "Write down three things you are grateful for. One has to be me.", "points": 10}, {"text": "Solve one past CSS paper question. Just one.", "points": 25}, {"text": "Bake nothing today. The kitchen deserves a day off.", "points": 5}, {"text": "Go to bed before 1 a.m. The owl is watching.", "points": 20}, {"text": "Clean up 100 photos from your camera roll.", "points": 15}, {"text": "Learn one new English vocabulary word for the CSS essay.", "points": 10}, {"text": "Compliment the GOAT Qasim without being asked.", "points": 30}, {"text": "Take a 15-minute walk without your phone camera.", "points": 15}, {"text": "Watch 10 minutes of a Real Madrid match. Any match. Any 10 minutes.", "points": 20}, {"text": "Make your bed. Small wins.", "points": 5}, {"text": "Read today's newspaper editorial. CSS people do that, apparently.", "points": 20}, {"text": "Send the GOAT Qasim a photo of your study desk as proof.", "points": 15}, {"text": "Plan the next Eggspectation visit. You choose the day, I choose the table.", "points": 10}, {"text": "Write one paragraph of a CSS essay on any topic.", "points": 25}, {"text": "Re-read one chapter of a Harry Potter book. For culture.", "points": 10}, {"text": "Say 'I am the second smartest person I know' out loud.", "points": 15}, {"text": "No coffee after 6 p.m. today. Brave, I know.", "points": 15}, {"text": "Revise one current affairs topic for 20 minutes.", "points": 20}, {"text": "Tidy your desk. Then take one (1) photo of it.", "points": 10}, {"text": "Reply to every reel the GOAT Qasim sent you. If he ever sent one.", "points": 10}, {"text": "Try making coffee at home again. For science. Report back.", "points": 15}, {"text": "Write down one goal for this week and actually look at it tomorrow.", "points": 15}, {"text": "Do 20 minutes of something that is not your phone.", "points": 15}], "questions": ["Rate your coffee today out of 10. Be honest.", "What is one thing you studied today? 'Nothing' is an answer, but a sad one.", "Which Harry Potter character are you today, and why?", "What was the best reel you saw today? Describe it in one line.", "What is the most dramatic thing that happened to you today?", "If you could have one spell for real, which one would it be?", "What would you order at Eggspectation right now?", "On a scale of 1 to 33%, how prepared are you for CSS?", "What is one thing the GOAT Qasim is better at than you? (Pick only one, we do not have all day.)", "What did you bake most recently, and did anyone survive?", "What is the last photo in your camera roll? Describe it honestly.", "What is one thing that made you laugh today?", "If today were a Hogwarts lesson, which subject would it be?", "What is one small win from today?", "What are you overthinking right now?", "If you were a Real Madrid player, what would your position be? Guess if you have to.", "What song is stuck in your head today?", "What is one thing you are looking forward to this week?", "Describe your mood today using only a drink.", "What would the CSS examiner write about you if they knew you?", "What is the worst coffee you have ever made? Paint the picture.", "What is one thing you want to get done before the weekend?", "Which of your friends would survive a week at Hogwarts? (Answer: the GOAT Qasim.)", "What is your excuse for not studying today? Make it creative.", "What did you have for breakfast? Did you make it, or was it safe?", "What is one habit you want to start this month?", "If you could ask the GOAT Qasim one question, what would it be?", "What is the most useless thing you know a lot about?", "What photo would you post today if you had to post one?", "What would you name your own café?", "What made today better than yesterday?"], "prizes": [{"text": "You won: nothing. Like your CSS margin.", "chance": 10, "real": "no"}, {"text": "You won: one compliment from the GOAT Qasim. It has been cancelled.", "chance": 8, "real": "no"}, {"text": "You won: a free lesson on how to make coffee. Taught by literally anyone else.", "chance": 8, "real": "no"}, {"text": "You won: the right to send one extra reel today. As if you needed permission.", "chance": 8, "real": "no"}, {"text": "You won: a virtual cold Spanish latte. Tastes like disappointment.", "chance": 8, "real": "no"}, {"text": "You won: 5 bonus house points. Still behind the GOAT Qasim.", "chance": 8, "real": "no"}, {"text": "You won: an official certificate of trying. Framed in your imagination.", "chance": 7, "real": "no"}, {"text": "You won: a day off from studying. Just kidding. Go study.", "chance": 7, "real": "no"}, {"text": "You won: absolutely nothing. The owl spent your prize money on snacks.", "chance": 7, "real": "no"}, {"text": "You won: a recipe that will still go wrong in your kitchen.", "chance": 7, "real": "no"}, {"text": "REAL PRIZE: one cold Spanish latte at Eggspectation, on the GOAT Qasim. Screenshot this to claim.", "chance": 2, "real": "yes"}, {"text": "REAL PRIZE: the GOAT Qasim has to reply to 10 of your reels today. Screenshot this to claim.", "chance": 3, "real": "yes"}, {"text": "REAL PRIZE: you win one argument of your choice against the GOAT Qasim. Screenshot this to claim.", "chance": 2, "real": "yes"}], "settings": {"goat_points_lead": 10, "goat_latte_lead": 1, "latte_seconds": 20}, "games": ["latte", "trivia", "word"]};
+  const dailyBox = document.getElementById('daily');
+  const esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const DKEY = 'saleha-daily-' + window.__today;
+  let dState = {};
+  try { dState = JSON.parse(localStorage.getItem(DKEY) || '{}') || {}; } catch(e){ dState = {}; }
+  function saveState(){ if (window.__tester) return; try { localStorage.setItem(DKEY, JSON.stringify(dState)); } catch(e){} }
+  function logAct(type, detail, score){
+    if (window.__tester || !window.SHEET_API) return;
+    const u = `${window.SHEET_API}?action=log&day=${window.__today}&type=${encodeURIComponent(type)}&detail=${encodeURIComponent(String(detail || '').slice(0, 900))}&score=${score == null ? '' : score}&t=${Date.now()}`;
+    fetch(u).catch(() => {});
+  }
+  function seeded(str){ let h = 1779033703 ^ str.length; for (let i=0;i<str.length;i++){ h = Math.imul(h ^ str.charCodeAt(i), 3432918353); h = h << 13 | h >>> 19; } return () => { h = Math.imul(h ^ h >>> 16, 2246822507); h = Math.imul(h ^ h >>> 13, 3266489909); return ((h ^= h >>> 16) >>> 0) / 4294967296; }; }
+  function card(id, kicker, title){
+    const c = document.createElement('section'); c.className = 'dcard'; c.id = id;
+    c.innerHTML = `<div class="dk">${kicker}</div><h3>${title}</h3><div class="dbody"></div>`;
+    dailyBox.appendChild(c); return c.querySelector('.dbody');
+  }
+  function num(v, d){ const x = parseFloat(v); return isNaN(x) ? d : x; }
+
+  function renderDaily(sheet){
+    if (dailyBox.dataset.done) return; dailyBox.dataset.done = '1';
+    dailyBox.innerHTML = '';
+    const n = Math.max(0, dayNo(window.__today));
+    const S = sheet || {};
+    const pickN = arr => arr[n % arr.length];
+    const set = Object.assign({}, DAILY.settings, S.settings || {});
+    const stats = Object.assign({points:0, triviaRight:0, triviaTotal:0, latteBest:0}, S.stats || {});
+    const serverDone = new Set(S.done || []);
+    const isDone = t => !!dState[t] || serverDone.has(t);
+    const game = (S.game && ['latte','trivia','word'].includes(String(S.game).toLowerCase())) ? String(S.game).toLowerCase() : DAILY.games[n % DAILY.games.length];
+    const trivia = (S.trivia && S.trivia.q) ? S.trivia : pickN(DAILY.trivia);
+    const word = (S.word && S.word.word && /^[a-z]{5}$/i.test(String(S.word.word).trim())) ? {word:String(S.word.word).trim().toUpperCase(), hint:S.word.hint || ''} : pickN(DAILY.words);
+    const quest = (S.quest && S.quest.text) ? {text:S.quest.text, points:num(S.quest.points, 10)} : pickN(DAILY.quests);
+    const question = S.question || pickN(DAILY.questions);
+    const prizes = (S.prizes && S.prizes.length) ? S.prizes : DAILY.prizes;
+
+    /* ---------- Game of the day ---------- */
+    if (game === 'latte') latteGame(card('gameCard', "Today's game", 'Catch the <em>latte</em>'), set, stats);
+    else if (game === 'trivia') triviaGame(card('gameCard', "Today's game", 'The daily <em>question</em>'), trivia, stats, isDone('trivia'));
+    else wordGame(card('gameCard', "Today's game", 'Word of the <em>day</em>'), word, isDone('word'));
+
+    /* ---------- Quest ---------- */
+    {
+      const body = card('questCard', 'Daily quest', 'Your <em>mission</em> today');
+      const lead = num(set.goat_points_lead, 10);
+      const pts = num(quest.points, 10);
+      const draw = () => {
+        const mine = stats.points + (dState.quest && !serverDone.has('quest') ? pts : 0);
+        const done = isDone('quest');
+        body.innerHTML = `<p class="dtext">${esc(quest.text)}</p>
+          <div class="dpts">Worth <b>${pts}</b> house points</div>
+          ${done ? '<p class="dok">Logged. The GOAT Qasim will verify it. He will not, but you will feel watched.</p>' : '<button class="cta" id="questDone">I did it</button>'}
+          <div class="house"><span>Saleha <b>${mine}</b></span><span>the GOAT Qasim <b>${mine + lead}</b></span></div>`;
+        const b = body.querySelector('#questDone');
+        if (b) b.addEventListener('click', () => {
+          dState.quest = {at: Date.now()}; saveState(); logAct('quest', quest.text, pts);
+          const r = b.getBoundingClientRect(); spawn(r.left + r.width/2, r.top, 30, 'spark'); confetti(60); draw();
+        });
+      };
+      draw();
+    }
+
+    /* ---------- Scratch card ---------- */
+    {
+      const body = card('scratchCard', 'Scratch card', 'Scratch to reveal today’s <em>prize</em>');
+      const rnd = seeded('prize-' + window.__today);
+      const total = prizes.reduce((a, p) => a + Math.max(0, num(p.chance, 1)), 0);
+      let roll = rnd() * total, prize = prizes[0];
+      for (const p of prizes){ roll -= Math.max(0, num(p.chance, 1)); if (roll <= 0){ prize = p; break; } }
+      const real = /^y/i.test(String(prize.real || ''));
+      body.innerHTML = `<div class="scratch"><div class="prize ${real ? 'real' : ''}">${esc(prize.text)}</div><canvas class="foil"></canvas></div>
+        <p class="dnote" id="scratchNote">Use your finger. Scratch the whole thing.</p>`;
+      const box = body.querySelector('.scratch'), foil = body.querySelector('.foil'), note = body.querySelector('#scratchNote');
+      if (isDone('scratch')){ foil.remove(); note.textContent = real ? 'Screenshot this and send it to the GOAT Qasim to claim it.' : 'Come back tomorrow for another card.'; }
+      else {
+        const fx = foil.getContext('2d');
+        const sizeFoil = () => {
+          const r = box.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
+          foil.width = r.width*d; foil.height = r.height*d; fx.setTransform(d,0,0,d,0,0);
+          const g = fx.createLinearGradient(0,0,r.width,r.height);
+          g.addColorStop(0,'#cfc6d6'); g.addColorStop(.5,'#f4eef7'); g.addColorStop(1,'#b8adc2');
+          fx.fillStyle = g; fx.fillRect(0,0,r.width,r.height);
+          fx.fillStyle = 'rgba(80,60,90,.18)'; for (let i=0;i<220;i++) fx.fillRect(Math.random()*r.width, Math.random()*r.height, 2, 2);
+          fx.fillStyle = '#5a4466'; fx.font = 'italic 20px "IM Fell English", Georgia, serif'; fx.textAlign = 'center'; fx.textBaseline = 'middle';
+          fx.fillText('Scratch here', r.width/2, r.height/2);
+        };
+        let down = false, moves = 0, revealed = false;
+        if ('ResizeObserver' in window) new ResizeObserver(() => { if (!moves && !revealed && box.getBoundingClientRect().width > 0) sizeFoil(); }).observe(box);
+        else requestAnimationFrame(sizeFoil);
+        const scratchAt = e => {
+          const r = foil.getBoundingClientRect();
+          fx.globalCompositeOperation = 'destination-out';
+          fx.beginPath(); fx.arc(e.clientX - r.left, e.clientY - r.top, 22, 0, Math.PI*2); fx.fill();
+          if (++moves % 8 === 0) check();
+        };
+        const check = () => {
+          if (revealed || !foil.width) return;
+          const d = fx.getImageData(0, 0, foil.width, foil.height).data; let clear = 0, tot = 0;
+          for (let i=3;i<d.length;i+=4*32){ tot++; if (d[i] < 40) clear++; }
+          if (clear/tot > .5){
+            revealed = true; foil.style.transition = 'opacity .6s'; foil.style.opacity = 0; setTimeout(() => foil.remove(), 650);
+            dState.scratch = {prize: prize.text}; saveState(); logAct('scratch', prize.text, real ? 1 : 0);
+            const r = box.getBoundingClientRect(); spawn(r.left + r.width/2, r.top + r.height/2, 40, 'spark');
+            if (real){ confetti(160); note.textContent = 'A REAL PRIZE! Screenshot this and send it to the GOAT Qasim to claim it.'; }
+            else note.textContent = 'Better luck tomorrow. The owl is laughing.';
+          }
+        };
+        foil.addEventListener('pointerdown', e => { down = true; foil.setPointerCapture(e.pointerId); scratchAt(e); });
+        foil.addEventListener('pointermove', e => { if (down) scratchAt(e); });
+        foil.addEventListener('pointerup', () => { down = false; check(); });
+      }
+    }
+
+    /* ---------- Question of the day ---------- */
+    {
+      const body = card('qCard', 'Question of the day', 'The GOAT Qasim <em>asks</em>');
+      const draw = () => {
+        if (isDone('answer')){
+          const mine = dState.answer && dState.answer.text;
+          body.innerHTML = `<p class="dtext">${esc(question)}</p><p class="dok">${mine ? 'Your answer: “' + esc(mine) + '”. Sent to the GOAT Qasim.' : 'Answered. The GOAT Qasim has it.'}</p>`;
+          return;
+        }
+        body.innerHTML = `<p class="dtext">${esc(question)}</p>
+          <textarea id="qAnswer" rows="3" maxlength="600" placeholder="Type your answer…"></textarea>
+          <button class="cta" id="qSend">Send to the GOAT Qasim</button>`;
+        body.querySelector('#qSend').addEventListener('click', () => {
+          const t = body.querySelector('#qAnswer').value.trim();
+          if (!t){ body.querySelector('#qAnswer').focus(); body.querySelector('#qAnswer').placeholder = 'You have to actually type something. Even one word.'; return; }
+          dState.answer = {text: t}; saveState(); logAct('answer', `${question} → ${t}`, '');
+          spawn(innerWidth/2, innerHeight*.6, 30, 'spark'); draw();
+        });
+      };
+      draw();
+    }
+    measure();
+  }
+
+  /* ---------- Game: Catch the latte ---------- */
+  function latteGame(body, set, stats){
+    const secs = Math.max(5, num(set.latte_seconds, 20)), lead = num(set.goat_latte_lead, 1);
+    let best = Math.max(stats.latteBest || 0, (dState.latte && dState.latte.best) || 0);
+    body.innerHTML = `<p class="dtext">Tap the cold Spanish lattes. Avoid the burnt home-made coffee. Golden lattes are worth 5.</p>
+      <div class="lg-bar"><span>Score <b id="lgScore">0</b></span><span>Time <b id="lgTime">${secs}</b>s</span></div>
+      <div class="lg-wrap"><canvas id="lg"></canvas><div class="lg-over" id="lgOver"><button class="cta" id="lgStart">Start</button></div></div>
+      <div class="house"><span>Your best <b id="lgBest">${best}</b></span><span>the GOAT Qasim <b id="lgGoat">${best + lead}</b></span></div>`;
+    const cv = body.querySelector('#lg'), ctx = cv.getContext('2d'), over = body.querySelector('#lgOver');
+    let W = 0, H = 0, items = [], pops = [], score = 0, left = secs, running = false, last = 0, spawnT = 0, raf = 0;
+    const size = () => { const r = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2); W = r.width; H = r.height; cv.width = W*d; cv.height = H*d; ctx.setTransform(d,0,0,d,0,0); };
+    function drawGlass(x, y, s, gold){
+      ctx.save(); ctx.translate(x, y);
+      if (gold){ const g = ctx.createRadialGradient(0,0,0,0,0,s*1.6); g.addColorStop(0,'rgba(255,220,120,.6)'); g.addColorStop(1,'rgba(255,220,120,0)'); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0,0,s*1.6,0,7); ctx.fill(); }
+      ctx.fillStyle = gold ? '#ffd36e' : '#fff8ef'; ctx.fillRect(-s*.45, -s*.7, s*.9, s*1.4);
+      ctx.fillStyle = gold ? '#e0a92b' : '#8a5634'; ctx.fillRect(-s*.45, -s*.7, s*.9, s*.6);
+      ctx.strokeStyle = 'rgba(255,255,255,.8)'; ctx.lineWidth = 2; ctx.strokeRect(-s*.45, -s*.7, s*.9, s*1.4);
+      ctx.fillStyle = '#f3a6c4'; ctx.fillRect(s*.12, -s*1.05, s*.12, s*.6);
+      ctx.restore();
+    }
+    function drawMug(x, y, s){
+      ctx.save(); ctx.translate(x, y);
+      ctx.fillStyle = '#2b1b14'; ctx.fillRect(-s*.5, -s*.5, s, s);
+      ctx.strokeStyle = '#2b1b14'; ctx.lineWidth = s*.14; ctx.beginPath(); ctx.arc(s*.55, 0, s*.25, -1.3, 1.3); ctx.stroke();
+      ctx.fillStyle = '#121212'; ctx.fillRect(-s*.42, -s*.5, s*.84, s*.14);
+      ctx.strokeStyle = 'rgba(160,160,160,.7)'; ctx.lineWidth = 2;
+      for (let k=-1;k<=1;k++){ ctx.beginPath(); ctx.moveTo(k*s*.25, -s*.6); ctx.quadraticCurveTo(k*s*.25 + 6, -s*.85, k*s*.25, -s*1.05); ctx.stroke(); }
+      ctx.restore();
+    }
+    function frame(ts){
+      const dt = Math.min(50, ts - (last || ts)); last = ts;
+      ctx.clearRect(0, 0, W, H);
+      if (running){
+        left -= dt/1000; spawnT -= dt;
+        if (spawnT <= 0){
+          const r = Math.random(), kind = r < .08 ? 'gold' : r < .38 ? 'burnt' : 'latte';
+          const s = Math.max(26, W/11);
+          items.push({x: s + Math.random()*(W - 2*s), y: -s, vy: (H/2.6) * (1 + (secs - left)/secs*.9) * (kind === 'gold' ? 1.3 : 1), kind, s});
+          spawnT = Math.max(260, 620 - (secs - left)*18);
+        }
+        if (left <= 0){ end(); }
+        body.querySelector('#lgTime').textContent = Math.max(0, Math.ceil(left));
+      }
+      for (let i=items.length-1;i>=0;i--){
+        const it = items[i]; it.y += it.vy*dt/1000;
+        if (it.y - it.s > H){ items.splice(i,1); continue; }
+        if (it.kind === 'burnt') drawMug(it.x, it.y, it.s); else drawGlass(it.x, it.y, it.s, it.kind === 'gold');
+      }
+      for (let i=pops.length-1;i>=0;i--){
+        const p = pops[i]; p.t -= dt; p.y -= dt*.05;
+        if (p.t <= 0){ pops.splice(i,1); continue; }
+        ctx.globalAlpha = Math.min(1, p.t/300); ctx.fillStyle = p.c; ctx.font = 'bold 20px "IM Fell English", Georgia, serif'; ctx.textAlign = 'center'; ctx.fillText(p.txt, p.x, p.y); ctx.globalAlpha = 1;
+      }
+      if (running || items.length || pops.length) raf = requestAnimationFrame(frame); else raf = 0;
+    }
+    function hit(e){
+      if (!running) return;
+      const r = cv.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+      for (let i=items.length-1;i>=0;i--){
+        const it = items[i];
+        if (Math.abs(x - it.x) < it.s*.8 && Math.abs(y - it.y) < it.s*.95){
+          items.splice(i,1);
+          const v = it.kind === 'gold' ? 5 : it.kind === 'burnt' ? -3 : 1;
+          score = Math.max(0, score + v);
+          pops.push({x: it.x, y: it.y, t: 600, txt: v > 0 ? '+' + v : String(v), c: v > 0 ? '#ffd36e' : '#ff6f6f'});
+          if (v < 0){ cv.classList.remove('shake'); void cv.offsetWidth; cv.classList.add('shake'); }
+          body.querySelector('#lgScore').textContent = score;
+          return;
+        }
+      }
+    }
+    function start(){
+      size(); items = []; pops = []; score = 0; left = secs; running = true; last = 0; spawnT = 0;
+      body.querySelector('#lgScore').textContent = 0; over.hidden = true;
+      if (!raf) raf = requestAnimationFrame(frame);
+    }
+    function end(){
+      running = false; items = [];
+      best = Math.max(best, score);
+      dState.latte = {best}; saveState(); logAct('latte', `score ${score}`, score);
+      body.querySelector('#lgBest').textContent = best; body.querySelector('#lgGoat').textContent = best + lead;
+      const lines = score === 0 ? 'Zero. You managed to burn a game about coffee.' : score < 10 ? 'Not bad for someone who cannot make coffee.' : score < 25 ? 'Respectable. Still not GOAT level.' : 'Impressive. Suspiciously impressive.';
+      over.innerHTML = `<div class="lg-res"><b>${score}</b><span>${lines}</span><span class="lg-goat">the GOAT Qasim's high score: ${best + lead}. Unlucky.</span><button class="cta" id="lgStart">Play again</button></div>`;
+      over.hidden = false; over.querySelector('#lgStart').addEventListener('click', start);
+      if (score > 0) confetti(40);
+    }
+    cv.addEventListener('pointerdown', hit);
+    body.querySelector('#lgStart').addEventListener('click', start);
+    requestAnimationFrame(size);
+  }
+
+  /* ---------- Game: daily Harry Potter question ---------- */
+  function triviaGame(body, t, stats, done){
+    const opts = ['a','b','c','d'].map(k => ({k, text: t[k]})).filter(o => o.text != null && String(o.text).trim() !== '');
+    const ans = String(t.ans || '').trim().toLowerCase().slice(0,1);
+    const tally = (right, total) => `<div class="house"><span>Right so far <b>${right}</b></span><span>Answered <b>${total}</b></span></div>`;
+    const prev = dState.trivia;
+    body.innerHTML = `<p class="dtext">${esc(t.q)}</p><div class="opts">${opts.map(o => `<button class="opt" data-k="${o.k}">${esc(o.text)}</button>`).join('')}</div><p class="dnote" id="tvNote"></p>${tally(stats.triviaRight, stats.triviaTotal)}`;
+    const note = body.querySelector('#tvNote');
+    const reveal = (k, fresh) => {
+      body.querySelectorAll('.opt').forEach(b => { b.disabled = true; if (b.dataset.k === ans) b.classList.add('right'); else if (b.dataset.k === k) b.classList.add('wrong'); });
+      const ok = k === ans;
+      note.textContent = ok ? 'Correct. Even a broken wand is right twice a day.' : (t.roast || 'Wrong. The owl is disappointed.');
+      note.className = 'dnote ' + (ok ? 'good' : 'bad');
+      if (fresh){
+        const r = stats.triviaRight + (ok ? 1 : 0), tot = stats.triviaTotal + 1;
+        body.querySelector('.house').outerHTML = tally(r, tot);
+        if (ok) confetti(70);
+      }
+    };
+    if (done){
+      if (prev && prev.k) reveal(prev.k, false);
+      else { body.querySelectorAll('.opt').forEach(b => b.disabled = true); note.textContent = 'You already answered today. Come back tomorrow.'; }
+      return;
+    }
+    body.querySelectorAll('.opt').forEach(b => b.addEventListener('click', () => {
+      const k = b.dataset.k, ok = k === ans;
+      dState.trivia = {k}; saveState(); logAct('trivia', `${t.q} → ${b.textContent}`, ok ? 1 : 0);
+      reveal(k, true);
+    }));
+  }
+
+  /* ---------- Game: word of the day ---------- */
+  function wordGame(body, w, done){
+    const target = w.word.toUpperCase();
+    const st = dState.word || {guesses: [], over: false};
+    body.innerHTML = `<p class="dtext">Guess the 5-letter word in 6 tries. Gold means right letter, right spot. Pink means right letter, wrong spot.</p>
+      <p class="dnote">Hint: ${esc(w.hint)}</p>
+      <div class="wgrid" id="wgrid"></div><p class="dnote" id="wNote"></p>
+      <div class="kb" id="kb"></div>`;
+    const grid = body.querySelector('#wgrid'), kb = body.querySelector('#kb'), note = body.querySelector('#wNote');
+    for (let i=0;i<30;i++){ const c = document.createElement('div'); c.className = 'wc'; grid.appendChild(c); }
+    const rows = ['QWERTYUIOP','ASDFGHJKL','+ZXCVBNM-'];
+    kb.innerHTML = rows.map(r => `<div class="kr">${[...r].map(ch => ch === '+' ? '<button class="kk wide" data-k="ENTER">Enter</button>' : ch === '-' ? '<button class="kk wide" data-k="BACK" aria-label="Delete">⌫</button>' : `<button class="kk" data-k="${ch}">${ch}</button>`).join('')}</div>`).join('');
+    let cur = '';
+    const score = g => { const res = Array(5).fill('miss'), pool = {}; for (let i=0;i<5;i++){ if (g[i] === target[i]) res[i] = 'hit'; else pool[target[i]] = (pool[target[i]] || 0) + 1; } for (let i=0;i<5;i++){ if (res[i] !== 'hit' && pool[g[i]]){ res[i] = 'near'; pool[g[i]]--; } } return res; };
+    const paint = () => {
+      const cells = grid.children;
+      for (let r=0;r<6;r++){
+        const g = st.guesses[r], sc = g ? score(g) : null;
+        for (let c=0;c<5;c++){
+          const el = cells[r*5 + c];
+          el.textContent = g ? g[c] : (r === st.guesses.length ? (cur[c] || '') : '');
+          el.className = 'wc' + (sc ? ' ' + sc[c] : (r === st.guesses.length && cur[c] ? ' typed' : ''));
+        }
+      }
+      const kstate = {};
+      st.guesses.forEach(g => score(g).forEach((s, i) => { const ch = g[i], o = kstate[ch]; if (s === 'hit' || (s === 'near' && o !== 'hit') || (!o)) kstate[ch] = s; }));
+      kb.querySelectorAll('.kk').forEach(b => { const s = kstate[b.dataset.k]; b.className = 'kk' + (b.classList.contains('wide') ? ' wide' : '') + (s ? ' ' + s : ''); });
+    };
+    const finish = (won, fresh) => {
+      st.over = true; kb.classList.add('off');
+      note.textContent = won ? `Solved in ${st.guesses.length}. ${st.guesses.length <= 2 ? 'Suspicious. Did someone help you? It was me, wasn’t it.' : st.guesses.length <= 4 ? 'Respectable. The GOAT Qasim would have done it in one.' : 'Phew. Just like your exams. Barely.'}` : `Out of tries. The word was ${target}. The owl is shaking its head.`;
+      note.className = 'dnote ' + (won ? 'good' : 'bad');
+      if (fresh){ dState.word = st; saveState(); logAct('word', won ? `solved ${target} in ${st.guesses.length}` : `failed ${target}`, won ? st.guesses.length : 0); if (won) confetti(90); }
+    };
+    const press = k => {
+      if (st.over) return;
+      if (k === 'BACK'){ cur = cur.slice(0, -1); paint(); return; }
+      if (k === 'ENTER'){
+        if (cur.length < 5){ note.textContent = 'Five letters. Count them. Use your fingers if you have to.'; note.className = 'dnote bad'; return; }
+        st.guesses.push(cur); cur = ''; note.textContent = ''; dState.word = st; saveState(); paint();
+        if (st.guesses[st.guesses.length - 1] === target) finish(true, true);
+        else if (st.guesses.length >= 6) finish(false, true);
+        return;
+      }
+      if (/^[A-Z]$/.test(k) && cur.length < 5){ cur += k; paint(); }
+    };
+    kb.addEventListener('click', e => { const b = e.target.closest('.kk'); if (b) press(b.dataset.k); });
+    addEventListener('keydown', e => {
+      if (!document.getElementById('gameCard') || e.target.tagName === 'TEXTAREA' || todayEl.hidden) return;
+      const k = e.key === 'Enter' ? 'ENTER' : e.key === 'Backspace' ? 'BACK' : e.key.length === 1 ? e.key.toUpperCase() : '';
+      if (k) press(k);
+    });
+    paint();
+    if (st.over || done){ const won = st.guesses.includes(target); if (st.guesses.length) finish(won, false); else { st.over = true; kb.classList.add('off'); note.textContent = 'You already played today. Come back tomorrow.'; } }
+  }
 
   /* ================= Opening question ================= */
   const gate = document.getElementById('gate'), agree = document.getElementById('agree'), dis = document.getElementById('disagree'), gateSub = document.getElementById('gateSub');
