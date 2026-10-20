@@ -253,6 +253,7 @@ body.gated main, body.gated .music{visibility:hidden}
 .tally b{color:var(--blush);font-weight:400;font-family:var(--font-body);font-size:1.1rem;letter-spacing:0}
 .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 .cta{border:1px solid var(--gold);background:linear-gradient(180deg,rgba(236,201,127,.24),rgba(236,201,127,.08));color:var(--gold);border-radius:999px;padding:11px 24px;font-family:var(--font-fell);font-size:1.15rem;transition:transform .15s, background .2s}
+a.cta{text-decoration:none;display:inline-block}
 .cta:hover{background:linear-gradient(180deg,rgba(236,201,127,.36),rgba(236,201,127,.12))}
 .cta:active{transform:scale(.96)}
 .cta.ghost{border-color:rgba(243,166,196,.5);color:var(--blush);background:rgba(243,166,196,.06)}
@@ -427,6 +428,29 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
 @keyframes halfl{to{transform:translate(-70px,50px) rotate(-55deg);opacity:0}}
 @keyframes halfr{to{transform:translate(70px,60px) rotate(60deg);opacity:0}}
 
+/* ---------- Daily Owl home ---------- */
+.today{padding-top:16px}
+.owl-card{position:relative;width:100%;max-width:520px;background:linear-gradient(175deg,var(--parchment),var(--parchment-2));color:var(--ink);border-radius:4px;padding:26px 24px 20px;text-align:left;box-shadow:0 30px 60px -24px rgba(0,0,0,.85), inset 0 0 50px rgba(150,100,50,.2);animation:unfold .8s cubic-bezier(.2,.9,.3,1.15)}
+.owl-card::before{content:"";position:absolute;inset:9px;border:1px solid rgba(160,110,70,.45);border-radius:2px;pointer-events:none}
+.owl-label{font-family:var(--font-display);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+.owl-msg{font-family:var(--font-fell);font-size:clamp(1.3rem,5vw,1.6rem);line-height:1.35;margin:10px 0 6px;text-wrap:pretty}
+.owl-sign{font-family:var(--font-script);font-size:1.7rem;text-align:right;color:var(--wax);line-height:1}
+.owl-sign::before{content:"— "}
+.special{width:100%;max-width:520px;border:1px solid var(--gold);background:rgba(23,13,34,.9);border-radius:14px;padding:14px 18px;text-align:left;box-shadow:0 0 30px rgba(236,201,127,.25)}
+.special .owl-label{color:var(--gold)}
+.special p{margin:8px 0 0;font-family:var(--font-fell);font-size:1.2rem;color:var(--blush);line-height:1.35}
+.streak{display:flex;align-items:center;gap:16px;background:rgba(23,13,34,.9);border:1px solid rgba(236,201,127,.4);border-radius:16px;padding:12px 20px}
+.flame{width:40px;height:52px;animation:flameflick 1.2s ease-in-out infinite;transform-origin:50% 100%;filter:drop-shadow(0 0 10px rgba(255,170,60,.7))}
+@keyframes flameflick{50%{transform:scale(.94,1.06) rotate(2deg)}}
+.streak-num{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
+.streak-num b{font-family:var(--font-fell);font-weight:400;font-size:2.6rem;color:var(--gold);font-variant-numeric:tabular-nums}
+.streak-num span{font-family:var(--font-display);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text)}
+.streak-meta{display:flex;flex-direction:column;gap:4px;font-size:.98rem;color:var(--text);border-left:1px solid rgba(236,201,127,.3);padding-left:14px;text-align:left;font-variant-numeric:tabular-nums}
+.streak-note{margin:0;font-family:var(--font-fell);font-style:italic;color:var(--blush);max-width:36ch;text-shadow:0 1px 2px rgba(8,3,12,.95),0 2px 14px rgba(8,3,12,.95)}
+.hw-banner{display:flex;align-items:center;gap:10px;background:linear-gradient(90deg,#ff7a1a,#b3471a);color:#1a0a02;border-radius:999px;padding:8px 18px;font-family:var(--font-fell);font-size:1.05rem;box-shadow:0 0 30px rgba(255,122,26,.45)}
+.hw-banner svg{width:22px;height:22px;flex:none}
+body.halloween{--accent-hw:#ff7a1a}
+
 @media (min-width:640px){
   .spells{grid-template-columns:repeat(5,minmax(0,1fr))}
   .spells .spell:last-child{grid-column:auto}
@@ -454,11 +478,58 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     </div>
   </div>
 </div>
-<script>document.body.classList.add('gated');</script>
+<script>
+/* ===== SETTINGS =====
+   SHEET_API: paste the Google Apps Script web app URL between the quotes to log visits and show the streak to the GOAT Qasim.
+   Secret links:  #fresh = replay the whole journey from the start
+                  #qasim = mark this browser as Qasim's (visits not logged, shows Saleha's streak)
+                  #notqasim = undo that      #halloween = preview the Halloween theme */
+window.SHEET_API = '';
+(function(){
+  var h = location.hash;
+  try {
+    if (h === '#qasim') localStorage.setItem('saleha-tester', '1');
+    if (h === '#notqasim') localStorage.removeItem('saleha-tester');
+    window.__tester = localStorage.getItem('saleha-tester') === '1';
+  } catch(e){ window.__tester = false; }
+  window.__mode = h === '#fresh' ? 'journey' : 'home';
+  var today = new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Karachi', year:'numeric', month:'2-digit', day:'2-digit'}).format(new Date());
+  window.__today = today;
+  var md = today.slice(5);
+  window.__halloween = h === '#halloween' || (md >= '10-24' && md <= '11-01');
+  document.body.classList.add('gated');
+  if (window.__halloween) document.body.classList.add('halloween');
+})();
+</script>
 <audio id="trackA" src="music.mp3" preload="auto"></audio>
 <audio id="trackB" src="music.mp3" preload="auto"></audio>
 
 <main>
+  <section class="chapter today" id="today" hidden aria-labelledby="todayTitle">
+    <div class="eyebrow" id="owlNo">Daily Owl</div>
+    <h2 id="todayTitle">Today's <em>owl</em> has landed</h2>
+    <div class="hw-banner" id="hwBanner" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5c-1-2 0-3 1-3M7 8c-3 0-5 3-5 6.5S4.5 21 8 21c1.5 0 2.5-.7 4-.7s2.5.7 4 .7c3.5 0 6-3 6-6.5S20 8 17 8c-1.6 0-2.6.7-5 .7S8.6 8 7 8z" fill="currentColor"/></svg><span id="hwText">Halloween has taken over the castle.</span></div>
+    <article class="owl-card">
+      <div class="owl-label" id="owlDate"></div>
+      <p class="owl-msg" id="owlMsg"></p>
+      <div class="owl-sign">the GOAT Qasim</div>
+    </article>
+    <div class="special" id="specialBox" hidden>
+      <div class="owl-label">Special delivery from the GOAT Qasim</div>
+      <div id="specialList"></div>
+    </div>
+    <div class="streak">
+      <svg class="flame" viewBox="0 0 40 52" aria-hidden="true"><defs><linearGradient id="fl" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ff6f3c"/><stop offset=".6" stop-color="#ffc24a"/><stop offset="1" stop-color="#fff2b0"/></linearGradient></defs><path d="M20 2c3 9 14 14 14 29 0 10-7 19-14 19S6 41 6 31c0-7 4-11 7-14 0 5 2 8 5 9-2-8 0-17 2-24z" fill="url(#fl)"/></svg>
+      <div class="streak-num"><b id="streakN">1</b><span id="streakLabel">day streak</span></div>
+      <div class="streak-meta"><span id="streakBest">Best: 1</span><span id="streakTotal">Visits: 1</span></div>
+    </div>
+    <p class="streak-note" id="streakNote">The GOAT Qasim can see your streak. Don't you dare break it.</p>
+    <div class="row">
+      <a class="cta" href="#top">Read your letter ↓</a>
+      <button class="cta ghost" id="replayJourney">Replay the whole journey</button>
+    </div>
+  </section>
+
   <!-- Chapter 1: the letter -->
   <section class="chapter hero" id="top" aria-label="Your letter">
     <div class="eyebrow">Owl Post · Special Delivery</div>
@@ -938,6 +1009,36 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     addFloater(new THREE.Mesh(planeGeo, planeMat));
   }
 
+  // Halloween: pumpkins and bats
+  const bats = [];
+  if (window.__halloween){
+    const pumpMat = new THREE.MeshStandardMaterial({color:0xff7a1a, emissive:0x6a2400, roughness:.55, flatShading:true});
+    const stemMat = new THREE.MeshStandardMaterial({color:0x3f6b2a, emissive:0x10200a});
+    const glowMat = new THREE.MeshBasicMaterial({color:0xffd27a});
+    const pumpGeo = new THREE.SphereGeometry(.9, 12, 8); pumpGeo.scale(1, .78, 1);
+    for (let i=0;i<(mobile?12:20);i++){
+      const g = new THREE.Group();
+      g.add(new THREE.Mesh(pumpGeo, pumpMat));
+      const stem = new THREE.Mesh(new THREE.CylinderGeometry(.08,.12,.4,6), stemMat); stem.position.y = .8; g.add(stem);
+      const eyeGeo = new THREE.ConeGeometry(.16, .22, 3);
+      [-.3, .3].forEach(x => { const e = new THREE.Mesh(eyeGeo, glowMat); e.position.set(x, .15, .82); e.rotation.x = Math.PI/2; g.add(e); });
+      const mouth = new THREE.Mesh(new THREE.BoxGeometry(.6,.1,.05), glowMat); mouth.position.set(0, -.22, .86); g.add(mouth);
+      g.position.copy(around(R(), 4, 16)); g.userData = {sx:0, sy:(R()-.5)*.6, ph:R()*6}; scene.add(g); gifts.push(g);
+    }
+    const batMat = new THREE.MeshBasicMaterial({color:0x0a0410, side:THREE.DoubleSide});
+    const wingGeo = new THREE.BufferGeometry();
+    wingGeo.setAttribute('position', new THREE.Float32BufferAttribute([0,0,0, 1.1,.35,0, .9,-.1,0,  0,0,0, .9,-.1,0, .55,-.25,0], 3));
+    for (let i=0;i<(mobile?18:30);i++){
+      const b = new THREE.Group();
+      b.add(new THREE.Mesh(new THREE.SphereGeometry(.16, 6, 6), batMat));
+      const L = new THREE.Mesh(wingGeo, batMat); L.scale.x = -1; const Rw = new THREE.Mesh(wingGeo, batMat);
+      b.add(L); b.add(Rw);
+      b.position.copy(around(R(), 3, 15)); b.userData = {L, Rw, ph:R()*6, sp:.6 + R()*.8, cx:b.position.x, cy:b.position.y, r:1 + R()*2};
+      scene.add(b); bats.push(b);
+    }
+    scene.fog.color.set(0x2e1a2a);
+  }
+
   // moon
   const mc = document.createElement('canvas'); mc.width = mc.height = 256; const mg = mc.getContext('2d');
   let rg = mg.createRadialGradient(128,128,40,128,128,128); rg.addColorStop(0,'rgba(255,236,245,.55)'); rg.addColorStop(1,'rgba(255,236,245,0)');
@@ -984,6 +1085,12 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     camera.lookAt(look);
     camera.rotation.z += Math.sin(u*Math.PI*4) * 0.04;
     placeCandles(t);
+    for (const b of bats){
+      const d = b.userData, f = Math.sin(t*14 + d.ph)*.9;
+      d.L.rotation.y = f; d.Rw.rotation.y = -f;
+      if (!reduce){ b.position.x = d.cx + Math.cos(t*d.sp + d.ph)*d.r; b.position.y = d.cy + Math.sin(t*d.sp*1.3 + d.ph)*d.r*.5; }
+      b.lookAt(camera.position);
+    }
     if (!reduce){
       for (const g of gifts){ const d = g.userData; g.rotation.x += d.sx*0.01; g.rotation.y += d.sy*0.01; g.position.y += Math.sin(t + d.ph)*0.004; }
       dust.rotation.z = Math.sin(t*0.1)*0.02; dust.position.y = Math.sin(t*0.5)*0.4;
@@ -1630,6 +1737,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
   {
     let st = 0;
     [...document.querySelector('main').children].forEach(el => {
+      if (el.id === 'today') return;
       if (el.classList.contains('chapter') && el.id !== 'top') st++;
       el.dataset.stage = el.id === 'top' ? 0 : st;
       stageEls.push(el);
@@ -1916,6 +2024,156 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
   addEventListener('resize', () => { if (!guide.hidden) showGuide(); });
   poke();
 
+  /* ================= Daily Owl, streak and home mode ================= */
+  const OWL_START = '2026-10-20';
+  const OWLS = [
+    "Welcome back. The GOAT Qasim noticed. He notices everything.",
+    "Today's forecast: 100% chance of you sending me reels I will not watch.",
+    "Reminder: the results section of your thesis has a ghostwriter. He is very good-looking.",
+    "Fun fact: your coffee machine has applied for asylum.",
+    "Today's goal: score 34% at something. Anything more would be showing off.",
+    "If you bake anything today, please inform the fire department in advance.",
+    "Real Madrid fact of the day: you could not name their goalkeeper if your life depended on it.",
+    "You took 47 photos yesterday. I am in zero of them. Noted.",
+    "Daily affirmation: I am smart. Repeat until it sounds true. Results may vary.",
+    "The owl wanted to bring you a compliment today. It could not find one, so it brought this.",
+    "You are genuinely one of my favourite people. Top three. Behind me and Eggspectation.",
+    "Spell of the day: Accio motivation. Please study. The Ministry is waiting.",
+    "Breaking news: local girl attempts coffee at home. Kitchen evacuated. More at 9.",
+    "Your streak is the only thing you have ever been consistent at. Protect it.",
+    "Reminder that you agree I am the GOAT. Every single day. It is in the records.",
+    "Today is a great day to admit I was right about everything.",
+    "Hogwarts never sent you a letter. I did. Who is the real wizard now?",
+    "Baking tip: 'golden brown' does not mean 'black'. Please read slowly.",
+    "If you are reading this instead of studying, the owl is disappointed. I am not surprised.",
+    "The Ministry called. They want to know your secret to getting exactly 33%.",
+    "Statistically, you have sent me more reels than you have read pages of your thesis.",
+    "Today's mood: cold Spanish latte with a side of overthinking.",
+    "You are doing great. Not GOAT-great. But great.",
+    "I checked the stars today. They all agree I am better than you. Astronomy is a science.",
+    "Your phone storage called. It is full of the same pose from 47 angles.",
+    "¡Hala Madrid! Please do not ask me who scored. You do not know either.",
+    "Day off from roasting you. Just kidding. You thought.",
+    "Things rising today: my expectations of you. Things not rising: your cakes.",
+    "Your thesis is proof that teamwork works. Mostly my team. Which is me.",
+    "Officer Saleha has a nice ring to it. Corruption partner Qasim has a nicer one.",
+    "Daily reminder to drink water. Not coffee you made. Water.",
+    "You are the second smartest person you know. Congratulations on the podium.",
+    "The owl got lost on the way here. It reminded me of your CSS study plan.",
+    "Spell of the day: Lumos. Because you clearly need help seeing how great I am.",
+    "New rule: every reel you send must be funnier than the last. The bar is low. You will manage.",
+    "Eggspectation is open today. Your excuses are not.",
+    "You are the kind of friend everyone wishes they had. I know, because I am that friend to you.",
+    "If you were a potion, you would be Draught of Chaos. Side effects: very entertaining.",
+    "Today, zero roasts. Only love. Okay, one roast: your coffee.",
+    "Study tip: open the book. That is the whole tip.",
+    "Throwback to when you thought you could bake. Good times.",
+    "You have opened this site more times than your CSS books. The owl did the maths.",
+    "If you ever doubt yourself, remember someone as brilliant as me chose to be your friend. Your taste is excellent.",
+    "Real Madrid have won more trophies than you have made successful coffees. Neither of us is surprised.",
+    "Today's weather: mostly cloudy with scattered reels.",
+    "Every great wizard has a sidekick. You are doing a lovely job as mine.",
+    "The Restricted Section called. They want page 47 back.",
+    "Plan for today: you overthink, I fix it, you tell everyone you fixed it. Classic.",
+    "If your cake collapses today, call it a lava cake. Confidence is everything.",
+    "This owl works overtime just for you. You are welcome.",
+    "You are proof that 33% is enough to change the world. Kind of. Slightly.",
+    "Today's compliment from the GOAT Qasim: 'You are not that bad.' Highest praise available.",
+    "If you are reading this after 2 a.m., go to sleep. The owl needs rest too.",
+    "Remember the GOAT question? You agreed. Legally binding. No refunds.",
+    "You have never been more ready to make a terrible coffee. Go on.",
+    "Somewhere, a reel is waiting for you to send it to me at 3 a.m.",
+    "Wingardium Leviosa! That was your grades, floating just above 33%.",
+    "I am proud of you. Do not tell anyone. I have a reputation.",
+    "Streak tip: the only way to beat the GOAT is to show up every day. Even then, no.",
+    "Today's owl is short on words and long on judgement. Study."
+  ];
+  const HALLOWEEN_OWLS = {
+    '10-24': "The castle is getting ready for Halloween. You do not need a costume. Your home-made coffee is scary enough.",
+    '10-25': "Bats have moved into the castle. They heard about your baking and felt right at home.",
+    '10-26': "Halloween tip: if anyone asks what you are dressed as, say 'a CSS aspirant'. Terrifying.",
+    '10-27': "The pumpkins are carved. They came out better than anything you have ever baked.",
+    '10-28': "Spooky fact: the scariest page in the library is still page 47 of your thesis.",
+    '10-29': "Trick or treat? Treat: a cold Spanish latte. Trick: you have to make it yourself.",
+    '10-30': "Tomorrow is Halloween. The owl is wearing a tiny cape. It still looks smarter than you.",
+    '10-31': "Happy Halloween! The scariest thing in the castle tonight is still your 33%.",
+    '11-01': "Halloween is over. The bats are leaving. Your baking is staying. Truly the scariest part."
+  };
+  const todayEl = document.getElementById('today');
+  const dayNo = d => Math.round((Date.parse(d + 'T00:00:00Z') - Date.parse(OWL_START + 'T00:00:00Z')) / 86400000);
+  function streakFrom(dates, today){
+    const u = [...new Set(dates)].sort();
+    let best = 0, run = 0, prev = null;
+    for (const d of u){ run = prev && dayNo(d) - dayNo(prev) === 1 ? run + 1 : 1; best = Math.max(best, run); prev = d; }
+    let streak = 0;
+    const set = new Set(u);
+    const nums = new Set(u.map(dayNo));
+    let n = dayNo(today);
+    if (!set.has(today)) n--;
+    while (nums.has(n)){ streak++; n--; }
+    const before = u.filter(d => d < today);
+    const last = before.length ? before[before.length - 1] : null;
+    const missed = last ? Math.max(0, dayNo(today) - dayNo(last) - 1) : 0;
+    return {streak, best, total: u.length, missed, lastVisit: last};
+  }
+  function renderOwl(){
+    const today = window.__today, n = Math.max(0, dayNo(today));
+    document.getElementById('owlNo').textContent = `Daily Owl · No. ${n + 1}`;
+    document.getElementById('owlDate').textContent = new Date(today + 'T12:00:00Z').toLocaleDateString('en-GB', {weekday:'long', day:'numeric', month:'long'});
+    document.getElementById('owlMsg').textContent = (window.__halloween && HALLOWEEN_OWLS[today.slice(5)]) || OWLS[n % OWLS.length];
+    if (window.__halloween){
+      document.getElementById('hwBanner').hidden = false;
+      document.getElementById('hwText').textContent = today.slice(5) === '10-31' ? 'Happy Halloween! The castle is haunted tonight.' : 'Halloween has taken over the castle. Look at the sky.';
+    }
+  }
+  function renderStreak(st, who){
+    document.getElementById('streakN').textContent = st.streak;
+    document.getElementById('streakLabel').textContent = (who === 'qasim' ? "Saleha's " : '') + (st.streak === 1 ? 'day streak' : 'day streak');
+    document.getElementById('streakBest').textContent = `Best: ${st.best}`;
+    document.getElementById('streakTotal').textContent = `Visits: ${st.total}`;
+    const note = document.getElementById('streakNote');
+    if (who === 'qasim') note.textContent = st.lastVisit || st.lastSeen ? `Qasim view. Her last visit: ${st.lastSeen || st.lastVisit}. Your own visits are not counted.` : 'Qasim view. Your own visits are not counted.';
+    else if (st.missed > 0) note.textContent = `You missed ${st.missed} day${st.missed > 1 ? 's' : ''}. The owl has reported you to the GOAT Qasim. Streak reset. Shameful.`;
+    else if (st.streak >= 7) note.textContent = `${st.streak} days in a row. The GOAT Qasim is mildly impressed. Do not let it go to your head.`;
+    else if (st.streak >= 2) note.textContent = `${st.streak} days in a row. The GOAT Qasim can see this, so don't you dare break it.`;
+    else note.textContent = 'Day one of your streak. Come back tomorrow, or the owl reports you to the GOAT Qasim.';
+  }
+  function renderSpecial(list){
+    const box = document.getElementById('specialBox'), out = document.getElementById('specialList');
+    const msgs = (list || []).filter(m => m && String(m).trim());
+    if (!msgs.length){ box.hidden = true; return; }
+    out.innerHTML = ''; msgs.forEach(m => { const p = document.createElement('p'); p.textContent = m; out.appendChild(p); });
+    box.hidden = false;
+  }
+  function localStreak(record){
+    let dates = [];
+    try { dates = JSON.parse(localStorage.getItem('saleha-visits') || '[]'); } catch(e){}
+    if (record && !dates.includes(window.__today)){ dates.push(window.__today); try { localStorage.setItem('saleha-visits', JSON.stringify(dates.slice(-400))); } catch(e){} }
+    return streakFrom(dates, window.__today);
+  }
+  function loadStreak(){
+    const tester = window.__tester;
+    if (!tester) renderStreak(localStreak(true), 'her');
+    if (!window.SHEET_API){ if (tester) renderStreak({streak:0, best:0, total:0, missed:0}, 'qasim'); return; }
+    const url = `${window.SHEET_API}?action=${tester ? 'stats' : 'visit'}&day=${window.__today}&t=${Date.now()}`;
+    fetch(url).then(r => r.json()).then(d => {
+      if (!d || !d.ok) return;
+      renderStreak(d, tester ? 'qasim' : 'her');
+      renderSpecial(d.messages);
+    }).catch(() => {});
+  }
+  renderOwl();
+  loadStreak();
+  document.getElementById('replayJourney').addEventListener('click', () => { location.hash = 'fresh'; location.reload(); });
+  function enterHome(){
+    todayEl.hidden = false;
+    unlocked = LAST; sealTaps = 3;
+    hero.classList.add('opened');
+    document.getElementById('tapHint').hidden = true;
+    document.getElementById('scrollCue').hidden = false;
+    applyLocks(); refreshPill(); hideGuide();
+  }
+
   /* ================= Opening question ================= */
   const gate = document.getElementById('gate'), agree = document.getElementById('agree'), dis = document.getElementById('disagree'), gateSub = document.getElementById('gateSub');
   const TAUNTS = ['Nice try.', 'Wrong. Like your coffee.', 'Nope.', 'That button is not available today.', 'Expelliarmus!', 'Try the pink one.', 'Still no.', 'You will never catch it.', 'The castle disagrees with your disagreement.', 'Okay, now you are just being stubborn.'];
@@ -1949,6 +2207,7 @@ body.gated .pcandle, body.gated .lockpill{visibility:hidden}
     confetti(120);
     dis.remove();
     try { localStorage.removeItem('saleha-bd-progress'); } catch(e){}
+    if (window.__mode === 'home') enterHome();
     setTimeout(() => { gate.classList.add('gone'); document.body.classList.remove('gated'); scrollTo(0,0); }, 700);
     setTimeout(() => gate.remove(), 1700);
     if (!playing) setMusic(true);
