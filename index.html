@@ -2146,6 +2146,7 @@ window.SHEET_API = '';
   function renderSpecial(list){
     const box = document.getElementById('specialBox'), out = document.getElementById('specialList');
     const msgs = (list || []).filter(m => m && String(m).trim());
+    if (msgs.length) document.getElementById('owlMsg').textContent = msgs.shift();
     if (!msgs.length){ box.hidden = true; return; }
     out.innerHTML = ''; msgs.forEach(m => { const p = document.createElement('p'); p.textContent = m; out.appendChild(p); });
     box.hidden = false;
