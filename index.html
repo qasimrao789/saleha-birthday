@@ -2091,9 +2091,44 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
     "Wingardium Leviosa! That was your grades, floating just above 33%.",
     "I am proud of you. Do not tell anyone. I have a reputation.",
     "Streak tip: the only way to beat the GOAT is to show up every day. Even then, no.",
-    "Today's owl is short on words and long on judgement. Study."
+    "Today's owl is short on words and long on judgement. Study.",
+    "Coffee attempts at home: still zero successful. The owl has stopped asking.",
+    "Today's horoscope: you send a reel, I ignore it, you send three more.",
+    "If confidence were a degree you would have a PhD. If baking were one, you would be expelled.",
+    "Real Madrid won? Lost? You do not know, and you will post about it anyway.",
+    "Your CSS books called. They miss you. They say you only visit when you feel guilty.",
+    "Reminder: a cold Spanish latte is not a personality. It is two personalities.",
+    "Owl fact: owls can turn their heads 270 degrees. Still not far enough to look away from your coffee.",
+    "You are allowed one bad decision today. Please do not spend it in the kitchen.",
+    "Rare things: a photo of you on the first try, and a day without a reel from you.",
+    "The thesis is done. The trauma is shared. The credit is mine.",
+    "Spell of the day: Expecto Patronum. Your patronus is a cold Spanish latte. Obviously.",
+    "Gentle reminder: 'I will start studying tomorrow' is not a study plan.",
+    "If you smiled at your phone just now, that was me. You are welcome.",
+    "Things I am better at than you: everything. Things you are better at than me: sending reels at 3 a.m.",
+    "Achievement unlocked: opening a website every day. Next achievement: opening a book every day.",
+    "Your oven has requested a day off. Please respect its boundaries.",
+    "You light up every room. Mostly because something in the kitchen caught fire.",
+    "Daily owl, weekly roast, monthly respect. Today is roast day.",
+    "Officer Saleha's first case: who keeps burning the cakes? Prime suspect: Officer Saleha.",
+    "Behind every successful woman is a GOAT who wrote her results section.",
+    "Today's forecast: 70% chance you say 'I'm on my way' while still in bed.",
+    "If you ever feel lost, follow the smell of cold Spanish latte. It always leads to Eggspectation.",
+    "The owl wants a raise. It delivers more of your nonsense than the post office.",
+    "Good morning to everyone except the coffee you are about to make.",
+    "You have main character energy and background extra cooking skills.",
+    "Studies show people who read this daily are 33% smarter. Exactly enough to pass.",
+    "Today I am grateful for three things: coffee, Real Madrid, and not being your oven.",
+    "Your camera roll has 4,000 selfies and one blurry photo of me. Interesting priorities.",
+    "Mischief level today: medium. Study level today: we both know.",
+    "You survived another day of being friends with a genius. Proud of you.",
+    "You agreed I am the GOAT again today. At this point it is not an opinion, it is science.",
+    "Two things are certain: you will send me a reel today, and I will pretend it is not funny.",
+    "Hot take: your baking would be great if food were optional.",
+    "If you are reading this, the owl made it. Unlike your last cake.",
+    "The GOAT Qasim is busy being great today. This message was pre-recorded."
   ];
-  const HALLOWEEN_OWLS = {
+  const DATED_OWLS = {
     '10-24': "The castle is getting ready for Halloween. You do not need a costume. Your home-made coffee is scary enough.",
     '10-25': "Bats have moved into the castle. They heard about your baking and felt right at home.",
     '10-26': "Halloween tip: if anyone asks what you are dressed as, say 'a CSS aspirant'. Terrifying.",
@@ -2102,7 +2137,14 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
     '10-29': "Trick or treat? Treat: a cold Spanish latte. Trick: you have to make it yourself.",
     '10-30': "Tomorrow is Halloween. The owl is wearing a tiny cape. It still looks smarter than you.",
     '10-31': "Happy Halloween! The scariest thing in the castle tonight is still your 33%.",
-    '11-01': "Halloween is over. The bats are leaving. Your baking is staying. Truly the scariest part."
+    '11-01': "Halloween is over. The bats are leaving. Your baking is staying. Truly the scariest part.",
+    '11-09': "Happy Iqbal Day. Iqbal dreamed of eagles soaring. You dream of a coffee that does not taste burnt. Both valid.",
+    '11-15': "One month since your birthday. You are officially one month older and not one percent better at baking.",
+    '12-15': "Two months since your birthday. Still agreeing I am the GOAT every single day. Good. Consistency.",
+    '12-25': "Happy Quaid Day. Unity, Faith, Discipline. You have one out of three. I will let you guess which.",
+    '12-31': "Last day of the year. You made it through, mostly thanks to me. Next year's goal: 34%.",
+    '01-01': "Happy New Year! New year, same GOAT. Resolution idea: learn to make coffee. Backup idea: accept that I am better.",
+    '01-15': "Three months of daily owls. Three months of you agreeing I am the GOAT. It is official now. Framed and everything."
   };
   const todayEl = document.getElementById('today');
   const dayNo = d => Math.round((Date.parse(d + 'T00:00:00Z') - Date.parse(OWL_START + 'T00:00:00Z')) / 86400000);
@@ -2125,7 +2167,7 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
     const today = window.__today, n = Math.max(0, dayNo(today));
     document.getElementById('owlNo').textContent = `Daily Owl · No. ${n + 1}`;
     document.getElementById('owlDate').textContent = new Date(today + 'T12:00:00Z').toLocaleDateString('en-GB', {weekday:'long', day:'numeric', month:'long'});
-    document.getElementById('owlMsg').textContent = (window.__halloween && HALLOWEEN_OWLS[today.slice(5)]) || OWLS[n % OWLS.length];
+    document.getElementById('owlMsg').textContent = DATED_OWLS[today.slice(5)] || OWLS[n % OWLS.length];
     if (window.__halloween){
       document.getElementById('hwBanner').hidden = false;
       document.getElementById('hwText').textContent = today.slice(5) === '10-31' ? 'Happy Halloween! The castle is haunted tonight.' : 'Halloween has taken over the castle. Look at the sky.';
