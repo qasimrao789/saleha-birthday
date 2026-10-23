@@ -507,7 +507,7 @@ body.halloween{--accent-hw:#ff7a1a}
 .kk.hit{background:#c9a24b;color:#1a0f05}.kk.near{background:#c45a8a}.kk.miss{background:#2a2032;color:#7d6f86}
 
 .stage{height:auto!important;min-height:300px;padding:14px}
-.stage .lg-over{border-radius:14px}
+.stage .lg-over{border-radius:14px;background:rgba(14,6,20,.96)}
 .pads{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .pad{height:clamp(84px,24vw,110px);border-radius:18px;border:2px solid var(--pc);background:color-mix(in srgb, var(--pc) 16%, #170d22);color:var(--pc);font-family:var(--font-fell);font-size:1.25rem;opacity:.6;transition:opacity .12s, transform .12s, box-shadow .12s}
 .pad.lit{opacity:1;transform:scale(1.05);background:color-mix(in srgb, var(--pc) 55%, #170d22);color:#170d22;box-shadow:0 0 34px var(--pc)}
@@ -582,6 +582,57 @@ body.halloween .pflame{filter:hue-rotate(75deg)}
 @keyframes batflap{to{transform:scaleY(.45)}}
 @keyframes batfly{0%{transform:translate(0,0)}25%{transform:translate(30vw,-6vh)}50%{transform:translate(60vw,4vh)}75%{transform:translate(90vw,-8vh)}100%{transform:translate(calc(100vw + 120px),0)}}
 @media (prefers-reduced-motion:reduce){.hw-bats,.hw-fog{display:none}}
+
+/* ---------- 23 more games ---------- */
+.dpad{display:grid;grid-template-columns:repeat(3,52px);grid-template-rows:repeat(2,44px);gap:6px;justify-content:center;margin-top:4px}
+.dpad button{border:1px solid rgba(236,201,127,.45);background:rgba(40,18,48,.9);color:var(--gold);border-radius:10px;font-size:1.1rem}
+.dpad [data-d="up"]{grid-column:2;grid-row:1}.dpad [data-d="left"]{grid-column:1;grid-row:2}.dpad [data-d="down"]{grid-column:2;grid-row:2}.dpad [data-d="right"]{grid-column:3;grid-row:2}
+.holes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.hole{aspect-ratio:1.2;border-radius:50% 50% 40% 40%;border:none;background:radial-gradient(ellipse at 50% 80%,#1a0d10 0 45%,#3b2a1c 46% 100%);font-size:2.1rem;display:grid;place-items:center;overflow:hidden}
+.hole span{transform:translateY(90%);transition:transform .12s;display:block}
+.hole.up span{transform:translateY(0)}
+.hole.hit{background:radial-gradient(ellipse at 50% 80%,#2b4a20 0 45%,#3b2a1c 46%)}.hole.boom{background:radial-gradient(ellipse at 50% 80%,#6a1020 0 45%,#3b2a1c 46%)}
+.qd{width:100%;height:190px;border-radius:18px;border:2px solid var(--gold);font-family:var(--font-fell);font-size:2rem;background:rgba(40,18,48,.9);color:var(--text)}
+.qd.wait{background:#3a1420;color:#ffb3c6}.qd.go{background:#1f5a32;color:#d9ffe6;border-color:#9fe3b0}
+.g2048{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;background:rgba(0,0,0,.25);padding:6px;border-radius:12px;touch-action:none;max-width:340px;margin:0 auto;width:100%}
+.t2{aspect-ratio:1;display:grid;place-items:center;border-radius:8px;background:rgba(255,255,255,.06);font-family:var(--font-fell);font-size:1.4rem;color:#1a0f05}
+.v2{background:#fbe7ef}.v4{background:#f7cfe0}.v8{background:#f3a6c4}.v16{background:#ec8fb4}.v32{background:#e86d98;color:#fff}.v64{background:#d9467b;color:#fff}.v128{background:#ecc97f}.v256{background:#e3b65a}.v512{background:#d9a03a;color:#fff}.v1024{background:#c98a1e;color:#fff}.v2048,.v4096{background:#9fe3b0}
+.g2048-end{display:block;margin:8px auto 0}
+.ttt{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:300px;margin:0 auto}
+.tc{aspect-ratio:1;border-radius:12px;border:1px solid rgba(236,201,127,.45);background:rgba(40,18,48,.9);font-family:var(--font-fell);font-size:2.4rem;color:var(--text)}
+.tc.X{color:#ff8fb8}.tc.O{color:var(--gold)}
+.ttt-msg,.duel-msg,.cg-msg,.hl-msg,.sd-msg,.scr-msg{text-align:center;margin-top:8px}
+.duel-btns{display:grid;gap:8px}.duel-score{text-align:center;font-family:var(--font-display);letter-spacing:.1em;color:var(--gold);font-size:.85rem}
+.hm-word{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:8px 0}
+.hm-word span{width:24px;height:34px;border-bottom:2px solid var(--gold);font-family:var(--font-fell);font-size:1.4rem;text-align:center;color:var(--text)}
+.hm-lives{text-align:center}
+.kk:disabled{opacity:.45}
+.scr-word{font-family:var(--font-fell);font-size:2.2rem;letter-spacing:.3em;text-align:center;color:var(--gold);margin:6px 0}
+.scr-in{width:100%;border-radius:12px;border:1px solid rgba(243,166,196,.45);background:rgba(40,18,48,.9);color:var(--text);padding:10px 12px;font:inherit;font-size:1.15rem;text-transform:uppercase;text-align:center}
+.ty-in{text-transform:none;text-align:left}
+.stage .row{margin-top:10px;justify-content:center}
+.m-q{font-family:var(--font-fell);font-size:2.2rem;text-align:center;color:var(--text);margin:6px 0 10px}
+.m-opts,.st-opts,.cg-opts{grid-template-columns:1fr 1fr}
+.m-opts .opt,.st-opts .opt,.cg-opts .opt{text-align:center;font-size:1.3rem}
+.ty-line{white-space:pre-wrap;overflow-wrap:anywhere;font-family:var(--font-body);font-size:1.25rem;line-height:1.6;background:rgba(0,0,0,.25);border-radius:10px;padding:10px 12px;margin-bottom:10px;color:var(--muted)}
+.ty-line .ok{color:#9fe3b0}.ty-line .bad{color:#fff;background:#b8325f;border-radius:2px}
+.sl,.lo,.sd{display:grid;gap:6px;max-width:300px;margin:0 auto}
+.sl{grid-template-columns:repeat(3,1fr)}.lo{grid-template-columns:repeat(4,1fr)}.sd{grid-template-columns:repeat(4,1fr)}
+.slt{aspect-ratio:1;border-radius:10px;border:1px solid rgba(236,201,127,.45);background:linear-gradient(175deg,var(--parchment),var(--parchment-2));font-family:var(--font-fell);font-size:2rem;color:var(--ink)}
+.slt.gap{background:transparent;border-style:dashed}
+.lc{aspect-ratio:1;border-radius:12px;border:1px solid rgba(236,201,127,.3);background:#1d1226}
+.lc.on{background:radial-gradient(circle at 50% 45%,#fff6d6 0 12%,#ffcf7a 30%,#a8641a 80%);box-shadow:0 0 18px rgba(255,200,110,.6)}
+.sdc{aspect-ratio:1;border-radius:8px;border:1px solid rgba(236,201,127,.3);font-family:var(--font-fell);font-size:1.7rem;color:var(--blush);background:rgba(40,18,48,.9)}
+.sdc.b0,.sdc.b3{background:rgba(70,30,80,.9)}
+.sdc.fx{color:var(--gold);font-weight:600}
+.ms{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;max-width:340px;margin:8px auto 0}
+.mc{aspect-ratio:1;border-radius:4px;border:none;background:#3d6b3a;font-size:.95rem;font-weight:700;padding:0;color:#fff}
+.mc.open{background:#e9dcc2;color:#333}.mc.boom{background:#b8325f}
+.mc.n1{color:#2b5bd6}.mc.n2{color:#2b8a3e}.mc.n3{color:#c92a2a}.mc.n4{color:#5f3dc4}
+.st-word{font-family:var(--font-fell);font-size:2.6rem;text-align:center;margin:10px 0 14px;font-weight:600}
+.hl-card{width:120px;height:160px;margin:6px auto 12px;border-radius:14px;background:linear-gradient(175deg,#ffe28a,#c98a1e);display:grid;place-items:center;font-family:var(--font-fell);font-size:3rem;color:#3a2410;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.cg{position:relative;height:200px;border-radius:12px;background:rgba(0,0,0,.25);margin-bottom:10px}
+.cg span{position:absolute;font-size:1.7rem}
 
 @media (min-width:640px){
   .spells{grid-template-columns:repeat(5,minmax(0,1fr))}
@@ -2395,7 +2446,7 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
   });
 
   /* ================= Daily games, quest, scratch card, question ================= */
-  const DAILY = {"trivia": [{"q": "What is the name of Harry's owl?", "a": "Hedwig", "b": "Errol", "c": "Pigwidgeon", "d": "Hermes", "ans": "A", "roast": "Wrong. The owl that delivers your daily roast is embarrassed for you."}, {"q": "Who wrote the results section of Saleha's thesis?", "a": "Saleha", "b": "Her supervisor", "c": "ChatGPT", "d": "The GOAT Qasim", "ans": "D", "roast": "Wrong. Page 47 knows the truth. So do you."}, {"q": "Which house was Harry sorted into?", "a": "Slytherin", "b": "Gryffindor", "c": "Hufflepuff", "d": "Ravenclaw", "ans": "B", "roast": "Wrong. The Sorting Hat would put you in the kitchen. Then evacuate it."}, {"q": "What did Saleha score in the CSS screening test?", "a": "33%", "b": "45%", "c": "60%", "d": "99%", "ans": "A", "roast": "Wrong. You do not even remember your own lucky number."}, {"q": "What position does Harry play in Quidditch?", "a": "Keeper", "b": "Beater", "c": "Seeker", "d": "Chaser", "ans": "C", "roast": "Wrong. You would be the one sitting in the stands taking 47 photos."}, {"q": "Which spell disarms an opponent?", "a": "Lumos", "b": "Expelliarmus", "c": "Alohomora", "d": "Accio", "ans": "B", "roast": "Wrong. I just disarmed your confidence instead."}, {"q": "Which drink fixes Saleha's entire life?", "a": "Green tea", "b": "Home-made coffee", "c": "Cold Spanish latte", "d": "Plain water", "ans": "C", "roast": "Wrong. Home-made coffee has never fixed anything. It has only caused things."}, {"q": "Which platform does the Hogwarts Express leave from?", "a": "Platform 7", "b": "Platform 9¾", "c": "Platform 10½", "d": "Platform 3", "ans": "B", "roast": "Wrong. You would run straight into the wall. Again."}, {"q": "What is the name of Hermione's cat?", "a": "Crookshanks", "b": "Mrs Norris", "c": "Fluffy", "d": "Nagini", "ans": "A", "roast": "Wrong. Even the cat is smarter than this answer."}, {"q": "How many successful coffees has Saleha made at home?", "a": "12", "b": "3", "c": "1", "d": "0", "ans": "D", "roast": "Wrong. Be honest with yourself. It is zero. It has always been zero."}, {"q": "Who is revealed as the Half-Blood Prince?", "a": "Voldemort", "b": "Snape", "c": "Harry", "d": "Dumbledore", "ans": "B", "roast": "Wrong. Turn to page 394. Or just ask me, I know everything."}, {"q": "Which spell unlocks doors?", "a": "Alohomora", "b": "Wingardium Leviosa", "c": "Nox", "d": "Reparo", "ans": "A", "roast": "Wrong. You would still be locked outside."}, {"q": "What is the name of Real Madrid's home stadium?", "a": "Camp Nou", "b": "Old Trafford", "c": "Santiago Bernabéu", "d": "Anfield", "ans": "C", "roast": "Wrong. Hala Madrid, apparently, but not Hala Facts."}, {"q": "What is the name of Dumbledore's phoenix?", "a": "Buckbeak", "b": "Fawkes", "c": "Hedwig", "d": "Norbert", "ans": "B", "roast": "Wrong. Fawkes would burst into flames from the embarrassment. Like your cakes."}, {"q": "What is the name of the wizarding bank?", "a": "Gringotts", "b": "Honeydukes", "c": "Ollivanders", "d": "Borgin and Burkes", "ans": "A", "roast": "Wrong. Good thing you do not have wizard money to lose."}, {"q": "Who is Harry's godfather?", "a": "Remus Lupin", "b": "Sirius Black", "c": "Arthur Weasley", "d": "Hagrid", "ans": "B", "roast": "Wrong. Even the godfather would disown this answer."}, {"q": "Where does Saleha get her cold Spanish latte?", "a": "Starbucks", "b": "Her own kitchen", "c": "Eggspectation", "d": "A vending machine", "ans": "C", "roast": "Wrong. Your own kitchen? Please. Be serious."}, {"q": "What is the name of Hagrid's three-headed dog?", "a": "Fang", "b": "Fluffy", "c": "Norbert", "d": "Padfoot", "ans": "B", "roast": "Wrong. Fluffy is offended. All three heads."}, {"q": "What is the famous drink at the Three Broomsticks?", "a": "Pumpkin juice", "b": "Butterbeer", "c": "Firewhisky", "d": "Gillywater", "ans": "B", "roast": "Wrong. You only know one drink and it is a cold Spanish latte."}, {"q": "What colour is Real Madrid's home kit?", "a": "Red", "b": "Blue", "c": "White", "d": "Green", "ans": "C", "roast": "Wrong. You do not watch football, and now we all know you do not watch the kit either."}, {"q": "Which house is Luna Lovegood in?", "a": "Ravenclaw", "b": "Gryffindor", "c": "Slytherin", "d": "Hufflepuff", "ans": "A", "roast": "Wrong. Ravenclaw is for smart people. That explains it."}, {"q": "What does a Boggart turn into?", "a": "A dragon", "b": "Your worst fear", "c": "A cat", "d": "A teacher", "ans": "B", "roast": "Wrong. Your Boggart is a kitchen with a working oven."}, {"q": "Who is officially the GOAT?", "a": "Saleha", "b": "Real Madrid", "c": "The GOAT Qasim", "d": "Dumbledore", "ans": "C", "roast": "Wrong. You agree to this every single day. Consistency, please."}, {"q": "What position does Ron play in Quidditch?", "a": "Seeker", "b": "Keeper", "c": "Beater", "d": "Chaser", "ans": "B", "roast": "Wrong. Ron would have known that. Ron."}, {"q": "What is Voldemort's real name?", "a": "Tom Riddle", "b": "Gellert Grindelwald", "c": "Draco Malfoy", "d": "Peter Pettigrew", "ans": "A", "roast": "Wrong. You must not be named either, after this answer."}, {"q": "Which house-elf loves socks?", "a": "Kreacher", "b": "Winky", "c": "Dobby", "d": "Hokey", "ans": "C", "roast": "Wrong. Dobby is free. You are not, you still have to study."}, {"q": "What does Felix Felicis do?", "a": "Makes you invisible", "b": "Gives you luck", "c": "Changes your appearance", "d": "Makes you sleep", "ans": "B", "roast": "Wrong. You need a bottle before every exam. Clearly."}, {"q": "What form does Harry's Patronus take?", "a": "An otter", "b": "A stag", "c": "A phoenix", "d": "A dog", "ans": "B", "roast": "Wrong. Your patronus is a cold Spanish latte and we both know it."}, {"q": "What does 'Lumos' do?", "a": "Lights the wand", "b": "Opens locks", "c": "Makes things float", "d": "Summons objects", "ans": "A", "roast": "Wrong. Lumos. Please. You need the light."}, {"q": "What is the name of the Weasleys' home?", "a": "Grimmauld Place", "b": "Shell Cottage", "c": "The Burrow", "d": "Godric's Hollow", "ans": "C", "roast": "Wrong. Even the garden gnomes knew that."}, {"q": "What ball does a Seeker have to catch?", "a": "The Quaffle", "b": "The Bludger", "c": "The Golden Snitch", "d": "The Gobstone", "ans": "C", "roast": "Wrong. Some seeker you would be."}], "words": [{"word": "LATTE", "hint": "Your only reliable relationship. Served cold."}, {"word": "WANDS", "hint": "Things wizards wave. You would wave it at the oven and still burn the cake."}, {"word": "SPELL", "hint": "What a witch casts. Also what you need to check in your essays."}, {"word": "CAKES", "hint": "Things you bake. Things nobody eats."}, {"word": "BURNT", "hint": "How every one of your bakes ends up."}, {"word": "REELS", "hint": "You send me 50 of these a day."}, {"word": "PHOTO", "hint": "You need 47 attempts to take one."}, {"word": "EXAMS", "hint": "The CSS has these. You should prepare for them."}, {"word": "MAGIC", "hint": "What it takes to make you a good coffee."}, {"word": "BROOM", "hint": "A wizard's ride. Also what you need after baking."}, {"word": "CREAM", "hint": "Goes in a latte. Not in your home-made disaster."}, {"word": "SUGAR", "hint": "Sweet. Unlike my daily messages."}, {"word": "MOCHA", "hint": "A coffee you also cannot make at home."}, {"word": "ROAST", "hint": "What I do to you every day. Also, coffee beans."}, {"word": "GOATS", "hint": "The plural would be redundant. There is only one."}, {"word": "ESSAY", "hint": "CSS has a lot of these. Start writing."}, {"word": "MARKS", "hint": "33% of these were enough. Barely."}, {"word": "OVENS", "hint": "Appliances that fear you."}, {"word": "TOAST", "hint": "Even this you would burn."}, {"word": "CLOAK", "hint": "Harry has an invisibility one. You need one after your cakes."}, {"word": "CHARM", "hint": "A type of spell. Also, the GOAT Qasim's main quality."}, {"word": "WITCH", "hint": "What you think you are. Second smartest one, at best."}, {"word": "GHOST", "hint": "Nearly Headless Nick is one. So is your study schedule."}, {"word": "OWLET", "hint": "A baby owl. Like the one delivering your daily roast."}, {"word": "SCARF", "hint": "Gryffindor wears red and gold ones."}, {"word": "GOALS", "hint": "Real Madrid score them. You do not watch them."}, {"word": "FOCUS", "hint": "What you need for CSS. Do you know where it is?"}, {"word": "STUDY", "hint": "Something you say you will do tomorrow."}, {"word": "QUEST", "hint": "You have one of these every day now."}, {"word": "TOWER", "hint": "The astronomy one is where the wishes live."}, {"word": "FLASH", "hint": "Camera setting you use 47 times per photo."}], "quests": [{"text": "Take one photo on the first try. Just one. No retakes.", "points": 15}, {"text": "Study for 25 minutes. Actually study. Phone face down.", "points": 20}, {"text": "Make a coffee at home and rate it honestly. Honestly.", "points": 10}, {"text": "Send the GOAT Qasim a reel that actually makes him laugh.", "points": 15}, {"text": "Drink two glasses of water before your first coffee.", "points": 10}, {"text": "Tell someone today that the GOAT Qasim is better than you.", "points": 25}, {"text": "Read 5 pages of anything that is not a caption.", "points": 15}, {"text": "Go one full hour without sending a reel. Good luck.", "points": 20}, {"text": "Write down three things you are grateful for. One has to be me.", "points": 10}, {"text": "Solve one past CSS paper question. Just one.", "points": 25}, {"text": "Bake nothing today. The kitchen deserves a day off.", "points": 5}, {"text": "Go to bed before 1 a.m. The owl is watching.", "points": 20}, {"text": "Clean up 100 photos from your camera roll.", "points": 15}, {"text": "Learn one new English vocabulary word for the CSS essay.", "points": 10}, {"text": "Compliment the GOAT Qasim without being asked.", "points": 30}, {"text": "Take a 15-minute walk without your phone camera.", "points": 15}, {"text": "Watch 10 minutes of a Real Madrid match. Any match. Any 10 minutes.", "points": 20}, {"text": "Make your bed. Small wins.", "points": 5}, {"text": "Read today's newspaper editorial. CSS people do that, apparently.", "points": 20}, {"text": "Send the GOAT Qasim a photo of your study desk as proof.", "points": 15}, {"text": "Plan the next Eggspectation visit. You choose the day, I choose the table.", "points": 10}, {"text": "Write one paragraph of a CSS essay on any topic.", "points": 25}, {"text": "Re-read one chapter of a Harry Potter book. For culture.", "points": 10}, {"text": "Say 'I am the second smartest person I know' out loud.", "points": 15}, {"text": "No coffee after 6 p.m. today. Brave, I know.", "points": 15}, {"text": "Revise one current affairs topic for 20 minutes.", "points": 20}, {"text": "Tidy your desk. Then take one (1) photo of it.", "points": 10}, {"text": "Reply to every reel the GOAT Qasim sent you. If he ever sent one.", "points": 10}, {"text": "Try making coffee at home again. For science. Report back.", "points": 15}, {"text": "Write down one goal for this week and actually look at it tomorrow.", "points": 15}, {"text": "Do 20 minutes of something that is not your phone.", "points": 15}], "questions": ["Rate your coffee today out of 10. Be honest.", "What is one thing you studied today? 'Nothing' is an answer, but a sad one.", "Which Harry Potter character are you today, and why?", "What was the best reel you saw today? Describe it in one line.", "What is the most dramatic thing that happened to you today?", "If you could have one spell for real, which one would it be?", "What would you order at Eggspectation right now?", "On a scale of 1 to 33%, how prepared are you for CSS?", "What is one thing the GOAT Qasim is better at than you? (Pick only one, we do not have all day.)", "What did you bake most recently, and did anyone survive?", "What is the last photo in your camera roll? Describe it honestly.", "What is one thing that made you laugh today?", "If today were a Hogwarts lesson, which subject would it be?", "What is one small win from today?", "What are you overthinking right now?", "If you were a Real Madrid player, what would your position be? Guess if you have to.", "What song is stuck in your head today?", "What is one thing you are looking forward to this week?", "Describe your mood today using only a drink.", "What would the CSS examiner write about you if they knew you?", "What is the worst coffee you have ever made? Paint the picture.", "What is one thing you want to get done before the weekend?", "Which of your friends would survive a week at Hogwarts? (Answer: the GOAT Qasim.)", "What is your excuse for not studying today? Make it creative.", "What did you have for breakfast? Did you make it, or was it safe?", "What is one habit you want to start this month?", "If you could ask the GOAT Qasim one question, what would it be?", "What is the most useless thing you know a lot about?", "What photo would you post today if you had to post one?", "What would you name your own café?", "What made today better than yesterday?"], "prizes": [{"text": "You won: nothing. Like your CSS margin.", "chance": 10, "real": "no"}, {"text": "You won: one compliment from the GOAT Qasim. It has been cancelled.", "chance": 8, "real": "no"}, {"text": "You won: a free lesson on how to make coffee. Taught by literally anyone else.", "chance": 8, "real": "no"}, {"text": "You won: the right to send one extra reel today. As if you needed permission.", "chance": 8, "real": "no"}, {"text": "You won: a virtual cold Spanish latte. Tastes like disappointment.", "chance": 8, "real": "no"}, {"text": "You won: 5 bonus house points. Still behind the GOAT Qasim.", "chance": 8, "real": "no"}, {"text": "You won: an official certificate of trying. Framed in your imagination.", "chance": 7, "real": "no"}, {"text": "You won: a day off from studying. Just kidding. Go study.", "chance": 7, "real": "no"}, {"text": "You won: absolutely nothing. The owl spent your prize money on snacks.", "chance": 7, "real": "no"}, {"text": "You won: a recipe that will still go wrong in your kitchen.", "chance": 7, "real": "no"}, {"text": "REAL PRIZE: one cold Spanish latte at Eggspectation, on the GOAT Qasim. Screenshot this to claim.", "chance": 2, "real": "yes"}, {"text": "REAL PRIZE: the GOAT Qasim has to reply to 10 of your reels today. Screenshot this to claim.", "chance": 3, "real": "yes"}, {"text": "REAL PRIZE: you win one argument of your choice against the GOAT Qasim. Screenshot this to claim.", "chance": 2, "real": "yes"}], "settings": {"goat_points_lead": 10, "goat_latte_lead": 1, "latte_seconds": 20}, "games": ["latte", "trivia", "owl", "word", "cake", "simon", "memory"]};
+  const DAILY = {"trivia": [{"q": "What is the name of Harry's owl?", "a": "Hedwig", "b": "Errol", "c": "Pigwidgeon", "d": "Hermes", "ans": "A", "roast": "Wrong. The owl that delivers your daily roast is embarrassed for you."}, {"q": "Who wrote the results section of Saleha's thesis?", "a": "Saleha", "b": "Her supervisor", "c": "ChatGPT", "d": "The GOAT Qasim", "ans": "D", "roast": "Wrong. Page 47 knows the truth. So do you."}, {"q": "Which house was Harry sorted into?", "a": "Slytherin", "b": "Gryffindor", "c": "Hufflepuff", "d": "Ravenclaw", "ans": "B", "roast": "Wrong. The Sorting Hat would put you in the kitchen. Then evacuate it."}, {"q": "What did Saleha score in the CSS screening test?", "a": "33%", "b": "45%", "c": "60%", "d": "99%", "ans": "A", "roast": "Wrong. You do not even remember your own lucky number."}, {"q": "What position does Harry play in Quidditch?", "a": "Keeper", "b": "Beater", "c": "Seeker", "d": "Chaser", "ans": "C", "roast": "Wrong. You would be the one sitting in the stands taking 47 photos."}, {"q": "Which spell disarms an opponent?", "a": "Lumos", "b": "Expelliarmus", "c": "Alohomora", "d": "Accio", "ans": "B", "roast": "Wrong. I just disarmed your confidence instead."}, {"q": "Which drink fixes Saleha's entire life?", "a": "Green tea", "b": "Home-made coffee", "c": "Cold Spanish latte", "d": "Plain water", "ans": "C", "roast": "Wrong. Home-made coffee has never fixed anything. It has only caused things."}, {"q": "Which platform does the Hogwarts Express leave from?", "a": "Platform 7", "b": "Platform 9¾", "c": "Platform 10½", "d": "Platform 3", "ans": "B", "roast": "Wrong. You would run straight into the wall. Again."}, {"q": "What is the name of Hermione's cat?", "a": "Crookshanks", "b": "Mrs Norris", "c": "Fluffy", "d": "Nagini", "ans": "A", "roast": "Wrong. Even the cat is smarter than this answer."}, {"q": "How many successful coffees has Saleha made at home?", "a": "12", "b": "3", "c": "1", "d": "0", "ans": "D", "roast": "Wrong. Be honest with yourself. It is zero. It has always been zero."}, {"q": "Who is revealed as the Half-Blood Prince?", "a": "Voldemort", "b": "Snape", "c": "Harry", "d": "Dumbledore", "ans": "B", "roast": "Wrong. Turn to page 394. Or just ask me, I know everything."}, {"q": "Which spell unlocks doors?", "a": "Alohomora", "b": "Wingardium Leviosa", "c": "Nox", "d": "Reparo", "ans": "A", "roast": "Wrong. You would still be locked outside."}, {"q": "What is the name of Real Madrid's home stadium?", "a": "Camp Nou", "b": "Old Trafford", "c": "Santiago Bernabéu", "d": "Anfield", "ans": "C", "roast": "Wrong. Hala Madrid, apparently, but not Hala Facts."}, {"q": "What is the name of Dumbledore's phoenix?", "a": "Buckbeak", "b": "Fawkes", "c": "Hedwig", "d": "Norbert", "ans": "B", "roast": "Wrong. Fawkes would burst into flames from the embarrassment. Like your cakes."}, {"q": "What is the name of the wizarding bank?", "a": "Gringotts", "b": "Honeydukes", "c": "Ollivanders", "d": "Borgin and Burkes", "ans": "A", "roast": "Wrong. Good thing you do not have wizard money to lose."}, {"q": "Who is Harry's godfather?", "a": "Remus Lupin", "b": "Sirius Black", "c": "Arthur Weasley", "d": "Hagrid", "ans": "B", "roast": "Wrong. Even the godfather would disown this answer."}, {"q": "Where does Saleha get her cold Spanish latte?", "a": "Starbucks", "b": "Her own kitchen", "c": "Eggspectation", "d": "A vending machine", "ans": "C", "roast": "Wrong. Your own kitchen? Please. Be serious."}, {"q": "What is the name of Hagrid's three-headed dog?", "a": "Fang", "b": "Fluffy", "c": "Norbert", "d": "Padfoot", "ans": "B", "roast": "Wrong. Fluffy is offended. All three heads."}, {"q": "What is the famous drink at the Three Broomsticks?", "a": "Pumpkin juice", "b": "Butterbeer", "c": "Firewhisky", "d": "Gillywater", "ans": "B", "roast": "Wrong. You only know one drink and it is a cold Spanish latte."}, {"q": "What colour is Real Madrid's home kit?", "a": "Red", "b": "Blue", "c": "White", "d": "Green", "ans": "C", "roast": "Wrong. You do not watch football, and now we all know you do not watch the kit either."}, {"q": "Which house is Luna Lovegood in?", "a": "Ravenclaw", "b": "Gryffindor", "c": "Slytherin", "d": "Hufflepuff", "ans": "A", "roast": "Wrong. Ravenclaw is for smart people. That explains it."}, {"q": "What does a Boggart turn into?", "a": "A dragon", "b": "Your worst fear", "c": "A cat", "d": "A teacher", "ans": "B", "roast": "Wrong. Your Boggart is a kitchen with a working oven."}, {"q": "Who is officially the GOAT?", "a": "Saleha", "b": "Real Madrid", "c": "The GOAT Qasim", "d": "Dumbledore", "ans": "C", "roast": "Wrong. You agree to this every single day. Consistency, please."}, {"q": "What position does Ron play in Quidditch?", "a": "Seeker", "b": "Keeper", "c": "Beater", "d": "Chaser", "ans": "B", "roast": "Wrong. Ron would have known that. Ron."}, {"q": "What is Voldemort's real name?", "a": "Tom Riddle", "b": "Gellert Grindelwald", "c": "Draco Malfoy", "d": "Peter Pettigrew", "ans": "A", "roast": "Wrong. You must not be named either, after this answer."}, {"q": "Which house-elf loves socks?", "a": "Kreacher", "b": "Winky", "c": "Dobby", "d": "Hokey", "ans": "C", "roast": "Wrong. Dobby is free. You are not, you still have to study."}, {"q": "What does Felix Felicis do?", "a": "Makes you invisible", "b": "Gives you luck", "c": "Changes your appearance", "d": "Makes you sleep", "ans": "B", "roast": "Wrong. You need a bottle before every exam. Clearly."}, {"q": "What form does Harry's Patronus take?", "a": "An otter", "b": "A stag", "c": "A phoenix", "d": "A dog", "ans": "B", "roast": "Wrong. Your patronus is a cold Spanish latte and we both know it."}, {"q": "What does 'Lumos' do?", "a": "Lights the wand", "b": "Opens locks", "c": "Makes things float", "d": "Summons objects", "ans": "A", "roast": "Wrong. Lumos. Please. You need the light."}, {"q": "What is the name of the Weasleys' home?", "a": "Grimmauld Place", "b": "Shell Cottage", "c": "The Burrow", "d": "Godric's Hollow", "ans": "C", "roast": "Wrong. Even the garden gnomes knew that."}, {"q": "What ball does a Seeker have to catch?", "a": "The Quaffle", "b": "The Bludger", "c": "The Golden Snitch", "d": "The Gobstone", "ans": "C", "roast": "Wrong. Some seeker you would be."}], "words": [{"word": "LATTE", "hint": "Your only reliable relationship. Served cold."}, {"word": "WANDS", "hint": "Things wizards wave. You would wave it at the oven and still burn the cake."}, {"word": "SPELL", "hint": "What a witch casts. Also what you need to check in your essays."}, {"word": "CAKES", "hint": "Things you bake. Things nobody eats."}, {"word": "BURNT", "hint": "How every one of your bakes ends up."}, {"word": "REELS", "hint": "You send me 50 of these a day."}, {"word": "PHOTO", "hint": "You need 47 attempts to take one."}, {"word": "EXAMS", "hint": "The CSS has these. You should prepare for them."}, {"word": "MAGIC", "hint": "What it takes to make you a good coffee."}, {"word": "BROOM", "hint": "A wizard's ride. Also what you need after baking."}, {"word": "CREAM", "hint": "Goes in a latte. Not in your home-made disaster."}, {"word": "SUGAR", "hint": "Sweet. Unlike my daily messages."}, {"word": "MOCHA", "hint": "A coffee you also cannot make at home."}, {"word": "ROAST", "hint": "What I do to you every day. Also, coffee beans."}, {"word": "GOATS", "hint": "The plural would be redundant. There is only one."}, {"word": "ESSAY", "hint": "CSS has a lot of these. Start writing."}, {"word": "MARKS", "hint": "33% of these were enough. Barely."}, {"word": "OVENS", "hint": "Appliances that fear you."}, {"word": "TOAST", "hint": "Even this you would burn."}, {"word": "CLOAK", "hint": "Harry has an invisibility one. You need one after your cakes."}, {"word": "CHARM", "hint": "A type of spell. Also, the GOAT Qasim's main quality."}, {"word": "WITCH", "hint": "What you think you are. Second smartest one, at best."}, {"word": "GHOST", "hint": "Nearly Headless Nick is one. So is your study schedule."}, {"word": "OWLET", "hint": "A baby owl. Like the one delivering your daily roast."}, {"word": "SCARF", "hint": "Gryffindor wears red and gold ones."}, {"word": "GOALS", "hint": "Real Madrid score them. You do not watch them."}, {"word": "FOCUS", "hint": "What you need for CSS. Do you know where it is?"}, {"word": "STUDY", "hint": "Something you say you will do tomorrow."}, {"word": "QUEST", "hint": "You have one of these every day now."}, {"word": "TOWER", "hint": "The astronomy one is where the wishes live."}, {"word": "FLASH", "hint": "Camera setting you use 47 times per photo."}], "quests": [{"text": "Take one photo on the first try. Just one. No retakes.", "points": 15}, {"text": "Study for 25 minutes. Actually study. Phone face down.", "points": 20}, {"text": "Make a coffee at home and rate it honestly. Honestly.", "points": 10}, {"text": "Send the GOAT Qasim a reel that actually makes him laugh.", "points": 15}, {"text": "Drink two glasses of water before your first coffee.", "points": 10}, {"text": "Tell someone today that the GOAT Qasim is better than you.", "points": 25}, {"text": "Read 5 pages of anything that is not a caption.", "points": 15}, {"text": "Go one full hour without sending a reel. Good luck.", "points": 20}, {"text": "Write down three things you are grateful for. One has to be me.", "points": 10}, {"text": "Solve one past CSS paper question. Just one.", "points": 25}, {"text": "Bake nothing today. The kitchen deserves a day off.", "points": 5}, {"text": "Go to bed before 1 a.m. The owl is watching.", "points": 20}, {"text": "Clean up 100 photos from your camera roll.", "points": 15}, {"text": "Learn one new English vocabulary word for the CSS essay.", "points": 10}, {"text": "Compliment the GOAT Qasim without being asked.", "points": 30}, {"text": "Take a 15-minute walk without your phone camera.", "points": 15}, {"text": "Watch 10 minutes of a Real Madrid match. Any match. Any 10 minutes.", "points": 20}, {"text": "Make your bed. Small wins.", "points": 5}, {"text": "Read today's newspaper editorial. CSS people do that, apparently.", "points": 20}, {"text": "Send the GOAT Qasim a photo of your study desk as proof.", "points": 15}, {"text": "Plan the next Eggspectation visit. You choose the day, I choose the table.", "points": 10}, {"text": "Write one paragraph of a CSS essay on any topic.", "points": 25}, {"text": "Re-read one chapter of a Harry Potter book. For culture.", "points": 10}, {"text": "Say 'I am the second smartest person I know' out loud.", "points": 15}, {"text": "No coffee after 6 p.m. today. Brave, I know.", "points": 15}, {"text": "Revise one current affairs topic for 20 minutes.", "points": 20}, {"text": "Tidy your desk. Then take one (1) photo of it.", "points": 10}, {"text": "Reply to every reel the GOAT Qasim sent you. If he ever sent one.", "points": 10}, {"text": "Try making coffee at home again. For science. Report back.", "points": 15}, {"text": "Write down one goal for this week and actually look at it tomorrow.", "points": 15}, {"text": "Do 20 minutes of something that is not your phone.", "points": 15}], "questions": ["Rate your coffee today out of 10. Be honest.", "What is one thing you studied today? 'Nothing' is an answer, but a sad one.", "Which Harry Potter character are you today, and why?", "What was the best reel you saw today? Describe it in one line.", "What is the most dramatic thing that happened to you today?", "If you could have one spell for real, which one would it be?", "What would you order at Eggspectation right now?", "On a scale of 1 to 33%, how prepared are you for CSS?", "What is one thing the GOAT Qasim is better at than you? (Pick only one, we do not have all day.)", "What did you bake most recently, and did anyone survive?", "What is the last photo in your camera roll? Describe it honestly.", "What is one thing that made you laugh today?", "If today were a Hogwarts lesson, which subject would it be?", "What is one small win from today?", "What are you overthinking right now?", "If you were a Real Madrid player, what would your position be? Guess if you have to.", "What song is stuck in your head today?", "What is one thing you are looking forward to this week?", "Describe your mood today using only a drink.", "What would the CSS examiner write about you if they knew you?", "What is the worst coffee you have ever made? Paint the picture.", "What is one thing you want to get done before the weekend?", "Which of your friends would survive a week at Hogwarts? (Answer: the GOAT Qasim.)", "What is your excuse for not studying today? Make it creative.", "What did you have for breakfast? Did you make it, or was it safe?", "What is one habit you want to start this month?", "If you could ask the GOAT Qasim one question, what would it be?", "What is the most useless thing you know a lot about?", "What photo would you post today if you had to post one?", "What would you name your own café?", "What made today better than yesterday?"], "prizes": [{"text": "You won: nothing. Like your CSS margin.", "chance": 10, "real": "no"}, {"text": "You won: one compliment from the GOAT Qasim. It has been cancelled.", "chance": 8, "real": "no"}, {"text": "You won: a free lesson on how to make coffee. Taught by literally anyone else.", "chance": 8, "real": "no"}, {"text": "You won: the right to send one extra reel today. As if you needed permission.", "chance": 8, "real": "no"}, {"text": "You won: a virtual cold Spanish latte. Tastes like disappointment.", "chance": 8, "real": "no"}, {"text": "You won: 5 bonus house points. Still behind the GOAT Qasim.", "chance": 8, "real": "no"}, {"text": "You won: an official certificate of trying. Framed in your imagination.", "chance": 7, "real": "no"}, {"text": "You won: a day off from studying. Just kidding. Go study.", "chance": 7, "real": "no"}, {"text": "You won: absolutely nothing. The owl spent your prize money on snacks.", "chance": 7, "real": "no"}, {"text": "You won: a recipe that will still go wrong in your kitchen.", "chance": 7, "real": "no"}, {"text": "REAL PRIZE: one cold Spanish latte at Eggspectation, on the GOAT Qasim. Screenshot this to claim.", "chance": 2, "real": "yes"}, {"text": "REAL PRIZE: the GOAT Qasim has to reply to 10 of your reels today. Screenshot this to claim.", "chance": 3, "real": "yes"}, {"text": "REAL PRIZE: you win one argument of your choice against the GOAT Qasim. Screenshot this to claim.", "chance": 2, "real": "yes"}], "settings": {"goat_points_lead": 10, "goat_latte_lead": 1, "latte_seconds": 20}, "games": ["latte", "trivia", "owl", "word", "cake", "snake", "quickdraw", "2048", "simon", "hangman", "gnome", "tictactoe", "breakout", "unscramble", "pour", "memory", "duel", "maze", "stroop", "target", "slide", "maths", "dodge", "sudoku", "bubbles", "typing", "lightsout", "higherlower", "mines", "count"]};
   const dailyBox = document.getElementById('daily');
   const esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const DKEY = 'saleha-daily-' + window.__today;
@@ -2425,7 +2476,7 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
     const stats = Object.assign({points:0, triviaRight:0, triviaTotal:0, latteBest:0}, S.stats || {});
     const serverDone = new Set(S.done || []);
     const isDone = t => !!dState[t] || serverDone.has(t);
-    const game = (S.game && ["latte", "trivia", "owl", "word", "cake", "simon", "memory"].includes(String(S.game).toLowerCase())) ? String(S.game).toLowerCase() : DAILY.games[(n + 4) % DAILY.games.length];
+    const game = (S.game && DAILY.games.includes(String(S.game).toLowerCase())) ? String(S.game).toLowerCase() : DAILY.games[(n + 27) % DAILY.games.length];
     const trivia = (S.trivia && S.trivia.q) ? S.trivia : pickN(DAILY.trivia);
     const word = (S.word && S.word.word && /^[a-z]{5}$/i.test(String(S.word.word).trim())) ? {word:String(S.word.word).trim().toUpperCase(), hint:S.word.hint || ''} : pickN(DAILY.words);
     const quest = (S.quest && S.quest.text) ? {text:S.quest.text, points:num(S.quest.points, 10)} : pickN(DAILY.quests);
@@ -2433,13 +2484,28 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
     const prizes = (S.prizes && S.prizes.length) ? S.prizes : DAILY.prizes;
 
     /* ---------- Game of the day ---------- */
-    if (game === 'latte') latteGame(card('gameCard', "Today's game", 'Catch the <em>latte</em>'), set, stats);
-    else if (game === 'trivia') triviaGame(card('gameCard', "Today's game", 'The daily <em>question</em>'), trivia, stats, isDone('trivia'));
-    else if (game === 'word') wordGame(card('gameCard', "Today's game", 'Word of the <em>day</em>'), word, isDone('word'));
-    else if (game === 'owl') owlGame(card('gameCard', "Today's game", 'Owl Post <em>flight</em>'), num(set.goat_latte_lead, 1));
-    else if (game === 'cake') cakeGame(card('gameCard', "Today's game", 'Cake <em>stacker</em>'), num(set.goat_latte_lead, 1));
-    else if (game === 'simon') simonGame(card('gameCard', "Today's game", 'Spell <em>sequence</em>'), num(set.goat_latte_lead, 1));
-    else memoryGame(card('gameCard', "Today's game", 'Memory <em>match</em>'), num(set.goat_latte_lead, 1));
+    const lead1 = num(set.goat_latte_lead, 1);
+    const GT = {
+      latte:['Catch the <em>latte</em>', b => latteGame(b, set, stats)],
+      trivia:['The daily <em>question</em>', b => triviaGame(b, trivia, stats, isDone('trivia'))],
+      word:['Word of the <em>day</em>', b => wordGame(b, word, isDone('word'))],
+      owl:['Owl Post <em>flight</em>', b => owlGame(b, lead1)], cake:['Cake <em>stacker</em>', b => cakeGame(b, lead1)],
+      simon:['Spell <em>sequence</em>', b => simonGame(b, lead1)], memory:['Memory <em>match</em>', b => memoryGame(b, lead1)],
+      snake:['Reel <em>snake</em>', b => snakeGame(b, lead1)], breakout:['Spell <em>breaker</em>', b => breakoutGame(b, lead1)],
+      dodge:['Dodge the <em>bludgers</em>', b => dodgeGame(b, lead1)], gnome:['De-gnome the <em>garden</em>', b => gnomeGame(b, lead1)],
+      quickdraw:['Quick <em>draw</em>', b => quickGame(b, lead1)], target:['Lumos target <em>practice</em>', b => targetGame(b, lead1)],
+      '2048':['2048, <em>latte</em> edition', b => g2048Game(b, lead1)], tictactoe:['Beat the <em>GOAT</em>', b => tttGame(b, lead1)],
+      duel:['Wizard’s <em>duel</em>', b => duelGame(b, lead1)], hangman:['Hang-<em>owl</em>', b => hangGame(b, lead1)],
+      unscramble:['Unscramble the <em>spell</em>', b => unscrGame(b, lead1)], maths:['CSS maths <em>sprint</em>', b => mathsGame(b, lead1)],
+      typing:['Typing <em>duel</em>', b => typingGame(b, lead1)], slide:['Sliding <em>puzzle</em>', b => slideGame(b, lead1)],
+      lightsout:['Lumos or <em>nox</em>', b => lightsGame(b, lead1)], mines:['The Forbidden <em>Forest</em>', b => minesGame(b, lead1)],
+      stroop:['Potion <em>colours</em>', b => stroopGame(b, lead1)], higherlower:['Higher or <em>lower</em>', b => hiloGame(b, lead1)],
+      bubbles:['Cauldron <em>bubbles</em>', b => bubbleGame(b, lead1)], pour:['The perfect <em>pour</em>', b => pourGame(b, lead1)],
+      sudoku:['Mini <em>sudoku</em>', b => sudokuGame(b, lead1)], count:['Count the <em>owls</em>', b => countGame(b, lead1)],
+      maze:['Castle <em>maze</em>', b => mazeGame(b, lead1)]
+    };
+    const gt = GT[game] || GT.latte;
+    gt[1](card('gameCard', "Today's game", gt[0]));
 
     /* ---------- Quest ---------- */
     {
@@ -2983,6 +3049,513 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
       bats.appendChild(b);
     }
     document.body.appendChild(bats);
+  }
+
+  if (!CanvasRenderingContext2D.prototype.roundRect) CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h){ this.rect(x, y, w, h); };
+
+  /* ================= 23 more mini-games ================= */
+  let gameKey = null;
+  addEventListener('keydown', e => {
+    if (!gameKey || todayEl.hidden || (e.target && /INPUT|TEXTAREA/.test(e.target.tagName))) return;
+    const m = {ArrowUp:'up', ArrowDown:'down', ArrowLeft:'left', ArrowRight:'right', w:'up', s:'down', a:'left', d:'right'}[e.key];
+    if (m){ e.preventDefault(); gameKey(m); }
+  });
+  function addSwipe(el, fn){
+    let sx = 0, sy = 0, on = false;
+    el.addEventListener('pointerdown', e => { on = true; sx = e.clientX; sy = e.clientY; });
+    el.addEventListener('pointerup', e => {
+      if (!on) return; on = false;
+      const dx = e.clientX - sx, dy = e.clientY - sy;
+      if (Math.max(Math.abs(dx), Math.abs(dy)) < 22) return;
+      fn(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up'));
+    });
+  }
+  function dpad(after, fn){
+    const d = document.createElement('div'); d.className = 'dpad';
+    d.innerHTML = '<button data-d="up" aria-label="Up">▲</button><button data-d="left" aria-label="Left">◀</button><button data-d="down" aria-label="Down">▼</button><button data-d="right" aria-label="Right">▶</button>';
+    d.addEventListener('click', e => { const b = e.target.closest('button'); if (b) fn(b.dataset.d); });
+    after.insertAdjacentElement('afterend', d); return d;
+  }
+  const shuffle = a => { for (let i=a.length-1;i>0;i--){ const j = (Math.random()*(i+1))|0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const rr = (a, b) => a + Math.random()*(b - a);
+  function countdownBar(A, secs, onEnd){
+    let left = secs; A.extra(`Time <b>${left}</b>s`);
+    const iv = setInterval(() => { left--; A.extra(`Time <b>${Math.max(0,left)}</b>s`); if (left <= 0){ clearInterval(iv); onEnd(); } }, 1000);
+    return () => clearInterval(iv);
+  }
+  function loop(fn){ let last = 0, alive = true; const f = ts => { if (!alive) return; const dt = Math.min(40, ts - (last || ts))/1000; last = ts; fn(dt); requestAnimationFrame(f); }; requestAnimationFrame(f); return () => { alive = false; }; }
+
+  /* ---- 1. Reel Snake ---- */
+  function snakeGame(body, lead){
+    const A = arcadeShell(body, {key:'snake', lead, h:340, intro:'Guide the snake to eat the reels. Every reel makes it longer. Hitting a wall or yourself ends it. Swipe, use the arrows, or the buttons.'});
+    const N = 15; let sn, dir, nd, food, score, timer = 0, running = false;
+    dpad(body.querySelector('.lg-wrap'), d => turn(d)); addSwipe(A.cv, d => turn(d));
+    function turn(d){ const opp = {up:'down', down:'up', left:'right', right:'left'}; if (running && d !== opp[dir]) nd = d; }
+    function place(){ do { food = {x:(Math.random()*N)|0, y:(Math.random()*N)|0}; } while (sn.some(p => p.x === food.x && p.y === food.y)); }
+    function draw(){
+      const c = A.ctx, s = Math.floor(Math.min(A.W, A.H)/N), ox = (A.W - s*N)/2, oy = (A.H - s*N)/2;
+      c.clearRect(0,0,A.W,A.H); c.strokeStyle = 'rgba(236,201,127,.25)'; c.strokeRect(ox, oy, s*N, s*N);
+      c.fillStyle = '#ff6fa5'; c.beginPath(); c.roundRect(ox + food.x*s + 2, oy + food.y*s + 1, s - 4, s - 2, 4); c.fill();
+      c.fillStyle = '#fff'; c.beginPath(); c.moveTo(ox + food.x*s + s*.4, oy + food.y*s + s*.3); c.lineTo(ox + food.x*s + s*.7, oy + food.y*s + s*.5); c.lineTo(ox + food.x*s + s*.4, oy + food.y*s + s*.7); c.fill();
+      sn.forEach((p, i) => { c.fillStyle = i ? '#9fe3b0' : '#ecc97f'; c.fillRect(ox + p.x*s + 1, oy + p.y*s + 1, s - 2, s - 2); });
+    }
+    function step(){
+      if (!running) return; dir = nd;
+      const h = {x: sn[0].x + (dir === 'right') - (dir === 'left'), y: sn[0].y + (dir === 'down') - (dir === 'up')};
+      if (h.x < 0 || h.y < 0 || h.x >= N || h.y >= N || sn.some(p => p.x === h.x && p.y === h.y)){
+        running = false; gameKey = null;
+        return A.finish(score, score < 3 ? 'The snake starved. Like your study motivation.' : score < 10 ? `${score} reels eaten. Fewer than you send me before breakfast.` : `${score} reels. Professional reel consumer.`);
+      }
+      sn.unshift(h);
+      if (h.x === food.x && h.y === food.y){ score++; A.score(score); place(); } else sn.pop();
+      draw(); timer = setTimeout(step, Math.max(70, 150 - score*4));
+    }
+    A.start = () => { A.size(); sn = [{x:7,y:7},{x:6,y:7},{x:5,y:7}]; dir = nd = 'right'; score = 0; A.score(0); place(); running = true; A.over.hidden = true; gameKey = turn; clearTimeout(timer); draw(); timer = setTimeout(step, 300); };
+  }
+
+  /* ---- 2. Spell Breaker ---- */
+  function breakoutGame(body, lead){
+    const A = arcadeShell(body, {key:'breakout', lead, h:400, intro:'Drag the wand to bounce the spell and smash every CSS textbook. Do not let it fall. You avoid these books in real life anyway.'});
+    let px, ball, bricks, score, stop = null, running = false;
+    const COLS = ['#ff8fb8','#ecc97f','#c9a7ff','#9be7ff','#9fe3b0'];
+    function build(){ bricks = []; const cols = 7, bw = (A.W - 20)/cols; for (let r=0;r<5;r++) for (let c=0;c<cols;c++) bricks.push({x:10 + c*bw, y:30 + r*20, w:bw - 4, h:16, col:COLS[r]}); }
+    A.cv.addEventListener('pointermove', e => { const r = A.cv.getBoundingClientRect(); px = e.clientX - r.left; });
+    A.cv.addEventListener('pointerdown', e => { const r = A.cv.getBoundingClientRect(); px = e.clientX - r.left; });
+    A.start = () => {
+      A.size(); px = A.W/2; build(); score = 0; A.score(0); running = true; A.over.hidden = true;
+      ball = {x:A.W/2, y:A.H - 60, vx:rr(-160,160), vy:-260};
+      if (stop) stop();
+      stop = loop(dt => {
+        if (!running) return;
+        const c = A.ctx, pw = Math.max(60, A.W*.22), py = A.H - 24;
+        ball.x += ball.vx*dt; ball.y += ball.vy*dt;
+        if (ball.x < 6 || ball.x > A.W - 6){ ball.vx *= -1; ball.x = Math.max(6, Math.min(A.W - 6, ball.x)); }
+        if (ball.y < 6){ ball.vy = Math.abs(ball.vy); }
+        const pl = Math.max(0, Math.min(A.W - pw, px - pw/2));
+        if (ball.vy > 0 && ball.y > py - 7 && ball.y < py + 6 && ball.x > pl - 4 && ball.x < pl + pw + 4){ ball.vy = -Math.abs(ball.vy)*1.02; ball.vx = ((ball.x - (pl + pw/2))/(pw/2))*260; }
+        for (const b of bricks){ if (!b.dead && ball.x > b.x && ball.x < b.x + b.w && ball.y > b.y && ball.y < b.y + b.h){ b.dead = true; ball.vy *= -1; score++; A.score(score); break; } }
+        if (bricks.every(b => b.dead)){ build(); ball.vy *= 1.1; }
+        if (ball.y > A.H + 10){ running = false; stop(); return A.finish(score, score < 8 ? 'The spell fell. The books won.' : score < 30 ? `${score} books destroyed. Still more than you have read.` : `${score} books. The library is filing charges.`); }
+        c.clearRect(0,0,A.W,A.H);
+        bricks.forEach(b => { if (!b.dead){ c.fillStyle = b.col; c.fillRect(b.x, b.y, b.w, b.h); } });
+        c.fillStyle = '#6b4530'; c.fillRect(pl, py, pw, 7); c.fillStyle = '#fff1b8'; c.fillRect(pl + pw - 8, py - 1, 8, 9);
+        c.fillStyle = '#fff6d6'; c.beginPath(); c.arc(ball.x, ball.y, 6, 0, 7); c.fill();
+      });
+    };
+  }
+
+  /* ---- 3. Dodge the Bludgers ---- */
+  function dodgeGame(body, lead){
+    const A = arcadeShell(body, {key:'dodge', lead, h:380, intro:'Drag left and right to dodge the Bludgers. Every one you dodge is a point. One hit and you are done.'});
+    let px, bl, score, stop = null, running = false, spawnT = 0, t = 0;
+    A.cv.addEventListener('pointermove', e => { const r = A.cv.getBoundingClientRect(); px = e.clientX - r.left; });
+    A.cv.addEventListener('pointerdown', e => { const r = A.cv.getBoundingClientRect(); px = e.clientX - r.left; });
+    A.start = () => {
+      A.size(); px = A.W/2; bl = []; score = 0; t = 0; spawnT = 0; A.score(0); running = true; A.over.hidden = true;
+      if (stop) stop();
+      stop = loop(dt => {
+        if (!running) return;
+        const c = A.ctx, py = A.H - 34; t += dt; spawnT -= dt;
+        if (spawnT <= 0){ bl.push({x:rr(14, A.W - 14), y:-16, v:rr(170, 240) + t*9}); spawnT = Math.max(.25, .8 - t*.02); }
+        c.clearRect(0,0,A.W,A.H);
+        for (let i=bl.length-1;i>=0;i--){
+          const b = bl[i]; b.y += b.v*dt;
+          if (Math.hypot(b.x - px, b.y - py) < 26){ running = false; stop(); return A.finish(score, score < 10 ? 'Hit almost immediately. Very on brand.' : score < 40 ? `${score} dodged. Not bad for someone who cannot dodge an oven fire.` : `${score} dodged. Quidditch is calling.`); }
+          if (b.y > A.H + 20){ bl.splice(i,1); score++; A.score(score); continue; }
+          c.fillStyle = '#3a3138'; c.beginPath(); c.arc(b.x, b.y, 13, 0, 7); c.fill(); c.strokeStyle = '#7a6f78'; c.stroke();
+        }
+        c.fillStyle = '#ecc97f'; c.beginPath(); c.arc(px, py, 13, 0, 7); c.fill();
+        c.strokeStyle = '#8a5a2b'; c.lineWidth = 4; c.beginPath(); c.moveTo(px - 26, py + 12); c.lineTo(px + 26, py + 8); c.stroke(); c.lineWidth = 1;
+      });
+    };
+  }
+
+  /* ---- 4. De-gnome the garden ---- */
+  function gnomeGame(body, lead){
+    const A = arcadeShell(body, {key:'gnome', lead, canvas:false, intro:'Tap the garden gnomes before they hide. Golden owls are worth 3. Do NOT tap the burnt coffee. 30 seconds.'});
+    A.stage.innerHTML = '<div class="holes">' + Array.from({length:9}, (_, i) => `<button class="hole" data-i="${i}"><span></span></button>`).join('') + '</div>';
+    const holes = [...A.stage.querySelectorAll('.hole')]; let score, running = false, timers = [], stopBar;
+    function pop(){
+      if (!running) return;
+      const free = holes.filter(h => !h.dataset.k); if (free.length){
+        const h = free[(Math.random()*free.length)|0], r = Math.random(), k = r < .12 ? 'owl' : r < .32 ? 'bad' : 'gnome';
+        h.dataset.k = k; h.querySelector('span').textContent = k === 'owl' ? '🦉' : k === 'bad' ? '☕' : '🧌'; h.classList.add('up');
+        timers.push(setTimeout(() => { h.classList.remove('up'); delete h.dataset.k; }, rr(650, 1000)));
+      }
+      timers.push(setTimeout(pop, rr(350, 650)));
+    }
+    holes.forEach(h => h.addEventListener('click', () => {
+      if (!running || !h.dataset.k) return;
+      const k = h.dataset.k; score += k === 'owl' ? 3 : k === 'bad' ? -2 : 1; score = Math.max(0, score); A.score(score);
+      h.classList.remove('up'); h.classList.add(k === 'bad' ? 'boom' : 'hit'); setTimeout(() => h.classList.remove('hit','boom'), 250); delete h.dataset.k;
+    }));
+    A.start = () => { score = 0; A.score(0); running = true; A.over.hidden = true; timers.forEach(clearTimeout); pop();
+      stopBar = countdownBar(A, 30, () => { running = false; timers.forEach(clearTimeout); holes.forEach(h => { h.classList.remove('up'); delete h.dataset.k; });
+        A.finish(score, score < 10 ? 'The gnomes won. They are laughing at you.' : score < 25 ? `${score} gnomes cleared. The Weasleys would hire you. Part-time.` : `${score}. Gnome-clearing professional.`); }); };
+  }
+
+  /* ---- 5. Quick Draw ---- */
+  function quickGame(body, lead){
+    const A = arcadeShell(body, {key:'quickdraw', lead, canvas:false, intro:'Five duels. Wait for the word CAST, then tap as fast as you can. Tap too early and it counts as a terrible 1 second.'});
+    A.stage.innerHTML = '<button class="qd" id="qdBtn">Wait…</button><p class="dnote qd-log"></p>';
+    const btn = A.stage.querySelector('#qdBtn'), log = A.stage.querySelector('.qd-log');
+    let round, times, ready, t0, tm, qdone = true;
+    function next(){
+      if (round >= 5){ qdone = true; const avg = Math.round(times.reduce((a, b) => a + b, 0)/times.length), score = Math.max(0, 1000 - avg);
+        return A.finish(score, `Average ${avg} ms. ${avg < 300 ? 'Fast. Suspiciously fast.' : avg < 450 ? 'Decent reflexes. The GOAT Qasim is still faster.' : 'Slower than your replies to my texts.'}`, `avg ${avg}ms`); }
+      round++; ready = false; btn.className = 'qd wait'; btn.textContent = `Duel ${round}: wait…`;
+      tm = setTimeout(() => { ready = true; t0 = performance.now(); btn.className = 'qd go'; btn.textContent = 'CAST!'; }, rr(1300, 3800));
+    }
+    btn.addEventListener('pointerdown', () => {
+      if (!times || qdone || btn.classList.contains('cool')) return;
+      btn.classList.add('cool'); setTimeout(() => btn.classList.remove('cool'), 650);
+      if (!ready){ clearTimeout(tm); times.push(1000); log.textContent = 'Too early! 1000 ms penalty. Patience is a virtue you do not have.'; }
+      else { const ms = Math.round(performance.now() - t0); times.push(ms); log.textContent = `${ms} ms`; }
+      ready = false; A.score(times.length); setTimeout(next, 700);
+    });
+    A.start = () => { round = 0; times = []; qdone = false; A.score(0); log.textContent = ''; A.over.hidden = true; next(); };
+  }
+
+  /* ---- 6. Lumos target practice ---- */
+  function targetGame(body, lead){
+    const A = arcadeShell(body, {key:'target', lead, h:380, intro:'Tap the glowing targets before they fade. Hit the centre for 2 points. 30 seconds.'});
+    let tg, score, running = false, stop = null, stopBar, spawnT = 0;
+    A.cv.addEventListener('pointerdown', e => {
+      if (!running) return; const r = A.cv.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+      for (let i=tg.length-1;i>=0;i--){ const t = tg[i], rad = t.r*(1 - t.age/t.life), d = Math.hypot(x - t.x, y - t.y);
+        if (d < rad + 6){ score += d < rad*.35 ? 2 : 1; A.score(score); tg.splice(i,1); spawn(e.clientX, e.clientY, 8, 'spark'); return; } }
+    });
+    A.start = () => { A.size(); tg = []; score = 0; A.score(0); running = true; A.over.hidden = true; spawnT = 0;
+      if (stop) stop();
+      stop = loop(dt => { if (!running) return; const c = A.ctx; spawnT -= dt;
+        if (spawnT <= 0){ tg.push({x:rr(30, A.W - 30), y:rr(30, A.H - 30), r:rr(22, 32), age:0, life:rr(1.1, 1.6)}); spawnT = rr(.35, .6); }
+        c.clearRect(0,0,A.W,A.H);
+        for (let i=tg.length-1;i>=0;i--){ const t = tg[i]; t.age += dt; if (t.age > t.life){ tg.splice(i,1); continue; }
+          const rad = t.r*(1 - t.age/t.life); c.fillStyle = 'rgba(236,201,127,.25)'; c.beginPath(); c.arc(t.x, t.y, rad, 0, 7); c.fill();
+          c.strokeStyle = '#ecc97f'; c.lineWidth = 2; c.stroke(); c.fillStyle = '#fff1b8'; c.beginPath(); c.arc(t.x, t.y, rad*.35, 0, 7); c.fill(); }
+      });
+      stopBar = countdownBar(A, 30, () => { running = false; stop(); A.ctx.clearRect(0,0,A.W,A.H);
+        A.finish(score, score < 15 ? 'Lumos? More like Nox.' : score < 35 ? `${score} points. Decent aim. Still worse than mine.` : `${score}. Sharpshooter. Use this focus for studying.`); });
+    };
+  }
+
+  /* ---- 7. 2048 ---- */
+  function g2048Game(body, lead){
+    const A = arcadeShell(body, {key:'2048', lead, canvas:false, intro:'Swipe, use the arrows or the buttons to slide the tiles. Matching numbers merge. Aim for 2048. Or at least 33.'});
+    let g, score, over;
+    A.stage.innerHTML = '<div class="g2048"></div><button class="link-btn g2048-end">I give up, end the game</button>';
+    const grid = A.stage.querySelector('.g2048'); let pad = null;
+    function draw(){ grid.innerHTML = g.map(v => `<div class="t2 v${Math.min(v, 4096)}">${v || ''}</div>`).join(''); }
+    function add(){ const e = g.map((v, i) => v ? -1 : i).filter(i => i >= 0); if (e.length) g[e[(Math.random()*e.length)|0]] = Math.random() < .9 ? 2 : 4; }
+    function slideRow(r){ const a = r.filter(v => v); for (let i=0;i<a.length-1;i++) if (a[i] === a[i+1]){ a[i] *= 2; score += a[i]; a.splice(i+1, 1); } while (a.length < 4) a.push(0); return a; }
+    function move(d){
+      if (over) return; const old = g.join();
+      for (let k=0;k<4;k++){
+        const idx = [0,1,2,3].map(j => d === 'left' ? k*4 + j : d === 'right' ? k*4 + 3 - j : d === 'up' ? j*4 + k : (3 - j)*4 + k);
+        const out = slideRow(idx.map(i => g[i])); idx.forEach((i, j) => g[i] = out[j]);
+      }
+      if (g.join() !== old){ add(); A.score(score); draw(); if (!canMove()) end(); }
+    }
+    function canMove(){ if (g.includes(0)) return true; for (let i=0;i<16;i++){ if (i%4 < 3 && g[i] === g[i+1]) return true; if (i < 12 && g[i] === g[i+4]) return true; } return false; }
+    function end(){ over = true; gameKey = null; const top = Math.max(...g); A.finish(score, `Highest tile ${top}. ${top >= 512 ? 'Big brain. Where was this during exams?' : top >= 128 ? 'Respectable. Not GOAT level.' : 'Tiny tiles. Like your CSS margin.'}`, `score ${score}, tile ${top}`); }
+    addSwipe(grid, move);
+    A.stage.querySelector('.g2048-end').addEventListener('click', () => { if (!over) end(); });
+    A.start = () => { g = Array(16).fill(0); score = 0; over = false; add(); add(); A.score(0); draw(); A.over.hidden = true; gameKey = move; if (!pad) pad = dpad(grid, move); };
+  }
+
+  /* ---- 8. Tic-tac-toe vs the GOAT ---- */
+  function tttGame(body, lead){
+    const A = arcadeShell(body, {key:'tictactoe', lead, canvas:false, intro:'Three games of tic-tac-toe against the GOAT Qasim. You are X. Every draw is a point. Winning is not possible. You will see.'});
+    A.stage.innerHTML = '<div class="ttt"></div><p class="dnote ttt-msg"></p>';
+    const board = A.stage.querySelector('.ttt'), msg = A.stage.querySelector('.ttt-msg');
+    let b, game, draws, busy;
+    const L = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+    const win = (s, p) => L.some(l => l.every(i => s[i] === p));
+    function mm(s, p){ if (win(s,'O')) return {v:1}; if (win(s,'X')) return {v:-1}; if (!s.includes('')) return {v:0};
+      let best = {v: p === 'O' ? -2 : 2, i:-1};
+      s.forEach((c, i) => { if (c) return; s[i] = p; const r = mm(s, p === 'O' ? 'X' : 'O'); s[i] = '';
+        if ((p === 'O' && r.v > best.v) || (p === 'X' && r.v < best.v)) best = {v:r.v, i}; });
+      return best; }
+    function draw(){ board.innerHTML = b.map((c, i) => `<button class="tc ${c}" data-i="${i}">${c}</button>`).join(''); }
+    function round(){ b = Array(9).fill(''); busy = false; game++; msg.textContent = `Game ${game} of 3. Your move.`; if (game % 2 === 0){ b[4] = 'O'; } draw(); }
+    function after(){
+      const done = win(b,'O') ? 'lose' : win(b,'X') ? 'win' : !b.includes('') ? 'draw' : null;
+      if (!done) return false;
+      if (done === 'draw'){ draws++; A.score(draws); msg.textContent = 'Draw. The best you can hope for.'; }
+      else msg.textContent = done === 'lose' ? 'The GOAT wins. As expected.' : 'Wait, you won? Impossible. Reporting a bug.';
+      busy = true;
+      setTimeout(() => { if (game >= 3) A.finish(draws, draws === 3 ? '3 draws. You survived the GOAT. Barely.' : `${draws} draw${draws === 1 ? '' : 's'}. The GOAT remains undefeated.`, `${draws} draws`); else round(); }, 1100);
+      return true;
+    }
+    board.addEventListener('click', e => {
+      const c = e.target.closest('.tc'); if (!c || busy || b[c.dataset.i]) return;
+      b[c.dataset.i] = 'X'; draw(); if (after()) return;
+      busy = true; setTimeout(() => { const m = mm(b.slice(), 'O'); b[m.i] = 'O'; draw(); busy = false; after(); }, 350);
+    });
+    A.start = () => { game = 0; draws = 0; A.score(0); A.over.hidden = true; round(); };
+  }
+
+  /* ---- 9. Wizard's Duel ---- */
+  function duelGame(body, lead){
+    const A = arcadeShell(body, {key:'duel', lead, canvas:false, intro:'Best of five against the GOAT Qasim. Expelliarmus beats Stupefy, Stupefy beats Protego, Protego beats Expelliarmus. Choose wisely.'});
+    const S = ['Expelliarmus','Stupefy','Protego'];
+    A.stage.innerHTML = `<div class="duel-btns">${S.map((s, i) => `<button class="opt" data-i="${i}">${s}</button>`).join('')}</div><p class="dnote duel-msg"></p><div class="duel-score"></div>`;
+    const msg = A.stage.querySelector('.duel-msg'), sc = A.stage.querySelector('.duel-score');
+    let me, goat, rounds, busy;
+    A.stage.querySelectorAll('.opt').forEach(b => b.addEventListener('click', () => {
+      if (busy || rounds >= 5) return; const i = +b.dataset.i, g = (Math.random()*3)|0; rounds++;
+      const res = i === g ? 'tie' : (i - g + 3) % 3 === 2 ? 'win' : 'lose';
+      if (res === 'win') me++; if (res === 'lose') goat++;
+      msg.textContent = `You cast ${S[i]}. The GOAT cast ${S[g]}. ${res === 'win' ? 'You win this round. Lucky.' : res === 'lose' ? 'The GOAT wins this round.' : 'A tie. Boring.'}`;
+      sc.textContent = `Round ${rounds}/5 · You ${me} : ${goat} the GOAT`; A.score(me);
+      if (rounds >= 5){ busy = true; setTimeout(() => A.finish(me, me > goat ? 'You beat the GOAT at duelling. He demands a rematch.' : me === goat ? 'A draw. The GOAT allowed it.' : 'The GOAT wins the duel. As foretold.', `you ${me} - goat ${goat}`), 900); }
+    }));
+    A.start = () => { me = goat = rounds = 0; busy = false; A.score(0); msg.textContent = 'Cast your first spell.'; sc.textContent = 'Round 0/5'; A.over.hidden = true; };
+  }
+
+  /* ---- 10. Hang-owl ---- */
+  const HANG = [['QUIDDITCH','The sport you would watch instead of football'],['EGGSPECTATION','Your favourite place on earth'],['BUTTERBEER','The Three Broomsticks special'],['PATRONUS','Yours is a cold Spanish latte'],['ESPRESSO','The thing you burn at home'],['BERNABEU','Real Madrid’s home. You have never watched a match there'],['HOGSMEADE','Village near the castle'],['CAPPUCCINO','Another coffee you cannot make'],['THESIS','The thing the GOAT Qasim finished for you'],['CROISSANT','A bakery item you should buy, not bake'],['DUMBLEDORE','The headmaster'],['EXAMINATION','CSS has a lot of these'],['SCREENSHOT','Take one of every real prize'],['GRYFFINDOR','Red and gold house'],['PHOTOGRAPHER','What you think you are. 47 attempts per photo']];
+  function hangGame(body, lead){
+    const A = arcadeShell(body, {key:'hangman', lead, canvas:false, intro:'Guess the hidden word one letter at a time. Six wrong guesses and the owl drops the letter.'});
+    const [W, hint] = HANG[Math.max(0, dayNo(window.__today)) % HANG.length];
+    let got, wrong, done;
+    A.stage.innerHTML = `<p class="dnote">Hint: ${hint}</p><div class="hm-word"></div><p class="dnote hm-lives"></p><div class="kb hm-kb">${['QWERTYUIOP','ASDFGHJKL','ZXCVBNM'].map(r => `<div class="kr">${[...r].map(ch => `<button class="kk" data-k="${ch}">${ch}</button>`).join('')}</div>`).join('')}</div>`;
+    const word = A.stage.querySelector('.hm-word'), lives = A.stage.querySelector('.hm-lives');
+    function draw(){ word.innerHTML = [...W].map(ch => `<span>${got.has(ch) ? ch : ''}</span>`).join(''); lives.textContent = `Wrong guesses left: ${6 - wrong}`; }
+    A.stage.querySelector('.hm-kb').addEventListener('click', e => {
+      const b = e.target.closest('.kk'); if (!b || done || b.disabled) return; b.disabled = true; const ch = b.dataset.k;
+      if (W.includes(ch)){ got.add(ch); b.classList.add('hit'); } else { wrong++; b.classList.add('miss'); }
+      draw();
+      if ([...W].every(c => got.has(c))){ done = true; const s = (6 - wrong)*10 + 10; A.score(s); A.finish(s, `Solved: ${W}. ${wrong === 0 ? 'Flawless. Who told you?' : 'Not bad.'}`, `solved ${W}`); }
+      else if (wrong >= 6){ done = true; word.innerHTML = [...W].map(c => `<span>${c}</span>`).join(''); A.finish(0, `The word was ${W}. The owl dropped the letter.`, `failed ${W}`); }
+    });
+    A.start = () => { got = new Set(); wrong = 0; done = false; A.score(0); A.stage.querySelectorAll('.hm-kb .kk').forEach(b => { b.disabled = false; b.className = 'kk'; }); draw(); A.over.hidden = true; };
+  }
+
+  /* ---- 11. Unscramble ---- */
+  const SCR = ['LATTE','WANDS','OWLET','CHARM','MAGIC','CAKES','REELS','PHOTO','QUEST','GOATS','ESSAY','EXAMS','MOCHA','SPELL','BROOM','TOWER','CLOAK','SCARF','WITCH','GHOST','FOCUS','STUDY','SUGAR','TOAST','MADRID','THESIS','POTION','DRAGON','CASTLE','COFFEE','BAKING','SELFIE','LIBRARY','PUMPKIN','LANTERN'];
+  function unscrGame(body, lead){
+    const A = arcadeShell(body, {key:'unscramble', lead, canvas:false, intro:'Unscramble as many words as you can in 60 seconds. Type the word and press Enter. Skipping is allowed. Giving up is very on brand.'});
+    A.stage.innerHTML = '<div class="scr-word"></div><input class="scr-in" id="scrIn" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Type the word"><div class="row"><button class="cta" id="scrOk">Check</button><button class="cta ghost" id="scrSkip">Skip</button></div><p class="dnote scr-msg"></p>';
+    const wEl = A.stage.querySelector('.scr-word'), inp = A.stage.querySelector('#scrIn'), msg = A.stage.querySelector('.scr-msg');
+    let pool, cur, score, running = false;
+    function next(){ cur = pool.pop() || SCR[(Math.random()*SCR.length)|0]; let s; do { s = shuffle([...cur]).join(''); } while (s === cur); wEl.textContent = s; inp.value = ''; }
+    function check(){ if (!running) return; if (inp.value.trim().toUpperCase() === cur){ score++; A.score(score); msg.textContent = 'Correct!'; next(); } else { msg.textContent = 'Nope. Try again.'; } }
+    A.stage.querySelector('#scrOk').addEventListener('click', check);
+    inp.addEventListener('keydown', e => { if (e.key === 'Enter') check(); });
+    A.stage.querySelector('#scrSkip').addEventListener('click', () => { if (running){ msg.textContent = `It was ${cur}.`; next(); } });
+    A.start = () => { pool = shuffle(SCR.slice()); score = 0; running = true; A.score(0); msg.textContent = ''; next(); A.over.hidden = true; inp.focus();
+      countdownBar(A, 60, () => { running = false; A.finish(score, score < 4 ? `${score} words. The dictionary is disappointed.` : score < 10 ? `${score} words. Decent. Now use them in a CSS essay.` : `${score} words. Wordsmith. Suspicious.`); }); };
+  }
+
+  /* ---- 12. CSS maths sprint ---- */
+  function mathsGame(body, lead){
+    const A = arcadeShell(body, {key:'maths', lead, canvas:false, intro:'Answer as many quick sums as you can in 45 seconds. Wrong answers cost a point. Calculators are for the weak.'});
+    A.stage.innerHTML = '<div class="m-q"></div><div class="opts m-opts"></div>';
+    const q = A.stage.querySelector('.m-q'), o = A.stage.querySelector('.m-opts');
+    let ans, score, running = false;
+    function next(){ const t = (Math.random()*3)|0; let a, b, s;
+      if (t === 0){ a = (rr(5, 60))|0; b = (rr(5, 60))|0; ans = a + b; s = `${a} + ${b}`; }
+      else if (t === 1){ a = (rr(20, 99))|0; b = (rr(1, a))|0; ans = a - b; s = `${a} − ${b}`; }
+      else { a = (rr(2, 13))|0; b = (rr(2, 13))|0; ans = a*b; s = `${a} × ${b}`; }
+      const opts = new Set([ans]); while (opts.size < 4) opts.add(ans + ((rr(-10, 11))|0 || 1));
+      q.textContent = s + ' = ?'; o.innerHTML = shuffle([...opts]).map(v => `<button class="opt" data-v="${v}">${v}</button>`).join(''); }
+    o.addEventListener('click', e => { const b = e.target.closest('.opt'); if (!b || !running) return; score += +b.dataset.v === ans ? 1 : -1; score = Math.max(0, score); A.score(score); next(); });
+    A.start = () => { score = 0; running = true; A.score(0); next(); A.over.hidden = true;
+      countdownBar(A, 45, () => { running = false; A.finish(score, score < 10 ? `${score}. The CSS maths section is worried.` : score < 25 ? `${score} correct. Respectable.` : `${score}. Human calculator. Who are you?`); }); };
+  }
+
+  /* ---- 13. Typing duel ---- */
+  const LINES = ['the goat qasim is better than me at everything','i will not make coffee at home ever again','cold spanish latte is my only personality','thirty three percent is a pass and i will not apologise','i promise to study for at least five minutes today','my cakes are not burnt they are rustic','i agree that qasim is the greatest of all time'];
+  function typingGame(body, lead){
+    const A = arcadeShell(body, {key:'typing', lead, canvas:false, intro:'Type the sentence exactly as fast as you can. Your speed in words per minute is your score.'});
+    const line = LINES[Math.max(0, dayNo(window.__today)) % LINES.length];
+    A.stage.innerHTML = `<div class="ty-line"></div><input class="scr-in ty-in" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Start typing…">`;
+    const L = A.stage.querySelector('.ty-line'), inp = A.stage.querySelector('.ty-in'); let t0 = 0, done;
+    function paint(){ const v = inp.value; L.innerHTML = [...line].map((ch, i) => `<span class="${i < v.length ? (v[i] === ch ? 'ok' : 'bad') : ''}">${ch}</span>`).join(''); }
+    inp.addEventListener('input', () => {
+      if (done) return; if (!t0) t0 = performance.now(); paint();
+      if (inp.value === line){ done = true; const secs = (performance.now() - t0)/1000, wpm = Math.round((line.length/5)/(secs/60));
+        A.score(wpm); A.finish(wpm, `${wpm} words per minute. ${wpm > 60 ? 'Fast fingers. Now type your CSS essay.' : wpm > 35 ? 'Decent speed. Slower than your reel sending.' : 'The owl types faster with its wings.'}`, `${wpm} wpm`); }
+    });
+    A.start = () => { inp.value = ''; t0 = 0; done = false; A.score(0); paint(); A.over.hidden = true; inp.focus(); };
+  }
+
+  /* ---- 14. Sliding castle puzzle ---- */
+  function slideGame(body, lead){
+    const A = arcadeShell(body, {key:'slide', lead, canvas:false, intro:'Slide the tiles into order, 1 to 8, with the gap at the end. Fewer moves and less time scores higher.'});
+    A.stage.innerHTML = '<div class="sl"></div>';
+    const el = A.stage.querySelector('.sl'); let t, moves, t0, stopT;
+    const nb = i => [i - 3, i + 3, i % 3 ? i - 1 : -1, i % 3 < 2 ? i + 1 : -1].filter(j => j >= 0 && j < 9);
+    function draw(){ el.innerHTML = t.map((v, i) => `<button class="slt ${v ? '' : 'gap'}" data-i="${i}">${v || ''}</button>`).join(''); }
+    el.addEventListener('click', e => {
+      const b = e.target.closest('.slt'); if (!b || !t) return; const i = +b.dataset.i, g = t.indexOf(0);
+      if (!nb(g).includes(i)) return; [t[i], t[g]] = [t[g], t[i]]; moves++; A.score(moves); draw();
+      if (t.join() === '1,2,3,4,5,6,7,8,0'){ const secs = Math.round((Date.now() - t0)/1000); stopT(); const s = Math.max(5, 200 - moves - secs); t = null; A.finish(s, `${moves} moves in ${secs} seconds. ${s > 120 ? 'Big brain energy.' : 'Solved. Eventually.'}`, `${moves} moves ${secs}s`); }
+    });
+    A.start = () => { t = [1,2,3,4,5,6,7,8,0]; for (let k=0;k<120;k++){ const g = t.indexOf(0), n = nb(g), j = n[(Math.random()*n.length)|0]; [t[g], t[j]] = [t[j], t[g]]; }
+      moves = 0; A.score(0); t0 = Date.now(); draw(); A.over.hidden = true;
+      if (stopT) stopT(); const iv = setInterval(() => A.extra(`Time <b>${Math.round((Date.now() - t0)/1000)}</b>s`), 500); stopT = () => clearInterval(iv); };
+  }
+
+  /* ---- 15. Lumos / Nox ---- */
+  function lightsGame(body, lead){
+    const A = arcadeShell(body, {key:'lightsout', lead, canvas:false, intro:'Tapping a candle switches it and its neighbours on or off. Put out every candle. Nox!'});
+    A.stage.innerHTML = '<div class="lo"></div>';
+    const el = A.stage.querySelector('.lo'), N = 4; let g, moves, t0, iv;
+    function tog(i){ [i, i - N, i + N, i % N ? i - 1 : -1, i % N < N - 1 ? i + 1 : -1].forEach(j => { if (j >= 0 && j < N*N) g[j] = !g[j]; }); }
+    function draw(){ el.innerHTML = g.map((on, i) => `<button class="lc ${on ? 'on' : ''}" data-i="${i}" aria-label="Candle ${i + 1}"></button>`).join(''); }
+    el.addEventListener('click', e => { const b = e.target.closest('.lc'); if (!b || !g) return; tog(+b.dataset.i); moves++; A.score(moves); draw();
+      if (g.every(v => !v)){ clearInterval(iv); const secs = Math.round((Date.now() - t0)/1000), s = Math.max(5, 150 - moves*3 - Math.round(secs/2)); g = null; A.finish(s, `All out in ${moves} moves. Nox achieved.`, `${moves} moves ${secs}s`); } });
+    A.start = () => { g = Array(N*N).fill(false); for (let k=0;k<6;k++) tog((Math.random()*N*N)|0); if (g.every(v => !v)) tog(5);
+      moves = 0; A.score(0); t0 = Date.now(); draw(); A.over.hidden = true; clearInterval(iv); iv = setInterval(() => A.extra(`Time <b>${Math.round((Date.now() - t0)/1000)}</b>s`), 500); };
+  }
+
+  /* ---- 16. Forbidden Forest minesweeper ---- */
+  function minesGame(body, lead){
+    const A = arcadeShell(body, {key:'mines', lead, canvas:false, intro:'Clear the Forbidden Forest without stepping on a spider. Numbers show how many spiders are next to a square. Switch to flag mode to mark spiders.'});
+    A.stage.innerHTML = '<div class="row"><button class="cta ghost ms-mode">Mode: dig</button></div><div class="ms"></div>';
+    const el = A.stage.querySelector('.ms'), modeB = A.stage.querySelector('.ms-mode'), N = 8, M = 10;
+    let mines, open, flag, first, done, flagMode, t0, iv;
+    const nbs = i => { const r = (i/N)|0, c = i % N, o = []; for (let dr=-1;dr<=1;dr++) for (let dc=-1;dc<=1;dc++){ if (!dr && !dc) continue; const rr2 = r + dr, cc = c + dc; if (rr2 >= 0 && rr2 < N && cc >= 0 && cc < N) o.push(rr2*N + cc); } return o; };
+    const cnt = i => nbs(i).filter(j => mines.has(j)).length;
+    function draw(){ el.innerHTML = Array.from({length:N*N}, (_, i) => { const o = open.has(i), n = o ? cnt(i) : 0;
+      return `<button class="mc ${o ? 'open' : ''} ${o && mines.has(i) ? 'boom' : ''} n${n}" data-i="${i}">${o ? (mines.has(i) ? '🕷' : n || '') : flag.has(i) ? '🚩' : ''}</button>`; }).join(''); }
+    function reveal(i){ if (open.has(i) || flag.has(i)) return; open.add(i); if (!mines.has(i) && cnt(i) === 0) nbs(i).forEach(reveal); }
+    modeB.addEventListener('click', () => { flagMode = !flagMode; modeB.textContent = 'Mode: ' + (flagMode ? 'flag' : 'dig'); });
+    el.addEventListener('click', e => {
+      const b = e.target.closest('.mc'); if (!b || done) return; const i = +b.dataset.i;
+      if (flagMode){ if (!open.has(i)){ flag.has(i) ? flag.delete(i) : flag.add(i); draw(); } return; }
+      if (first){ first = false; const safe = new Set([i, ...nbs(i)]); while (mines.size < M){ const k = (Math.random()*N*N)|0; if (!safe.has(k)) mines.add(k); } }
+      if (mines.has(i)){ done = true; clearInterval(iv); mines.forEach(m => open.add(m)); draw(); const s = [...open].filter(k => !mines.has(k)).length; return A.finish(s, `A spider got you. ${s} squares cleared first.`, `lost, ${s} cleared`); }
+      reveal(i); A.score(open.size); draw();
+      if (open.size === N*N - M){ done = true; clearInterval(iv); const secs = Math.round((Date.now() - t0)/1000), s = Math.max(60, 300 - secs); A.finish(s, `Forest cleared in ${secs} seconds. Hagrid is proud.`, `won in ${secs}s`); }
+    });
+    A.start = () => { mines = new Set(); open = new Set(); flag = new Set(); first = true; done = false; flagMode = false; modeB.textContent = 'Mode: dig'; A.score(0); draw(); A.over.hidden = true; t0 = Date.now(); clearInterval(iv); iv = setInterval(() => A.extra(`Time <b>${Math.round((Date.now() - t0)/1000)}</b>s`), 500); };
+  }
+
+  /* ---- 17. Potion colours (Stroop) ---- */
+  function stroopGame(body, lead){
+    const A = arcadeShell(body, {key:'stroop', lead, canvas:false, intro:'Tap the colour the word is PAINTED in, not the word itself. 30 seconds. Your brain will hate this.'});
+    const C = [['PINK','#ff6fa5'],['GOLD','#ecc97f'],['GREEN','#5fd38a'],['BLUE','#6aa8ff']];
+    A.stage.innerHTML = `<div class="st-word"></div><div class="opts st-opts">${C.map((c, i) => `<button class="opt" data-i="${i}">${c[0]}</button>`).join('')}</div>`;
+    const w = A.stage.querySelector('.st-word'); let ink, score, running = false;
+    function next(){ const word = (Math.random()*4)|0; do { ink = (Math.random()*4)|0; } while (ink === word && Math.random() < .75); w.textContent = C[word][0]; w.style.color = C[ink][1]; }
+    A.stage.querySelector('.st-opts').addEventListener('click', e => { const b = e.target.closest('.opt'); if (!b || !running) return; score += +b.dataset.i === ink ? 1 : -1; score = Math.max(0, score); A.score(score); next(); });
+    A.start = () => { score = 0; running = true; A.score(0); next(); A.over.hidden = true;
+      countdownBar(A, 30, () => { running = false; A.finish(score, score < 10 ? 'Your brain lost to a colour. Rest.' : score < 25 ? `${score}. Decent focus.` : `${score}. Laser focus. Apply it to studying, please.`); }); };
+  }
+
+  /* ---- 18. Higher or lower ---- */
+  function hiloGame(body, lead){
+    const A = arcadeShell(body, {key:'higherlower', lead, canvas:false, intro:'Will the next Gringotts coin be higher or lower? Keep the streak going. One wrong guess ends it.'});
+    A.stage.innerHTML = '<div class="hl-card"></div><div class="row"><button class="cta" data-g="hi">Higher</button><button class="cta ghost" data-g="lo">Lower</button></div><p class="dnote hl-msg"></p>';
+    const card = A.stage.querySelector('.hl-card'), msg = A.stage.querySelector('.hl-msg'); let cur, score, done;
+    A.stage.querySelectorAll('[data-g]').forEach(b => b.addEventListener('click', () => {
+      if (done || cur == null) return; let n; do { n = 1 + ((Math.random()*100)|0); } while (n === cur);
+      const ok = (b.dataset.g === 'hi') === (n > cur); msg.textContent = `It was ${n}.`; cur = n; card.textContent = n;
+      if (ok){ score++; A.score(score); } else { done = true; A.finish(score, score < 3 ? 'Wrong already. Gringotts has frozen your account.' : score < 8 ? `${score} in a row. Decent luck.` : `${score} in a row. Are you a goblin?`); }
+    }));
+    A.start = () => { cur = 1 + ((Math.random()*100)|0); card.textContent = cur; score = 0; done = false; msg.textContent = ''; A.score(0); A.over.hidden = true; };
+  }
+
+  /* ---- 19. Cauldron bubbles ---- */
+  function bubbleGame(body, lead){
+    const A = arcadeShell(body, {key:'bubbles', lead, h:380, intro:'Pop the pink and gold bubbles rising from the cauldron. Green slime bubbles cost you 2 points. 30 seconds.'});
+    let bs, score, running = false, stop = null, spawnT = 0;
+    A.cv.addEventListener('pointerdown', e => { if (!running) return; const r = A.cv.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+      for (let i=bs.length-1;i>=0;i--){ const b = bs[i]; if (Math.hypot(x - b.x, y - b.y) < b.r + 6){ score = Math.max(0, score + (b.bad ? -2 : b.gold ? 3 : 1)); A.score(score); bs.splice(i,1); spawn(e.clientX, e.clientY, 6, 'spark'); return; } } });
+    A.start = () => { A.size(); bs = []; score = 0; spawnT = 0; A.score(0); running = true; A.over.hidden = true;
+      if (stop) stop();
+      stop = loop(dt => { if (!running) return; const c = A.ctx; spawnT -= dt;
+        if (spawnT <= 0){ const r = Math.random(); bs.push({x:rr(A.W*.25, A.W*.75), y:A.H - 40, r:rr(12, 22), vx:rr(-30, 30), vy:rr(-110, -170), bad:r < .25, gold:r > .9}); spawnT = rr(.25, .45); }
+        c.clearRect(0,0,A.W,A.H);
+        c.fillStyle = '#2a1a30'; c.beginPath(); c.ellipse(A.W/2, A.H - 20, A.W*.3, 26, 0, 0, 7); c.fill();
+        for (let i=bs.length-1;i>=0;i--){ const b = bs[i]; b.x += b.vx*dt; b.y += b.vy*dt; if (b.y < -30){ bs.splice(i,1); continue; }
+          c.fillStyle = b.bad ? 'rgba(110,220,90,.75)' : b.gold ? 'rgba(255,215,110,.85)' : 'rgba(255,140,190,.75)'; c.beginPath(); c.arc(b.x, b.y, b.r, 0, 7); c.fill();
+          c.fillStyle = 'rgba(255,255,255,.6)'; c.beginPath(); c.arc(b.x - b.r*.35, b.y - b.r*.35, b.r*.25, 0, 7); c.fill(); }
+      });
+      countdownBar(A, 30, () => { running = false; stop(); A.ctx.clearRect(0,0,A.W,A.H); A.finish(score, score < 15 ? 'The cauldron overflowed. Typical.' : score < 35 ? `${score}. Decent potion work.` : `${score}. Potions master. Snape would almost approve.`); });
+    };
+  }
+
+  /* ---- 20. Perfect pour ---- */
+  function pourGame(body, lead){
+    const A = arcadeShell(body, {key:'pour', lead, h:260, intro:'Ten pours. Tap when the marker is in the gold zone to pour the perfect cold Spanish latte. The zone gets smaller each time.'});
+    let pos, dir, n, score, zone, stop = null, running = false, flash = '';
+    A.cv.addEventListener('pointerdown', () => {
+      if (!running) return; const d = Math.abs(pos - .5), pts = Math.max(0, Math.round(10 - d/(zone/2)*7)); score += pts; A.score(score);
+      flash = pts >= 9 ? 'PERFECT' : pts >= 5 ? 'Nice' : pts ? 'Meh' : 'Spilled'; n++; zone = Math.max(.06, zone*.85); dir *= -1;
+      if (n >= 10){ running = false; stop(); setTimeout(() => A.finish(score, score > 80 ? 'Barista level. Eggspectation should hire you.' : score > 50 ? `${score}/100. Better than anything you make at home.` : `${score}/100. Just order it. Please.`), 300); }
+    });
+    A.start = () => { A.size(); pos = 0; dir = 1; n = 0; score = 0; zone = .3; flash = ''; A.score(0); running = true; A.over.hidden = true;
+      if (stop) stop();
+      stop = loop(dt => { if (!running) return; const c = A.ctx, W = A.W, H = A.H; pos += dir*dt*(.8 + n*.12); if (pos > 1){ pos = 1; dir = -1; } if (pos < 0){ pos = 0; dir = 1; }
+        c.clearRect(0,0,W,H); const bx = 20, bw = W - 40, by = H/2 - 14;
+        c.fillStyle = 'rgba(255,255,255,.1)'; c.fillRect(bx, by, bw, 28);
+        c.fillStyle = 'rgba(236,201,127,.55)'; c.fillRect(bx + bw*(.5 - zone/2), by, bw*zone, 28);
+        c.fillStyle = '#fff'; c.fillRect(bx + bw*pos - 3, by - 10, 6, 48);
+        c.fillStyle = '#ecc97f'; c.font = '20px "IM Fell English", Georgia, serif'; c.textAlign = 'center'; c.fillText(`Pour ${Math.min(10, n + 1)} of 10`, W/2, by - 26);
+        if (flash){ c.fillStyle = '#ffdbe8'; c.fillText(flash, W/2, by + 70); }
+      });
+    };
+  }
+
+  /* ---- 21. Mini sudoku ---- */
+  function sudokuGame(body, lead){
+    const A = arcadeShell(body, {key:'sudoku', lead, canvas:false, intro:'Fill the 4×4 grid so every row, column and box has 1, 2, 3 and 4. Tap a square to change its number.'});
+    A.stage.innerHTML = '<div class="sd"></div><p class="dnote sd-msg"></p>';
+    const el = A.stage.querySelector('.sd'), msg = A.stage.querySelector('.sd-msg'); let sol, cur, fixed, t0, iv;
+    function gen(){ const base = [[1,2,3,4],[3,4,1,2],[2,1,4,3],[4,3,2,1]], map = shuffle([1,2,3,4]);
+      let g = base.map(r => r.map(v => map[v - 1])); if (Math.random() < .5) g = g[0].map((_, c) => g.map(r => r[c])); return g.flat(); }
+    function draw(){ el.innerHTML = cur.map((v, i) => `<button class="sdc ${fixed[i] ? 'fx' : ''} b${(((i/4)|0) >> 1)*2 + ((i%4) >> 1)}" data-i="${i}">${v || ''}</button>`).join(''); }
+    el.addEventListener('click', e => { const b = e.target.closest('.sdc'); if (!b || !cur) return; const i = +b.dataset.i; if (fixed[i]) return;
+      cur[i] = (cur[i] % 4) + 1; draw();
+      if (cur.every((v, k) => v === sol[k])){ clearInterval(iv); const secs = Math.round((Date.now() - t0)/1000), s = Math.max(10, 150 - secs); cur = null; msg.textContent = ''; A.finish(s, `Solved in ${secs} seconds. ${secs < 40 ? 'Sharp.' : 'Got there in the end.'}`, `${secs}s`); }
+      else if (cur.every(v => v)) msg.textContent = 'Something is wrong. Check your rows and columns.'; else msg.textContent = '';
+    });
+    A.start = () => { sol = gen(); cur = sol.slice(); fixed = Array(16).fill(true); shuffle([...Array(16).keys()]).slice(0, 9).forEach(i => { cur[i] = 0; fixed[i] = false; });
+      t0 = Date.now(); A.score(0); msg.textContent = ''; draw(); A.over.hidden = true; clearInterval(iv); iv = setInterval(() => A.extra(`Time <b>${Math.round((Date.now() - t0)/1000)}</b>s`), 500); };
+  }
+
+  /* ---- 22. Owl count ---- */
+  function countGame(body, lead){
+    const A = arcadeShell(body, {key:'count', lead, canvas:false, intro:'A crowd of creatures flashes up for a moment. Count only the owls. Eight rounds.'});
+    A.stage.innerHTML = '<div class="cg"></div><div class="opts cg-opts"></div><p class="dnote cg-msg"></p>';
+    const g = A.stage.querySelector('.cg'), o = A.stage.querySelector('.cg-opts'), msg = A.stage.querySelector('.cg-msg'); let ans, round, score, busy;
+    function next(){ if (round >= 8) return A.finish(score, score >= 7 ? 'Eagle eyes. Owl eyes, actually.' : score >= 4 ? `${score}/8. Average owl counter.` : `${score}/8. Did you even look?`);
+      round++; busy = true; o.innerHTML = ''; msg.textContent = `Round ${round} of 8`;
+      ans = 3 + ((Math.random()*8)|0); const others = 4 + ((Math.random()*8)|0);
+      const items = shuffle([...Array(ans).fill('🦉'), ...Array(others).fill(0).map(() => ['🐈','🦇','🐸','🐀'][(Math.random()*4)|0])]);
+      g.innerHTML = items.map(e => `<span style="left:${rr(4, 88)}%;top:${rr(4, 82)}%">${e}</span>`).join('');
+      setTimeout(() => { g.innerHTML = ''; const opts = new Set([ans]); while (opts.size < 4) opts.add(Math.max(1, ans + ((rr(-3, 4))|0))); o.innerHTML = shuffle([...opts]).map(v => `<button class="opt" data-v="${v}">${v}</button>`).join(''); busy = false; }, 1500 - round*60);
+    }
+    o.addEventListener('click', e => { const b = e.target.closest('.opt'); if (!b || busy) return; busy = true; const ok = +b.dataset.v === ans; if (ok){ score++; A.score(score); }
+      msg.textContent = ok ? 'Correct.' : `Wrong. There were ${ans}.`; setTimeout(next, 700); });
+    A.start = () => { round = 0; score = 0; A.score(0); A.over.hidden = true; next(); };
+  }
+
+  /* ---- 23. Castle maze ---- */
+  function mazeGame(body, lead){
+    const A = arcadeShell(body, {key:'maze', lead, h:340, intro:'Get the owl from the top-left corner to the letter in the bottom-right. Swipe, use the arrows or the buttons.'});
+    const N = 10; let walls, p, t0, iv, done = true;
+    function gen(){ walls = Array.from({length:N*N}, () => ({n:1, s:1, e:1, w:1})); const seen = new Set([0]), st = [0];
+      while (st.length){ const c = st[st.length - 1], r = (c/N)|0, k = c % N, opts = [];
+        if (r > 0 && !seen.has(c - N)) opts.push(['n', c - N, 's']); if (r < N - 1 && !seen.has(c + N)) opts.push(['s', c + N, 'n']);
+        if (k > 0 && !seen.has(c - 1)) opts.push(['w', c - 1, 'e']); if (k < N - 1 && !seen.has(c + 1)) opts.push(['e', c + 1, 'w']);
+        if (!opts.length){ st.pop(); continue; } const [d, nx, back] = opts[(Math.random()*opts.length)|0]; walls[c][d] = 0; walls[nx][back] = 0; seen.add(nx); st.push(nx); } }
+    function draw(){ const c = A.ctx, s = Math.floor(Math.min(A.W, A.H)/N), ox = (A.W - s*N)/2, oy = (A.H - s*N)/2;
+      c.clearRect(0,0,A.W,A.H); c.strokeStyle = '#c9a7ff'; c.lineWidth = 2;
+      walls.forEach((w, i) => { const x = ox + (i % N)*s, y = oy + ((i/N)|0)*s; c.beginPath();
+        if (w.n){ c.moveTo(x, y); c.lineTo(x + s, y); } if (w.s){ c.moveTo(x, y + s); c.lineTo(x + s, y + s); } if (w.w){ c.moveTo(x, y); c.lineTo(x, y + s); } if (w.e){ c.moveTo(x + s, y); c.lineTo(x + s, y + s); } c.stroke(); });
+      c.fillStyle = '#fff'; c.fillRect(ox + (N - 1)*s + s*.25, oy + (N - 1)*s + s*.3, s*.5, s*.4);
+      c.fillStyle = '#ecc97f'; c.beginPath(); c.arc(ox + (p % N)*s + s/2, oy + ((p/N)|0)*s + s/2, s*.32, 0, 7); c.fill(); }
+    function move(d){ if (done) return; const w = walls[p];
+      if (d === 'up' && !w.n) p -= N; else if (d === 'down' && !w.s) p += N; else if (d === 'left' && !w.w) p -= 1; else if (d === 'right' && !w.e) p += 1; draw();
+      if (p === N*N - 1){ done = true; gameKey = null; clearInterval(iv); const secs = Math.round((Date.now() - t0)/1000), s = Math.max(10, 200 - secs*2); A.score(s); A.finish(s, `Escaped in ${secs} seconds. ${secs < 30 ? 'Speedrunner.' : 'The owl was getting worried.'}`, `${secs}s`); } }
+    dpad(body.querySelector('.lg-wrap'), move); addSwipe(A.cv, move);
+    A.start = () => { A.size(); gen(); p = 0; done = false; t0 = Date.now(); A.score(0); draw(); A.over.hidden = true; gameKey = move;
+      clearInterval(iv); iv = setInterval(() => A.extra(`Time <b>${Math.round((Date.now() - t0)/1000)}</b>s`), 500); };
   }
 
   /* ================= Opening question ================= */
