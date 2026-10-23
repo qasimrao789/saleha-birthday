@@ -18,7 +18,7 @@
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Creepster&family=Pinyon+Script&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
 <style>
 /* Layout: one candlelit night sky, a single scrolling column of "chapters" — sealed letter, spellbook, cauldron, cake, wish stars. Deliberately single dark theme. */
 :root{
@@ -529,6 +529,60 @@ body.halloween{--accent-hw:#ff7a1a}
 #timeTotal{font-family:var(--font-fell);font-weight:400;font-size:1.9rem;color:var(--gold);font-variant-numeric:tabular-nums;line-height:1.1}
 .tnote{font-style:italic;font-size:.95rem;color:var(--muted)}
 
+/* ================= HALLOWEEN MAKEOVER (24 Oct – 1 Nov) ================= */
+body.halloween{
+  --night:#07050a; --night-2:#120a10; --plum:#2b0d16;
+  --gold:#ff8a1f; --gold-soft:#c9620f; --rose:#9dff6a; --blush:#ffe0bf;
+  --parchment:#2a2224; --parchment-2:#191314; --ink:#f4e4d2; --ink-soft:#c9a98c; --wax:#ff8a1f;
+  --text:#f6ebe2; --muted:#d2bfb0;
+  --font-script:"Creepster","Chiller","Impact",cursive;
+  background:radial-gradient(120% 70% at 50% 110%, #5a1c06 0%, #2b0d16 35%, #120a10 65%, #07050a 100%) fixed, #07050a;
+}
+body.halloween .chapter::before{background:rgba(10,4,8,.78)}
+body.halloween h2,body.halloween .gate-q{font-family:var(--font-fell);color:#ffe0bf;text-shadow:0 0 18px rgba(255,120,30,.45),0 2px 4px #000}
+body.halloween h2 em,body.halloween .gate-q span,body.halloween .dcard h3 em{font-family:"Creepster",cursive;color:#9dff6a;letter-spacing:.04em;text-shadow:0 0 14px rgba(157,255,106,.6)}
+body.halloween .eyebrow{color:#ff8a1f}
+body.halloween .gate{background:radial-gradient(120% 80% at 50% 110%, #5a1c06, #120a10 55%, #07050a)}
+body.halloween .g-agree{background:linear-gradient(180deg,#ffb04a,#ff6a00);color:#1a0800;box-shadow:0 0 34px rgba(255,120,30,.6)}
+body.halloween .g-disagree{background:#1a0f14;border-color:#9dff6a;color:#9dff6a}
+body.halloween .owl-card{background:linear-gradient(175deg,#3a3133,#1d1718);color:#f4e4d2;border:1px solid rgba(255,138,31,.45);box-shadow:0 0 40px rgba(255,120,30,.25),0 30px 60px -24px #000}
+body.halloween .owl-card::before{border-color:rgba(255,138,31,.35)}
+body.halloween .owl-card::after{content:"";position:absolute;right:-2px;top:-2px;width:90px;height:90px;pointer-events:none;opacity:.6;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23e8dccb' stroke-width='1.2'%3E%3Cpath d='M100 0 L20 80 M100 0 L0 40 M100 0 L60 100 M100 0 L0 5 M100 0 L95 100'/%3E%3Cpath d='M70 0 Q78 22 100 30 M45 0 Q60 40 100 55 M22 0 Q42 58 100 80'/%3E%3C/svg%3E") no-repeat top right/contain}
+body.halloween .owl-label{color:#ff8a1f}
+body.halloween .owl-msg{color:#ffe0bf}
+body.halloween .owl-sign{font-family:"Creepster",cursive;color:#9dff6a;font-size:1.5rem;letter-spacing:.04em}
+body.halloween .owl-sign::after{content:" (in costume)";font-family:var(--font-fell);font-style:italic;font-size:.9rem;color:#c9a98c;letter-spacing:0}
+body.halloween .streak,body.halloween .timebox,body.halloween .dcard,body.halloween .special{background:rgba(18,10,14,.94);border-color:rgba(255,138,31,.45);box-shadow:0 0 24px rgba(255,120,30,.12)}
+body.halloween .flame{filter:hue-rotate(75deg) drop-shadow(0 0 12px rgba(157,255,106,.8))}
+body.halloween .streak-num b,body.halloween #timeTotal,body.halloween .house b,body.halloween .lg-bar b{color:#ff8a1f}
+body.halloween .dcard .dk{color:#9dff6a}
+body.halloween .dcard h3{color:#ffe0bf}
+body.halloween .cta{border-color:#ff8a1f;color:#ffb04a;background:linear-gradient(180deg,rgba(255,138,31,.22),rgba(255,138,31,.06))}
+body.halloween .cta.ghost{border-color:#9dff6a;color:#9dff6a;background:rgba(157,255,106,.06)}
+body.halloween .opt,body.halloween .ing,body.halloween .daily textarea{background:rgba(30,16,22,.92);border-color:rgba(255,138,31,.45)}
+body.halloween .lg-wrap{background:radial-gradient(120% 90% at 50% 100%,#4a1606,#120a10 70%);border-color:rgba(255,138,31,.35)}
+body.halloween .scratch{background:linear-gradient(175deg,#3a3133,#1d1718)}
+body.halloween .prize{color:#ffe0bf}
+body.halloween .prize.real{color:#9dff6a}
+body.halloween .kk{background:#2e1a22}
+body.halloween .kk.miss{background:#160c10}
+body.halloween .wc.hit,body.halloween .kk.hit{background:#ff8a1f;border-color:#ff8a1f;color:#1a0800}
+body.halloween .wc.near,body.halloween .kk.near{background:#6a2bd1;border-color:#6a2bd1}
+body.halloween .hw-banner{background:linear-gradient(90deg,#ff8a1f,#ff4e00);font-family:"Creepster",cursive;font-size:1.15rem;letter-spacing:.05em}
+body.halloween .music{border-color:#ff8a1f;color:#ff8a1f}
+body.halloween .pflame{filter:hue-rotate(75deg)}
+.hw-fog{position:fixed;left:-20%;right:-20%;bottom:-10vh;height:55vh;z-index:1;pointer-events:none;
+  background:radial-gradient(40% 50% at 20% 70%,rgba(200,220,200,.10),transparent 70%),radial-gradient(45% 50% at 70% 80%,rgba(255,150,80,.10),transparent 70%),radial-gradient(35% 40% at 45% 60%,rgba(180,140,255,.07),transparent 70%);
+  filter:blur(8px);animation:fogdrift 18s ease-in-out infinite alternate}
+@keyframes fogdrift{to{transform:translateX(8%)}}
+.hw-bats{position:fixed;inset:0;z-index:3;pointer-events:none;overflow:hidden}
+.hw-bat{position:absolute;left:-60px;width:44px;height:22px;opacity:.85;animation:batfly linear infinite}
+.hw-bat svg{width:100%;height:100%;animation:batflap .18s ease-in-out infinite alternate;transform-origin:50% 50%}
+@keyframes batflap{to{transform:scaleY(.45)}}
+@keyframes batfly{0%{transform:translate(0,0)}25%{transform:translate(30vw,-6vh)}50%{transform:translate(60vw,4vh)}75%{transform:translate(90vw,-8vh)}100%{transform:translate(calc(100vw + 120px),0)}}
+@media (prefers-reduced-motion:reduce){.hw-bats,.hw-fog{display:none}}
+
 @media (min-width:640px){
   .spells{grid-template-columns:repeat(5,minmax(0,1fr))}
   .spells .spell:last-child{grid-column:auto}
@@ -547,7 +601,7 @@ body.halloween{--accent-hw:#ff7a1a}
 
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateQ">
   <div class="gate-card">
-    <div class="eyebrow">Before you enter · One question</div>
+    <div class="eyebrow" id="gateEyebrow">Before you enter · One question</div>
     <h1 class="gate-q" id="gateQ">The GOAT Qasim is the most amazing, inspiring, kind, hilarious, legendary, one-of-a-kind <span>GOAT</span></h1>
     <p class="gate-sub" id="gateSub">Choose wisely. There is one correct answer, just like there is one GOAT.</p>
     <div class="gate-btns">
@@ -1124,7 +1178,11 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
       b.position.copy(around(R(), 3, 15)); b.userData = {L, Rw, ph:R()*6, sp:.6 + R()*.8, cx:b.position.x, cy:b.position.y, r:1 + R()*2};
       scene.add(b); bats.push(b);
     }
-    scene.fog.color.set(0x2e1a2a);
+    scene.background.set(0x07050a);
+    scene.fog.color.set(0x2a0f08); scene.fog.density = 0.016;
+    flameMat.color.set(0x9dff6a);
+    starMat.color.set(0xffd9b0);
+    candleMat.color.set(0x8a7d72); candleMat.emissive.set(0x1a0d05);
   }
 
   // moon
@@ -1137,6 +1195,7 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
   const moon = new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(mc), fog:false, depthWrite:false, transparent:true}));
   const endP = curve.getPointAt(1);
   moon.scale.set(170,170,1); moon.position.set(endP.x + 40, endP.y + 70, -900); scene.add(moon);
+  if (window.__halloween) moon.material.color.set(0xff8a3a);
 
   // birthday words written in the sky at the end of the flight
   const tc = document.createElement('canvas'); tc.width = 1024; tc.height = 512;
@@ -1238,7 +1297,7 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
     ctx.restore();
     ctx.globalAlpha = 1;
   }
-  const PALETTE = ['#f3a6c4','#ffdbe8','#ecc97f','#ffffff','#e6d4ff','#ff8fbf'];
+  const PALETTE = window.__halloween ? ['#ff8a1f','#ffb04a','#9dff6a','#b46bff','#fff1d6','#ff5e1a'] : ['#f3a6c4','#ffdbe8','#ecc97f','#ffffff','#e6d4ff','#ff8fbf'];
   function spawn(x, y, n, kind, pal){
     for (let i=0;i<n;i++){
       const ang = Math.random()*Math.PI*2, sp = kind==='spark' ? Math.random()*2.2+.3 : Math.random()*5+2;
@@ -2590,7 +2649,7 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
   function wordGame(body, w, done){
     const target = w.word.toUpperCase();
     const st = dState.word || {guesses: [], over: false};
-    body.innerHTML = `<p class="dtext">Guess the 5-letter word in 6 tries. Gold means right letter, right spot. Pink means right letter, wrong spot.</p>
+    body.innerHTML = `<p class="dtext">Guess the 5-letter word in 6 tries. ${window.__halloween ? 'Orange' : 'Gold'} means right letter, right spot. ${window.__halloween ? 'Purple' : 'Pink'} means right letter, wrong spot.</p>
       <p class="dnote">Hint: ${esc(w.hint)}</p>
       <div class="wgrid" id="wgrid"></div><p class="dnote" id="wNote"></p>
       <div class="kb" id="kb"></div>`;
@@ -2893,6 +2952,24 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
   setInterval(() => flushTime(false), 15000);
   document.addEventListener('visibilitychange', () => { TIME.last = Date.now(); if (document.visibilityState === 'hidden') flushTime(true); });
   addEventListener('pagehide', () => flushTime(true));
+
+  /* ================= Halloween makeover ================= */
+  if (window.__halloween){
+    const md = window.__today.slice(5);
+    document.getElementById('gateEyebrow').textContent = 'Before you enter the haunted castle · One question';
+    document.getElementById('gateSub').textContent = 'Choose wisely. The ghosts are listening. So is the GOAT.';
+    document.getElementById('todayTitle').innerHTML = md === '10-31' ? 'Happy <em>Halloween</em>' : "Today's <em>haunted</em> owl";
+    const fog = document.createElement('div'); fog.className = 'hw-fog'; fog.setAttribute('aria-hidden', 'true'); document.body.appendChild(fog);
+    const bats = document.createElement('div'); bats.className = 'hw-bats'; bats.setAttribute('aria-hidden', 'true');
+    const BAT = '<svg viewBox="0 0 64 32"><path d="M32 12c-2-4-4-5-4-5s1 4-1 5c-3-6-11-8-17-6 5 2 6 6 5 9-3-2-8-2-11 0 6 2 9 6 10 11 3-4 8-5 12-3 1-2 3-3 6-3s5 1 6 3c4-2 9-1 12 3 1-5 4-9 10-11-3-2-8-2-11 0-1-3 0-7 5-9-6-2-14 0-17 6-2-1-1-5-1-5s-2 1-4 5z" fill="#0a0408" stroke="rgba(255,138,31,.35)" stroke-width=".6"/></svg>';
+    for (let i=0;i<7;i++){
+      const b = document.createElement('div'); b.className = 'hw-bat'; b.innerHTML = BAT;
+      b.style.top = (8 + Math.random()*55) + 'vh'; b.style.animationDuration = (9 + Math.random()*9) + 's'; b.style.animationDelay = (-Math.random()*15) + 's';
+      const sc = .6 + Math.random()*.8; b.style.width = 44*sc + 'px'; b.style.height = 22*sc + 'px';
+      bats.appendChild(b);
+    }
+    document.body.appendChild(bats);
+  }
 
   /* ================= Opening question ================= */
   const gate = document.getElementById('gate'), agree = document.getElementById('agree'), dis = document.getElementById('disagree'), gateSub = document.getElementById('gateSub');
