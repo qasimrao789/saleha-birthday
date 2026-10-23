@@ -576,7 +576,7 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
     <div class="streak">
       <svg class="flame" viewBox="0 0 40 52" aria-hidden="true"><defs><linearGradient id="fl" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ff6f3c"/><stop offset=".6" stop-color="#ffc24a"/><stop offset="1" stop-color="#fff2b0"/></linearGradient></defs><path d="M20 2c3 9 14 14 14 29 0 10-7 19-14 19S6 41 6 31c0-7 4-11 7-14 0 5 2 8 5 9-2-8 0-17 2-24z" fill="url(#fl)"/></svg>
       <div class="streak-num"><b id="streakN">1</b><span id="streakLabel">day streak</span></div>
-      <div class="streak-meta"><span id="streakBest">Best: 1</span><span id="streakTotal">Visits: 1</span></div>
+      <div class="streak-meta"><span id="streakBest">Best: 1</span><span id="streakTotal">Days: 1</span><span id="streakOpens" hidden>Opens: 1</span></div>
     </div>
     <p class="streak-note" id="streakNote">The GOAT Qasim can see your streak. Don't you dare break it.</p>
     <div class="daily" id="daily"><p class="dwait">The owl is fetching today's game…</p></div>
@@ -2231,7 +2231,8 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
     document.getElementById('streakN').textContent = st.streak;
     document.getElementById('streakLabel').textContent = (who === 'qasim' ? "Saleha's " : '') + (st.streak === 1 ? 'day streak' : 'day streak');
     document.getElementById('streakBest').textContent = `Best: ${st.best}`;
-    document.getElementById('streakTotal').textContent = `Visits: ${st.total}`;
+    document.getElementById('streakTotal').textContent = `Days: ${st.total}`;
+    const op = document.getElementById('streakOpens'); if (st.opens != null){ op.hidden = false; op.textContent = `Opens: ${st.opens}`; }
     const note = document.getElementById('streakNote');
     if (who === 'qasim') note.textContent = st.lastVisit || st.lastSeen ? `Qasim view. Her last visit: ${st.lastSeen || st.lastVisit}. Your own visits are not counted.` : 'Qasim view. Your own visits are not counted.';
     else if (st.missed > 0) note.textContent = `You missed ${st.missed} day${st.missed > 1 ? 's' : ''}. The owl has reported you to the GOAT Qasim. Streak reset. Shameful.`;
