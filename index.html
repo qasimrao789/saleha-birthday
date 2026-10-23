@@ -519,6 +519,8 @@ body.halloween{--accent-hw:#ff7a1a}
 .mcard.up span{visibility:visible}
 .mcard.done{box-shadow:0 0 18px rgba(236,201,127,.7);border-color:var(--gold)}
 
+.preview-bar{position:fixed;z-index:40;left:0;right:0;top:0;padding:calc(6px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 6px max(16px, env(safe-area-inset-left, 0px));background:#ecc97f;color:#1a0f05;text-align:center;font-family:var(--font-fell);font-size:.98rem;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+
 @media (min-width:640px){
   .spells{grid-template-columns:repeat(5,minmax(0,1fr))}
   .spells .spell:last-child{grid-column:auto}
@@ -555,13 +557,16 @@ body.halloween{--accent-hw:#ff7a1a}
 window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEYnLSO51dOb_stlsgBy8vDiqbcgP_wRaGF0VeE79tDcYiaWFcgw/exec';
 (function(){
   var h = location.hash;
+  var pv = h.match(/^#preview-(\d{4}-\d{2}-\d{2})$/);
+  window.__preview = pv ? pv[1] : null;
   try {
     if (h === '#qasim') localStorage.setItem('saleha-tester', '1');
     if (h === '#notqasim') localStorage.removeItem('saleha-tester');
     window.__tester = localStorage.getItem('saleha-tester') === '1';
   } catch(e){ window.__tester = false; }
   window.__mode = h === '#fresh' ? 'journey' : 'home';
-  var today = new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Karachi', year:'numeric', month:'2-digit', day:'2-digit'}).format(new Date());
+  var today = window.__preview || new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Karachi', year:'numeric', month:'2-digit', day:'2-digit'}).format(new Date());
+  if (window.__preview) window.__tester = true;
   window.__today = today;
   var md = today.slice(5);
   window.__halloween = h === '#halloween' || (md >= '10-24' && md <= '11-01');
@@ -905,6 +910,7 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
   <button class="cta cel-close" id="celClose">Back to the sky</button>
 </div>
 
+<div class="preview-bar" id="previewBar" hidden></div>
 <div class="lockpill" id="lockpill" role="status" aria-live="polite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span id="lockText"></span></div>
 <div class="pcandle" aria-hidden="true"><div class="pwax" id="pwax"><span class="pflame"></span></div></div>
 
@@ -2272,13 +2278,17 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
     if (!tester) renderStreak(localStreak(true), 'her');
     if (!window.SHEET_API){ if (tester) renderStreak({streak:0, best:0, total:0, missed:0}, 'qasim'); setTimeout(() => renderDaily(null)); return; }
     setTimeout(() => renderDaily(null), 6000);
-    const url = `${window.SHEET_API}?action=${tester ? 'stats' : 'visit'}&day=${window.__today}&t=${Date.now()}`;
+    const url = `${window.SHEET_API}?action=${tester ? 'stats' : 'visit'}&day=${window.__today}${window.__preview ? '&date=' + window.__preview : ''}&t=${Date.now()}`;
     fetch(url).then(r => r.json()).then(d => {
       if (!d || !d.ok){ renderDaily(null); return; }
       renderStreak(d, tester ? 'qasim' : 'her');
       renderSpecial(d.messages);
       renderDaily(d);
     }).catch(() => renderDaily(null));
+  }
+  if (window.__preview){
+    const pb = document.getElementById('previewBar'); pb.hidden = false;
+    pb.textContent = `Preview of ${new Date(window.__preview + 'T12:00:00Z').toLocaleDateString('en-GB', {weekday:'long', day:'numeric', month:'long', year:'numeric'})}. This is what she will see. Nothing is logged.`;
   }
   renderOwl();
   loadStreak();
