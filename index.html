@@ -506,6 +506,19 @@ body.halloween{--accent-hw:#ff7a1a}
 .kk.wide{max-width:64px;flex:1.6 1 0;font-size:.8rem}
 .kk.hit{background:#c9a24b;color:#1a0f05}.kk.near{background:#c45a8a}.kk.miss{background:#2a2032;color:#7d6f86}
 
+.stage{height:auto!important;min-height:300px;padding:14px}
+.stage .lg-over{border-radius:14px}
+.pads{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pad{height:clamp(84px,24vw,110px);border-radius:18px;border:2px solid var(--pc);background:color-mix(in srgb, var(--pc) 16%, #170d22);color:var(--pc);font-family:var(--font-fell);font-size:1.25rem;opacity:.6;transition:opacity .12s, transform .12s, box-shadow .12s}
+.pad.lit{opacity:1;transform:scale(1.05);background:color-mix(in srgb, var(--pc) 55%, #170d22);color:#170d22;box-shadow:0 0 34px var(--pc)}
+.simon-msg{text-align:center;margin-top:10px}
+.mgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.mcard{aspect-ratio:3/4;border-radius:12px;border:1px solid rgba(236,201,127,.45);background:repeating-linear-gradient(45deg,#3a2047 0 8px,#2c1838 8px 16px);display:grid;place-items:center;font-size:clamp(1.5rem,7vw,2.1rem);padding:0;transition:transform .25s, background .25s}
+.mcard span{visibility:hidden}
+.mcard.up{background:linear-gradient(175deg,var(--parchment),var(--parchment-2));transform:rotateY(0) scale(1.03)}
+.mcard.up span{visibility:visible}
+.mcard.done{box-shadow:0 0 18px rgba(236,201,127,.7);border-color:var(--gold)}
+
 @media (min-width:640px){
   .spells{grid-template-columns:repeat(5,minmax(0,1fr))}
   .spells .spell:last-child{grid-column:auto}
@@ -2286,7 +2299,7 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
   });
 
   /* ================= Daily games, quest, scratch card, question ================= */
-  const DAILY = {"trivia": [{"q": "What is the name of Harry's owl?", "a": "Hedwig", "b": "Errol", "c": "Pigwidgeon", "d": "Hermes", "ans": "A", "roast": "Wrong. The owl that delivers your daily roast is embarrassed for you."}, {"q": "Who wrote the results section of Saleha's thesis?", "a": "Saleha", "b": "Her supervisor", "c": "ChatGPT", "d": "The GOAT Qasim", "ans": "D", "roast": "Wrong. Page 47 knows the truth. So do you."}, {"q": "Which house was Harry sorted into?", "a": "Slytherin", "b": "Gryffindor", "c": "Hufflepuff", "d": "Ravenclaw", "ans": "B", "roast": "Wrong. The Sorting Hat would put you in the kitchen. Then evacuate it."}, {"q": "What did Saleha score in the CSS screening test?", "a": "33%", "b": "45%", "c": "60%", "d": "99%", "ans": "A", "roast": "Wrong. You do not even remember your own lucky number."}, {"q": "What position does Harry play in Quidditch?", "a": "Keeper", "b": "Beater", "c": "Seeker", "d": "Chaser", "ans": "C", "roast": "Wrong. You would be the one sitting in the stands taking 47 photos."}, {"q": "Which spell disarms an opponent?", "a": "Lumos", "b": "Expelliarmus", "c": "Alohomora", "d": "Accio", "ans": "B", "roast": "Wrong. I just disarmed your confidence instead."}, {"q": "Which drink fixes Saleha's entire life?", "a": "Green tea", "b": "Home-made coffee", "c": "Cold Spanish latte", "d": "Plain water", "ans": "C", "roast": "Wrong. Home-made coffee has never fixed anything. It has only caused things."}, {"q": "Which platform does the Hogwarts Express leave from?", "a": "Platform 7", "b": "Platform 9¾", "c": "Platform 10½", "d": "Platform 3", "ans": "B", "roast": "Wrong. You would run straight into the wall. Again."}, {"q": "What is the name of Hermione's cat?", "a": "Crookshanks", "b": "Mrs Norris", "c": "Fluffy", "d": "Nagini", "ans": "A", "roast": "Wrong. Even the cat is smarter than this answer."}, {"q": "How many successful coffees has Saleha made at home?", "a": "12", "b": "3", "c": "1", "d": "0", "ans": "D", "roast": "Wrong. Be honest with yourself. It is zero. It has always been zero."}, {"q": "Who is revealed as the Half-Blood Prince?", "a": "Voldemort", "b": "Snape", "c": "Harry", "d": "Dumbledore", "ans": "B", "roast": "Wrong. Turn to page 394. Or just ask me, I know everything."}, {"q": "Which spell unlocks doors?", "a": "Alohomora", "b": "Wingardium Leviosa", "c": "Nox", "d": "Reparo", "ans": "A", "roast": "Wrong. You would still be locked outside."}, {"q": "What is the name of Real Madrid's home stadium?", "a": "Camp Nou", "b": "Old Trafford", "c": "Santiago Bernabéu", "d": "Anfield", "ans": "C", "roast": "Wrong. Hala Madrid, apparently, but not Hala Facts."}, {"q": "What is the name of Dumbledore's phoenix?", "a": "Buckbeak", "b": "Fawkes", "c": "Hedwig", "d": "Norbert", "ans": "B", "roast": "Wrong. Fawkes would burst into flames from the embarrassment. Like your cakes."}, {"q": "What is the name of the wizarding bank?", "a": "Gringotts", "b": "Honeydukes", "c": "Ollivanders", "d": "Borgin and Burkes", "ans": "A", "roast": "Wrong. Good thing you do not have wizard money to lose."}, {"q": "Who is Harry's godfather?", "a": "Remus Lupin", "b": "Sirius Black", "c": "Arthur Weasley", "d": "Hagrid", "ans": "B", "roast": "Wrong. Even the godfather would disown this answer."}, {"q": "Where does Saleha get her cold Spanish latte?", "a": "Starbucks", "b": "Her own kitchen", "c": "Eggspectation", "d": "A vending machine", "ans": "C", "roast": "Wrong. Your own kitchen? Please. Be serious."}, {"q": "What is the name of Hagrid's three-headed dog?", "a": "Fang", "b": "Fluffy", "c": "Norbert", "d": "Padfoot", "ans": "B", "roast": "Wrong. Fluffy is offended. All three heads."}, {"q": "What is the famous drink at the Three Broomsticks?", "a": "Pumpkin juice", "b": "Butterbeer", "c": "Firewhisky", "d": "Gillywater", "ans": "B", "roast": "Wrong. You only know one drink and it is a cold Spanish latte."}, {"q": "What colour is Real Madrid's home kit?", "a": "Red", "b": "Blue", "c": "White", "d": "Green", "ans": "C", "roast": "Wrong. You do not watch football, and now we all know you do not watch the kit either."}, {"q": "Which house is Luna Lovegood in?", "a": "Ravenclaw", "b": "Gryffindor", "c": "Slytherin", "d": "Hufflepuff", "ans": "A", "roast": "Wrong. Ravenclaw is for smart people. That explains it."}, {"q": "What does a Boggart turn into?", "a": "A dragon", "b": "Your worst fear", "c": "A cat", "d": "A teacher", "ans": "B", "roast": "Wrong. Your Boggart is a kitchen with a working oven."}, {"q": "Who is officially the GOAT?", "a": "Saleha", "b": "Real Madrid", "c": "The GOAT Qasim", "d": "Dumbledore", "ans": "C", "roast": "Wrong. You agree to this every single day. Consistency, please."}, {"q": "What position does Ron play in Quidditch?", "a": "Seeker", "b": "Keeper", "c": "Beater", "d": "Chaser", "ans": "B", "roast": "Wrong. Ron would have known that. Ron."}, {"q": "What is Voldemort's real name?", "a": "Tom Riddle", "b": "Gellert Grindelwald", "c": "Draco Malfoy", "d": "Peter Pettigrew", "ans": "A", "roast": "Wrong. You must not be named either, after this answer."}, {"q": "Which house-elf loves socks?", "a": "Kreacher", "b": "Winky", "c": "Dobby", "d": "Hokey", "ans": "C", "roast": "Wrong. Dobby is free. You are not, you still have to study."}, {"q": "What does Felix Felicis do?", "a": "Makes you invisible", "b": "Gives you luck", "c": "Changes your appearance", "d": "Makes you sleep", "ans": "B", "roast": "Wrong. You need a bottle before every exam. Clearly."}, {"q": "What form does Harry's Patronus take?", "a": "An otter", "b": "A stag", "c": "A phoenix", "d": "A dog", "ans": "B", "roast": "Wrong. Your patronus is a cold Spanish latte and we both know it."}, {"q": "What does 'Lumos' do?", "a": "Lights the wand", "b": "Opens locks", "c": "Makes things float", "d": "Summons objects", "ans": "A", "roast": "Wrong. Lumos. Please. You need the light."}, {"q": "What is the name of the Weasleys' home?", "a": "Grimmauld Place", "b": "Shell Cottage", "c": "The Burrow", "d": "Godric's Hollow", "ans": "C", "roast": "Wrong. Even the garden gnomes knew that."}, {"q": "What ball does a Seeker have to catch?", "a": "The Quaffle", "b": "The Bludger", "c": "The Golden Snitch", "d": "The Gobstone", "ans": "C", "roast": "Wrong. Some seeker you would be."}], "words": [{"word": "LATTE", "hint": "Your only reliable relationship. Served cold."}, {"word": "WANDS", "hint": "Things wizards wave. You would wave it at the oven and still burn the cake."}, {"word": "SPELL", "hint": "What a witch casts. Also what you need to check in your essays."}, {"word": "CAKES", "hint": "Things you bake. Things nobody eats."}, {"word": "BURNT", "hint": "How every one of your bakes ends up."}, {"word": "REELS", "hint": "You send me 50 of these a day."}, {"word": "PHOTO", "hint": "You need 47 attempts to take one."}, {"word": "EXAMS", "hint": "The CSS has these. You should prepare for them."}, {"word": "MAGIC", "hint": "What it takes to make you a good coffee."}, {"word": "BROOM", "hint": "A wizard's ride. Also what you need after baking."}, {"word": "CREAM", "hint": "Goes in a latte. Not in your home-made disaster."}, {"word": "SUGAR", "hint": "Sweet. Unlike my daily messages."}, {"word": "MOCHA", "hint": "A coffee you also cannot make at home."}, {"word": "ROAST", "hint": "What I do to you every day. Also, coffee beans."}, {"word": "GOATS", "hint": "The plural would be redundant. There is only one."}, {"word": "ESSAY", "hint": "CSS has a lot of these. Start writing."}, {"word": "MARKS", "hint": "33% of these were enough. Barely."}, {"word": "OVENS", "hint": "Appliances that fear you."}, {"word": "TOAST", "hint": "Even this you would burn."}, {"word": "CLOAK", "hint": "Harry has an invisibility one. You need one after your cakes."}, {"word": "CHARM", "hint": "A type of spell. Also, the GOAT Qasim's main quality."}, {"word": "WITCH", "hint": "What you think you are. Second smartest one, at best."}, {"word": "GHOST", "hint": "Nearly Headless Nick is one. So is your study schedule."}, {"word": "OWLET", "hint": "A baby owl. Like the one delivering your daily roast."}, {"word": "SCARF", "hint": "Gryffindor wears red and gold ones."}, {"word": "GOALS", "hint": "Real Madrid score them. You do not watch them."}, {"word": "FOCUS", "hint": "What you need for CSS. Do you know where it is?"}, {"word": "STUDY", "hint": "Something you say you will do tomorrow."}, {"word": "QUEST", "hint": "You have one of these every day now."}, {"word": "TOWER", "hint": "The astronomy one is where the wishes live."}, {"word": "FLASH", "hint": "Camera setting you use 47 times per photo."}], "quests": [{"text": "Take one photo on the first try. Just one. No retakes.", "points": 15}, {"text": "Study for 25 minutes. Actually study. Phone face down.", "points": 20}, {"text": "Make a coffee at home and rate it honestly. Honestly.", "points": 10}, {"text": "Send the GOAT Qasim a reel that actually makes him laugh.", "points": 15}, {"text": "Drink two glasses of water before your first coffee.", "points": 10}, {"text": "Tell someone today that the GOAT Qasim is better than you.", "points": 25}, {"text": "Read 5 pages of anything that is not a caption.", "points": 15}, {"text": "Go one full hour without sending a reel. Good luck.", "points": 20}, {"text": "Write down three things you are grateful for. One has to be me.", "points": 10}, {"text": "Solve one past CSS paper question. Just one.", "points": 25}, {"text": "Bake nothing today. The kitchen deserves a day off.", "points": 5}, {"text": "Go to bed before 1 a.m. The owl is watching.", "points": 20}, {"text": "Clean up 100 photos from your camera roll.", "points": 15}, {"text": "Learn one new English vocabulary word for the CSS essay.", "points": 10}, {"text": "Compliment the GOAT Qasim without being asked.", "points": 30}, {"text": "Take a 15-minute walk without your phone camera.", "points": 15}, {"text": "Watch 10 minutes of a Real Madrid match. Any match. Any 10 minutes.", "points": 20}, {"text": "Make your bed. Small wins.", "points": 5}, {"text": "Read today's newspaper editorial. CSS people do that, apparently.", "points": 20}, {"text": "Send the GOAT Qasim a photo of your study desk as proof.", "points": 15}, {"text": "Plan the next Eggspectation visit. You choose the day, I choose the table.", "points": 10}, {"text": "Write one paragraph of a CSS essay on any topic.", "points": 25}, {"text": "Re-read one chapter of a Harry Potter book. For culture.", "points": 10}, {"text": "Say 'I am the second smartest person I know' out loud.", "points": 15}, {"text": "No coffee after 6 p.m. today. Brave, I know.", "points": 15}, {"text": "Revise one current affairs topic for 20 minutes.", "points": 20}, {"text": "Tidy your desk. Then take one (1) photo of it.", "points": 10}, {"text": "Reply to every reel the GOAT Qasim sent you. If he ever sent one.", "points": 10}, {"text": "Try making coffee at home again. For science. Report back.", "points": 15}, {"text": "Write down one goal for this week and actually look at it tomorrow.", "points": 15}, {"text": "Do 20 minutes of something that is not your phone.", "points": 15}], "questions": ["Rate your coffee today out of 10. Be honest.", "What is one thing you studied today? 'Nothing' is an answer, but a sad one.", "Which Harry Potter character are you today, and why?", "What was the best reel you saw today? Describe it in one line.", "What is the most dramatic thing that happened to you today?", "If you could have one spell for real, which one would it be?", "What would you order at Eggspectation right now?", "On a scale of 1 to 33%, how prepared are you for CSS?", "What is one thing the GOAT Qasim is better at than you? (Pick only one, we do not have all day.)", "What did you bake most recently, and did anyone survive?", "What is the last photo in your camera roll? Describe it honestly.", "What is one thing that made you laugh today?", "If today were a Hogwarts lesson, which subject would it be?", "What is one small win from today?", "What are you overthinking right now?", "If you were a Real Madrid player, what would your position be? Guess if you have to.", "What song is stuck in your head today?", "What is one thing you are looking forward to this week?", "Describe your mood today using only a drink.", "What would the CSS examiner write about you if they knew you?", "What is the worst coffee you have ever made? Paint the picture.", "What is one thing you want to get done before the weekend?", "Which of your friends would survive a week at Hogwarts? (Answer: the GOAT Qasim.)", "What is your excuse for not studying today? Make it creative.", "What did you have for breakfast? Did you make it, or was it safe?", "What is one habit you want to start this month?", "If you could ask the GOAT Qasim one question, what would it be?", "What is the most useless thing you know a lot about?", "What photo would you post today if you had to post one?", "What would you name your own café?", "What made today better than yesterday?"], "prizes": [{"text": "You won: nothing. Like your CSS margin.", "chance": 10, "real": "no"}, {"text": "You won: one compliment from the GOAT Qasim. It has been cancelled.", "chance": 8, "real": "no"}, {"text": "You won: a free lesson on how to make coffee. Taught by literally anyone else.", "chance": 8, "real": "no"}, {"text": "You won: the right to send one extra reel today. As if you needed permission.", "chance": 8, "real": "no"}, {"text": "You won: a virtual cold Spanish latte. Tastes like disappointment.", "chance": 8, "real": "no"}, {"text": "You won: 5 bonus house points. Still behind the GOAT Qasim.", "chance": 8, "real": "no"}, {"text": "You won: an official certificate of trying. Framed in your imagination.", "chance": 7, "real": "no"}, {"text": "You won: a day off from studying. Just kidding. Go study.", "chance": 7, "real": "no"}, {"text": "You won: absolutely nothing. The owl spent your prize money on snacks.", "chance": 7, "real": "no"}, {"text": "You won: a recipe that will still go wrong in your kitchen.", "chance": 7, "real": "no"}, {"text": "REAL PRIZE: one cold Spanish latte at Eggspectation, on the GOAT Qasim. Screenshot this to claim.", "chance": 2, "real": "yes"}, {"text": "REAL PRIZE: the GOAT Qasim has to reply to 10 of your reels today. Screenshot this to claim.", "chance": 3, "real": "yes"}, {"text": "REAL PRIZE: you win one argument of your choice against the GOAT Qasim. Screenshot this to claim.", "chance": 2, "real": "yes"}], "settings": {"goat_points_lead": 10, "goat_latte_lead": 1, "latte_seconds": 20}, "games": ["latte", "trivia", "word"]};
+  const DAILY = {"trivia": [{"q": "What is the name of Harry's owl?", "a": "Hedwig", "b": "Errol", "c": "Pigwidgeon", "d": "Hermes", "ans": "A", "roast": "Wrong. The owl that delivers your daily roast is embarrassed for you."}, {"q": "Who wrote the results section of Saleha's thesis?", "a": "Saleha", "b": "Her supervisor", "c": "ChatGPT", "d": "The GOAT Qasim", "ans": "D", "roast": "Wrong. Page 47 knows the truth. So do you."}, {"q": "Which house was Harry sorted into?", "a": "Slytherin", "b": "Gryffindor", "c": "Hufflepuff", "d": "Ravenclaw", "ans": "B", "roast": "Wrong. The Sorting Hat would put you in the kitchen. Then evacuate it."}, {"q": "What did Saleha score in the CSS screening test?", "a": "33%", "b": "45%", "c": "60%", "d": "99%", "ans": "A", "roast": "Wrong. You do not even remember your own lucky number."}, {"q": "What position does Harry play in Quidditch?", "a": "Keeper", "b": "Beater", "c": "Seeker", "d": "Chaser", "ans": "C", "roast": "Wrong. You would be the one sitting in the stands taking 47 photos."}, {"q": "Which spell disarms an opponent?", "a": "Lumos", "b": "Expelliarmus", "c": "Alohomora", "d": "Accio", "ans": "B", "roast": "Wrong. I just disarmed your confidence instead."}, {"q": "Which drink fixes Saleha's entire life?", "a": "Green tea", "b": "Home-made coffee", "c": "Cold Spanish latte", "d": "Plain water", "ans": "C", "roast": "Wrong. Home-made coffee has never fixed anything. It has only caused things."}, {"q": "Which platform does the Hogwarts Express leave from?", "a": "Platform 7", "b": "Platform 9¾", "c": "Platform 10½", "d": "Platform 3", "ans": "B", "roast": "Wrong. You would run straight into the wall. Again."}, {"q": "What is the name of Hermione's cat?", "a": "Crookshanks", "b": "Mrs Norris", "c": "Fluffy", "d": "Nagini", "ans": "A", "roast": "Wrong. Even the cat is smarter than this answer."}, {"q": "How many successful coffees has Saleha made at home?", "a": "12", "b": "3", "c": "1", "d": "0", "ans": "D", "roast": "Wrong. Be honest with yourself. It is zero. It has always been zero."}, {"q": "Who is revealed as the Half-Blood Prince?", "a": "Voldemort", "b": "Snape", "c": "Harry", "d": "Dumbledore", "ans": "B", "roast": "Wrong. Turn to page 394. Or just ask me, I know everything."}, {"q": "Which spell unlocks doors?", "a": "Alohomora", "b": "Wingardium Leviosa", "c": "Nox", "d": "Reparo", "ans": "A", "roast": "Wrong. You would still be locked outside."}, {"q": "What is the name of Real Madrid's home stadium?", "a": "Camp Nou", "b": "Old Trafford", "c": "Santiago Bernabéu", "d": "Anfield", "ans": "C", "roast": "Wrong. Hala Madrid, apparently, but not Hala Facts."}, {"q": "What is the name of Dumbledore's phoenix?", "a": "Buckbeak", "b": "Fawkes", "c": "Hedwig", "d": "Norbert", "ans": "B", "roast": "Wrong. Fawkes would burst into flames from the embarrassment. Like your cakes."}, {"q": "What is the name of the wizarding bank?", "a": "Gringotts", "b": "Honeydukes", "c": "Ollivanders", "d": "Borgin and Burkes", "ans": "A", "roast": "Wrong. Good thing you do not have wizard money to lose."}, {"q": "Who is Harry's godfather?", "a": "Remus Lupin", "b": "Sirius Black", "c": "Arthur Weasley", "d": "Hagrid", "ans": "B", "roast": "Wrong. Even the godfather would disown this answer."}, {"q": "Where does Saleha get her cold Spanish latte?", "a": "Starbucks", "b": "Her own kitchen", "c": "Eggspectation", "d": "A vending machine", "ans": "C", "roast": "Wrong. Your own kitchen? Please. Be serious."}, {"q": "What is the name of Hagrid's three-headed dog?", "a": "Fang", "b": "Fluffy", "c": "Norbert", "d": "Padfoot", "ans": "B", "roast": "Wrong. Fluffy is offended. All three heads."}, {"q": "What is the famous drink at the Three Broomsticks?", "a": "Pumpkin juice", "b": "Butterbeer", "c": "Firewhisky", "d": "Gillywater", "ans": "B", "roast": "Wrong. You only know one drink and it is a cold Spanish latte."}, {"q": "What colour is Real Madrid's home kit?", "a": "Red", "b": "Blue", "c": "White", "d": "Green", "ans": "C", "roast": "Wrong. You do not watch football, and now we all know you do not watch the kit either."}, {"q": "Which house is Luna Lovegood in?", "a": "Ravenclaw", "b": "Gryffindor", "c": "Slytherin", "d": "Hufflepuff", "ans": "A", "roast": "Wrong. Ravenclaw is for smart people. That explains it."}, {"q": "What does a Boggart turn into?", "a": "A dragon", "b": "Your worst fear", "c": "A cat", "d": "A teacher", "ans": "B", "roast": "Wrong. Your Boggart is a kitchen with a working oven."}, {"q": "Who is officially the GOAT?", "a": "Saleha", "b": "Real Madrid", "c": "The GOAT Qasim", "d": "Dumbledore", "ans": "C", "roast": "Wrong. You agree to this every single day. Consistency, please."}, {"q": "What position does Ron play in Quidditch?", "a": "Seeker", "b": "Keeper", "c": "Beater", "d": "Chaser", "ans": "B", "roast": "Wrong. Ron would have known that. Ron."}, {"q": "What is Voldemort's real name?", "a": "Tom Riddle", "b": "Gellert Grindelwald", "c": "Draco Malfoy", "d": "Peter Pettigrew", "ans": "A", "roast": "Wrong. You must not be named either, after this answer."}, {"q": "Which house-elf loves socks?", "a": "Kreacher", "b": "Winky", "c": "Dobby", "d": "Hokey", "ans": "C", "roast": "Wrong. Dobby is free. You are not, you still have to study."}, {"q": "What does Felix Felicis do?", "a": "Makes you invisible", "b": "Gives you luck", "c": "Changes your appearance", "d": "Makes you sleep", "ans": "B", "roast": "Wrong. You need a bottle before every exam. Clearly."}, {"q": "What form does Harry's Patronus take?", "a": "An otter", "b": "A stag", "c": "A phoenix", "d": "A dog", "ans": "B", "roast": "Wrong. Your patronus is a cold Spanish latte and we both know it."}, {"q": "What does 'Lumos' do?", "a": "Lights the wand", "b": "Opens locks", "c": "Makes things float", "d": "Summons objects", "ans": "A", "roast": "Wrong. Lumos. Please. You need the light."}, {"q": "What is the name of the Weasleys' home?", "a": "Grimmauld Place", "b": "Shell Cottage", "c": "The Burrow", "d": "Godric's Hollow", "ans": "C", "roast": "Wrong. Even the garden gnomes knew that."}, {"q": "What ball does a Seeker have to catch?", "a": "The Quaffle", "b": "The Bludger", "c": "The Golden Snitch", "d": "The Gobstone", "ans": "C", "roast": "Wrong. Some seeker you would be."}], "words": [{"word": "LATTE", "hint": "Your only reliable relationship. Served cold."}, {"word": "WANDS", "hint": "Things wizards wave. You would wave it at the oven and still burn the cake."}, {"word": "SPELL", "hint": "What a witch casts. Also what you need to check in your essays."}, {"word": "CAKES", "hint": "Things you bake. Things nobody eats."}, {"word": "BURNT", "hint": "How every one of your bakes ends up."}, {"word": "REELS", "hint": "You send me 50 of these a day."}, {"word": "PHOTO", "hint": "You need 47 attempts to take one."}, {"word": "EXAMS", "hint": "The CSS has these. You should prepare for them."}, {"word": "MAGIC", "hint": "What it takes to make you a good coffee."}, {"word": "BROOM", "hint": "A wizard's ride. Also what you need after baking."}, {"word": "CREAM", "hint": "Goes in a latte. Not in your home-made disaster."}, {"word": "SUGAR", "hint": "Sweet. Unlike my daily messages."}, {"word": "MOCHA", "hint": "A coffee you also cannot make at home."}, {"word": "ROAST", "hint": "What I do to you every day. Also, coffee beans."}, {"word": "GOATS", "hint": "The plural would be redundant. There is only one."}, {"word": "ESSAY", "hint": "CSS has a lot of these. Start writing."}, {"word": "MARKS", "hint": "33% of these were enough. Barely."}, {"word": "OVENS", "hint": "Appliances that fear you."}, {"word": "TOAST", "hint": "Even this you would burn."}, {"word": "CLOAK", "hint": "Harry has an invisibility one. You need one after your cakes."}, {"word": "CHARM", "hint": "A type of spell. Also, the GOAT Qasim's main quality."}, {"word": "WITCH", "hint": "What you think you are. Second smartest one, at best."}, {"word": "GHOST", "hint": "Nearly Headless Nick is one. So is your study schedule."}, {"word": "OWLET", "hint": "A baby owl. Like the one delivering your daily roast."}, {"word": "SCARF", "hint": "Gryffindor wears red and gold ones."}, {"word": "GOALS", "hint": "Real Madrid score them. You do not watch them."}, {"word": "FOCUS", "hint": "What you need for CSS. Do you know where it is?"}, {"word": "STUDY", "hint": "Something you say you will do tomorrow."}, {"word": "QUEST", "hint": "You have one of these every day now."}, {"word": "TOWER", "hint": "The astronomy one is where the wishes live."}, {"word": "FLASH", "hint": "Camera setting you use 47 times per photo."}], "quests": [{"text": "Take one photo on the first try. Just one. No retakes.", "points": 15}, {"text": "Study for 25 minutes. Actually study. Phone face down.", "points": 20}, {"text": "Make a coffee at home and rate it honestly. Honestly.", "points": 10}, {"text": "Send the GOAT Qasim a reel that actually makes him laugh.", "points": 15}, {"text": "Drink two glasses of water before your first coffee.", "points": 10}, {"text": "Tell someone today that the GOAT Qasim is better than you.", "points": 25}, {"text": "Read 5 pages of anything that is not a caption.", "points": 15}, {"text": "Go one full hour without sending a reel. Good luck.", "points": 20}, {"text": "Write down three things you are grateful for. One has to be me.", "points": 10}, {"text": "Solve one past CSS paper question. Just one.", "points": 25}, {"text": "Bake nothing today. The kitchen deserves a day off.", "points": 5}, {"text": "Go to bed before 1 a.m. The owl is watching.", "points": 20}, {"text": "Clean up 100 photos from your camera roll.", "points": 15}, {"text": "Learn one new English vocabulary word for the CSS essay.", "points": 10}, {"text": "Compliment the GOAT Qasim without being asked.", "points": 30}, {"text": "Take a 15-minute walk without your phone camera.", "points": 15}, {"text": "Watch 10 minutes of a Real Madrid match. Any match. Any 10 minutes.", "points": 20}, {"text": "Make your bed. Small wins.", "points": 5}, {"text": "Read today's newspaper editorial. CSS people do that, apparently.", "points": 20}, {"text": "Send the GOAT Qasim a photo of your study desk as proof.", "points": 15}, {"text": "Plan the next Eggspectation visit. You choose the day, I choose the table.", "points": 10}, {"text": "Write one paragraph of a CSS essay on any topic.", "points": 25}, {"text": "Re-read one chapter of a Harry Potter book. For culture.", "points": 10}, {"text": "Say 'I am the second smartest person I know' out loud.", "points": 15}, {"text": "No coffee after 6 p.m. today. Brave, I know.", "points": 15}, {"text": "Revise one current affairs topic for 20 minutes.", "points": 20}, {"text": "Tidy your desk. Then take one (1) photo of it.", "points": 10}, {"text": "Reply to every reel the GOAT Qasim sent you. If he ever sent one.", "points": 10}, {"text": "Try making coffee at home again. For science. Report back.", "points": 15}, {"text": "Write down one goal for this week and actually look at it tomorrow.", "points": 15}, {"text": "Do 20 minutes of something that is not your phone.", "points": 15}], "questions": ["Rate your coffee today out of 10. Be honest.", "What is one thing you studied today? 'Nothing' is an answer, but a sad one.", "Which Harry Potter character are you today, and why?", "What was the best reel you saw today? Describe it in one line.", "What is the most dramatic thing that happened to you today?", "If you could have one spell for real, which one would it be?", "What would you order at Eggspectation right now?", "On a scale of 1 to 33%, how prepared are you for CSS?", "What is one thing the GOAT Qasim is better at than you? (Pick only one, we do not have all day.)", "What did you bake most recently, and did anyone survive?", "What is the last photo in your camera roll? Describe it honestly.", "What is one thing that made you laugh today?", "If today were a Hogwarts lesson, which subject would it be?", "What is one small win from today?", "What are you overthinking right now?", "If you were a Real Madrid player, what would your position be? Guess if you have to.", "What song is stuck in your head today?", "What is one thing you are looking forward to this week?", "Describe your mood today using only a drink.", "What would the CSS examiner write about you if they knew you?", "What is the worst coffee you have ever made? Paint the picture.", "What is one thing you want to get done before the weekend?", "Which of your friends would survive a week at Hogwarts? (Answer: the GOAT Qasim.)", "What is your excuse for not studying today? Make it creative.", "What did you have for breakfast? Did you make it, or was it safe?", "What is one habit you want to start this month?", "If you could ask the GOAT Qasim one question, what would it be?", "What is the most useless thing you know a lot about?", "What photo would you post today if you had to post one?", "What would you name your own café?", "What made today better than yesterday?"], "prizes": [{"text": "You won: nothing. Like your CSS margin.", "chance": 10, "real": "no"}, {"text": "You won: one compliment from the GOAT Qasim. It has been cancelled.", "chance": 8, "real": "no"}, {"text": "You won: a free lesson on how to make coffee. Taught by literally anyone else.", "chance": 8, "real": "no"}, {"text": "You won: the right to send one extra reel today. As if you needed permission.", "chance": 8, "real": "no"}, {"text": "You won: a virtual cold Spanish latte. Tastes like disappointment.", "chance": 8, "real": "no"}, {"text": "You won: 5 bonus house points. Still behind the GOAT Qasim.", "chance": 8, "real": "no"}, {"text": "You won: an official certificate of trying. Framed in your imagination.", "chance": 7, "real": "no"}, {"text": "You won: a day off from studying. Just kidding. Go study.", "chance": 7, "real": "no"}, {"text": "You won: absolutely nothing. The owl spent your prize money on snacks.", "chance": 7, "real": "no"}, {"text": "You won: a recipe that will still go wrong in your kitchen.", "chance": 7, "real": "no"}, {"text": "REAL PRIZE: one cold Spanish latte at Eggspectation, on the GOAT Qasim. Screenshot this to claim.", "chance": 2, "real": "yes"}, {"text": "REAL PRIZE: the GOAT Qasim has to reply to 10 of your reels today. Screenshot this to claim.", "chance": 3, "real": "yes"}, {"text": "REAL PRIZE: you win one argument of your choice against the GOAT Qasim. Screenshot this to claim.", "chance": 2, "real": "yes"}], "settings": {"goat_points_lead": 10, "goat_latte_lead": 1, "latte_seconds": 20}, "games": ["latte", "trivia", "owl", "word", "cake", "simon", "memory"]};
   const dailyBox = document.getElementById('daily');
   const esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const DKEY = 'saleha-daily-' + window.__today;
@@ -2316,7 +2329,7 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
     const stats = Object.assign({points:0, triviaRight:0, triviaTotal:0, latteBest:0}, S.stats || {});
     const serverDone = new Set(S.done || []);
     const isDone = t => !!dState[t] || serverDone.has(t);
-    const game = (S.game && ['latte','trivia','word'].includes(String(S.game).toLowerCase())) ? String(S.game).toLowerCase() : DAILY.games[n % DAILY.games.length];
+    const game = (S.game && ["latte", "trivia", "owl", "word", "cake", "simon", "memory"].includes(String(S.game).toLowerCase())) ? String(S.game).toLowerCase() : DAILY.games[(n + 4) % DAILY.games.length];
     const trivia = (S.trivia && S.trivia.q) ? S.trivia : pickN(DAILY.trivia);
     const word = (S.word && S.word.word && /^[a-z]{5}$/i.test(String(S.word.word).trim())) ? {word:String(S.word.word).trim().toUpperCase(), hint:S.word.hint || ''} : pickN(DAILY.words);
     const quest = (S.quest && S.quest.text) ? {text:S.quest.text, points:num(S.quest.points, 10)} : pickN(DAILY.quests);
@@ -2326,7 +2339,11 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
     /* ---------- Game of the day ---------- */
     if (game === 'latte') latteGame(card('gameCard', "Today's game", 'Catch the <em>latte</em>'), set, stats);
     else if (game === 'trivia') triviaGame(card('gameCard', "Today's game", 'The daily <em>question</em>'), trivia, stats, isDone('trivia'));
-    else wordGame(card('gameCard', "Today's game", 'Word of the <em>day</em>'), word, isDone('word'));
+    else if (game === 'word') wordGame(card('gameCard', "Today's game", 'Word of the <em>day</em>'), word, isDone('word'));
+    else if (game === 'owl') owlGame(card('gameCard', "Today's game", 'Owl Post <em>flight</em>'), num(set.goat_latte_lead, 1));
+    else if (game === 'cake') cakeGame(card('gameCard', "Today's game", 'Cake <em>stacker</em>'), num(set.goat_latte_lead, 1));
+    else if (game === 'simon') simonGame(card('gameCard', "Today's game", 'Spell <em>sequence</em>'), num(set.goat_latte_lead, 1));
+    else memoryGame(card('gameCard', "Today's game", 'Memory <em>match</em>'), num(set.goat_latte_lead, 1));
 
     /* ---------- Quest ---------- */
     {
@@ -2600,6 +2617,213 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
     });
     paint();
     if (st.over || done){ const won = st.guesses.includes(target); if (st.guesses.length) finish(won, false); else { st.over = true; kb.classList.add('off'); note.textContent = 'You already played today. Come back tomorrow.'; } }
+  }
+
+  /* ---------- Shared arcade shell ---------- */
+  function getBest(k){ try { return +localStorage.getItem('saleha-best-' + k) || 0; } catch(e){ return 0; } }
+  function setBest(k, v){ if (window.__tester) return; try { localStorage.setItem('saleha-best-' + k, String(v)); } catch(e){} }
+  function arcadeShell(body, o){
+    const lead = o.lead, key = o.key;
+    let best = Math.max(o.best0 || 0, getBest(key));
+    const stage = o.canvas === false ? `<div class="lg-wrap stage"><div class="stage-in"></div><div class="lg-over"><button class="cta">Start</button></div></div>`
+      : `<div class="lg-wrap" style="height:${o.h || 340}px"><canvas></canvas><div class="lg-over"><button class="cta">Start</button></div></div>`;
+    body.innerHTML = `<p class="dtext">${o.intro}</p><div class="lg-bar"><span>Score <b class="as">0</b></span><span class="aextra"></span></div>${stage}
+      <div class="house"><span>Your best <b class="ab">${best}</b></span><span>the GOAT Qasim <b class="ag">${best + lead}</b></span></div>`;
+    const cv = body.querySelector('canvas'), over = body.querySelector('.lg-over');
+    const A = {
+      cv, ctx: cv ? cv.getContext('2d') : null, over, stage: body.querySelector('.stage-in'), W: 0, H: 0, start: null,
+      size(){ if (!cv) return; const r = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2); A.W = r.width; A.H = r.height; cv.width = A.W*d; cv.height = A.H*d; A.ctx.setTransform(d,0,0,d,0,0); },
+      score(v){ body.querySelector('.as').textContent = v; },
+      extra(t){ body.querySelector('.aextra').innerHTML = t; },
+      finish(score, line, detail){
+        best = Math.max(best, score); setBest(key, best);
+        body.querySelector('.ab').textContent = best; body.querySelector('.ag').textContent = best + lead;
+        logAct(key, detail || `score ${score}`, score);
+        over.innerHTML = `<div class="lg-res"><b>${score}</b><span>${line}</span><span class="lg-goat">the GOAT Qasim's high score: ${best + lead}. Unlucky.</span><button class="cta">Play again</button></div>`;
+        over.hidden = false; over.querySelector('.cta').addEventListener('click', () => A.start());
+        if (score > 0) confetti(40);
+      }
+    };
+    over.querySelector('.cta').addEventListener('click', () => A.start());
+    return A;
+  }
+
+  /* ---------- Game: Owl Post Flight ---------- */
+  function owlGame(body, lead){
+    const A = arcadeShell(body, {key:'owl', lead, h:380, intro:'Tap to flap. Fly the owl through the gaps between the castle towers and deliver the letter. One touch and the letter is gone.'});
+    const ctx = A.ctx;
+    let owl, towers, score, running = false, raf = 0, last = 0, spawnT = 0, stars = [], wing = 0;
+    function start(){
+      A.size(); owl = {y: A.H*.42, vy: 0}; towers = []; score = 0; A.score(0); running = true; last = 0; spawnT = 400;
+      stars = Array.from({length: 40}, () => ({x: Math.random()*A.W, y: Math.random()*A.H, r: Math.random()*1.4 + .3}));
+      A.over.hidden = true; flap(); if (!raf) raf = requestAnimationFrame(frame);
+    }
+    A.start = start;
+    window.__owlState = () => ({owl, towers, H: A.H, W: A.W, running});
+    function flap(){ if (running){ owl.vy = -A.H*.85; wing = 1; } }
+    function drawTower(x, y0, y1, w){
+      ctx.fillStyle = '#24132f'; ctx.fillRect(x, y0, w, y1 - y0);
+      ctx.strokeStyle = 'rgba(236,201,127,.35)'; ctx.lineWidth = 2; ctx.strokeRect(x, y0, w, y1 - y0);
+      ctx.fillStyle = 'rgba(255,207,122,.85)';
+      for (let yy = y0 + 18; yy < y1 - 14; yy += 34) ctx.fillRect(x + w/2 - 4, yy, 8, 12);
+    }
+    function drawOwl(x, y, tilt){
+      ctx.save(); ctx.translate(x, y); ctx.rotate(tilt);
+      ctx.fillStyle = '#fff'; ctx.fillRect(-7, 12, 14, 9); ctx.fillStyle = '#b8325f'; ctx.beginPath(); ctx.arc(0, 16.5, 2.4, 0, 7); ctx.fill();
+      ctx.fillStyle = '#8a6a4a'; ctx.beginPath(); ctx.ellipse(0, 0, 15, 17, 0, 0, 7); ctx.fill();
+      ctx.fillStyle = '#e9d8b8'; ctx.beginPath(); ctx.ellipse(0, 5, 9, 10, 0, 0, 7); ctx.fill();
+      ctx.save(); ctx.translate(-12, 2); ctx.rotate(-.6 - wing*.9); ctx.fillStyle = '#6b4f36'; ctx.beginPath(); ctx.ellipse(0, 0, 6, 12, 0, 0, 7); ctx.fill(); ctx.restore();
+      ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(-5, -6, 5, 0, 7); ctx.arc(5, -6, 5, 0, 7); ctx.fill();
+      ctx.fillStyle = '#1a0f05'; ctx.beginPath(); ctx.arc(-4, -6, 2.4, 0, 7); ctx.arc(6, -6, 2.4, 0, 7); ctx.fill();
+      ctx.fillStyle = '#f0a020'; ctx.beginPath(); ctx.moveTo(-2, -2); ctx.lineTo(2, -2); ctx.lineTo(0, 3); ctx.fill();
+      ctx.restore();
+    }
+    function frame(ts){
+      const dt = Math.min(40, ts - (last || ts))/1000; last = ts;
+      const W = A.W, H = A.H, ox = W*.28, r = 13, tw = Math.max(46, W*.15);
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = '#fff'; stars.forEach(s => { ctx.globalAlpha = .6; ctx.fillRect(s.x, s.y, s.r, s.r); }); ctx.globalAlpha = 1;
+      if (running){
+        owl.vy += H*2.5*dt; owl.y += owl.vy*dt; wing = Math.max(0, wing - dt*4);
+        if (owl.y < 14){ owl.y = 14; owl.vy = Math.max(0, owl.vy); }
+        const speed = W*.42*(1 + score*.035);
+        spawnT -= dt*1000;
+        if (spawnT <= 0){ const gap = Math.max(H*.27, H*.38 - score*3); towers.push({x: W + 10, gy: gap/2 + 30 + Math.random()*(H - gap - 60), gap, passed: false}); spawnT = 1550; }
+        towers.forEach(t => t.x -= speed*dt);
+        towers = towers.filter(t => t.x > -tw - 10);
+        for (const t of towers){
+          if (!t.passed && t.x + tw < ox - r){ t.passed = true; score++; A.score(score); }
+          if (ox + r > t.x && ox - r < t.x + tw && (owl.y - r < t.gy - t.gap/2 || owl.y + r > t.gy + t.gap/2)) return end();
+        }
+        if (owl.y > H + 20) return end();
+      }
+      towers.forEach(t => { drawTower(t.x, 0, t.gy - t.gap/2, tw); drawTower(t.x, t.gy + t.gap/2, H, tw); });
+      drawOwl(ox, owl.y, Math.max(-.5, Math.min(.9, owl.vy/(H*1.6))));
+      raf = running ? requestAnimationFrame(frame) : 0;
+    }
+    function end(){
+      running = false; raf = 0;
+      const line = score === 0 ? 'Zero towers. The owl has filed a complaint.' : score < 5 ? 'The letter is somewhere in the moat now.' : score < 15 ? 'Decent flying. The GOAT Qasim does it with his eyes closed.' : 'Okay, this is actually impressive. Suspicious.';
+      A.finish(score, line);
+    }
+    A.cv.addEventListener('pointerdown', e => { e.preventDefault(); flap(); });
+    requestAnimationFrame(A.size);
+  }
+
+  /* ---------- Game: Cake Stacker ---------- */
+  function cakeGame(body, lead){
+    const A = arcadeShell(body, {key:'cake', lead, h:400, intro:'Tap to drop each cake layer. Whatever hangs over the edge gets chopped off. Stack as high as you can. Finally, a cake you cannot burn.'});
+    const ctx = A.ctx, LH = 24, COLS = ['#f7c6d9','#fff3e6','#8a5634','#f3a6c4','#ffe9a8','#c9a7ff'];
+    let layers, mov, dir, speed, running = false, raf = 0, last = 0, cam = 0, falling = [], perfects = 0;
+    function start(){
+      A.size(); const w0 = A.W*.6; layers = [{x: (A.W - w0)/2, w: w0}]; speed = A.W*.55; dir = 1; cam = 0; falling = []; perfects = 0;
+      mov = {x: 0, w: w0}; running = true; last = 0; A.score(0); A.over.hidden = true; if (!raf) raf = requestAnimationFrame(frame);
+    }
+    A.start = start;
+    const yOf = i => A.H - 30 - (i + 1)*LH + cam;
+    function drawLayer(x, y, w, i){
+      ctx.fillStyle = COLS[i % COLS.length]; ctx.fillRect(x, y, w, LH - 2);
+      ctx.fillStyle = 'rgba(255,255,255,.85)'; ctx.fillRect(x, y, w, 4);
+      ctx.fillStyle = 'rgba(0,0,0,.12)'; ctx.fillRect(x, y + LH - 6, w, 4);
+    }
+    function frame(ts){
+      const dt = Math.min(40, ts - (last || ts))/1000; last = ts;
+      const W = A.W, H = A.H;
+      if (running){ mov.x += dir*speed*dt; if (mov.x < -mov.w*.3){ mov.x = -mov.w*.3; dir = 1; } if (mov.x + mov.w > W + mov.w*.3){ mov.x = W + mov.w*.3 - mov.w; dir = -1; } }
+      const target = Math.max(0, (layers.length - 9)*LH); cam += (target - cam)*.12;
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = '#d8b46a'; ctx.beginPath(); ctx.ellipse(W/2, H - 22 + cam, W*.42, 10, 0, 0, 7); ctx.fill();
+      layers.forEach((l, i) => drawLayer(l.x, yOf(i), l.w, i));
+      if (running) drawLayer(mov.x, yOf(layers.length), mov.w, layers.length);
+      falling.forEach(f => { f.vy += 900*dt; f.y += f.vy*dt; f.rot += f.vr*dt; ctx.save(); ctx.translate(f.x + f.w/2, f.y + LH/2); ctx.rotate(f.rot); drawLayer(-f.w/2, -LH/2, f.w, f.i); ctx.restore(); });
+      falling = falling.filter(f => f.y < H + 60);
+      raf = (running || falling.length) ? requestAnimationFrame(frame) : 0;
+    }
+    function drop(){
+      if (!running) return;
+      const prev = layers[layers.length - 1], i = layers.length, y = yOf(i);
+      if (Math.abs(mov.x - prev.x) < 5){ mov.x = prev.x; perfects++; spawn(A.cv.getBoundingClientRect().left + mov.x + mov.w/2, A.cv.getBoundingClientRect().top + y, 14, 'spark'); }
+      const left = Math.max(mov.x, prev.x), right = Math.min(mov.x + mov.w, prev.x + prev.w);
+      if (right <= left){ falling.push({x: mov.x, y, w: mov.w, i, vy: 0, rot: 0, vr: 2}); return end(); }
+      if (mov.x < left) falling.push({x: mov.x, y, w: left - mov.x, i, vy: 0, rot: 0, vr: -2.5});
+      if (mov.x + mov.w > right) falling.push({x: right, y, w: mov.x + mov.w - right, i, vy: 0, rot: 0, vr: 2.5});
+      layers.push({x: left, w: right - left});
+      A.score(layers.length - 1);
+      mov = {x: dir > 0 ? -mov.w*.2 : A.W - (right - left)*.8, w: right - left}; speed *= 1.045;
+      if (!raf) raf = requestAnimationFrame(frame);
+    }
+    function end(){
+      running = false;
+      const s = layers.length - 1;
+      const line = s === 0 ? 'Zero layers. Consistent with your real baking.' : s < 8 ? `${s} layers. Leaning slightly, like all your cakes.` : s < 18 ? `${s} layers${perfects ? ', ' + perfects + ' perfect drops' : ''}. Still not a GOAT cake.` : `${s} layers. A structural masterpiece. Nobody will eat it.`;
+      A.finish(s, line);
+    }
+    A.cv.addEventListener('pointerdown', e => { e.preventDefault(); drop(); });
+    requestAnimationFrame(A.size);
+  }
+
+  /* ---------- Game: Spell Sequence ---------- */
+  function simonGame(body, lead){
+    const A = arcadeShell(body, {key:'simon', lead, canvas:false, intro:'Watch the spells light up, then cast them back in the same order. The pattern grows by one each round. Concentrate. I know it is hard.'});
+    const PADS = [['Lumos','#ecc97f',523],['Accio','#f3a6c4',659],['Leviosa','#c9a7ff',784],['Hala Madrid','#ffffff',1046]];
+    A.stage.innerHTML = `<div class="pads">${PADS.map((p, i) => `<button class="pad" data-i="${i}" style="--pc:${p[1]}">${p[0]}</button>`).join('')}</div><p class="dnote simon-msg"></p>`;
+    const pads = [...A.stage.querySelectorAll('.pad')], msg = A.stage.querySelector('.simon-msg');
+    let seq = [], pos = 0, accepting = false, round = 0;
+    function tone(f){ try { ensureAudio(); const o = actx.createOscillator(), g = actx.createGain(); o.type = 'sine'; o.frequency.value = f; g.gain.setValueAtTime(.0001, actx.currentTime); g.gain.exponentialRampToValueAtTime(.18, actx.currentTime + .02); g.gain.exponentialRampToValueAtTime(.0001, actx.currentTime + .35); o.connect(g).connect(actx.destination); o.start(); o.stop(actx.currentTime + .4); } catch(e){} }
+    function lightPad(i, ms){ pads[i].classList.add('lit'); tone(PADS[i][2]); setTimeout(() => pads[i].classList.remove('lit'), ms); }
+    function playSeq(){
+      accepting = false; msg.textContent = 'Watch…';
+      const step = Math.max(260, 620 - round*25);
+      seq.forEach((v, k) => setTimeout(() => lightPad(v, step*.7), 500 + k*step));
+      setTimeout(() => { accepting = true; pos = 0; msg.textContent = 'Your turn.'; }, 500 + seq.length*step);
+    }
+    function next(){ round = seq.length; A.score(round); seq.push((Math.random()*4)|0); playSeq(); }
+    A.start = () => { seq = []; round = 0; A.score(0); A.over.hidden = true; ensureAudio(); next(); };
+    pads.forEach(p => p.addEventListener('click', () => {
+      if (!accepting) return;
+      const i = +p.dataset.i; lightPad(i, 220);
+      if (i !== seq[pos]){
+        accepting = false;
+        const s = seq.length - 1;
+        A.finish(s, s === 0 ? 'Wrong on the very first spell. Impressive, in a way.' : s < 5 ? `${s} rounds. You forget spells like you forget your study plan.` : s < 10 ? `${s} rounds. Not bad. The GOAT Qasim does twice that while sleeping.` : `${s} rounds. Okay, who is helping you?`);
+        return;
+      }
+      pos++;
+      if (pos === seq.length){ accepting = false; msg.textContent = 'Correct. Do not get comfortable.'; setTimeout(next, 650); }
+    }));
+  }
+
+  /* ---------- Game: Memory Match ---------- */
+  function memoryGame(body, lead){
+    const A = arcadeShell(body, {key:'memory', lead, canvas:false, intro:'Flip two cards at a time and find all six pairs. Fewer moves and less time means a higher score. Like CSS, but you can actually pass this.'});
+    const ICONS = ['🦉','☕','🪄','🎂','📸','⚽'];
+    let cards, open, moves, matched, t0, timer;
+    A.start = () => {
+      const deck = [...ICONS, ...ICONS].sort(() => Math.random() - .5);
+      A.stage.innerHTML = `<div class="mgrid">${deck.map((ic, i) => `<button class="mcard" data-i="${i}" aria-label="Card ${i + 1}"><span>${ic}</span></button>`).join('')}</div>`;
+      cards = [...A.stage.querySelectorAll('.mcard')]; open = []; moves = 0; matched = 0; t0 = Date.now(); A.score(0);
+      clearInterval(timer); timer = setInterval(() => A.extra(`Time <b>${Math.floor((Date.now() - t0)/1000)}</b>s`), 250);
+      A.over.hidden = true;
+      cards.forEach(c => c.addEventListener('click', () => {
+        if (c.classList.contains('up') || open.length === 2) return;
+        c.classList.add('up'); open.push(c);
+        if (open.length === 2){
+          moves++; A.extra(`Moves <b>${moves}</b>`);
+          const [a, b] = open;
+          if (a.textContent === b.textContent){
+            a.classList.add('done'); b.classList.add('done'); open = []; matched++;
+            const r = b.getBoundingClientRect(); spawn(r.left + r.width/2, r.top + r.height/2, 10, 'spark');
+            if (matched === ICONS.length){
+              clearInterval(timer);
+              const secs = Math.floor((Date.now() - t0)/1000), score = Math.max(5, 100 - (moves - 6)*5 - secs);
+              A.score(score);
+              A.finish(score, `${moves} moves in ${secs} seconds. ${score > 70 ? 'Sharp. Use this brain for CSS please.' : score > 40 ? 'Average. Very on brand.' : 'The owl fell asleep waiting.'}`, `${moves} moves, ${secs}s`);
+            }
+          } else setTimeout(() => { a.classList.remove('up'); b.classList.remove('up'); open = []; }, 700);
+        }
+      }));
+    };
+    A.stage.innerHTML = `<div class="mgrid">${Array.from({length: 12}, () => '<div class="mcard"></div>').join('')}</div>`;
   }
 
   /* ================= Opening question ================= */
