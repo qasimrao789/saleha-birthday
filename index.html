@@ -521,6 +521,14 @@ body.halloween{--accent-hw:#ff7a1a}
 
 .preview-bar{position:fixed;z-index:40;left:0;right:0;top:0;padding:calc(6px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 6px max(16px, env(safe-area-inset-left, 0px));background:#ecc97f;color:#1a0f05;text-align:center;font-family:var(--font-fell);font-size:.98rem;box-shadow:0 4px 16px rgba(0,0,0,.4)}
 
+.timebox{display:flex;align-items:center;gap:14px;background:rgba(23,13,34,.9);border:1px solid rgba(236,201,127,.4);border-radius:16px;padding:12px 20px;text-align:left;max-width:100%}
+.timebox svg{width:34px;height:34px;color:var(--gold);flex:none;animation:hourglass 6s ease-in-out infinite}
+@keyframes hourglass{0%,40%{transform:rotate(0)}50%,90%{transform:rotate(180deg)}100%{transform:rotate(360deg)}}
+.tcol{display:flex;flex-direction:column;gap:2px;min-width:0}
+.tlabel{font-family:var(--font-display);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text)}
+#timeTotal{font-family:var(--font-fell);font-weight:400;font-size:1.9rem;color:var(--gold);font-variant-numeric:tabular-nums;line-height:1.1}
+.tnote{font-style:italic;font-size:.95rem;color:var(--muted)}
+
 @media (min-width:640px){
   .spells{grid-template-columns:repeat(5,minmax(0,1fr))}
   .spells .spell:last-child{grid-column:auto}
@@ -595,6 +603,10 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
       <svg class="flame" viewBox="0 0 40 52" aria-hidden="true"><defs><linearGradient id="fl" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ff6f3c"/><stop offset=".6" stop-color="#ffc24a"/><stop offset="1" stop-color="#fff2b0"/></linearGradient></defs><path d="M20 2c3 9 14 14 14 29 0 10-7 19-14 19S6 41 6 31c0-7 4-11 7-14 0 5 2 8 5 9-2-8 0-17 2-24z" fill="url(#fl)"/></svg>
       <div class="streak-num"><b id="streakN">1</b><span id="streakLabel">day streak</span></div>
       <div class="streak-meta"><span id="streakBest">Best: 1</span><span id="streakTotal">Days: 1</span><span id="streakOpens" hidden>Opens: 1</span></div>
+    </div>
+    <div class="timebox">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10M7 21h10M8 3c0 5 8 5 8 9s-8 4-8 9M16 3c0 5-8 5-8 9s8 4 8 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M10 18.5h4l-2-2.2z" fill="currentColor"/></svg>
+      <div class="tcol"><span class="tlabel" id="timeLabel">Time spent in the castle</span><b id="timeTotal">0s</b><span class="tnote" id="timeNote"></span></div>
     </div>
     <p class="streak-note" id="streakNote">The GOAT Qasim can see your streak. Don't you dare break it.</p>
     <div class="daily" id="daily"><p class="dwait">The owl is fetching today's game…</p></div>
@@ -2276,15 +2288,16 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
   function loadStreak(){
     const tester = window.__tester;
     if (!tester) renderStreak(localStreak(true), 'her');
-    if (!window.SHEET_API){ if (tester) renderStreak({streak:0, best:0, total:0, missed:0}, 'qasim'); setTimeout(() => renderDaily(null)); return; }
-    setTimeout(() => renderDaily(null), 6000);
+    if (!window.SHEET_API){ if (tester) renderStreak({streak:0, best:0, total:0, missed:0}, 'qasim'); setTimeout(() => { setTimeBase(null); renderDaily(null); }); return; }
+    setTimeout(() => { setTimeBase(null); renderDaily(null); }, 6000);
     const url = `${window.SHEET_API}?action=${tester ? 'stats' : 'visit'}&day=${window.__today}${window.__preview ? '&date=' + window.__preview : ''}&t=${Date.now()}`;
     fetch(url).then(r => r.json()).then(d => {
-      if (!d || !d.ok){ renderDaily(null); return; }
+      if (!d || !d.ok){ setTimeBase(null); renderDaily(null); return; }
       renderStreak(d, tester ? 'qasim' : 'her');
       renderSpecial(d.messages);
+      setTimeBase(typeof d.timeTotal === 'number' ? d.timeTotal : null);
       renderDaily(d);
-    }).catch(() => renderDaily(null));
+    }).catch(() => { setTimeBase(null); renderDaily(null); });
   }
   if (window.__preview){
     const pb = document.getElementById('previewBar'); pb.hidden = false;
@@ -2835,6 +2848,51 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
     };
     A.stage.innerHTML = `<div class="mgrid">${Array.from({length: 12}, () => '<div class="mcard"></div>').join('')}</div>`;
   }
+
+  /* ================= Time spent on the site ================= */
+  const TIME = { base: null, session: 0, unsent: 0, last: Date.now(), ready: false };
+  const watching = !window.__tester && !window.__preview;
+  function fmtTime(t){
+    t = Math.floor(t); const d = Math.floor(t/86400), h = Math.floor(t%86400/3600), m = Math.floor(t%3600/60), s = t%60;
+    const p = n => String(n).padStart(2, '0');
+    return d ? `${d}d ${p(h)}h ${p(m)}m ${p(s)}s` : h ? `${h}h ${p(m)}m ${p(s)}s` : m ? `${m}m ${p(s)}s` : `${s}s`;
+  }
+  function timeNote(t){
+    const lattes = Math.floor(t / 900);
+    if (t < 300) return 'Just getting started. The owl is timing you.';
+    if (t < 1800) return `About ${lattes || 1} cold Spanish latte${lattes > 1 ? 's' : ''} worth of time. Not studying, obviously.`;
+    if (t < 7200) return `That is ${Math.floor(t/1500)} Pomodoro study sessions you could have done. Just saying.`;
+    if (t < 36000) return `${(t/3600).toFixed(1)} hours. The CSS syllabus is watching you with disappointment.`;
+    return 'At this point you live here. The GOAT Qasim is honoured.';
+  }
+  function localTime(){ try { return +localStorage.getItem('saleha-time') || 0; } catch(e){ return 0; } }
+  function renderTime(){
+    if (TIME.base == null) return;
+    const t = TIME.base + (watching ? TIME.session : 0);
+    document.getElementById('timeTotal').textContent = fmtTime(t);
+    document.getElementById('timeNote').textContent = timeNote(t);
+  }
+  function setTimeBase(serverTotal){
+    if (TIME.ready) return; TIME.ready = true;
+    TIME.base = serverTotal != null ? serverTotal : localTime();
+    if (window.__tester) document.getElementById('timeLabel').textContent = "Saleha's time in the castle";
+    renderTime();
+  }
+  function flushTime(final){
+    if (!watching || !TIME.ready) return;
+    const secs = Math.floor(TIME.unsent); if (secs < 1) return;
+    TIME.unsent -= secs;
+    try { localStorage.setItem('saleha-time', String(localTime() + secs)); } catch(e){}
+    if (window.SHEET_API) fetch(`${window.SHEET_API}?action=time&secs=${secs}&t=${Date.now()}`, {keepalive: true}).catch(() => {});
+  }
+  setInterval(() => {
+    const now = Date.now(), dt = Math.min(5, (now - TIME.last)/1000); TIME.last = now;
+    if (watching && document.visibilityState === 'visible'){ TIME.session += dt; TIME.unsent += dt; }
+    renderTime();
+  }, 1000);
+  setInterval(() => flushTime(false), 15000);
+  document.addEventListener('visibilitychange', () => { TIME.last = Date.now(); if (document.visibilityState === 'hidden') flushTime(true); });
+  addEventListener('pagehide', () => flushTime(true));
 
   /* ================= Opening question ================= */
   const gate = document.getElementById('gate'), agree = document.getElementById('agree'), dis = document.getElementById('disagree'), gateSub = document.getElementById('gateSub');
