@@ -2444,7 +2444,8 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
     const tester = window.__tester;
     if (!tester) renderStreak(localStreak(true), 'her');
     if (!window.SHEET_API){ if (tester) renderStreak({streak:0, best:0, total:0, missed:0}, 'qasim'); setTimeout(() => { setTimeBase(null); renderDaily(null); }); return; }
-    setTimeout(() => { setTimeBase(null); renderDaily(null); }, 6000);
+    setTimeout(() => { if (!TIME.fromServer) setTimeBase(null); }, 4000);
+    setTimeout(() => renderDaily(null), 15000);
     const url = `${window.SHEET_API}?action=${tester ? 'stats' : 'visit'}&day=${window.__today}${window.__preview ? '&date=' + window.__preview : ''}&t=${Date.now()}`;
     fetch(url).then(r => r.json()).then(d => {
       if (!d || !d.ok){ setTimeBase(null); renderDaily(null); return; }
@@ -3043,8 +3044,10 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
     document.getElementById('timeNote').textContent = timeNote(t);
   }
   function setTimeBase(serverTotal){
-    if (TIME.ready) return; TIME.ready = true;
-    TIME.base = serverTotal != null ? serverTotal : localTime();
+    if (serverTotal != null){ TIME.base = serverTotal; TIME.fromServer = true; }
+    else if (!TIME.ready) TIME.base = localTime();
+    else return;
+    TIME.ready = true;
     if (window.__tester) document.getElementById('timeLabel').textContent = "Saleha's time in the castle";
     renderTime();
   }
