@@ -527,7 +527,8 @@ body.halloween{--accent-hw:#ff7a1a}
 @keyframes hourglass{0%,40%{transform:rotate(0)}50%,90%{transform:rotate(180deg)}100%{transform:rotate(360deg)}}
 .tcol{display:flex;flex-direction:column;gap:2px;min-width:0}
 .tlabel{font-family:var(--font-display);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text)}
-#timeTotal{font-family:var(--font-fell);font-weight:400;font-size:1.9rem;color:var(--gold);font-variant-numeric:tabular-nums;line-height:1.1}
+.tline{font-family:var(--font-fell);font-size:1.3rem;color:var(--text);line-height:1.3}
+#timeTotal{font-family:var(--font-fell);font-weight:400;font-size:1.75rem;color:var(--gold);font-variant-numeric:tabular-nums;white-space:nowrap}
 .tnote{font-style:italic;font-size:.95rem;color:var(--muted)}
 
 /* ================= HALLOWEEN MAKEOVER (24 Oct – 1 Nov) ================= */
@@ -742,7 +743,7 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
     </div>
     <div class="timebox">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10M7 21h10M8 3c0 5 8 5 8 9s-8 4-8 9M16 3c0 5-8 5-8 9s8 4 8 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M10 18.5h4l-2-2.2z" fill="currentColor"/></svg>
-      <div class="tcol"><span class="tlabel" id="timeLabel">Time spent in the castle</span><b id="timeTotal">0s</b><span class="tnote" id="timeNote"></span></div>
+      <div class="tcol"><span class="tline"><span id="timeLabel">You have spent</span> <b id="timeTotal">0s</b> here</span><span class="tnote" id="timeNote"></span></div>
     </div>
     <p class="streak-note" id="streakNote">The GOAT Qasim can see your streak. Don't you dare break it.</p>
     <div class="daily" id="daily"><p class="dwait">The owl is fetching today's game…</p></div>
@@ -3048,7 +3049,7 @@ window.SHEET_API = 'https://script.google.com/macros/s/AKfycbyGcgTeqpYt-GJIxjwEY
     else if (!TIME.ready) TIME.base = localTime();
     else return;
     TIME.ready = true;
-    if (window.__tester) document.getElementById('timeLabel').textContent = "Saleha's time in the castle";
+    if (window.__tester) document.getElementById('timeLabel').textContent = 'Saleha has spent';
     renderTime();
   }
   function flushTime(final){
